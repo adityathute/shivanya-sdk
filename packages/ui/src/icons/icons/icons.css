@@ -1,0 +1,16 @@
+.shivanya-close-icon {
+  transition:
+    transform var(--shivanya-duration-normal)
+    var(--shivanya-ease-standard),
+    color var(--shivanya-duration-fast)
+    var(--shivanya-ease-standard);
+}
+
+button:hover .shivanya-close-icon {
+  transform: rotate(90deg);
+}
+
+button:active .shivanya-close-icon {
+  color: var(--shivanya-color-danger);
+  transform: rotate(90deg);
+}

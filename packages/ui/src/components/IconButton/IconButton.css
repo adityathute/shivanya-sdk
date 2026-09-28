@@ -1,0 +1,130 @@
+/*
+ * Shivanya UI - Icon Button
+ *
+ * Purpose:
+ * Provides a compact button designed specifically for icon actions.
+ *
+ * The icon interaction is controlled here rather than inside
+ * individual icons, keeping icons reusable and presentation-neutral.
+ */
+
+.shivanya-icon-button {
+  --shivanya-icon-button-hover-color: var(--shivanya-color-danger);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: var(--shivanya-control-height-md);
+  height: var(--shivanya-control-height-md);
+
+  padding: 0;
+  border: 1px solid transparent;
+
+  color: var(--shivanya-color-text-primary);
+  background: transparent;
+
+  border-radius: var(--shivanya-radius-md);
+
+  transition:
+    color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    background-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    border-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+.shivanya-icon-button:hover {
+  color: var(--shivanya-icon-button-hover-color);
+}
+
+.shivanya-icon-button:focus-visible {
+  outline: 2px solid var(--shivanya-color-focus);
+  outline-offset: 2px;
+}
+
+.shivanya-icon-button:disabled {
+  color: var(--shivanya-color-disabled);
+  background: var(--shivanya-color-disabled-background);
+  cursor: not-allowed;
+}
+
+/* Icon wrapper */
+
+.shivanya-icon-button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform var(--shivanya-duration-normal)
+      var(--shivanya-ease-standard);
+}
+
+/* Optional 90° hover rotation */
+
+.shivanya-icon-button-rotate:hover
+  .shivanya-icon-button-icon {
+  transform: rotate(90deg);
+}
+
+/* Sizes */
+
+.shivanya-icon-button-xs {
+  width: var(--shivanya-control-height-xs);
+  height: var(--shivanya-control-height-xs);
+}
+
+.shivanya-icon-button-sm {
+  width: var(--shivanya-control-height-sm);
+  height: var(--shivanya-control-height-sm);
+}
+
+.shivanya-icon-button-md {
+  width: var(--shivanya-control-height-md);
+  height: var(--shivanya-control-height-md);
+}
+
+.shivanya-icon-button-lg {
+  width: var(--shivanya-control-height-lg);
+  height: var(--shivanya-control-height-lg);
+}
+
+.shivanya-icon-button-xl {
+  width: var(--shivanya-control-height-xl);
+  height: var(--shivanya-control-height-xl);
+}
+
+/* Variants */
+
+.shivanya-icon-button-ghost {
+  background: transparent;
+}
+
+.shivanya-icon-button-outline {
+  border-color: var(--shivanya-color-border);
+}
+
+.shivanya-icon-button-solid {
+  color: var(--shivanya-color-white);
+  background: var(--shivanya-color-primary);
+}
+
+.shivanya-icon-button-solid:hover {
+  color: var(--shivanya-color-white);
+  background: var(--shivanya-color-primary-hover);
+}
+
+/* Rounded */
+
+.shivanya-icon-button-rounded {
+  border-radius: var(--shivanya-radius-full);
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .shivanya-icon-button-icon {
+    transition: none;
+  }
+}

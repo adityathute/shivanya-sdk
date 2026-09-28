@@ -1,0 +1,590 @@
+/*
+ * Shivanya UI - Button
+ *
+ * Purpose:
+ * Provides the primary interactive button component used across
+ * Shivanya applications.
+ *
+ * Button styling is built entirely from the global Shivanya UI
+ * design tokens.
+ *
+ * Supported:
+ * - Solid variants
+ * - Soft variants
+ * - Outline variant
+ * - Ghost variant
+ * - Link variant
+ * - Multiple sizes
+ * - Loading state
+ * - Disabled state
+ * - Rounded buttons
+ * - Full-width buttons
+ * - Icons
+ * - Keyboard focus
+ */
+
+/*
+ * ---------------------------------------------------------------
+ * Base
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--shivanya-space-2);
+
+  height: var(--shivanya-control-height-md);
+  padding-inline: var(--shivanya-space-4);
+
+  border: 1px solid transparent;
+  border-radius: var(--shivanya-radius-md);
+
+  font-family: var(--shivanya-font-family);
+  font-size: var(--shivanya-font-size-md);
+  font-weight: var(--shivanya-font-weight-semibold);
+  line-height: 1;
+
+  color: var(--shivanya-color-text-inverse);
+
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  transition:
+    background-color var(--shivanya-duration-normal)
+      var(--shivanya-ease-standard),
+    color var(--shivanya-duration-normal)
+      var(--shivanya-ease-standard),
+    border-color var(--shivanya-duration-normal)
+      var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-normal)
+      var(--shivanya-ease-standard),
+    transform var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    opacity var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Focus
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button:focus-visible {
+  outline: 2px solid var(--shivanya-color-focus);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Primary
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-primary {
+  background: var(--shivanya-color-primary);
+  color: var(--shivanya-color-white);
+}
+
+.shivanya-button-primary:hover:not(:disabled) {
+  background: var(--shivanya-color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shivanya-shadow-sm);
+}
+
+.shivanya-button-primary:active:not(:disabled) {
+  background: var(--shivanya-color-primary-active);
+  transform: translateY(0);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Secondary
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-secondary {
+  background: var(--shivanya-color-secondary);
+  color: var(--shivanya-color-white);
+}
+
+.shivanya-button-secondary:hover:not(:disabled) {
+  background: var(--shivanya-color-secondary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shivanya-shadow-sm);
+}
+
+.shivanya-button-secondary:active:not(:disabled) {
+  background: var(--shivanya-color-secondary-active);
+  transform: translateY(0);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Danger
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-danger {
+  background: var(--shivanya-color-danger);
+  color: var(--shivanya-color-white);
+}
+
+.shivanya-button-danger:hover:not(:disabled) {
+  background: var(--shivanya-color-danger-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shivanya-shadow-sm);
+}
+
+.shivanya-button-danger:active:not(:disabled) {
+  background: var(--shivanya-color-danger-active);
+  transform: translateY(0);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Success
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-success {
+  background: var(--shivanya-color-success);
+  color: var(--shivanya-color-white);
+}
+
+.shivanya-button-success:hover:not(:disabled) {
+  background: var(--shivanya-color-success-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shivanya-shadow-sm);
+}
+
+.shivanya-button-success:active:not(:disabled) {
+  background: var(--shivanya-color-success-active);
+  transform: translateY(0);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Warning
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-warning {
+  background: var(--shivanya-color-warning);
+  color: var(--shivanya-color-white);
+}
+
+.shivanya-button-warning:hover:not(:disabled) {
+  background: var(--shivanya-color-warning-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shivanya-shadow-sm);
+}
+
+.shivanya-button-warning:active:not(:disabled) {
+  background: var(--shivanya-color-warning-active);
+  transform: translateY(0);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Info
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-info {
+  background: var(--shivanya-color-info);
+  color: var(--shivanya-color-white);
+}
+
+.shivanya-button-info:hover:not(:disabled) {
+  background: var(--shivanya-color-info-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shivanya-shadow-sm);
+}
+
+.shivanya-button-info:active:not(:disabled) {
+  background: var(--shivanya-color-info-active);
+  transform: translateY(0);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Dark
+ * ---------------------------------------------------------------
+ *
+ * Theme-aware dark action.
+ */
+
+.shivanya-button-dark {
+  background: var(--shivanya-color-dark);
+  color: var(--shivanya-color-dark-text);
+}
+
+.shivanya-button-dark:hover:not(:disabled) {
+  background: var(--shivanya-color-dark-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shivanya-shadow-sm);
+}
+
+.shivanya-button-dark:active:not(:disabled) {
+  background: var(--shivanya-color-dark-active);
+  transform: translateY(0);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Light
+ * ---------------------------------------------------------------
+ *
+ * Theme-aware light action.
+ */
+
+.shivanya-button-light {
+  background: var(--shivanya-color-light);
+  color: var(--shivanya-color-light-text);
+  border-color: var(--shivanya-color-border);
+}
+
+.shivanya-button-light:hover:not(:disabled) {
+  background: var(--shivanya-color-light-hover);
+  border-color: var(--shivanya-color-border-hover);
+}
+
+.shivanya-button-light:active:not(:disabled) {
+  background: var(--shivanya-color-light-active);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Neutral
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-neutral {
+  background: var(--shivanya-color-neutral);
+  color: var(--shivanya-color-neutral-text);
+  border-color: var(--shivanya-color-border);
+}
+
+.shivanya-button-neutral:hover:not(:disabled) {
+  background: var(--shivanya-color-neutral-hover);
+  border-color: var(--shivanya-color-border-hover);
+}
+
+.shivanya-button-neutral:active:not(:disabled) {
+  background: var(--shivanya-color-neutral-active);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Outline
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-outline {
+  background: transparent;
+  color: var(--shivanya-color-text-primary);
+  border-color: var(--shivanya-color-border);
+}
+
+.shivanya-button-outline:hover:not(:disabled) {
+  background: var(--shivanya-color-surface-hover);
+  border-color: var(--shivanya-color-primary);
+}
+
+.shivanya-button-outline:active:not(:disabled) {
+  background: var(--shivanya-color-surface-active);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Ghost
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-ghost {
+  background: transparent;
+  color: var(--shivanya-color-text-primary);
+}
+
+.shivanya-button-ghost:hover:not(:disabled) {
+  background: var(--shivanya-color-surface-hover);
+}
+
+.shivanya-button-ghost:active:not(:disabled) {
+  background: var(--shivanya-color-surface-active);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Link
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-link {
+  height: auto;
+  padding-inline: 0;
+
+  background: transparent;
+  color: var(--shivanya-color-primary);
+}
+
+.shivanya-button-link:hover:not(:disabled) {
+  color: var(--shivanya-color-primary-hover);
+}
+
+.shivanya-button-link:active:not(:disabled) {
+  color: var(--shivanya-color-primary-active);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Soft Primary
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-soft-primary {
+  background: var(--shivanya-color-primary-soft);
+  color: var(--shivanya-color-primary);
+}
+
+.shivanya-button-soft-primary:hover:not(:disabled) {
+  background: var(--shivanya-color-primary-soft-hover);
+}
+
+.shivanya-button-soft-primary:active:not(:disabled) {
+  background: var(--shivanya-color-primary-soft-active);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Soft Secondary
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-soft-secondary {
+  background: var(--shivanya-color-secondary-soft);
+  color: var(--shivanya-color-secondary);
+}
+
+.shivanya-button-soft-secondary:hover:not(:disabled) {
+  background: var(--shivanya-color-secondary-soft-hover);
+}
+
+.shivanya-button-soft-secondary:active:not(:disabled) {
+  background: var(--shivanya-color-secondary-soft-active);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Soft Success
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-soft-success {
+  background: var(--shivanya-color-success-soft);
+  color: var(--shivanya-color-success);
+}
+
+.shivanya-button-soft-success:hover:not(:disabled) {
+  background: var(--shivanya-color-success-soft-hover);
+}
+
+.shivanya-button-soft-success:active:not(:disabled) {
+  background: var(--shivanya-color-success-soft-active);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Soft Warning
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-soft-warning {
+  background: var(--shivanya-color-warning-soft);
+  color: var(--shivanya-color-warning-active);
+}
+
+.shivanya-button-soft-warning:hover:not(:disabled) {
+  background: var(--shivanya-color-warning-soft-hover);
+}
+
+.shivanya-button-soft-warning:active:not(:disabled) {
+  background: var(--shivanya-color-warning-soft-active);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Soft Danger
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-soft-danger {
+  background: var(--shivanya-color-danger-soft);
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-button-soft-danger:hover:not(:disabled) {
+  background: var(--shivanya-color-danger-soft-hover);
+}
+
+.shivanya-button-soft-danger:active:not(:disabled) {
+  background: var(--shivanya-color-danger-soft-active);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Soft Info
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-soft-info {
+  background: var(--shivanya-color-info-soft);
+  color: var(--shivanya-color-info-active);
+}
+
+.shivanya-button-soft-info:hover:not(:disabled) {
+  background: var(--shivanya-color-info-soft-hover);
+}
+
+.shivanya-button-soft-info:active:not(:disabled) {
+  background: var(--shivanya-color-info-soft-active);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Sizes
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-xs {
+  height: var(--shivanya-control-height-xs);
+  padding-inline: var(--shivanya-space-2);
+  font-size: var(--shivanya-font-size-xs);
+}
+
+.shivanya-button-sm {
+  height: var(--shivanya-control-height-sm);
+  padding-inline: var(--shivanya-space-3);
+  font-size: var(--shivanya-font-size-sm);
+}
+
+.shivanya-button-md {
+  height: var(--shivanya-control-height-md);
+  padding-inline: var(--shivanya-space-4);
+  font-size: var(--shivanya-font-size-md);
+}
+
+.shivanya-button-lg {
+  height: var(--shivanya-control-height-lg);
+  padding-inline: var(--shivanya-space-5);
+  font-size: var(--shivanya-font-size-lg);
+}
+
+.shivanya-button-xl {
+  height: var(--shivanya-control-height-xl);
+  padding-inline: var(--shivanya-space-6);
+  font-size: var(--shivanya-font-size-xl);
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Loading
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-loading {
+  pointer-events: none;
+  cursor: wait;
+  opacity: 0.7;
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Disabled
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button:disabled,
+.shivanya-button-disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Modifiers
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-rounded {
+  border-radius: var(--shivanya-radius-full);
+}
+
+.shivanya-button-full {
+  width: 100%;
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Content
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shivanya-button-icon,
+.shivanya-button-spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Loading spinner
+ * ---------------------------------------------------------------
+ */
+
+.shivanya-button-spinner-circle {
+  width: var(--shivanya-icon-size-sm);
+  height: var(--shivanya-icon-size-sm);
+
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: var(--shivanya-radius-full);
+
+  animation: shivanya-button-spin 700ms linear infinite;
+}
+
+@keyframes shivanya-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Reduced motion
+ * ---------------------------------------------------------------
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  .shivanya-button {
+    transition: none;
+  }
+
+  .shivanya-button-spinner-circle {
+    animation: none;
+  }
+}

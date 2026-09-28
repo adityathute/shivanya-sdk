@@ -1,0 +1,124 @@
+/*
+ * Shivanya UI - Dimension Tokens
+ *
+ * Purpose:
+ * Provides reusable visual dimensions and interaction primitives
+ * shared across Shivanya UI components.
+ *
+ * This file does not define colors or typography.
+ *
+ * Categories:
+ * - Spacing
+ * - Control sizes
+ * - Icon sizes
+ * - Border radius
+ * - Shadows
+ * - Motion
+ *
+ * Components should use these tokens instead of hard-coding
+ * repeated values whenever a shared token is appropriate.
+ */
+
+:root {
+  /*
+   * ---------------------------------------------------------------
+   * Spacing
+   * ---------------------------------------------------------------
+   * Base spacing scale used for padding, margin and gaps.
+   *
+   * The numeric scale makes it easy to extend the system without
+   * creating ambiguous names such as "small", "medium" or "large".
+   */
+
+  --shivanya-space-1: 4px;
+  --shivanya-space-2: 8px;
+  --shivanya-space-3: 12px;
+  --shivanya-space-4: 16px;
+  --shivanya-space-5: 20px;
+  --shivanya-space-6: 24px;
+  --shivanya-space-8: 32px;
+  --shivanya-space-10: 40px;
+  --shivanya-space-12: 48px;
+  --shivanya-space-16: 64px;
+
+  /*
+   * ---------------------------------------------------------------
+   * Control sizes
+   * ---------------------------------------------------------------
+   * Standard heights for interactive controls such as:
+   * - Buttons
+   * - Inputs
+   * - Selects
+   * - Other form controls
+   */
+
+  --shivanya-control-height-xs: 28px;
+  --shivanya-control-height-sm: 32px;
+  --shivanya-control-height-md: 40px;
+  --shivanya-control-height-lg: 48px;
+  --shivanya-control-height-xl: 56px;
+
+  /*
+   * ---------------------------------------------------------------
+   * Icon sizes
+   * ---------------------------------------------------------------
+   * Standard dimensions for icons used throughout the UI.
+   */
+
+  --shivanya-icon-size-xs: 12px;
+  --shivanya-icon-size-sm: 16px;
+  --shivanya-icon-size-md: 20px;
+  --shivanya-icon-size-lg: 24px;
+  --shivanya-icon-size-xl: 32px;
+
+  /*
+   * ---------------------------------------------------------------
+   * Border radius
+   * ---------------------------------------------------------------
+   * Shared corner-radius values for components and surfaces.
+   */
+
+  --shivanya-radius-sm: 6px;
+  --shivanya-radius-md: 10px;
+  --shivanya-radius-lg: 16px;
+  --shivanya-radius-xl: 24px;
+  --shivanya-radius-full: 9999px;
+
+  /*
+   * ---------------------------------------------------------------
+   * Shadows
+   * ---------------------------------------------------------------
+   * Shared elevation levels.
+   *
+   * Components should normally use the smallest elevation that
+   * communicates the required visual hierarchy.
+   */
+
+  --shivanya-shadow-sm: 0 2px 4px rgb(0 0 0 / 8%);
+  --shivanya-shadow-md: 0 4px 8px rgb(0 0 0 / 10%);
+  --shivanya-shadow-lg: 0 8px 16px rgb(0 0 0 / 12%);
+
+  /*
+   * ---------------------------------------------------------------
+   * Motion
+   * ---------------------------------------------------------------
+   * Shared animation and transition durations.
+   *
+   * Keep animations short and predictable for UI interactions.
+   */
+
+  --shivanya-duration-fast: 150ms;
+  --shivanya-duration-normal: 250ms;
+  --shivanya-duration-slow: 350ms;
+
+  /*
+   * Standard easing functions.
+   *
+   * Components can use these instead of defining their own
+   * repeated easing values.
+   */
+
+  --shivanya-ease-standard: ease;
+  --shivanya-ease-in: ease-in;
+  --shivanya-ease-out: ease-out;
+}

@@ -1,0 +1,30 @@
+{
+  "name": "shivanya-sdk",
+  "version": "0.1.0",
+  "description": "Shivanya SDK monorepo",
+  "scripts": {
+    "build": "pnpm -r build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityathute/shivanya-sdk.git"
+  },
+  "keywords": [
+    "shivanya",
+    "shivanya-sdk",
+    "sdk",
+    "typescript",
+    "react",
+    "react-components",
+    "frontend",
+    "ui",
+    "shell",
+    "authentication",
+    "analytics",
+    "developer-tools",
+    "open-source"
+  ],
+  "author": "Aditya Thute",
+  "license": "ISC",
+  "packageManager": "pnpm@11.9.0"
+}

@@ -1,0 +1,53 @@
+/*
+ * Shivanya UI - Global Styles
+ *
+ * Purpose:
+ * This is the single public CSS entry point for Shivanya UI.
+ *
+ * It loads the global CSS foundation and component styles used
+ * across the SDK.
+ *
+ * Applications should import this file instead of importing
+ * individual style files manually.
+ *
+ * Example:
+ * import "shivanya-ui/styles";
+ *
+ * Import order is intentional:
+ * 1. Reset browser defaults
+ * 2. Load fonts
+ * 3. Define color tokens
+ * 4. Define shared dimensions and visual tokens
+ * 5. Define typography tokens
+ * 6. Apply theme overrides
+ * 7. Apply global element styles
+ * 8. Load component styles
+ */
+
+/* Normalize browser default styles */
+@import "./reset.css";
+
+/* Load the default Shivanya UI font */
+@import "./fonts.css";
+
+/* Global semantic color tokens */
+@import "./colors.css";
+
+/* Shared spacing, sizing, radius, shadow, and motion tokens */
+@import "./dimensions.css";
+
+/* Font family, sizes, weights, and line-height tokens */
+@import "./typography.css";
+
+/* Theme-specific CSS variable overrides */
+@import "./themes.css";
+
+/* Global HTML and body styles using the tokens above */
+@import "./base.css";
+
+/* Icon foundation styles */
+@import "../icons/IconBase.css";
+
+/* Components */
+@import "../components/Button/Button.css";
+@import "../components/IconButton/IconButton.css";

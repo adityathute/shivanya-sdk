@@ -1,0 +1,216 @@
+/*
+ * Shivanya UI - Color Tokens
+ *
+ * Purpose:
+ * Provides the global semantic color system used by Shivanya UI.
+ *
+ * Components should consume these semantic variables instead of
+ * hard-coding color values.
+ *
+ * Do not add component-specific colors here.
+ */
+
+:root {
+  /*
+   * ---------------------------------------------------------------
+   * Base colors
+   * ---------------------------------------------------------------
+   */
+
+  --shivanya-color-white: #ffffff;
+  --shivanya-color-black: #000000;
+
+  /*
+   * ---------------------------------------------------------------
+   * Primary
+   * ---------------------------------------------------------------
+   */
+
+  --shivanya-color-primary: #2563eb;
+  --shivanya-color-primary-hover: #1d4ed8;
+  --shivanya-color-primary-active: #1e40af;
+  --shivanya-color-primary-disabled: #93c5fd;
+
+  --shivanya-color-primary-soft: rgb(37 99 235 / 10%);
+  --shivanya-color-primary-soft-hover: rgb(37 99 235 / 16%);
+  --shivanya-color-primary-soft-active: rgb(37 99 235 / 22%);
+
+  /*
+   * ---------------------------------------------------------------
+   * Secondary
+   * ---------------------------------------------------------------
+   */
+
+  --shivanya-color-secondary: #64748b;
+  --shivanya-color-secondary-hover: #475569;
+  --shivanya-color-secondary-active: #334155;
+  --shivanya-color-secondary-disabled: #cbd5e1;
+
+  --shivanya-color-secondary-soft: rgb(100 116 139 / 10%);
+  --shivanya-color-secondary-soft-hover: rgb(100 116 139 / 16%);
+  --shivanya-color-secondary-soft-active: rgb(100 116 139 / 22%);
+
+  /*
+   * ---------------------------------------------------------------
+   * Success
+   * ---------------------------------------------------------------
+   */
+
+  --shivanya-color-success: #16a34a;
+  --shivanya-color-success-hover: #15803d;
+  --shivanya-color-success-active: #166534;
+  --shivanya-color-success-disabled: #86efac;
+
+  --shivanya-color-success-background: #f0fdf4;
+  --shivanya-color-success-border: #86efac;
+
+  --shivanya-color-success-soft: rgb(22 163 74 / 10%);
+  --shivanya-color-success-soft-hover: rgb(22 163 74 / 16%);
+  --shivanya-color-success-soft-active: rgb(22 163 74 / 22%);
+
+  /*
+   * ---------------------------------------------------------------
+   * Warning
+   * ---------------------------------------------------------------
+   */
+
+  --shivanya-color-warning: #f59e0b;
+  --shivanya-color-warning-hover: #d97706;
+  --shivanya-color-warning-active: #b45309;
+  --shivanya-color-warning-disabled: #fcd34d;
+
+  --shivanya-color-warning-background: #fffbeb;
+  --shivanya-color-warning-border: #fcd34d;
+
+  --shivanya-color-warning-soft: rgb(245 158 11 / 10%);
+  --shivanya-color-warning-soft-hover: rgb(245 158 11 / 16%);
+  --shivanya-color-warning-soft-active: rgb(245 158 11 / 22%);
+
+  /*
+   * ---------------------------------------------------------------
+   * Danger
+   * ---------------------------------------------------------------
+   */
+
+  --shivanya-color-danger: #dc2626;
+  --shivanya-color-danger-hover: #b91c1c;
+  --shivanya-color-danger-active: #991b1b;
+  --shivanya-color-danger-disabled: #fca5a5;
+
+  --shivanya-color-danger-background: #fef2f2;
+  --shivanya-color-danger-border: #fca5a5;
+
+  --shivanya-color-danger-soft: rgb(220 38 38 / 10%);
+  --shivanya-color-danger-soft-hover: rgb(220 38 38 / 16%);
+  --shivanya-color-danger-soft-active: rgb(220 38 38 / 22%);
+
+  /*
+   * ---------------------------------------------------------------
+   * Info
+   * ---------------------------------------------------------------
+   */
+
+  --shivanya-color-info: #0ea5e9;
+  --shivanya-color-info-hover: #0284c7;
+  --shivanya-color-info-active: #0369a1;
+  --shivanya-color-info-disabled: #7dd3fc;
+
+  --shivanya-color-info-background: #f0f9ff;
+  --shivanya-color-info-border: #7dd3fc;
+
+  --shivanya-color-info-soft: rgb(14 165 233 / 10%);
+  --shivanya-color-info-soft-hover: rgb(14 165 233 / 16%);
+  --shivanya-color-info-soft-active: rgb(14 165 233 / 22%);
+
+  /*
+   * ---------------------------------------------------------------
+   * Dark action
+   * ---------------------------------------------------------------
+   *
+   * Theme-aware dark semantic action.
+   */
+
+  --shivanya-color-dark: #111827;
+  --shivanya-color-dark-text: #ffffff;
+  --shivanya-color-dark-hover: #030712;
+  --shivanya-color-dark-active: #000000;
+
+  /*
+   * ---------------------------------------------------------------
+   * Light action
+   * ---------------------------------------------------------------
+   *
+   * Theme-aware light semantic action.
+   */
+
+  --shivanya-color-light: #ffffff;
+  --shivanya-color-light-text: #111827;
+  --shivanya-color-light-hover: #f8fafc;
+  --shivanya-color-light-active: #f1f5f9;
+
+  /*
+   * ---------------------------------------------------------------
+   * Neutral action
+   * ---------------------------------------------------------------
+   */
+
+  --shivanya-color-neutral: #f1f5f9;
+  --shivanya-color-neutral-text: #334155;
+  --shivanya-color-neutral-hover: #e2e8f0;
+  --shivanya-color-neutral-active: #cbd5e1;
+
+  /*
+   * ---------------------------------------------------------------
+   * Application surfaces
+   * ---------------------------------------------------------------
+   */
+
+  --shivanya-color-background: #ffffff;
+  --shivanya-color-surface: #f8fafc;
+  --shivanya-color-surface-hover: #f1f5f9;
+  --shivanya-color-surface-active: #e2e8f0;
+  --shivanya-color-overlay: rgb(15 23 42 / 50%);
+
+  /*
+   * ---------------------------------------------------------------
+   * Text
+   * ---------------------------------------------------------------
+   */
+
+  --shivanya-color-text-primary: #111827;
+  --shivanya-color-text-secondary: #475569;
+  --shivanya-color-text-muted: #64748b;
+  --shivanya-color-text-placeholder: #94a3b8;
+  --shivanya-color-text-disabled: #cbd5e1;
+  --shivanya-color-text-inverse: #ffffff;
+
+  /*
+   * ---------------------------------------------------------------
+   * Borders and dividers
+   * ---------------------------------------------------------------
+   */
+
+  --shivanya-color-border: #cbd5e1;
+  --shivanya-color-border-hover: #94a3b8;
+  --shivanya-color-border-focus: #2563eb;
+  --shivanya-color-divider: #e2e8f0;
+
+  /*
+   * ---------------------------------------------------------------
+   * Focus
+   * ---------------------------------------------------------------
+   */
+
+  --shivanya-color-focus: #2563eb;
+  --shivanya-color-focus-ring: rgb(37 99 235 / 25%);
+
+  /*
+   * ---------------------------------------------------------------
+   * Disabled
+   * ---------------------------------------------------------------
+   */
+
+  --shivanya-color-disabled-background: #f1f5f9;
+  --shivanya-color-disabled-border: #e2e8f0;
+  --shivanya-color-disabled-text: #94a3b8;
+}

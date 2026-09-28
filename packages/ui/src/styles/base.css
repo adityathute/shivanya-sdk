@@ -1,0 +1,98 @@
+/*
+ * Shivanya UI - Base Styles
+ *
+ * Purpose:
+ * Defines the global HTML and form-element behavior used by
+ * Shivanya UI components.
+ *
+ * This file consumes the tokens defined by:
+ * - colors.css
+ * - dimensions.css
+ * - typography.css
+ * - themes.css
+ *
+ * Keep component-specific styles out of this file.
+ */
+
+/* Root document styles */
+html {
+  font-family: var(--shivanya-font-family);
+  color: var(--shivanya-color-text-primary);
+  background: var(--shivanya-color-background);
+  color-scheme: light;
+}
+
+/*
+ * Explicit dark theme.
+ *
+ * The theme itself is controlled through CSS variables in themes.css.
+ * color-scheme tells the browser that native controls should use
+ * the appropriate light/dark appearance.
+ */
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/*
+ * Global document body.
+ *
+ * The minimum width prevents extremely narrow layouts from breaking
+ * while min-height allows full-height application layouts.
+ */
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--shivanya-font-family);
+  font-size: var(--shivanya-font-size-md);
+  font-weight: var(--shivanya-font-weight-regular);
+  line-height: var(--shivanya-line-height-md);
+  color: var(--shivanya-color-text-primary);
+  background: var(--shivanya-color-background);
+
+  /* Improve text rendering across supported browsers. */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+ * Text selection.
+ *
+ * Uses the SDK semantic color tokens so the selection remains
+ * consistent with the design system.
+ */
+::selection {
+  color: var(--shivanya-color-white);
+  background: var(--shivanya-color-primary);
+}
+
+/*
+ * Form controls inherit the application's font.
+ *
+ * Browsers often give form controls their own font, so explicitly
+ * inheriting prevents typography inconsistencies.
+ */
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/*
+ * Buttons receive their visual border styles from their components.
+ */
+button {
+  border: 0;
+}
+
+/*
+ * Component-level focus styles should control the focus appearance.
+ * Removing the browser outline globally is intentional only if every
+ * interactive SDK component provides an accessible :focus-visible state.
+ */
+input,
+textarea,
+select {
+  outline: none;
+}

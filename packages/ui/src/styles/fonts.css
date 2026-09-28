@@ -1,0 +1,43 @@
+/*
+ * Shivanya UI - Font Definitions
+ *
+ * Purpose:
+ * Registers the fonts bundled with Shivanya UI so applications
+ * can use them without relying on an external font provider.
+ *
+ * Outfit is included as a variable font, supporting font weights
+ * from 100 through 900.
+ *
+ * The actual font-family token is defined in typography.css.
+ */
+
+@font-face {
+  /*
+   * Font family name used throughout the SDK.
+   */
+  font-family: "Outfit";
+
+  /*
+   * Font file bundled with the SDK.
+   */
+  src: url("../assets/fonts/Outfit-VariableFont_wght.ttf")
+    format("truetype");
+
+  /*
+   * This font file contains the normal (non-italic) style.
+   */
+  font-style: normal;
+
+  /*
+   * Variable font weight range.
+   *
+   * This allows components to use weights such as:
+   * 400, 500, 600, 700, etc.
+   */
+  font-weight: 100 900;
+
+  /*
+   * Prevent invisible text while the font is loading.
+   */
+  font-display: swap;
+}

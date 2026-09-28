@@ -1,0 +1,285 @@
+/*
+ * Shivanya UI - CSS Reset
+ *
+ * Purpose:
+ * Removes inconsistent browser defaults and establishes a predictable
+ * baseline for all Shivanya UI components.
+ *
+ * Keep this file limited to browser normalization.
+ *
+ * Do not add:
+ * - Theme colors
+ * - Design tokens
+ * - Component styles
+ * - Application-specific styles
+ */
+
+/*
+ * ---------------------------------------------------------------
+ * Document elements
+ * ---------------------------------------------------------------
+ * Remove browser default spacing and normalize inherited typography.
+ */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Box sizing
+ * ---------------------------------------------------------------
+ * Makes width and height calculations predictable.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Document defaults
+ * ---------------------------------------------------------------
+ */
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/*
+ * Keep the document capable of filling the viewport.
+ */
+
+body {
+  min-height: 100vh;
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Media
+ * ---------------------------------------------------------------
+ * Prevent media from overflowing its container.
+ */
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+ * Preserve image aspect ratios when dimensions are provided.
+ */
+
+img,
+video {
+  height: auto;
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Form controls
+ * ---------------------------------------------------------------
+ * Make native controls inherit application typography.
+ */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  margin: 0;
+}
+
+/*
+ * Buttons should behave like interactive controls.
+ */
+
+button {
+  cursor: pointer;
+}
+
+/*
+ * Disabled controls should communicate their state.
+ */
+
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled {
+  cursor: not-allowed;
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Links
+ * ---------------------------------------------------------------
+ * Remove the browser's default link decoration.
+ *
+ * Individual components or applications can add their own styling.
+ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Lists
+ * ---------------------------------------------------------------
+ * Remove default browser list styling.
+ *
+ * Components that require visible list markers can add them back.
+ */
+
+ul,
+ol {
+  list-style: none;
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Tables
+ * ---------------------------------------------------------------
+ * Normalize table spacing.
+ */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*
+ * Table cells inherit the application's typography.
+ */
+
+th,
+td {
+  font: inherit;
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Textareas
+ * ---------------------------------------------------------------
+ * Prevent textarea resizing from breaking component layouts while
+ * still allowing developers to override it when required.
+ */
+
+textarea {
+  resize: vertical;
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Fieldset
+ * ---------------------------------------------------------------
+ * Remove browser default fieldset styling.
+ */
+
+fieldset {
+  min-width: 0;
+}
+
+/*
+ * ---------------------------------------------------------------
+ * Hidden attribute
+ * ---------------------------------------------------------------
+ * Ensure elements using the native hidden attribute remain hidden.
+ */
+
+[hidden] {
+  display: none !important;
+}

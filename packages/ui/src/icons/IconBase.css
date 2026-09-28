@@ -1,0 +1,17 @@
+/*
+ * Shivanya UI - Icon Base
+ *
+ * Purpose:
+ * Provides the shared visual behavior for all Shivanya icons.
+ *
+ * Individual icons should contain only their SVG artwork.
+ * Common icon behavior belongs here.
+ */
+
+.shivanya-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+  color: inherit;
+  overflow: visible;
+}

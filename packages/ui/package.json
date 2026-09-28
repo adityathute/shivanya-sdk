@@ -1,0 +1,58 @@
+{
+  "name": "shivanya-ui",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Reusable React UI components for Shivanya applications",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "import": "./dist/icons/index.js"
+    },
+    "./styles": "./src/styles/index.css"
+  },
+  "files": [
+    "dist",
+    "src/styles",
+    "src/assets/fonts"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "typescript": "^7.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityathute/shivanya-sdk.git"
+  },
+  "keywords": [
+    "shivanya",
+    "shivanya-ui",
+    "ui",
+    "react",
+    "react-components",
+    "typescript",
+    "frontend",
+    "components",
+    "open-source"
+  ],
+  "author": "Aditya Thute",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
+}
