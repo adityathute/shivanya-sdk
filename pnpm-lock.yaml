@@ -8,6 +8,22 @@ importers:
 
   .: {}
 
+  packages/ai:
+    dependencies:
+      shivanya-core:
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
+
+  packages/core:
+    devDependencies:
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
+
   packages/shell:
     dependencies:
       shivanya-ui:
@@ -56,6 +72,12 @@ importers:
       react-dom:
         specifier: ^19.2.8
         version: 19.3.0(react@19.3.0)
+      shivanya-ai:
+        specifier: workspace:*
+        version: link:../packages/ai
+      shivanya-core:
+        specifier: workspace:*
+        version: link:../packages/core
       shivanya-shell:
         specifier: workspace:*
         version: link:../packages/shell

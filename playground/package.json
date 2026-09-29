@@ -12,7 +12,9 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "shivanya-shell": "workspace:*",
-    "shivanya-ui": "workspace:*"
+    "shivanya-ui": "workspace:*",
+    "shivanya-core": "workspace:*",
+    "shivanya-ai": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",
