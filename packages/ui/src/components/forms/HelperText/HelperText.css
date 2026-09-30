@@ -1,0 +1,30 @@
+.shivanya-helpertext {
+  display: block;
+  margin: 0;
+  color: var(--shivanya-color-text-secondary);
+  line-height: 1.5;
+}
+
+.shivanya-helpertext-sm {
+  font-size: var(--shivanya-font-size-sm);
+}
+
+.shivanya-helpertext-md {
+  font-size: var(--shivanya-font-size-md);
+}
+
+.shivanya-helpertext-lg {
+  font-size: var(--shivanya-font-size-lg);
+}
+
+.shivanya-helpertext-success {
+  color: var(--shivanya-color-success);
+}
+
+.shivanya-helpertext-error {
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-helpertext-warning {
+  color: var(--shivanya-color-warning);
+}

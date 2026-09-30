@@ -1,0 +1,130 @@
+.shivanya-file-upload {
+  display: grid;
+  gap: var(--shivanya-space-3);
+  width: 100%;
+  max-width: 640px;
+}
+
+.shivanya-file-dropzone {
+  position: relative;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: var(--shivanya-space-2);
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 150px;
+  padding: var(--shivanya-space-7);
+
+  border: 1px dashed var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-lg);
+  background: var(--shivanya-color-surface);
+  color: var(--shivanya-color-text-primary);
+
+  cursor: pointer;
+
+  transition:
+    border-color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    background var(--shivanya-duration-fast) var(--shivanya-ease-standard);
+}
+
+.shivanya-file-dropzone:hover:not(:disabled),
+.shivanya-file-upload.is-drag .shivanya-file-dropzone {
+  border-color: var(--shivanya-color-focus);
+  background: var(--shivanya-color-surface-hover);
+}
+
+.shivanya-file-dropzone:focus-visible {
+  outline: 0;
+  border-color: var(--shivanya-color-focus);
+  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
+}
+
+.shivanya-file-dropzone:disabled {
+  cursor: not-allowed;
+}
+
+.shivanya-file-dropzone span {
+  color: var(--shivanya-color-text-secondary);
+  font-size: var(--shivanya-font-size-sm);
+}
+
+.shivanya-file-list {
+  display: grid;
+  gap: var(--shivanya-space-2);
+}
+
+.shivanya-file-item {
+  display: flex;
+  align-items: center;
+  gap: var(--shivanya-space-3);
+  min-width: 0;
+  padding: var(--shivanya-space-3) var(--shivanya-space-4);
+
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+  background: var(--shivanya-color-surface);
+}
+
+.shivanya-file-item img {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: var(--shivanya-radius-sm);
+}
+
+.shivanya-file-item span {
+  display: grid;
+  gap: var(--shivanya-space-1);
+  min-width: 0;
+  flex: 1;
+}
+
+.shivanya-file-item strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shivanya-file-item small {
+  color: var(--shivanya-color-text-muted);
+}
+
+.shivanya-file-item button {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  border: 0;
+  border-radius: var(--shivanya-radius-sm);
+  background: transparent;
+  color: var(--shivanya-color-text-secondary);
+
+  cursor: pointer;
+}
+
+.shivanya-file-item button:hover {
+  background: var(--shivanya-color-surface-hover);
+  color: var(--shivanya-color-text-primary);
+}
+
+.shivanya-file-item button:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
+}
+
+.shivanya-file-item button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.shivanya-file-upload.is-disabled {
+  opacity: 0.6;
+}

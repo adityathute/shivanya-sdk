@@ -1,0 +1,153 @@
+:where(.shivanya-form-control) {
+  box-sizing: border-box;
+  font: inherit;
+  color: var(--shivanya-color-text-primary);
+  background: var(--shivanya-color-surface);
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+  transition:
+    border-color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    background var(--shivanya-duration-fast) var(--shivanya-ease-standard);
+}
+
+:where(.shivanya-form-control):hover:not(:disabled) {
+  border-color: var(--shivanya-color-border-hover);
+}
+
+:where(.shivanya-form-control):focus {
+  outline: 0;
+  border-color: var(--shivanya-color-focus);
+  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
+}
+
+:where(.shivanya-form-control):disabled {
+  background: var(--shivanya-color-disabled-background);
+  border-color: var(--shivanya-color-disabled-border);
+  color: var(--shivanya-color-disabled-text);
+  cursor: not-allowed;
+}
+
+.shivanya-date-range {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 480px;
+  max-width: 100%;
+  min-width: 0;
+  gap: var(--shivanya-space-1);
+  padding: 0 var(--shivanya-space-2);
+
+  color: var(--shivanya-color-text-primary);
+  background: var(--shivanya-color-surface);
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+
+  transition:
+    border-color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    background var(--shivanya-duration-fast) var(--shivanya-ease-standard);
+}
+
+.shivanya-date-range:hover:not(:has(input:disabled)) {
+  border-color: var(--shivanya-color-border-hover);
+}
+
+.shivanya-date-range:focus-within {
+  border-color: var(--shivanya-color-focus);
+  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
+}
+
+.shivanya-date-range.is-full {
+  width: 100%;
+}
+
+.shivanya-date-range input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
+  padding: 0 var(--shivanya-space-2);
+
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.shivanya-date-range input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.shivanya-date-range input:disabled {
+  cursor: not-allowed;
+}
+
+.shivanya-date-range:has(input:disabled) {
+  background: var(--shivanya-color-disabled-background);
+  border-color: var(--shivanya-color-disabled-border);
+  color: var(--shivanya-color-disabled-text);
+  cursor: not-allowed;
+}
+
+.shivanya-date-range-sm input {
+  height: 32px;
+  font-size: var(--shivanya-font-size-sm);
+}
+
+.shivanya-date-range-lg input {
+  height: 48px;
+}
+
+.shivanya-date-range-radius-sm {
+  border-radius: var(--shivanya-radius-sm);
+}
+
+.shivanya-date-range-radius-lg {
+  border-radius: var(--shivanya-radius-lg);
+}
+
+.shivanya-date-range-radius-full {
+  border-radius: var(--shivanya-radius-full);
+}
+
+.shivanya-date-range > span {
+  flex: none;
+  color: var(--shivanya-color-text-muted);
+}
+
+.shivanya-date-range-clear {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  margin-right: var(--shivanya-space-1);
+  padding: 0;
+
+  border: 0;
+  border-radius: var(--shivanya-radius-sm);
+  background: transparent;
+  color: var(--shivanya-color-text-secondary);
+
+  cursor: pointer;
+}
+
+.shivanya-date-range-clear:hover {
+  background: var(--shivanya-color-surface-hover);
+  color: var(--shivanya-color-text-primary);
+}
+
+.shivanya-date-range-clear:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
+}
+
+.shivanya-date-range-clear svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}

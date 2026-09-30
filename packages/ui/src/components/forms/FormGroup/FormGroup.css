@@ -1,0 +1,36 @@
+.shivanya-form-group {
+  display: grid;
+  gap: var(--shivanya-space-4);
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.shivanya-form-group-sm {
+  gap: var(--shivanya-space-2);
+}
+
+.shivanya-form-group-lg {
+  gap: var(--shivanya-space-6);
+}
+
+.shivanya-form-group > div {
+  display: grid;
+  gap: var(--shivanya-space-1);
+}
+
+.shivanya-form-group legend {
+  padding: 0;
+  color: var(--shivanya-color-text-primary);
+  font-size: var(--shivanya-font-size-md);
+  font-weight: 700;
+}
+
+.shivanya-form-group p {
+  margin: 0;
+  color: var(--shivanya-color-text-secondary);
+  font-size: var(--shivanya-font-size-sm);
+  line-height: 1.5;
+}

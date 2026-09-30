@@ -1,0 +1,14 @@
+:where(.shivanya-focus-trap) {
+  display: contents;
+}
+
+:where(.shivanya-focus-trap-disabled) {
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.shivanya-focus-trap) {
+    transition: none;
+  }
+}

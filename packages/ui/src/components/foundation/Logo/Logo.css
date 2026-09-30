@@ -1,0 +1,76 @@
+.shivanya-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--shivanya-space-2);
+  min-width: 0;
+  color: var(--shivanya-color-text-primary);
+  font-family: var(--shivanya-font-family);
+  user-select: none;
+}
+
+.shivanya-logo-image-link,
+.shivanya-logo-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.shivanya-logo-image-link {
+  display: inline-flex;
+  flex-shrink: 0;
+  border-radius: var(--shivanya-radius-sm);
+}
+
+.shivanya-logo-image-link:focus-visible,
+.shivanya-logo-title-link:focus-visible {
+  outline: 2px solid var(--shivanya-color-focus);
+  outline-offset: 2px;
+}
+
+.shivanya-logo-image,
+.shivanya-logo-mark {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.shivanya-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--shivanya-radius-md);
+  background: var(--shivanya-color-primary);
+  color: var(--shivanya-color-text-inverse);
+  font-size: var(--shivanya-font-size-lg);
+  font-weight: var(--shivanya-font-weight-bold);
+}
+
+.shivanya-logo-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.shivanya-logo-title {
+  display: block;
+  overflow: hidden;
+  color: var(--shivanya-color-text-primary);
+  font-size: var(--shivanya-font-size-xl);
+  font-weight: var(--shivanya-font-weight-bold);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shivanya-logo-subtitle {
+  display: block;
+  margin-top: 2px;
+  overflow: hidden;
+  color: var(--shivanya-color-text-secondary);
+  font-size: var(--shivanya-font-size-xs);
+  line-height: var(--shivanya-line-height-sm);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

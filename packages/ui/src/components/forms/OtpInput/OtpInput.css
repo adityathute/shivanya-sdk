@@ -1,0 +1,131 @@
+:where(.shivanya-form-control) {
+  box-sizing: border-box;
+  font: inherit;
+  color: var(--shivanya-color-text-primary);
+  background: var(--shivanya-color-surface);
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+
+  transition:
+    border-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    background var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+:where(.shivanya-form-control):hover:not(:disabled) {
+  border-color: var(--shivanya-color-border-hover);
+}
+
+:where(.shivanya-form-control):focus {
+  outline: 0;
+  border-color: var(--shivanya-color-focus);
+  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
+}
+
+:where(.shivanya-form-control):disabled {
+  background: var(--shivanya-color-disabled-background);
+  border-color: var(--shivanya-color-disabled-border);
+  color: var(--shivanya-color-disabled-text);
+  cursor: not-allowed;
+}
+
+.shivanya-otp-field {
+  display: grid;
+  gap: var(--shivanya-space-2);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.shivanya-otp-field > label {
+  color: var(--shivanya-color-text-primary);
+  font-weight: 600;
+}
+
+.shivanya-otp {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--shivanya-space-2);
+}
+
+.shivanya-otp input {
+  box-sizing: border-box;
+  width: 44px;
+  height: 48px;
+  padding: 0;
+
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+
+  background: var(--shivanya-color-surface);
+  color: var(--shivanya-color-text-primary);
+
+  font: inherit;
+  font-size: var(--shivanya-font-size-lg);
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+
+  outline: 0;
+
+  transition:
+    border-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    background var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+.shivanya-otp input:hover:not(:disabled) {
+  border-color: var(--shivanya-color-border-hover);
+}
+
+.shivanya-otp input:focus {
+  border-color: var(--shivanya-color-focus);
+  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
+}
+
+.shivanya-otp input:disabled {
+  background: var(--shivanya-color-disabled-background);
+  border-color: var(--shivanya-color-disabled-border);
+  color: var(--shivanya-color-disabled-text);
+  cursor: not-allowed;
+}
+
+.shivanya-otp-sm input {
+  width: 36px;
+  height: 40px;
+  font-size: var(--shivanya-font-size-md);
+}
+
+.shivanya-otp-lg input {
+  width: 52px;
+  height: 56px;
+  font-size: var(--shivanya-font-size-lg);
+}
+
+.shivanya-otp.is-error input {
+  border-color: var(--shivanya-color-danger);
+}
+
+.shivanya-otp.is-success input {
+  border-color: var(--shivanya-color-success);
+}
+
+.shivanya-otp-field p {
+  margin: 0;
+  color: var(--shivanya-color-text-secondary);
+  font-size: var(--shivanya-font-size-sm);
+  line-height: 1.5;
+}
+
+.shivanya-otp-field p.is-error {
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-otp-field p.is-success {
+  color: var(--shivanya-color-success);
+}

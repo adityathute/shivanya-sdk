@@ -1,12 +1,7 @@
 /*
  * Shivanya UI - Theme Overrides
  *
- * Purpose:
- * Provides theme-specific overrides for the semantic CSS variables
- * defined in colors.css and dimensions.css.
- *
- * The SDK uses CSS variables for theming. No JavaScript theme
- * provider is required.
+ * Theme-specific semantic color and shadow overrides.
  *
  * Supported modes:
  *
@@ -14,7 +9,7 @@
  *   <html data-theme="dark">
  *
  * When no explicit theme is selected, the user's operating-system
- * color preference is respected through prefers-color-scheme.
+ * preference is respected through prefers-color-scheme.
  *
  * Theme priority:
  *
@@ -29,15 +24,15 @@
  * ---------------------------------------------------------------
  * System dark mode
  * ---------------------------------------------------------------
- * Used only when the application has not explicitly selected
- * either light or dark mode.
  */
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]):not([data-theme="dark"]) {
     --shivanya-color-background: #0f172a;
+
     --shivanya-color-surface: #1e293b;
     --shivanya-color-surface-hover: #334155;
+    --shivanya-color-surface-active: #475569;
 
     --shivanya-color-text-primary: #f8fafc;
     --shivanya-color-text-secondary: #cbd5e1;
@@ -45,6 +40,11 @@
 
     --shivanya-color-border: #475569;
     --shivanya-color-border-hover: #64748b;
+    --shivanya-color-border-focus: #60a5fa;
+    --shivanya-color-divider: #334155;
+
+    --shivanya-color-focus: #60a5fa;
+    --shivanya-color-focus-ring: rgb(96 165 250 / 25%);
 
     --shivanya-color-success-background: #052e16;
     --shivanya-color-success-border: #166534;
@@ -58,7 +58,6 @@
     --shivanya-color-info-background: #082f49;
     --shivanya-color-info-border: #0369a1;
 
-    /* Theme-aware action colors */
     --shivanya-color-dark: #f8fafc;
     --shivanya-color-dark-text: #111827;
     --shivanya-color-dark-hover: #ffffff;
@@ -74,6 +73,16 @@
     --shivanya-color-neutral-hover: #475569;
     --shivanya-color-neutral-active: #64748b;
 
+    --shivanya-color-disabled-background: #1e293b;
+    --shivanya-color-disabled-border: #475569;
+    --shivanya-color-disabled-text: #64748b;
+
+    --shivanya-color-code-background: #111827;
+    --shivanya-color-code-text: #f8fafc;
+    --shivanya-color-code-border: #475569;
+    --shivanya-color-code-scrollbar: #64748b;
+    --shivanya-color-code-scrollbar-hover: #94a3b8;
+
     --shivanya-shadow-sm: 0 2px 4px rgb(0 0 0 / 30%);
     --shivanya-shadow-md: 0 4px 8px rgb(0 0 0 / 40%);
     --shivanya-shadow-lg: 0 8px 16px rgb(0 0 0 / 50%);
@@ -84,14 +93,14 @@
  * ---------------------------------------------------------------
  * Explicit dark theme
  * ---------------------------------------------------------------
- * Overrides the system preference when the application explicitly
- * sets data-theme="dark".
  */
 
 html[data-theme="dark"] {
   --shivanya-color-background: #0f172a;
+
   --shivanya-color-surface: #1e293b;
   --shivanya-color-surface-hover: #334155;
+  --shivanya-color-surface-active: #475569;
 
   --shivanya-color-text-primary: #f8fafc;
   --shivanya-color-text-secondary: #cbd5e1;
@@ -99,6 +108,11 @@ html[data-theme="dark"] {
 
   --shivanya-color-border: #475569;
   --shivanya-color-border-hover: #64748b;
+  --shivanya-color-border-focus: #60a5fa;
+  --shivanya-color-divider: #334155;
+
+  --shivanya-color-focus: #60a5fa;
+  --shivanya-color-focus-ring: rgb(96 165 250 / 25%);
 
   --shivanya-color-success-background: #052e16;
   --shivanya-color-success-border: #166534;
@@ -127,6 +141,16 @@ html[data-theme="dark"] {
   --shivanya-color-neutral-hover: #475569;
   --shivanya-color-neutral-active: #64748b;
 
+  --shivanya-color-disabled-background: #1e293b;
+  --shivanya-color-disabled-border: #475569;
+  --shivanya-color-disabled-text: #64748b;
+
+  --shivanya-color-code-background: #111827;
+  --shivanya-color-code-text: #f8fafc;
+  --shivanya-color-code-border: #475569;
+  --shivanya-color-code-scrollbar: #64748b;
+  --shivanya-color-code-scrollbar-hover: #94a3b8;
+
   --shivanya-shadow-sm: 0 2px 4px rgb(0 0 0 / 30%);
   --shivanya-shadow-md: 0 4px 8px rgb(0 0 0 / 40%);
   --shivanya-shadow-lg: 0 8px 16px rgb(0 0 0 / 50%);
@@ -136,9 +160,8 @@ html[data-theme="dark"] {
  * ---------------------------------------------------------------
  * Explicit light theme
  * ---------------------------------------------------------------
- * The default values in colors.css already represent the light
- * theme, so no duplicate light-theme values are necessary here.
  *
- * data-theme="light" also disables the system dark-mode override
- * because of the :not([data-theme="light"]) condition above.
+ * Light values come from colors.css.
+ *
+ * data-theme="light" prevents the system dark-mode override.
  */

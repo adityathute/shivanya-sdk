@@ -1,0 +1,77 @@
+.shivanya-divider {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--shivanya-color-border);
+}
+
+.shivanya-divider-horizontal {
+  width: 100%;
+}
+
+.shivanya-divider-vertical {
+  align-self: stretch;
+  height: var(--shivanya-divider-vertical-length, 100%);
+}
+
+.shivanya-divider-dashed,
+.shivanya-divider-dotted {
+  background: transparent;
+  border-color: var(--shivanya-color-border);
+  border-style: var(--shivanya-divider-border-style);
+}
+
+.shivanya-divider-dashed {
+  --shivanya-divider-border-style: dashed;
+}
+
+.shivanya-divider-dotted {
+  --shivanya-divider-border-style: dotted;
+}
+
+.shivanya-divider-solid.shivanya-divider-horizontal.shivanya-divider-sm,
+.shivanya-divider-solid.shivanya-divider-horizontal.shivanya-divider-md,
+.shivanya-divider-solid.shivanya-divider-horizontal.shivanya-divider-lg {
+  border-top-style: solid;
+}
+
+.shivanya-divider-horizontal.shivanya-divider-sm { height: 1px; }
+.shivanya-divider-horizontal.shivanya-divider-md { height: 2px; }
+.shivanya-divider-horizontal.shivanya-divider-lg { height: 3px; }
+
+.shivanya-divider-vertical.shivanya-divider-sm { width: 1px; }
+.shivanya-divider-vertical.shivanya-divider-md { width: 2px; }
+.shivanya-divider-vertical.shivanya-divider-lg { width: 3px; }
+
+.shivanya-divider-dashed.shivanya-divider-horizontal,
+.shivanya-divider-dotted.shivanya-divider-horizontal {
+  height: 0;
+  border-top-width: 1px;
+}
+
+.shivanya-divider-dashed.shivanya-divider-vertical,
+.shivanya-divider-dotted.shivanya-divider-vertical {
+  width: 0;
+  border-left-width: 1px;
+}
+
+.shivanya-divider-dashed.shivanya-divider-horizontal.shivanya-divider-md,
+.shivanya-divider-dotted.shivanya-divider-horizontal.shivanya-divider-md { border-top-width: 2px; }
+
+.shivanya-divider-dashed.shivanya-divider-horizontal.shivanya-divider-lg,
+.shivanya-divider-dotted.shivanya-divider-horizontal.shivanya-divider-lg { border-top-width: 3px; }
+
+.shivanya-divider-dashed.shivanya-divider-vertical.shivanya-divider-md,
+.shivanya-divider-dotted.shivanya-divider-vertical.shivanya-divider-md { border-left-width: 2px; }
+
+.shivanya-divider-dashed.shivanya-divider-vertical.shivanya-divider-lg,
+.shivanya-divider-dotted.shivanya-divider-vertical.shivanya-divider-lg { border-left-width: 3px; }
+
+.shivanya-divider-spacing-sm.shivanya-divider-horizontal { margin-block: var(--shivanya-space-2); }
+.shivanya-divider-spacing-md.shivanya-divider-horizontal { margin-block: var(--shivanya-space-4); }
+.shivanya-divider-spacing-lg.shivanya-divider-horizontal { margin-block: var(--shivanya-space-6); }
+
+.shivanya-divider-spacing-sm.shivanya-divider-vertical { margin-inline: var(--shivanya-space-2); }
+.shivanya-divider-spacing-md.shivanya-divider-vertical { margin-inline: var(--shivanya-space-4); }
+.shivanya-divider-spacing-lg.shivanya-divider-vertical { margin-inline: var(--shivanya-space-6); }

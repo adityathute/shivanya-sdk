@@ -1,0 +1,336 @@
+.shivanya-switch {
+  position: relative;
+
+  display: inline-flex;
+  align-items: flex-start;
+
+  gap: var(--shivanya-space-2);
+
+  width: fit-content;
+  max-width: 100%;
+
+  color: var(--shivanya-color-text-primary);
+
+  cursor: pointer;
+}
+
+.shivanya-switch-control {
+  position: relative;
+
+  display: block;
+
+  flex: none;
+
+  width: 44px;
+  height: 24px;
+}
+
+.shivanya-switch-control input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  margin: -1px;
+  padding: 0;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+
+  white-space: nowrap;
+
+  border: 0;
+}
+
+/* Track */
+
+.shivanya-switch-track {
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  width: 44px;
+  height: 24px;
+
+  padding: 2px;
+
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-full);
+
+  background: var(--shivanya-color-border);
+
+  transition:
+    background var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    border-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+/* Thumb */
+
+.shivanya-switch-thumb {
+  display: block;
+
+  flex: none;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: var(--shivanya-radius-full);
+
+  background: var(--shivanya-color-surface);
+
+  box-shadow: var(--shivanya-shadow-sm);
+
+  transform: translateX(0);
+
+  transition:
+    transform var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    background var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+/* Checked */
+
+.shivanya-switch
+  input:checked
+  + .shivanya-switch-track {
+  border-color: var(--shivanya-color-primary);
+  background: var(--shivanya-color-primary);
+}
+
+.shivanya-switch
+  input:checked
+  + .shivanya-switch-track
+  .shivanya-switch-thumb {
+  transform: translateX(20px);
+}
+
+/* Focus */
+
+.shivanya-switch
+  input:focus-visible
+  + .shivanya-switch-track {
+  border-color: var(--shivanya-color-focus);
+
+  box-shadow:
+    0 0 0 4px
+    var(--shivanya-color-focus-ring);
+}
+
+/* Hover */
+
+.shivanya-switch:hover
+  input:not(:disabled)
+  + .shivanya-switch-track {
+  border-color: var(--shivanya-color-border-hover);
+}
+
+.shivanya-switch:hover
+  input:checked:not(:disabled)
+  + .shivanya-switch-track {
+  border-color: var(--shivanya-color-primary);
+}
+
+/* Small */
+
+.shivanya-switch-sm
+  .shivanya-switch-control {
+  width: 36px;
+  height: 20px;
+}
+
+.shivanya-switch-sm
+  .shivanya-switch-track {
+  width: 36px;
+  height: 20px;
+
+  padding: 2px;
+}
+
+.shivanya-switch-sm
+  .shivanya-switch-thumb {
+  width: 14px;
+  height: 14px;
+}
+
+.shivanya-switch-sm
+  input:checked
+  + .shivanya-switch-track
+  .shivanya-switch-thumb {
+  transform: translateX(18px);
+}
+
+/* Medium */
+
+.shivanya-switch-md
+  .shivanya-switch-control {
+  width: 44px;
+  height: 24px;
+}
+
+.shivanya-switch-md
+  .shivanya-switch-track {
+  width: 44px;
+  height: 24px;
+
+  padding: 2px;
+}
+
+.shivanya-switch-md
+  .shivanya-switch-thumb {
+  width: 18px;
+  height: 18px;
+}
+
+.shivanya-switch-md
+  input:checked
+  + .shivanya-switch-track
+  .shivanya-switch-thumb {
+  transform: translateX(20px);
+}
+
+/* Large */
+
+.shivanya-switch-lg
+  .shivanya-switch-control {
+  width: 52px;
+  height: 28px;
+}
+
+.shivanya-switch-lg
+  .shivanya-switch-track {
+  width: 52px;
+  height: 28px;
+
+  padding: 2px;
+}
+
+.shivanya-switch-lg
+  .shivanya-switch-thumb {
+  width: 22px;
+  height: 22px;
+}
+
+.shivanya-switch-lg
+  input:checked
+  + .shivanya-switch-track
+  .shivanya-switch-thumb {
+  transform: translateX(26px);
+}
+
+/* Content */
+
+.shivanya-switch-content {
+  display: grid;
+
+  gap: var(--shivanya-space-1);
+
+  min-width: 0;
+}
+
+.shivanya-switch-label {
+  color: var(--shivanya-color-text-primary);
+
+  font-size: var(--shivanya-font-size-md);
+  font-weight: 500;
+
+  line-height: 1.5;
+}
+
+.shivanya-switch-description {
+  color: var(--shivanya-color-text-secondary);
+
+  font-size: var(--shivanya-font-size-sm);
+
+  line-height: 1.5;
+}
+
+.shivanya-switch-error {
+  color: var(--shivanya-color-danger);
+
+  font-size: var(--shivanya-font-size-sm);
+
+  line-height: 1.5;
+}
+
+/* Error */
+
+.shivanya-switch-error
+  .shivanya-switch-track {
+  border-color: var(--shivanya-color-danger);
+}
+
+.shivanya-switch-error
+  input:checked
+  + .shivanya-switch-track {
+  border-color: var(--shivanya-color-danger);
+
+  background: var(--shivanya-color-danger);
+}
+
+.shivanya-switch-error
+  input:focus-visible
+  + .shivanya-switch-track {
+  border-color: var(--shivanya-color-danger);
+}
+
+/* Success */
+
+.shivanya-switch-success
+  .shivanya-switch-track {
+  border-color: var(--shivanya-color-success);
+}
+
+.shivanya-switch-success
+  input:checked
+  + .shivanya-switch-track {
+  border-color: var(--shivanya-color-success);
+
+  background: var(--shivanya-color-success);
+}
+
+.shivanya-switch-success
+  input:focus-visible
+  + .shivanya-switch-track {
+  border-color: var(--shivanya-color-success);
+}
+
+/* Disabled */
+
+.shivanya-switch:has(input:disabled) {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+}
+
+.shivanya-switch
+  input:disabled
+  + .shivanya-switch-track {
+  cursor: not-allowed;
+}
+
+.shivanya-switch
+  input:disabled
+  + .shivanya-switch-track
+  .shivanya-switch-thumb {
+  background: var(--shivanya-color-disabled-background);
+}
+
+/* Read Only */
+
+.shivanya-switch:has(input[readonly]) {
+  cursor: default;
+}
+
+.shivanya-switch
+  input[readonly]
+  + .shivanya-switch-track {
+  cursor: default;
+}

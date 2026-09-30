@@ -1,0 +1,39 @@
+.shivanya-form-field {
+  display: grid;
+  gap: var(--shivanya-space-2);
+  width: 100%;
+  min-width: 0;
+}
+
+.shivanya-form-field > label {
+  color: var(--shivanya-color-text-primary);
+  font-size: var(--shivanya-font-size-md);
+  font-weight: 600;
+}
+
+.shivanya-form-field > p {
+  margin: 0;
+  color: var(--shivanya-color-text-secondary);
+  font-size: var(--shivanya-font-size-sm);
+  line-height: 1.5;
+}
+
+.shivanya-form-field > p.is-error {
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-form-field-sm > label {
+  font-size: var(--shivanya-font-size-sm);
+}
+
+.shivanya-form-field-lg > label {
+  font-size: var(--shivanya-font-size-lg);
+}
+
+.shivanya-form-field:has(:disabled) {
+  opacity: 0.65;
+}
+
+.shivanya-form-field:has(:disabled) > label {
+  cursor: not-allowed;
+}

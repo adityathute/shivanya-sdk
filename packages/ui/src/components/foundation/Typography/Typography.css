@@ -1,0 +1,203 @@
+.shivanya-typography {
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+  color: var(--shivanya-color-text-primary);
+  font-family: var(--shivanya-font-family);
+  line-height: var(--shivanya-line-height-md);
+}
+
+/* Variants */
+
+.shivanya-typography-h1 {
+  font-size: var(--shivanya-font-size-3xl);
+  line-height: 1.2;
+}
+
+.shivanya-typography-h2 {
+  font-size: var(--shivanya-font-size-2xl);
+  line-height: 1.25;
+}
+
+.shivanya-typography-h3 {
+  font-size: var(--shivanya-font-size-xl);
+  line-height: 1.3;
+}
+
+.shivanya-typography-h4 {
+  font-size: var(--shivanya-font-size-lg);
+  line-height: 1.4;
+}
+
+.shivanya-typography-h5 {
+  font-size: var(--shivanya-font-size-md);
+  line-height: 1.5;
+}
+
+.shivanya-typography-h6 {
+  font-size: var(--shivanya-font-size-sm);
+  line-height: 1.5;
+}
+
+.shivanya-typography-body {
+  font-size: var(--shivanya-font-size-md);
+  line-height: var(--shivanya-line-height-md);
+}
+
+.shivanya-typography-bodySmall {
+  font-size: var(--shivanya-font-size-sm);
+  line-height: var(--shivanya-line-height-md);
+}
+
+.shivanya-typography-bodyXSmall {
+  font-size: var(--shivanya-font-size-xs);
+  line-height: var(--shivanya-line-height-md);
+}
+
+.shivanya-typography-caption {
+  font-size: var(--shivanya-font-size-xs);
+  line-height: var(--shivanya-line-height-sm);
+}
+
+.shivanya-typography-overline {
+  font-size: var(--shivanya-font-size-xs);
+  line-height: var(--shivanya-line-height-sm);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Explicit size overrides */
+
+.shivanya-typography-size-xs {
+  font-size: var(--shivanya-font-size-xs);
+}
+
+.shivanya-typography-size-sm {
+  font-size: var(--shivanya-font-size-sm);
+}
+
+.shivanya-typography-size-md {
+  font-size: var(--shivanya-font-size-md);
+}
+
+.shivanya-typography-size-lg {
+  font-size: var(--shivanya-font-size-lg);
+}
+
+.shivanya-typography-size-xl {
+  font-size: var(--shivanya-font-size-xl);
+}
+
+.shivanya-typography-size-2xl {
+  font-size: var(--shivanya-font-size-2xl);
+}
+
+.shivanya-typography-size-3xl {
+  font-size: var(--shivanya-font-size-3xl);
+}
+
+.shivanya-typography-size-4xl {
+  font-size: 2.75rem;
+  line-height: 1.15;
+}
+
+.shivanya-typography-size-5xl {
+  font-size: 3.5rem;
+  line-height: 1.1;
+}
+
+.shivanya-typography-size-hero {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  line-height: 1.05;
+}
+
+/* Alignment */
+
+.shivanya-typography-align-left {
+  text-align: left;
+}
+
+.shivanya-typography-align-center {
+  text-align: center;
+}
+
+.shivanya-typography-align-right {
+  text-align: right;
+}
+
+.shivanya-typography-align-justify {
+  text-align: justify;
+}
+
+/* Weight */
+
+.shivanya-typography-weight-regular {
+  font-weight: var(--shivanya-font-weight-regular);
+}
+
+.shivanya-typography-weight-medium {
+  font-weight: var(--shivanya-font-weight-medium);
+}
+
+.shivanya-typography-weight-semibold {
+  font-weight: var(--shivanya-font-weight-semibold);
+}
+
+.shivanya-typography-weight-bold {
+  font-weight: var(--shivanya-font-weight-bold);
+}
+
+/* Colors */
+
+.shivanya-typography-color-primary {
+  color: var(--shivanya-color-text-primary);
+}
+
+.shivanya-typography-color-secondary {
+  color: var(--shivanya-color-text-secondary);
+}
+
+.shivanya-typography-color-muted {
+  color: var(--shivanya-color-text-muted);
+}
+
+.shivanya-typography-color-success {
+  color: var(--shivanya-color-success);
+}
+
+.shivanya-typography-color-warning {
+  color: var(--shivanya-color-warning);
+}
+
+.shivanya-typography-color-danger {
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-typography-color-info {
+  color: var(--shivanya-color-info);
+}
+
+.shivanya-typography-color-inherit {
+  color: inherit;
+}
+
+/* Transform */
+
+.shivanya-typography-transform-none {
+  text-transform: none;
+}
+
+.shivanya-typography-transform-uppercase {
+  text-transform: uppercase;
+}
+
+.shivanya-typography-transform-lowercase {
+  text-transform: lowercase;
+}
+
+.shivanya-typography-transform-capitalize {
+  text-transform: capitalize;
+}

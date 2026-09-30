@@ -1,0 +1,144 @@
+:where(.shivanya-form-control) {
+  box-sizing: border-box;
+  font: inherit;
+  color: var(--shivanya-color-text-primary);
+  background: var(--shivanya-color-surface);
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+  transition:
+    border-color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    background var(--shivanya-duration-fast) var(--shivanya-ease-standard);
+}
+
+:where(.shivanya-form-control):hover:not(:disabled) {
+  border-color: var(--shivanya-color-border-hover);
+}
+
+:where(.shivanya-form-control):focus {
+  outline: 0;
+  border-color: var(--shivanya-color-focus);
+  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
+}
+
+:where(.shivanya-form-control):disabled {
+  background: var(--shivanya-color-disabled-background);
+  border-color: var(--shivanya-color-disabled-border);
+  color: var(--shivanya-color-disabled-text);
+  cursor: not-allowed;
+}
+
+.shivanya-date-picker {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 300px;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+
+  color: var(--shivanya-color-text-primary);
+  background: var(--shivanya-color-surface);
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+
+  transition:
+    border-color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    background var(--shivanya-duration-fast) var(--shivanya-ease-standard);
+}
+
+.shivanya-date-picker:hover:not(:has(input:disabled)) {
+  border-color: var(--shivanya-color-border-hover);
+}
+
+.shivanya-date-picker:focus-within {
+  border-color: var(--shivanya-color-focus);
+  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
+}
+
+.shivanya-date-picker.is-full {
+  width: 100%;
+}
+
+.shivanya-date-picker input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: inherit;
+
+  padding: 0 var(--shivanya-space-3);
+  height: 40px;
+}
+
+.shivanya-date-picker input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.shivanya-date-picker input:disabled {
+  cursor: not-allowed;
+}
+
+.shivanya-date-picker:has(input:disabled) {
+  background: var(--shivanya-color-disabled-background);
+  border-color: var(--shivanya-color-disabled-border);
+  color: var(--shivanya-color-disabled-text);
+  cursor: not-allowed;
+}
+
+.shivanya-date-picker-sm input {
+  height: 32px;
+}
+
+.shivanya-date-picker-lg input {
+  height: 48px;
+}
+
+.shivanya-date-picker-clear {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-right: var(--shivanya-space-1);
+  padding: 0;
+  border: 0;
+  border-radius: var(--shivanya-radius-sm);
+  background: transparent;
+  color: var(--shivanya-color-text-secondary);
+  cursor: pointer;
+}
+
+.shivanya-date-picker-clear:hover {
+  background: var(--shivanya-color-surface-hover);
+  color: var(--shivanya-color-text-primary);
+}
+
+.shivanya-date-picker-clear:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
+}
+
+.shivanya-date-picker-clear svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.shivanya-date-picker-radius-sm {
+  border-radius: var(--shivanya-radius-sm);
+}
+
+.shivanya-date-picker-radius-lg {
+  border-radius: var(--shivanya-radius-lg);
+}
+
+.shivanya-date-picker-radius-full {
+  border-radius: var(--shivanya-radius-full);
+}

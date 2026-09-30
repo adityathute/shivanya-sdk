@@ -1,0 +1,37 @@
+.shivanya-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--shivanya-space-1);
+  color: var(--shivanya-color-text-primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.shivanya-label-sm {
+  font-size: var(--shivanya-font-size-sm);
+}
+
+.shivanya-label-md {
+  font-size: var(--shivanya-font-size-md);
+}
+
+.shivanya-label-lg {
+  font-size: var(--shivanya-font-size-lg);
+}
+
+.shivanya-label-error {
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-label-success {
+  color: var(--shivanya-color-success);
+}
+
+.shivanya-label-disabled {
+  color: var(--shivanya-color-disabled-text);
+  cursor: not-allowed;
+}
+
+.shivanya-label-required {
+  color: var(--shivanya-color-danger);
+}

@@ -1,0 +1,30 @@
+.shivanya-errormessage {
+  display: block;
+  margin: 0;
+  color: var(--shivanya-color-text-secondary);
+  line-height: 1.5;
+}
+
+.shivanya-errormessage-sm {
+  font-size: var(--shivanya-font-size-sm);
+}
+
+.shivanya-errormessage-md {
+  font-size: var(--shivanya-font-size-md);
+}
+
+.shivanya-errormessage-lg {
+  font-size: var(--shivanya-font-size-lg);
+}
+
+.shivanya-errormessage-success {
+  color: var(--shivanya-color-success);
+}
+
+.shivanya-errormessage-error {
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-errormessage-warning {
+  color: var(--shivanya-color-warning);
+}

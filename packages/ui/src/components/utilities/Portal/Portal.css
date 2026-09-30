@@ -1,0 +1,9 @@
+:where(.shivanya-portal) {
+  position: relative;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.shivanya-portal) {
+    transition: none;
+  }
+}

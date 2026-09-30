@@ -1,0 +1,140 @@
+.ai-demo {
+  width: 100%;
+  max-width: 900px;
+}
+
+.ai-demo-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--shivanya-space-2);
+
+  padding-bottom: 24px;
+
+  border-bottom: 1px solid
+    var(--shivanya-color-border);
+}
+
+.ai-demo-header h2 {
+  margin: 0;
+}
+
+.ai-demo-header p {
+  margin: 0;
+}
+
+.ai-demo-chat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--shivanya-space-4);
+
+  margin-top: 32px;
+}
+
+.ai-demo-input-row {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--shivanya-space-3);
+
+  width: 100%;
+}
+
+.ai-demo-input-row > * {
+  min-width: 0;
+}
+
+.ai-demo-input-row > :first-child {
+  flex: 1;
+}
+
+.ai-demo-input-row button {
+  flex: none;
+}
+
+.ai-demo-status {
+  padding: 12px 16px;
+
+  border: 1px solid
+    var(--shivanya-color-border);
+
+  border-radius:
+    var(--shivanya-radius-md);
+
+  background:
+    var(--shivanya-color-surface);
+}
+
+.ai-demo-status p {
+  margin: 0;
+}
+
+.ai-demo-error {
+  padding: 12px 16px;
+
+  border: 1px solid
+    var(--shivanya-color-danger);
+
+  border-radius:
+    var(--shivanya-radius-md);
+
+  background:
+    var(--shivanya-color-surface);
+}
+
+.ai-demo-error p {
+  margin: 0;
+  color: var(--shivanya-color-danger);
+}
+
+.ai-demo-response {
+  display: flex;
+  flex-direction: column;
+  gap: var(--shivanya-space-3);
+
+  margin-top: 8px;
+}
+
+.ai-demo-response h3 {
+  margin: 0;
+}
+
+.ai-demo-response-content {
+  box-sizing: border-box;
+
+  width: 100%;
+
+  padding: 20px;
+
+  border: 1px solid
+    var(--shivanya-color-border);
+
+  border-radius:
+    var(--shivanya-radius-lg);
+
+  background:
+    var(--shivanya-color-surface);
+
+  box-shadow:
+    var(--shivanya-shadow-sm);
+}
+
+.ai-demo-response-content p {
+  margin: 0;
+
+  color:
+    var(--shivanya-color-text-primary);
+
+  line-height: 1.7;
+
+  white-space: pre-wrap;
+}
+
+@media (max-width: 600px) {
+  .ai-demo-input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ai-demo-input-row button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,32 @@
+.shivanya-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0 var(--shivanya-space-3);
+  border: 1px solid transparent;
+  border-radius: var(--shivanya-radius-md);
+  font-family: var(--shivanya-font-family);
+  font-weight: var(--shivanya-font-weight-medium);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow-wrap: anywhere;
+  user-select: none;
+  transition: background-color var(--shivanya-duration-normal) var(--shivanya-ease-standard), color var(--shivanya-duration-normal) var(--shivanya-ease-standard), border-color var(--shivanya-duration-normal) var(--shivanya-ease-standard);
+}
+
+.shivanya-badge-sm { min-height: 24px; padding-inline: var(--shivanya-space-2); font-size: var(--shivanya-font-size-xs); }
+.shivanya-badge-md { min-height: 28px; font-size: var(--shivanya-font-size-sm); }
+.shivanya-badge-lg { min-height: 32px; padding-inline: var(--shivanya-space-4); font-size: var(--shivanya-font-size-md); }
+
+.shivanya-badge-primary { color: #fff; background: var(--shivanya-color-primary); }
+.shivanya-badge-secondary { color: #fff; background: var(--shivanya-color-secondary); }
+.shivanya-badge-success { color: #fff; background: var(--shivanya-color-success); }
+.shivanya-badge-warning { color: #fff; background: var(--shivanya-color-warning); }
+.shivanya-badge-danger { color: #fff; background: var(--shivanya-color-danger); }
+.shivanya-badge-info { color: #fff; background: var(--shivanya-color-info); }
+.shivanya-badge-outline { color: var(--shivanya-color-text-primary); background: transparent; border-color: var(--shivanya-color-border); }
+.shivanya-badge-soft { color: var(--shivanya-color-primary); background: color-mix(in srgb, var(--shivanya-color-primary) 10%, var(--shivanya-color-surface)); border-color: color-mix(in srgb, var(--shivanya-color-primary) 20%, var(--shivanya-color-border)); }
+.shivanya-badge-rounded { border-radius: var(--shivanya-radius-full); }

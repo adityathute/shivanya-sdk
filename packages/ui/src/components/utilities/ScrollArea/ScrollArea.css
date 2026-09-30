@@ -1,0 +1,109 @@
+.shivanya-scroll-area {
+  box-sizing: border-box;
+  overflow: auto;
+  max-width: 100%;
+  padding: 8px;
+  background: var(--shivanya-color-surface);
+  border-radius: var(--shivanya-radius-md);
+}
+
+.shivanya-scroll-area-sm {
+  max-height: 160px;
+}
+
+.shivanya-scroll-area-md {
+  max-height: 300px;
+}
+
+.shivanya-scroll-area-lg {
+  max-height: 480px;
+}
+
+.shivanya-scroll-area-default {
+  border: 0;
+}
+
+.shivanya-scroll-area-bordered {
+  border: 1px solid var(--shivanya-color-border);
+}
+
+.shivanya-scroll-area-filled {
+  background: var(--shivanya-color-surface-hover);
+}
+
+.shivanya-scroll-area-radius-none {
+  border-radius: 0;
+}
+
+.shivanya-scroll-area-radius-sm {
+  border-radius: var(--shivanya-radius-sm);
+}
+
+.shivanya-scroll-area-radius-md {
+  border-radius: var(--shivanya-radius-md);
+}
+
+.shivanya-scroll-area-radius-lg {
+  border-radius: var(--shivanya-radius-lg);
+}
+
+.shivanya-scroll-area-radius-full {
+  border-radius: var(--shivanya-radius-full);
+}
+
+.shivanya-scroll-area-vertical {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.shivanya-scroll-area-horizontal {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.shivanya-scroll-area-both {
+  overflow: auto;
+}
+
+.shivanya-scroll-area-scrollbar-auto {
+  scrollbar-width: auto;
+}
+
+.shivanya-scroll-area-scrollbar-always {
+  scrollbar-width: thin;
+}
+
+.shivanya-scroll-area-scrollbar-hidden {
+  scrollbar-width: none;
+}
+
+.shivanya-scroll-area-scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.shivanya-scroll-area-disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  user-select: none;
+}
+
+.shivanya-scroll-area::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.shivanya-scroll-area::-webkit-scrollbar-thumb {
+  background: var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-full);
+}
+
+.shivanya-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: var(--shivanya-color-border-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shivanya-scroll-area {
+    scroll-behavior: auto;
+  }
+}

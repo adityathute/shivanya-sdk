@@ -160,16 +160,35 @@
   --shivanya-color-neutral-active: #cbd5e1;
 
   /*
-   * ---------------------------------------------------------------
-   * Application surfaces
-   * ---------------------------------------------------------------
-   */
+ * ---------------------------------------------------------------
+ * Application surfaces
+ * ---------------------------------------------------------------
+ *
+ * Background:
+ * Main application/page background.
+ *
+ * Surface:
+ * Elevated content such as cards, panels, inputs and documentation
+ * containers.
+ */
 
-  --shivanya-color-background: #ffffff;
-  --shivanya-color-surface: #f8fafc;
+  --shivanya-color-background: #f8fafc;
+  --shivanya-color-surface: #ffffff;
   --shivanya-color-surface-hover: #f1f5f9;
   --shivanya-color-surface-active: #e2e8f0;
   --shivanya-color-overlay: rgb(15 23 42 / 50%);
+
+  /* 
+ * ---------------------------------------------------------------
+ * Code / Documentation
+ * ---------------------------------------------------------------
+ */
+
+  --shivanya-color-code-background: #f1f5f9;
+  --shivanya-color-code-text: #0f172a;
+  --shivanya-color-code-border: #cbd5e1;
+  --shivanya-color-code-scrollbar: #94a3b8;
+  --shivanya-color-code-scrollbar-hover: #64748b;
 
   /*
    * ---------------------------------------------------------------
@@ -185,13 +204,13 @@
   --shivanya-color-text-inverse: #ffffff;
 
   /*
-   * ---------------------------------------------------------------
-   * Borders and dividers
-   * ---------------------------------------------------------------
-   */
+ * ---------------------------------------------------------------
+ * Borders and dividers
+ * ---------------------------------------------------------------
+ */
 
-  --shivanya-color-border: #cbd5e1;
-  --shivanya-color-border-hover: #94a3b8;
+  --shivanya-color-border: #e2e8f0;
+  --shivanya-color-border-hover: #cbd5e1;
   --shivanya-color-border-focus: #2563eb;
   --shivanya-color-divider: #e2e8f0;
 

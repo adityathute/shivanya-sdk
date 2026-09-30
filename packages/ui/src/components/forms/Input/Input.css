@@ -1,0 +1,223 @@
+.shivanya-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--shivanya-space-1);
+  width: auto;
+  box-sizing: border-box;
+}
+
+.shivanya-input-wrapper-full {
+  width: 100%;
+}
+
+.shivanya-input-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--shivanya-space-1);
+
+  font-family: var(--shivanya-font-family);
+  font-size: var(--shivanya-font-size-sm);
+  font-weight: var(--shivanya-font-weight-semibold);
+  line-height: var(--shivanya-line-height-sm);
+
+  color: var(--shivanya-color-text-primary);
+}
+
+.shivanya-input-required {
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-input-container {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-width: 0;
+
+  box-sizing: border-box;
+
+  padding-inline: var(--shivanya-space-3);
+
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+
+  background: var(--shivanya-color-background);
+
+  transition:
+    border-color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    background-color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    opacity var(--shivanya-duration-fast) var(--shivanya-ease-standard);
+}
+
+.shivanya-input-container:hover:not(.shivanya-input-disabled) {
+  border-color: var(--shivanya-color-border-hover);
+}
+
+.shivanya-input-container:focus-within {
+  border-color: var(--shivanya-color-border-focus);
+
+  box-shadow: 0 0 0 3px var(--shivanya-color-focus-ring);
+}
+
+.shivanya-input {
+  flex: 1;
+
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+
+  padding: 0;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  font-family: var(--shivanya-font-family);
+  font-size: var(--shivanya-font-size-md);
+  font-weight: var(--shivanya-font-weight-regular);
+  line-height: var(--shivanya-line-height-md);
+
+  color: var(--shivanya-color-text-primary);
+
+  appearance: none;
+}
+
+.shivanya-input::placeholder {
+  color: var(--shivanya-color-text-placeholder);
+}
+
+.shivanya-input:disabled {
+  cursor: not-allowed;
+}
+
+/* Sizes */
+
+.shivanya-input-sm {
+  min-height: var(--shivanya-control-height-sm);
+}
+
+.shivanya-input-md {
+  min-height: var(--shivanya-control-height-md);
+}
+
+.shivanya-input-lg {
+  min-height: var(--shivanya-control-height-lg);
+}
+
+/* Variants */
+
+.shivanya-input-success {
+  border-color: var(--shivanya-color-success);
+}
+
+.shivanya-input-success:focus-within {
+  border-color: var(--shivanya-color-success);
+
+  box-shadow: 0 0 0 3px rgb(22 163 74 / 20%);
+}
+
+.shivanya-input-warning {
+  border-color: var(--shivanya-color-warning);
+}
+
+.shivanya-input-warning:focus-within {
+  border-color: var(--shivanya-color-warning);
+
+  box-shadow: 0 0 0 3px rgb(245 158 11 / 20%);
+}
+
+.shivanya-input-error {
+  border-color: var(--shivanya-color-danger);
+}
+
+.shivanya-input-error:focus-within {
+  border-color: var(--shivanya-color-danger);
+
+  box-shadow: 0 0 0 3px rgb(220 38 38 / 20%);
+}
+
+/* States */
+
+.shivanya-input-loading {
+  cursor: wait;
+}
+
+.shivanya-input-disabled {
+  opacity: 0.65;
+  background: var(--shivanya-color-disabled-background);
+  border-color: var(--shivanya-color-disabled-border);
+  cursor: not-allowed;
+  pointer-events: none;
+  color: var(--shivanya-color-disabled-text);
+}
+
+.shivanya-input-rounded {
+  border-radius: var(--shivanya-radius-full);
+}
+
+.shivanya-input-full {
+  width: 100%;
+}
+
+/* Icons */
+
+.shivanya-input-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: var(--shivanya-color-text-secondary);
+}
+
+.shivanya-input-prefix,
+.shivanya-input-suffix,
+.shivanya-input-addon {
+  display: inline-flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  color: var(--shivanya-color-text-secondary);
+
+  white-space: nowrap;
+}
+
+/* Messages */
+
+.shivanya-input-message {
+  margin: 0;
+
+  font-size: var(--shivanya-font-size-sm);
+  line-height: var(--shivanya-line-height-sm);
+}
+
+.shivanya-input-helper {
+  color: var(--shivanya-color-text-secondary);
+}
+
+.shivanya-input-error-text {
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-input-success-text {
+  color: var(--shivanya-color-success);
+}
+
+.shivanya-input-warning-text {
+  color: var(--shivanya-color-warning);
+}
+
+/* Counter */
+
+.shivanya-input-counter {
+  align-self: flex-end;
+
+  font-size: var(--shivanya-font-size-xs);
+  line-height: var(--shivanya-line-height-sm);
+
+  color: var(--shivanya-color-text-muted);
+}

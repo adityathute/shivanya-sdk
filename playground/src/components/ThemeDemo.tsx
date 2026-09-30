@@ -1,4 +1,4 @@
-import { Button, Typography } from "shivanya-ui";
+import { Button } from "shivanya-ui";
 
 export default function ThemeDemo() {
   const setTheme = (theme: "light" | "dark") => {
@@ -6,32 +6,27 @@ export default function ThemeDemo() {
   };
 
   return (
-    <section>
-      <Typography variant="h2">
-        Theme
-      </Typography>
-
-      <div
-        style={{
-          display: "flex",
-          gap: 12,
-          marginTop: 16,
-        }}
+    <div
+      style={{
+        display: "flex",
+        gap: 8,
+      }}
+    >
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={() => setTheme("light")}
       >
-        <Button
-          variant="outline"
-          onClick={() => setTheme("light")}
-        >
-          Light
-        </Button>
+        Light
+      </Button>
 
-        <Button
-          variant="outline"
-          onClick={() => setTheme("dark")}
-        >
-          Dark
-        </Button>
-      </div>
-    </section>
+      <Button
+        variant="outline"
+                size="sm"
+        onClick={() => setTheme("dark")}
+      >
+        Dark
+      </Button>
+    </div>
   );
 }

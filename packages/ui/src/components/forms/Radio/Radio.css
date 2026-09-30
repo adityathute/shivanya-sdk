@@ -1,0 +1,145 @@
+.shivanya-radio {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--shivanya-space-2);
+  width: fit-content;
+  max-width: 100%;
+
+  color: var(--shivanya-color-text-primary);
+
+  cursor: pointer;
+}
+
+.shivanya-radio input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+
+  border: 0;
+}
+
+.shivanya-radio-dot {
+  display: grid;
+  place-items: center;
+  flex: none;
+
+  width: 20px;
+  height: 20px;
+
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-full);
+
+  background: var(--shivanya-color-surface);
+}
+
+.shivanya-radio-dot::after {
+  content: "";
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: var(--shivanya-radius-full);
+
+  background: var(--shivanya-color-primary);
+
+  transform: scale(0);
+
+  transition:
+    transform var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+.shivanya-radio input:checked + .shivanya-radio-dot {
+  border-color: var(--shivanya-color-primary);
+}
+
+.shivanya-radio input:checked + .shivanya-radio-dot::after {
+  transform: scale(1);
+}
+
+.shivanya-radio input:focus-visible + .shivanya-radio-dot {
+  border-color: var(--shivanya-color-focus);
+  box-shadow:
+    0 0 0 4px var(--shivanya-color-focus-ring);
+}
+
+.shivanya-radio-sm .shivanya-radio-dot {
+  width: 16px;
+  height: 16px;
+}
+
+.shivanya-radio-sm .shivanya-radio-dot::after {
+  width: 6px;
+  height: 6px;
+}
+
+.shivanya-radio-lg .shivanya-radio-dot {
+  width: 24px;
+  height: 24px;
+}
+
+.shivanya-radio-lg .shivanya-radio-dot::after {
+  width: 10px;
+  height: 10px;
+}
+
+.shivanya-radio-content {
+  display: grid;
+  gap: var(--shivanya-space-1);
+  min-width: 0;
+}
+
+.shivanya-radio-label {
+  font-weight: 500;
+}
+
+.shivanya-radio-description {
+  color: var(--shivanya-color-text-secondary);
+  font-size: var(--shivanya-font-size-sm);
+  line-height: 1.5;
+}
+
+.shivanya-radio-error {
+  color: var(--shivanya-color-danger);
+  font-size: var(--shivanya-font-size-sm);
+  line-height: 1.5;
+}
+
+.shivanya-radio-error .shivanya-radio-dot {
+  border-color: var(--shivanya-color-danger);
+}
+
+.shivanya-radio-error
+  input:checked
+  + .shivanya-radio-dot {
+  border-color: var(--shivanya-color-danger);
+}
+
+.shivanya-radio-error
+  input:checked
+  + .shivanya-radio-dot::after {
+  background: var(--shivanya-color-danger);
+}
+
+.shivanya-radio-success .shivanya-radio-dot {
+  border-color: var(--shivanya-color-success);
+}
+
+.shivanya-radio-success
+  input:checked
+  + .shivanya-radio-dot::after {
+  background: var(--shivanya-color-success);
+}
+
+.shivanya-radio:has(input:disabled) {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
