@@ -1,0 +1,239 @@
+.shivanya-empty-state {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: var(--shivanya-space-6);
+  color: var(--shivanya-color-text-primary);
+  background: var(--shivanya-color-surface);
+  border: 1px solid var(--shivanya-color-border);
+  transition:
+    opacity var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    background-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+.shivanya-empty-state-vertical {
+  flex-direction: column;
+}
+
+.shivanya-empty-state-horizontal {
+  flex-direction: row;
+  align-items: center;
+}
+
+.shivanya-empty-state-align-left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.shivanya-empty-state-align-center {
+  align-items: center;
+  text-align: center;
+}
+
+.shivanya-empty-state-align-right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.shivanya-empty-state-radius-none {
+  border-radius: 0;
+}
+
+.shivanya-empty-state-radius-sm {
+  border-radius: var(--shivanya-radius-sm);
+}
+
+.shivanya-empty-state-radius-md {
+  border-radius: var(--shivanya-radius-md);
+}
+
+.shivanya-empty-state-radius-lg {
+  border-radius: var(--shivanya-radius-lg);
+}
+
+.shivanya-empty-state-radius-full {
+  border-radius: var(--shivanya-radius-full);
+}
+
+.shivanya-empty-state-xs {
+  gap: var(--shivanya-space-2);
+  padding: var(--shivanya-space-3);
+}
+
+.shivanya-empty-state-sm {
+  gap: var(--shivanya-space-3);
+  padding: var(--shivanya-space-4);
+}
+
+.shivanya-empty-state-md {
+  gap: var(--shivanya-space-4);
+  padding: var(--shivanya-space-6);
+}
+
+.shivanya-empty-state-lg {
+  gap: var(--shivanya-space-5);
+  padding: var(--shivanya-space-8);
+}
+
+.shivanya-empty-state-xl {
+  gap: var(--shivanya-space-6);
+  padding: var(--shivanya-space-10);
+}
+
+.shivanya-empty-state-image {
+  display: block;
+  flex-shrink: 0;
+  width: auto;
+  max-width: 180px;
+  max-height: 160px;
+}
+
+.shivanya-empty-state-image-contain {
+  object-fit: contain;
+}
+
+.shivanya-empty-state-image-cover {
+  object-fit: cover;
+}
+
+.shivanya-empty-state-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--shivanya-color-primary);
+  font-size: 32px;
+  line-height: 1;
+}
+
+.shivanya-empty-state-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 680px;
+}
+
+.shivanya-empty-state-title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.shivanya-empty-state-description {
+  color: var(--shivanya-color-text-secondary);
+  line-height: 1.6;
+}
+
+.shivanya-empty-state-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--shivanya-space-2);
+  margin-top: var(--shivanya-space-2);
+}
+
+.shivanya-empty-state-align-left
+  .shivanya-empty-state-actions {
+  justify-content: flex-start;
+}
+
+.shivanya-empty-state-align-right
+  .shivanya-empty-state-actions {
+  justify-content: flex-end;
+}
+
+.shivanya-empty-state-footer {
+  margin-top: var(--shivanya-space-2);
+  color: var(--shivanya-color-text-secondary);
+  font-size: var(--shivanya-font-size-sm);
+  line-height: 1.5;
+}
+
+.shivanya-empty-state-primary
+  .shivanya-empty-state-title {
+  color: var(--shivanya-color-primary);
+}
+
+.shivanya-empty-state-secondary
+  .shivanya-empty-state-title {
+  color: var(--shivanya-color-text-secondary);
+}
+
+.shivanya-empty-state-success
+  .shivanya-empty-state-title {
+  color: var(--shivanya-color-success);
+}
+
+.shivanya-empty-state-warning
+  .shivanya-empty-state-title {
+  color: var(--shivanya-color-warning);
+}
+
+.shivanya-empty-state-danger
+  .shivanya-empty-state-title {
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-empty-state-info
+  .shivanya-empty-state-title {
+  color: var(--shivanya-color-info);
+}
+
+.shivanya-empty-state-loading {
+  opacity: 0.7;
+}
+
+.shivanya-empty-state-loading
+  .shivanya-empty-state-content {
+  animation:
+    shivanya-empty-state-pulse
+    1.4s
+    ease-in-out
+    infinite;
+}
+
+.shivanya-empty-state.is-disabled {
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes shivanya-empty-state-pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@media (max-width: 600px) {
+  .shivanya-empty-state-horizontal {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .shivanya-empty-state-horizontal
+    .shivanya-empty-state-content {
+    width: 100%;
+  }
+
+  .shivanya-empty-state-horizontal
+    .shivanya-empty-state-actions {
+    justify-content: center;
+  }
+
+  .shivanya-empty-state-align-left,
+  .shivanya-empty-state-align-right {
+    align-items: center;
+    text-align: center;
+  }
+
+  .shivanya-empty-state-align-left
+    .shivanya-empty-state-actions,
+  .shivanya-empty-state-align-right
+    .shivanya-empty-state-actions {
+    justify-content: center;
+  }
+}

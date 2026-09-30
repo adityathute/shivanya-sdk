@@ -87,3 +87,19 @@
 @import "../components/utilities/ScrollArea/ScrollArea.css";
 @import "../components/utilities/VisuallyHidden/VisuallyHidden.css";
 @import "../components/utilities/CopyButton/CopyButton.css";
+
+/* Data Display */
+
+@import "../components/data-display/Accordion/Accordion.css";
+@import "../components/data-display/AnimatedNumber/AnimatedNumber.css";
+@import "../components/data-display/Avatar/Avatar.css";
+@import "../components/data-display/Calendar/Calendar.css";
+@import "../components/data-display/Card/Card.css";
+@import "../components/data-display/Chip/Chip.css";
+@import "../components/data-display/DataGrid/DataGrid.css";
+@import "../components/data-display/EmptyState/EmptyState.css";
+@import "../components/data-display/List/List.css";
+@import "../components/data-display/Statistic/Statistic.css";
+@import "../components/data-display/Table/Table.css";
+@import "../components/data-display/Timeline/Timeline.css";
+@import "../components/data-display/TreeView/TreeView.css";

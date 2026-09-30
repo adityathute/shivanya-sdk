@@ -1,0 +1,306 @@
+.shivanya-calendar {
+  display: inline-flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 320px;
+  max-width: 100%;
+  padding: var(--shivanya-space-4);
+  gap: var(--shivanya-space-3);
+
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-lg);
+
+  background: var(--shivanya-color-surface);
+  color: var(--shivanya-color-text-primary);
+
+  box-shadow: var(--shivanya-shadow-sm);
+}
+
+.shivanya-calendar.is-full {
+  width: 100%;
+}
+
+.shivanya-calendar-sm {
+  width: 280px;
+  padding: var(--shivanya-space-3);
+  font-size: 12px;
+}
+
+.shivanya-calendar-lg {
+  width: 360px;
+  padding: var(--shivanya-space-5);
+  font-size: 15px;
+}
+
+/* Header */
+
+.shivanya-calendar-header {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 32px;
+  align-items: center;
+  gap: var(--shivanya-space-2);
+}
+
+.shivanya-calendar-header > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  border: 0;
+  border-radius: var(--shivanya-radius-sm);
+
+  background: transparent;
+  color: inherit;
+
+  font: inherit;
+  cursor: pointer;
+
+  transition:
+    background var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    opacity var(--shivanya-duration-fast) var(--shivanya-ease-standard);
+}
+
+.shivanya-calendar-header > button:hover:not(:disabled) {
+  background: var(--shivanya-color-surface-hover);
+}
+
+.shivanya-calendar-header > button:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 3px var(--shivanya-color-focus-ring);
+}
+
+.shivanya-calendar-header > button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.shivanya-calendar-title {
+  width: 100% !important;
+  height: 32px !important;
+
+  padding: 0 6px !important;
+
+  font-size: 14px !important;
+  font-weight: 600 !important;
+
+  white-space: nowrap;
+}
+
+/* Weekdays */
+
+.shivanya-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.shivanya-calendar-weekdays span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+  min-height: 28px;
+
+  color: var(--shivanya-color-text-muted);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  user-select: none;
+}
+
+/* Calendar grid */
+
+.shivanya-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+
+  width: 100%;
+}
+
+/* Day */
+
+.shivanya-calendar-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  aspect-ratio: 1;
+  min-width: 0;
+
+  padding: 0;
+
+  border: 1px solid transparent;
+  border-radius: var(--shivanya-radius-full);
+
+  background: transparent;
+  color: inherit;
+
+  font: inherit;
+  cursor: pointer;
+
+  transition:
+    background var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    border-color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    color var(--shivanya-duration-fast) var(--shivanya-ease-standard);
+}
+
+.shivanya-calendar-day:hover:not(:disabled):not(.is-selected) {
+  background: var(--shivanya-color-surface-hover);
+}
+
+.shivanya-calendar-day:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 3px var(--shivanya-color-focus-ring);
+}
+
+.shivanya-calendar-day.is-today {
+  border-color: var(--shivanya-color-primary);
+}
+
+.shivanya-calendar-day.is-selected {
+  background: var(--shivanya-color-primary);
+  color: var(--shivanya-color-text-inverse);
+}
+
+.shivanya-calendar-day.is-outside {
+  color: var(--shivanya-color-text-muted);
+}
+
+.shivanya-calendar-day.is-in-range {
+  border-radius: 0;
+  background: var(--shivanya-color-primary-soft);
+  color: var(--shivanya-color-primary);
+}
+
+.shivanya-calendar-day.is-range-start,
+.shivanya-calendar-day.is-range-end {
+  background: var(--shivanya-color-primary);
+  color: var(--shivanya-color-text-inverse);
+}
+
+.shivanya-calendar-day.is-range-start {
+  border-radius: var(--shivanya-radius-full) 0 0 var(--shivanya-radius-full);
+}
+
+.shivanya-calendar-day.is-range-end {
+  border-radius: 0 var(--shivanya-radius-full) var(--shivanya-radius-full) 0;
+}
+
+.shivanya-calendar-day.is-range-start.is-range-end {
+  border-radius: var(--shivanya-radius-full);
+}
+
+.shivanya-calendar-day:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Month / year picker */
+
+.shivanya-calendar-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.shivanya-calendar-picker-grid button {
+  min-width: 0;
+  min-height: 48px;
+
+  padding: 8px;
+
+  border: 1px solid transparent;
+  border-radius: var(--shivanya-radius-md);
+
+  background: transparent;
+  color: inherit;
+
+  font: inherit;
+  cursor: pointer;
+
+  transition:
+    background var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    border-color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    color var(--shivanya-duration-fast) var(--shivanya-ease-standard);
+}
+
+.shivanya-calendar-picker-grid button:hover:not(:disabled) {
+  background: var(--shivanya-color-surface-hover);
+}
+
+.shivanya-calendar-picker-grid button:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 3px var(--shivanya-color-focus-ring);
+}
+
+.shivanya-calendar-picker-grid button.is-selected {
+  background: var(--shivanya-color-primary-soft);
+  color: var(--shivanya-color-primary);
+  font-weight: 600;
+}
+
+.shivanya-calendar-picker-grid button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* States */
+
+.shivanya-calendar.is-disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.shivanya-calendar.is-readonly .shivanya-calendar-day,
+.shivanya-calendar.is-readonly .shivanya-calendar-picker-grid button {
+  cursor: default;
+}
+
+/* Small */
+
+.shivanya-calendar-sm .shivanya-calendar-header > button {
+  width: 28px;
+  height: 28px;
+}
+
+.shivanya-calendar-sm .shivanya-calendar-header {
+  grid-template-columns: 28px minmax(0, 1fr) 28px;
+}
+
+.shivanya-calendar-sm .shivanya-calendar-weekdays span {
+  min-height: 24px;
+  font-size: 10px;
+}
+
+/* Large */
+
+.shivanya-calendar-lg .shivanya-calendar-header > button {
+  width: 36px;
+  height: 36px;
+}
+
+.shivanya-calendar-lg .shivanya-calendar-header {
+  grid-template-columns: 36px minmax(0, 1fr) 36px;
+}
+
+.shivanya-calendar-lg .shivanya-calendar-weekdays span {
+  min-height: 32px;
+}
+
+/* Responsive */
+
+@media (max-width: 420px) {
+  .shivanya-calendar,
+  .shivanya-calendar-sm,
+  .shivanya-calendar-lg {
+    width: 100%;
+  }
+}

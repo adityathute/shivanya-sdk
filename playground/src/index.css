@@ -2,7 +2,7 @@
 
 :root {
   --playground-header-height: 56px;
-  --playground-sidebar-width: 180px;
+  --playground-sidebar-width: 220px;
 }
 
 /* ================================
@@ -130,7 +130,7 @@
   background: transparent;
   color: var(--shivanya-color-text-secondary);
   font: inherit;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 20px;
   text-align: left;
@@ -216,6 +216,7 @@
   background: transparent;
   color: var(--shivanya-color-text-secondary);
   font: inherit;
+  font-size: 14px;
   cursor: pointer;
   transition:
     color var(--shivanya-duration-fast) var(--shivanya-ease-standard);

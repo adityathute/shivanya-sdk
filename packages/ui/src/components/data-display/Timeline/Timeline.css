@@ -1,0 +1,483 @@
+.shivanya-timeline {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  color: var(--shivanya-color-text-primary);
+}
+
+/* =========================================================
+   ORIENTATION
+   ========================================================= */
+
+.shivanya-timeline-vertical {
+  flex-direction: column;
+}
+
+.shivanya-timeline-horizontal {
+  flex-direction: row;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: var(--shivanya-space-2);
+}
+
+/* =========================================================
+   ITEM
+   ========================================================= */
+
+.shivanya-timeline-item {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.shivanya-timeline-vertical
+  .shivanya-timeline-item {
+  min-height: 72px;
+}
+
+.shivanya-timeline-horizontal
+  .shivanya-timeline-item {
+  flex: 1 0 220px;
+  min-width: 220px;
+  flex-direction: column;
+}
+
+/* =========================================================
+   INDICATOR
+   ========================================================= */
+
+.shivanya-timeline-indicator {
+  position: relative;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  flex: 0 0 32px;
+  align-self: stretch;
+
+  min-height: 100%;
+}
+
+.shivanya-timeline-horizontal
+  .shivanya-timeline-indicator {
+  width: 100%;
+  height: 32px;
+  min-height: 32px;
+
+  flex: 0 0 32px;
+
+  align-self: auto;
+  align-items: center;
+}
+
+/* =========================================================
+   DOT
+   ========================================================= */
+
+.shivanya-timeline-dot {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  width: 14px;
+  height: 14px;
+
+  margin-top: 5px;
+
+  box-sizing: border-box;
+
+  border: 2px solid
+    var(--shivanya-color-primary);
+
+  border-radius: var(--shivanya-radius-full);
+
+  background: var(--shivanya-color-primary);
+
+  color: var(--shivanya-color-text-inverse);
+
+  font-size: 9px;
+  line-height: 1;
+}
+
+.shivanya-timeline-horizontal
+  .shivanya-timeline-dot {
+  margin-top: 0;
+}
+
+/* =========================================================
+   CONNECTOR
+   ========================================================= */
+
+.shivanya-timeline-line {
+  position: absolute;
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+/* Vertical connector */
+
+.shivanya-timeline-vertical
+  .shivanya-timeline-line {
+  top: 19px;
+  bottom: 0;
+  left: 50%;
+
+  width: 0;
+
+  border-left: 1px solid
+    var(--shivanya-color-border);
+}
+
+/* Horizontal connector */
+
+.shivanya-timeline-horizontal
+  .shivanya-timeline-line {
+  top: 50%;
+  right: 0;
+  left: 50%;
+
+  height: 0;
+
+  border-top: 1px solid
+    var(--shivanya-color-border);
+}
+
+/* Last item */
+
+.shivanya-timeline-item:last-child
+  .shivanya-timeline-line {
+  display: none;
+}
+
+/* =========================================================
+   LINE STYLES
+   ========================================================= */
+
+.shivanya-timeline-line-dashed
+  .shivanya-timeline-line {
+  border-style: dashed;
+}
+
+.shivanya-timeline-line-dotted
+  .shivanya-timeline-line {
+  border-style: dotted;
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.shivanya-timeline-content {
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+
+  padding: 0 0 var(--shivanya-space-5);
+}
+
+.shivanya-timeline-horizontal
+  .shivanya-timeline-content {
+  padding:
+    var(--shivanya-space-3)
+    var(--shivanya-space-4)
+    0;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.shivanya-timeline-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: var(--shivanya-space-2);
+
+  min-width: 0;
+}
+
+.shivanya-timeline-title {
+  min-width: 0;
+
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.shivanya-timeline-badge {
+  display: inline-flex;
+  flex: none;
+}
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+.shivanya-timeline-body {
+  min-width: 0;
+}
+
+.shivanya-timeline-description {
+  margin-top: var(--shivanya-space-1);
+
+  color: var(--shivanya-color-text-secondary);
+
+  line-height: 1.5;
+}
+
+.shivanya-timeline-timestamp {
+  margin-top: var(--shivanya-space-2);
+
+  color: var(--shivanya-color-text-muted);
+
+  font-size: var(--shivanya-font-size-sm);
+  line-height: 1.4;
+}
+
+/* =========================================================
+   SIZES
+   ========================================================= */
+
+.shivanya-timeline-xs
+  .shivanya-timeline-indicator {
+  flex-basis: 28px;
+}
+
+.shivanya-timeline-xs
+  .shivanya-timeline-dot {
+  width: 10px;
+  height: 10px;
+
+  margin-top: 7px;
+
+  font-size: 7px;
+}
+
+.shivanya-timeline-xs
+  .shivanya-timeline-line {
+  top: 17px;
+}
+
+
+.shivanya-timeline-sm
+  .shivanya-timeline-indicator {
+  flex-basis: 30px;
+}
+
+.shivanya-timeline-sm
+  .shivanya-timeline-dot {
+  width: 12px;
+  height: 12px;
+
+  margin-top: 6px;
+
+  font-size: 8px;
+}
+
+.shivanya-timeline-sm
+  .shivanya-timeline-line {
+  top: 18px;
+}
+
+
+.shivanya-timeline-md
+  .shivanya-timeline-indicator {
+  flex-basis: 32px;
+}
+
+.shivanya-timeline-md
+  .shivanya-timeline-dot {
+  width: 14px;
+  height: 14px;
+
+  margin-top: 5px;
+}
+
+.shivanya-timeline-md
+  .shivanya-timeline-line {
+  top: 19px;
+}
+
+
+.shivanya-timeline-lg
+  .shivanya-timeline-indicator {
+  flex-basis: 36px;
+}
+
+.shivanya-timeline-lg
+  .shivanya-timeline-dot {
+  width: 16px;
+  height: 16px;
+
+  margin-top: 4px;
+
+  font-size: 10px;
+}
+
+.shivanya-timeline-lg
+  .shivanya-timeline-line {
+  top: 20px;
+}
+
+
+.shivanya-timeline-xl
+  .shivanya-timeline-indicator {
+  flex-basis: 40px;
+}
+
+.shivanya-timeline-xl
+  .shivanya-timeline-dot {
+  width: 18px;
+  height: 18px;
+
+  margin-top: 3px;
+
+  font-size: 11px;
+}
+
+.shivanya-timeline-xl
+  .shivanya-timeline-line {
+  top: 21px;
+}
+
+/* =========================================================
+   VARIANTS
+   ========================================================= */
+
+.shivanya-timeline-default
+  .shivanya-timeline-dot {
+  border-color: var(--shivanya-color-border);
+  background: var(--shivanya-color-surface);
+  color: var(--shivanya-color-text-secondary);
+}
+
+.shivanya-timeline-primary
+  .shivanya-timeline-dot {
+  border-color: var(--shivanya-color-primary);
+  background: var(--shivanya-color-primary);
+}
+
+.shivanya-timeline-success
+  .shivanya-timeline-dot {
+  border-color: var(--shivanya-color-success);
+  background: var(--shivanya-color-success);
+}
+
+.shivanya-timeline-warning
+  .shivanya-timeline-dot {
+  border-color: var(--shivanya-color-warning);
+  background: var(--shivanya-color-warning);
+}
+
+.shivanya-timeline-danger
+  .shivanya-timeline-dot {
+  border-color: var(--shivanya-color-danger);
+  background: var(--shivanya-color-danger);
+}
+
+.shivanya-timeline-info
+  .shivanya-timeline-dot {
+  border-color: var(--shivanya-color-info);
+  background: var(--shivanya-color-info);
+}
+
+/* =========================================================
+   OUTLINED DOT
+   ========================================================= */
+
+.shivanya-timeline-dot-outlined
+  .shivanya-timeline-dot {
+  background: var(--shivanya-color-surface);
+  color: var(--shivanya-color-primary);
+}
+
+/* =========================================================
+   ALIGNMENT
+   ========================================================= */
+
+.shivanya-timeline-align-start
+  .shivanya-timeline-content {
+  text-align: left;
+}
+
+.shivanya-timeline-align-center
+  .shivanya-timeline-content {
+  text-align: center;
+}
+
+.shivanya-timeline-align-center
+  .shivanya-timeline-header {
+  justify-content: center;
+}
+
+.shivanya-timeline-align-center
+  .shivanya-timeline-timestamp {
+  text-align: center;
+}
+
+.shivanya-timeline-align-end
+  .shivanya-timeline-content {
+  text-align: right;
+}
+
+.shivanya-timeline-align-end
+  .shivanya-timeline-header {
+  justify-content: flex-end;
+}
+
+.shivanya-timeline-align-end
+  .shivanya-timeline-timestamp {
+  text-align: right;
+}
+
+/* =========================================================
+   STATES
+   ========================================================= */
+
+.shivanya-timeline-loading {
+  opacity: 0.7;
+}
+
+.shivanya-timeline.is-disabled {
+  opacity: 0.55;
+}
+
+.shivanya-timeline-item.is-disabled {
+  opacity: 0.55;
+}
+
+/* =========================================================
+   HORIZONTAL MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .shivanya-timeline-horizontal
+    .shivanya-timeline-item {
+    min-width: 190px;
+  }
+
+  .shivanya-timeline-horizontal
+    .shivanya-timeline-content {
+    padding-left: var(--shivanya-space-3);
+    padding-right: var(--shivanya-space-3);
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .shivanya-timeline {
+    scroll-behavior: auto;
+  }
+}

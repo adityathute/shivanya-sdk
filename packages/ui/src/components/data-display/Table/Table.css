@@ -1,0 +1,299 @@
+.shivanya-table-wrapper {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.shivanya-table-wrapper.is-responsive {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.shivanya-table-wrapper.has-max-height {
+  overflow: auto;
+}
+
+.shivanya-table {
+  width: 100%;
+  min-width: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  box-sizing: border-box;
+
+  color: var(--shivanya-color-text-primary);
+  background: var(--shivanya-color-surface);
+
+  font-size: 14px;
+}
+
+/* Cells */
+
+.shivanya-table th,
+.shivanya-table td {
+  box-sizing: border-box;
+  padding: 13px 14px;
+
+  border-bottom: 1px solid
+    var(--shivanya-color-border);
+
+  text-align: left;
+  vertical-align: middle;
+
+  line-height: 1.45;
+}
+
+.shivanya-table th {
+  font-weight: 600;
+  white-space: nowrap;
+
+  background:
+    var(--shivanya-color-surface-hover);
+}
+
+.shivanya-table td {
+  background: transparent;
+}
+
+/* Last row */
+
+.shivanya-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Footer */
+
+.shivanya-table tfoot td,
+.shivanya-table tfoot th {
+  border-top: 1px solid
+    var(--shivanya-color-border);
+
+  border-bottom: 0;
+
+  background:
+    var(--shivanya-color-surface-hover);
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   VARIANTS
+   ========================================================= */
+
+.shivanya-table-bordered {
+  border: 1px solid
+    var(--shivanya-color-border);
+
+  border-radius: var(--shivanya-radius-md);
+
+  overflow: hidden;
+}
+
+.shivanya-table-filled {
+  background:
+    var(--shivanya-color-surface-hover);
+}
+
+.shivanya-table-filled tbody tr {
+  background:
+    var(--shivanya-color-surface);
+}
+
+/* =========================================================
+   DENSITY
+   ========================================================= */
+
+.shivanya-table-compact th,
+.shivanya-table-compact td {
+  padding: 9px 12px;
+}
+
+/* =========================================================
+   SIZE
+   ========================================================= */
+
+.shivanya-table-sm {
+  font-size: 12px;
+}
+
+.shivanya-table-sm th,
+.shivanya-table-sm td {
+  padding: 9px 10px;
+}
+
+.shivanya-table-md {
+  font-size: 14px;
+}
+
+.shivanya-table-lg {
+  font-size: 15px;
+}
+
+.shivanya-table-lg th,
+.shivanya-table-lg td {
+  padding: 16px;
+}
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.shivanya-table.is-hoverable
+  tbody
+  tr {
+  transition:
+    background-color 120ms ease;
+}
+
+.shivanya-table.is-hoverable
+  tbody
+  tr:hover {
+  background:
+    var(--shivanya-color-surface-hover);
+}
+
+/* =========================================================
+   STRIPED
+   ========================================================= */
+
+.shivanya-table.is-striped
+  tbody
+  tr:nth-child(even) {
+  background:
+    var(--shivanya-color-surface-hover);
+}
+
+/* =========================================================
+   SELECTED
+   ========================================================= */
+
+.shivanya-table
+  tbody
+  tr.is-selected {
+  background:
+    var(--shivanya-color-primary-soft);
+}
+
+.shivanya-table.is-hoverable
+  tbody
+  tr.is-selected:hover {
+  background:
+    var(--shivanya-color-primary-soft);
+}
+
+/* =========================================================
+   STICKY HEADER
+   ========================================================= */
+
+.shivanya-table.is-sticky
+  thead
+  th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+
+  background:
+    var(--shivanya-color-surface-hover);
+}
+
+/* When scrolling inside a bordered table */
+
+.shivanya-table-wrapper.has-max-height
+  .shivanya-table.is-sticky
+  thead
+  th {
+  top: 0;
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.shivanya-table.is-loading {
+  opacity: 0.65;
+}
+
+.shivanya-table.is-loading
+  tbody {
+  pointer-events: none;
+}
+
+/* =========================================================
+   DISABLED
+   ========================================================= */
+
+.shivanya-table.is-disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+.shivanya-table-wrapper.is-responsive
+  .shivanya-table {
+  min-width: 640px;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .shivanya-table {
+    font-size: 13px;
+  }
+
+  .shivanya-table th,
+  .shivanya-table td {
+    padding: 11px 12px;
+  }
+
+  .shivanya-table-wrapper.is-responsive
+    .shivanya-table {
+    min-width: 560px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .shivanya-table.is-hoverable
+    tbody
+    tr {
+    transition: none;
+  }
+}
+
+.shivanya-table-wrapper.has-max-height {
+  overflow: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color:
+    var(--shivanya-color-border)
+    transparent;
+}
+
+.shivanya-table-wrapper.has-max-height::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.shivanya-table-wrapper.has-max-height::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.shivanya-table-wrapper.has-max-height::-webkit-scrollbar-thumb {
+  background: var(--shivanya-color-border);
+  border-radius: 999px;
+}
+
+.shivanya-table-wrapper.has-max-height::-webkit-scrollbar-thumb:hover {
+  background: var(--shivanya-color-text-muted);
+}
+
+.shivanya-table-wrapper.has-max-height::-webkit-scrollbar-corner {
+  background: transparent;
+}

@@ -25,7 +25,7 @@ export function PlaygroundLayout({
           </span>
 
           <span className="playground-subtitle">
-            SDK documentation and component playground.
+            SDK component playground.
           </span>
         </button>
 

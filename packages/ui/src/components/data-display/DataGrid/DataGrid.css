@@ -1,0 +1,172 @@
+.shivanya-data-grid {
+  width: 100%;
+  min-width: 0;
+  color: var(--shivanya-color-text-primary);
+}
+
+.shivanya-data-grid-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  border-radius: var(--shivanya-radius-md);
+}
+
+.shivanya-data-grid table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--shivanya-color-surface);
+  font-size: 14px;
+}
+
+.shivanya-data-grid.is-bordered table {
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+  overflow: hidden;
+}
+
+.shivanya-data-grid th,
+.shivanya-data-grid td {
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--shivanya-color-border);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.shivanya-data-grid th {
+  background: var(--shivanya-color-surface-hover);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.shivanya-data-grid tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.shivanya-data-grid.is-striped tbody tr:nth-child(even) {
+  background: var(--shivanya-color-surface-hover);
+}
+
+.shivanya-data-grid.is-hoverable tbody tr:hover {
+  background: var(--shivanya-color-surface-hover);
+}
+
+.shivanya-data-grid.is-sticky thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.shivanya-data-grid.is-clickable tbody tr {
+  cursor: pointer;
+}
+
+.shivanya-data-grid-sm th,
+.shivanya-data-grid-sm td {
+  padding: 8px 10px;
+  font-size: 12px;
+}
+
+.shivanya-data-grid-lg th,
+.shivanya-data-grid-lg td {
+  padding: 16px;
+  font-size: 15px;
+}
+
+.shivanya-data-grid .align-left {
+  text-align: left;
+}
+
+.shivanya-data-grid .align-center {
+  text-align: center;
+}
+
+.shivanya-data-grid .align-right {
+  text-align: right;
+}
+
+.data-grid-selection-cell {
+  width: 48px;
+  min-width: 48px;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+  text-align: center !important;
+}
+
+.data-grid-selection-cell input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--shivanya-color-primary);
+}
+
+.data-grid-sort {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--shivanya-space-2);
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+.data-grid-sort:focus-visible {
+  outline: 2px solid var(--shivanya-color-focus);
+  outline-offset: 2px;
+  border-radius: var(--shivanya-radius-sm);
+}
+
+.data-grid-sort-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.data-grid-sort-indicator {
+  color: var(--shivanya-color-text-muted);
+  line-height: 1;
+}
+
+.data-grid-empty {
+  padding: 40px !important;
+  color: var(--shivanya-color-text-secondary);
+  text-align: center !important;
+}
+
+.data-grid-skeleton-row span {
+  display: block;
+  width: 100%;
+  height: 16px;
+  border-radius: var(--shivanya-radius-sm);
+  background: var(--shivanya-color-surface-hover);
+  animation: data-grid-pulse 1.2s ease-in-out infinite;
+}
+
+.data-grid-skeleton-row
+  .data-grid-selection-cell
+  span {
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
+}
+
+@keyframes data-grid-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (max-width: 700px) {
+  .shivanya-data-grid table {
+    min-width: 560px;
+  }
+}

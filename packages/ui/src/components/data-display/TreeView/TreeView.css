@@ -1,0 +1,162 @@
+.shivanya-tree {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  padding: var(--shivanya-space-2);
+  box-sizing: border-box;
+  border-radius: var(--shivanya-radius-md);
+  color: var(--shivanya-color-text-primary);
+}
+
+.shivanya-tree-filled {
+  background: var(--shivanya-color-surface);
+}
+
+.shivanya-tree-outlined {
+  border: 1px solid var(--shivanya-color-border);
+}
+
+.shivanya-tree-node {
+  min-width: 0;
+}
+
+.shivanya-tree-item {
+  display: flex;
+  align-items: center;
+  gap: var(--shivanya-space-1);
+  min-width: 0;
+  min-height: 36px;
+  border-radius: var(--shivanya-radius-sm);
+  transition:
+    background-color 120ms ease,
+    color 120ms ease;
+}
+
+.shivanya-tree-item:hover:not(.is-disabled) {
+  background: var(--shivanya-color-surface-hover);
+}
+
+.shivanya-tree-item.is-selected {
+  background: var(--shivanya-color-primary-soft);
+  color: var(--shivanya-color-primary);
+}
+
+.shivanya-tree-item.is-disabled {
+  opacity: 0.55;
+}
+
+.shivanya-tree-toggle,
+.shivanya-tree-label {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.shivanya-tree-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 28px;
+  padding: 0;
+  color: var(--shivanya-color-text-secondary);
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.shivanya-tree-toggle:disabled {
+  cursor: default;
+}
+
+.shivanya-tree-label {
+  display: flex;
+  align-items: center;
+  gap: var(--shivanya-space-2);
+  flex: 1;
+  min-width: 0;
+  min-height: 32px;
+  padding: 6px 8px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.shivanya-tree-label:disabled {
+  cursor: not-allowed;
+}
+
+.shivanya-tree-toggle:focus-visible,
+.shivanya-tree-label:focus-visible {
+  outline: 0;
+  box-shadow:
+    0 0 0 3px var(--shivanya-color-focus-ring);
+  border-radius: var(--shivanya-radius-sm);
+}
+
+.shivanya-tree-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  line-height: 1;
+}
+
+.shivanya-tree-label-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shivanya-tree-children {
+  min-width: 0;
+}
+
+.shivanya-tree.has-lines
+  .shivanya-tree-children {
+  margin-left: 20px;
+  border-left: 1px solid
+    var(--shivanya-color-border);
+}
+
+.shivanya-tree-sm
+  .shivanya-tree-item {
+  min-height: 30px;
+  font-size: 12px;
+}
+
+.shivanya-tree-sm
+  .shivanya-tree-label {
+  min-height: 26px;
+  padding: 4px 6px;
+}
+
+.shivanya-tree-lg
+  .shivanya-tree-item {
+  min-height: 42px;
+  font-size: 15px;
+}
+
+.shivanya-tree-lg
+  .shivanya-tree-label {
+  min-height: 38px;
+  padding: 8px 10px;
+}
+
+.shivanya-tree-default {
+  background: transparent;
+}
+
+.shivanya-tree-default
+  .shivanya-tree-item.is-selected {
+  background: var(
+    --shivanya-color-primary-soft
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shivanya-tree-item {
+    transition: none;
+  }
+}

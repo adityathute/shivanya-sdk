@@ -1,0 +1,234 @@
+.shivanya-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-width: 0;
+  width: fit-content;
+  overflow: hidden;
+  background: var(--shivanya-color-surface);
+  color: var(--shivanya-color-text-primary);
+  transition:
+    border-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    background var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    transform var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+.shivanya-card.is-full {
+  width: 100%;
+}
+
+.shivanya-card.is-bordered {
+  border: 1px solid var(--shivanya-color-border);
+}
+
+.shivanya-card-elevated {
+  border: 1px solid var(--shivanya-color-border);
+  box-shadow: var(--shivanya-shadow-md);
+}
+
+.shivanya-card-outlined {
+  border: 1px solid var(--shivanya-color-border);
+}
+
+.shivanya-card-filled {
+  border: 1px solid transparent;
+  background: var(--shivanya-color-surface-hover);
+}
+
+.shivanya-card-ghost {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.shivanya-card-shadow-none {
+  box-shadow: none;
+}
+
+.shivanya-card-shadow-sm {
+  box-shadow: var(--shivanya-shadow-sm);
+}
+
+.shivanya-card-shadow-md {
+  box-shadow: var(--shivanya-shadow-md);
+}
+
+.shivanya-card-shadow-lg {
+  box-shadow: var(--shivanya-shadow-lg);
+}
+
+.shivanya-card-radius-none {
+  border-radius: 0;
+}
+
+.shivanya-card-radius-sm {
+  border-radius: var(--shivanya-radius-sm);
+}
+
+.shivanya-card-radius-md {
+  border-radius: var(--shivanya-radius-md);
+}
+
+.shivanya-card-radius-lg {
+  border-radius: var(--shivanya-radius-lg);
+}
+
+.shivanya-card-radius-xl {
+  border-radius: var(--shivanya-radius-lg);
+}
+
+.shivanya-card-radius-full {
+  border-radius: var(--shivanya-radius-full);
+}
+
+.shivanya-card-padding-none .shivanya-card-body,
+.shivanya-card-padding-none .shivanya-card-header,
+.shivanya-card-padding-none .shivanya-card-footer,
+.shivanya-card-padding-none .shivanya-card-actions {
+  padding: 0;
+}
+
+.shivanya-card-padding-xs .shivanya-card-body,
+.shivanya-card-padding-xs .shivanya-card-header,
+.shivanya-card-padding-xs .shivanya-card-footer,
+.shivanya-card-padding-xs .shivanya-card-actions {
+  padding: var(--shivanya-space-2);
+}
+
+.shivanya-card-padding-sm .shivanya-card-body,
+.shivanya-card-padding-sm .shivanya-card-header,
+.shivanya-card-padding-sm .shivanya-card-footer,
+.shivanya-card-padding-sm .shivanya-card-actions {
+  padding: var(--shivanya-space-3);
+}
+
+.shivanya-card-padding-md .shivanya-card-body,
+.shivanya-card-padding-md .shivanya-card-header,
+.shivanya-card-padding-md .shivanya-card-footer,
+.shivanya-card-padding-md .shivanya-card-actions {
+  padding: var(--shivanya-space-4);
+}
+
+.shivanya-card-padding-lg .shivanya-card-body,
+.shivanya-card-padding-lg .shivanya-card-header,
+.shivanya-card-padding-lg .shivanya-card-footer,
+.shivanya-card-padding-lg .shivanya-card-actions {
+  padding: var(--shivanya-space-5);
+}
+
+.shivanya-card-padding-xl .shivanya-card-body,
+.shivanya-card-padding-xl .shivanya-card-header,
+.shivanya-card-padding-xl .shivanya-card-footer,
+.shivanya-card-padding-xl .shivanya-card-actions {
+  padding: var(--shivanya-space-6);
+}
+
+.shivanya-card-header,
+.shivanya-card-footer,
+.shivanya-card-actions {
+  display: flex;
+  gap: var(--shivanya-space-3);
+  align-items: center;
+}
+
+.shivanya-card-header-start,
+.shivanya-card-footer-start,
+.shivanya-card-actions-start {
+  align-items: flex-start;
+}
+
+.shivanya-card-header-center,
+.shivanya-card-footer-center,
+.shivanya-card-actions-center {
+  justify-content: center;
+}
+
+.shivanya-card-header-end,
+.shivanya-card-footer-end,
+.shivanya-card-actions-end {
+  justify-content: flex-end;
+}
+
+.shivanya-card-actions-between {
+  justify-content: space-between;
+}
+
+.shivanya-card-body {
+  min-width: 0;
+}
+
+.shivanya-card.has-divider .shivanya-card-header,
+.shivanya-card.has-divider .shivanya-card-actions,
+.shivanya-card.has-divider .shivanya-card-footer {
+  box-sizing: border-box;
+  width: 100%;
+  border-top: 1px solid var(--shivanya-color-border);
+}
+
+.shivanya-card-media {
+  display: block;
+  width: 100%;
+  min-width: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.shivanya-card-media > * {
+  width: 100%;
+  max-width: 100%;
+}
+
+.shivanya-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shivanya-card-media-ratio-1-1 .shivanya-card-media {
+  aspect-ratio: 1 / 1;
+}
+
+.shivanya-card-media-ratio-4-3 .shivanya-card-media {
+  aspect-ratio: 4 / 3;
+}
+
+.shivanya-card-media-ratio-3-2 .shivanya-card-media {
+  aspect-ratio: 3 / 2;
+}
+
+.shivanya-card-media-ratio-16-9 .shivanya-card-media {
+  aspect-ratio: 16 / 9;
+}
+
+.shivanya-card-media-ratio-21-9 .shivanya-card-media {
+  aspect-ratio: 21 / 9;
+}
+
+.shivanya-card.is-hoverable:hover:not(.is-disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--shivanya-shadow-lg);
+}
+
+.shivanya-card.is-clickable {
+  cursor: pointer;
+}
+
+.shivanya-card.is-selected {
+  border-color: var(--shivanya-color-focus);
+  box-shadow: 0 0 0 3px var(--shivanya-color-focus-ring);
+}
+
+.shivanya-card.is-disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.shivanya-card.is-loading {
+  opacity: 0.7;
+}

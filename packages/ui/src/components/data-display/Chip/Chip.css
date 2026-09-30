@@ -1,0 +1,295 @@
+.shivanya-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--shivanya-space-2);
+  box-sizing: border-box;
+  width: max-content;
+  max-width: 100%;
+  min-width: 0;
+  border: 1px solid transparent;
+  color: var(--shivanya-color-text-primary);
+  font: inherit;
+  white-space: nowrap;
+  vertical-align: middle;
+  overflow: hidden;
+  transition:
+    background var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    border-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    opacity var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+.shivanya-chip.is-full {
+  width: 100%;
+}
+
+.shivanya-chip-xs {
+  min-height: 22px;
+  padding: 2px 7px;
+  font-size: 11px;
+}
+
+.shivanya-chip-sm {
+  min-height: 26px;
+  padding: 3px 8px;
+  font-size: 12px;
+}
+
+.shivanya-chip-md {
+  min-height: 32px;
+  padding: 5px 10px;
+  font-size: 13px;
+}
+
+.shivanya-chip-lg {
+  min-height: 38px;
+  padding: 7px 12px;
+  font-size: 14px;
+}
+
+.shivanya-chip-xl {
+  min-height: 44px;
+  padding: 9px 14px;
+  font-size: 15px;
+}
+
+.shivanya-chip-filled {
+  background: var(--shivanya-color-primary);
+  color: var(--shivanya-color-text-inverse);
+}
+
+.shivanya-chip-outlined {
+  border-color: var(--shivanya-color-border);
+  background: var(--shivanya-color-surface);
+}
+
+.shivanya-chip-soft {
+  background: var(--shivanya-color-primary-soft);
+  color: var(--shivanya-color-primary);
+}
+
+.shivanya-chip-ghost {
+  border-color: transparent;
+  background: transparent;
+}
+
+.shivanya-chip-secondary.shivanya-chip-filled {
+  background: var(--shivanya-color-secondary);
+}
+
+.shivanya-chip-success.shivanya-chip-filled {
+  background: var(--shivanya-color-success);
+}
+
+.shivanya-chip-warning.shivanya-chip-filled {
+  background: var(--shivanya-color-warning);
+}
+
+.shivanya-chip-danger.shivanya-chip-filled {
+  background: var(--shivanya-color-danger);
+}
+
+.shivanya-chip-info.shivanya-chip-filled {
+  background: var(--shivanya-color-info);
+}
+
+.shivanya-chip-secondary.shivanya-chip-soft {
+  background: var(--shivanya-color-secondary-soft);
+  color: var(--shivanya-color-text-secondary);
+}
+
+.shivanya-chip-success.shivanya-chip-soft {
+  background: var(--shivanya-color-success-soft);
+  color: var(--shivanya-color-success);
+}
+
+.shivanya-chip-warning.shivanya-chip-soft {
+  background: var(--shivanya-color-warning-soft);
+  color: var(--shivanya-color-warning);
+}
+
+.shivanya-chip-danger.shivanya-chip-soft {
+  background: var(--shivanya-color-danger-soft);
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-chip-info.shivanya-chip-soft {
+  background: var(--shivanya-color-info-soft);
+  color: var(--shivanya-color-info);
+}
+
+.shivanya-chip-secondary.shivanya-chip-outlined {
+  border-color: var(--shivanya-color-secondary);
+  color: var(--shivanya-color-secondary);
+}
+
+.shivanya-chip-success.shivanya-chip-outlined {
+  border-color: var(--shivanya-color-success);
+  color: var(--shivanya-color-success);
+}
+
+.shivanya-chip-warning.shivanya-chip-outlined {
+  border-color: var(--shivanya-color-warning);
+  color: var(--shivanya-color-warning);
+}
+
+.shivanya-chip-danger.shivanya-chip-outlined {
+  border-color: var(--shivanya-color-danger);
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-chip-info.shivanya-chip-outlined {
+  border-color: var(--shivanya-color-info);
+  color: var(--shivanya-color-info);
+}
+
+.shivanya-chip-secondary.shivanya-chip-ghost {
+  color: var(--shivanya-color-secondary);
+}
+
+.shivanya-chip-success.shivanya-chip-ghost {
+  color: var(--shivanya-color-success);
+}
+
+.shivanya-chip-warning.shivanya-chip-ghost {
+  color: var(--shivanya-color-warning);
+}
+
+.shivanya-chip-danger.shivanya-chip-ghost {
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-chip-info.shivanya-chip-ghost {
+  color: var(--shivanya-color-info);
+}
+
+.shivanya-chip-radius-sm {
+  border-radius: var(--shivanya-radius-sm);
+}
+
+.shivanya-chip-radius-md {
+  border-radius: var(--shivanya-radius-md);
+}
+
+.shivanya-chip-radius-lg {
+  border-radius: var(--shivanya-radius-lg);
+}
+
+.shivanya-chip-radius-full {
+  border-radius: var(--shivanya-radius-full);
+}
+
+.shivanya-chip-avatar,
+.shivanya-chip-icon,
+.shivanya-chip-end-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  line-height: 1;
+}
+
+.shivanya-chip-avatar {
+  width: 1.25em;
+  height: 1.25em;
+  overflow: hidden;
+  border-radius: var(--shivanya-radius-full);
+}
+
+.shivanya-chip-avatar > * {
+  width: 100%;
+  height: 100%;
+}
+
+.shivanya-chip-icon,
+.shivanya-chip-end-icon {
+  font-size: 1em;
+}
+
+.shivanya-chip-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shivanya-chip-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin: -2px -5px -2px 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--shivanya-radius-full);
+  background: transparent;
+  color: currentColor;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+.shivanya-chip-close:hover:not(:disabled) {
+  background: rgb(0 0 0 / 8%);
+}
+
+.shivanya-chip-close:focus-visible {
+  outline: 2px solid var(--shivanya-color-focus);
+  outline-offset: 1px;
+}
+
+.shivanya-chip.is-interactive {
+  cursor: pointer;
+}
+
+.shivanya-chip.is-interactive:hover:not(.is-disabled):not(.is-loading) {
+  filter: brightness(0.97);
+}
+
+.shivanya-chip.is-interactive:focus-visible {
+  outline: 2px solid var(--shivanya-color-focus);
+  outline-offset: 2px;
+}
+
+.shivanya-chip.is-selected {
+  box-shadow:
+    0 0 0 3px var(--shivanya-color-focus-ring);
+}
+
+.shivanya-chip.is-loading {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.shivanya-chip.is-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.shivanya-chip-loader {
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: shivanya-chip-spin 0.7s linear infinite;
+}
+
+@keyframes shivanya-chip-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
