@@ -1,6 +1,6 @@
 {
   "name": "shivanya-shell",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "description": "Reusable React shell, layout, and application structure components for Shivanya applications",
   "main": "dist/index.js",
