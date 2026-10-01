@@ -89,7 +89,6 @@
 @import "../components/utilities/CopyButton/CopyButton.css";
 
 /* Data Display */
-
 @import "../components/data-display/Accordion/Accordion.css";
 @import "../components/data-display/AnimatedNumber/AnimatedNumber.css";
 @import "../components/data-display/Avatar/Avatar.css";
@@ -103,3 +102,14 @@
 @import "../components/data-display/Table/Table.css";
 @import "../components/data-display/Timeline/Timeline.css";
 @import "../components/data-display/TreeView/TreeView.css";
+
+/* Feedback */
+@import "../components/feedback/Alert/Alert.css";
+@import "../components/feedback/Dialog/Dialog.css";
+@import "../components/feedback/ConfirmDialog/ConfirmDialog.css";
+@import "../components/feedback/Modal/Modal.css";
+@import "../components/feedback/LoadingOverlay/LoadingOverlay.css";
+@import "../components/feedback/Notification/Notification.css";
+@import "../components/feedback/Popover/Popover.css";
+@import "../components/feedback/Toast/Toast.css";
+@import "../components/feedback/Tooltip/Tooltip.css";

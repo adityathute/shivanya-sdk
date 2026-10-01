@@ -1,0 +1,111 @@
+.feedback-demo-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--shivanya-space-3);
+  width: min(100%, 760px);
+  max-width: 100%;
+  min-width: 0;
+}
+
+.feedback-demo-stack > * {
+  max-width: 100%;
+}
+
+.feedback-demo-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--shivanya-space-2);
+}
+
+.feedback-demo-reset {
+  min-height: var(--shivanya-control-height-sm);
+  padding: 0 var(--shivanya-space-3);
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-sm);
+  background: var(--shivanya-color-surface);
+  color: var(--shivanya-color-text-primary);
+  font: inherit;
+  cursor: pointer;
+}
+
+.feedback-demo-reset:hover {
+  background: var(--shivanya-color-surface-hover);
+}
+
+.feedback-demo-reset:focus-visible {
+  outline: 2px solid var(--shivanya-color-focus);
+  outline-offset: 2px;
+}
+
+.feedback-demo-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--shivanya-space-1);
+  min-width: 0;
+}
+
+.feedback-demo-content strong {
+  color: var(--shivanya-color-text-primary);
+  font-size: var(--shivanya-font-size-sm);
+  font-weight: 600;
+}
+
+.feedback-demo-content span {
+  color: var(--shivanya-color-text-secondary);
+  font-size: var(--shivanya-font-size-sm);
+  line-height: 1.5;
+}
+
+.feedback-demo-loading-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 640px);
+  height: 180px;
+  overflow: hidden;
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+  background: var(--shivanya-color-surface);
+}
+
+.feedback-demo-loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--shivanya-space-2);
+  padding: var(--shivanya-space-5);
+  text-align: center;
+}
+
+.feedback-demo-loading-content strong {
+  color: var(--shivanya-color-text-primary);
+  font-weight: 600;
+}
+
+.feedback-demo-loading-content span {
+  color: var(--shivanya-color-text-secondary);
+  font-size: var(--shivanya-font-size-sm);
+}
+
+@media (max-width: 640px) {
+  .feedback-demo-stack {
+    width: 100%;
+  }
+
+  .feedback-demo-loading-box {
+    width: 100%;
+    height: 160px;
+  }
+}
+
+
+.feedback-demo-note {
+  max-width: 760px;
+  margin: 0;
+  color: var(--shivanya-color-text-secondary);
+  font-size: var(--shivanya-font-size-sm);
+  line-height: 1.5;
+}

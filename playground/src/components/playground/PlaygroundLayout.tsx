@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import ThemeDemo from "../ThemeDemo";
+import ThemeDemo from "./ThemeDemo";
 
 interface PlaygroundLayoutProps {
   sidebar: ReactNode;

@@ -4,8 +4,8 @@ export default function HomePage() {
       <h1>Shivanya SDK Development Playground</h1>
 
       <p>
-        Explore, test, and develop reusable components and packages
-        available in the Shivanya SDK.
+        Explore, test, and develop reusable components and packages available in
+        the Shivanya SDK.
       </p>
 
       <div className="playground-home-section">
@@ -21,8 +21,8 @@ export default function HomePage() {
         <h2>Available Packages</h2>
 
         <p>
-          Use the sidebar to navigate through UI, Core, Shell, AI,
-          and other SDK packages.
+          Use the sidebar to navigate through UI, Core, Shell, AI, and other SDK
+          packages.
         </p>
       </div>
     </div>
