@@ -1,37 +1,37 @@
 {
-    "name": "shivanya-ai",
-    "version": "0.1.0",
-    "description": "AI client for the Shivanya platform",
-    "main": "dist/index.js",
+  "name": "shivanya-ai",
+  "version": "0.1.1",
+  "description": "AI client for the Shivanya platform",
+  "main": "dist/index.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "shivanya-core": "^0.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  },
+  "repository": {
     "type": "module",
-    "types": "dist/index.d.ts",
-    "files": [
-        "dist"
-    ],
-    "scripts": {
-        "build": "tsc"
-    },
-    "dependencies": {
-        "shivanya-core": "workspace:*"
-    },
-    "devDependencies": {
-        "typescript": "^7.0.2"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/adityathute/shivanya-sdk.git"
-    },
-    "keywords": [
-        "shivanya",
-        "ai",
-        "sdk",
-        "typescript",
-        "api",
-        "chat"
-    ],
-    "author": "Aditya Thute",
-    "license": "ISC",
-    "publishConfig": {
-        "access": "public"
-    }
+    "url": "git+https://github.com/adityathute/shivanya-sdk.git"
+  },
+  "keywords": [
+    "shivanya",
+    "ai",
+    "sdk",
+    "typescript",
+    "api",
+    "chat"
+  ],
+  "author": "Aditya Thute",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
 }
