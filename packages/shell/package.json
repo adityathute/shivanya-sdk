@@ -1,11 +1,20 @@
 {
   "name": "shivanya-shell",
-  "version": "0.1.0",
-  "description": "Reusable application shell and layout components for Shivanya applications",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Reusable React shell, layout, and application structure components for Shivanya applications",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles": "./src/styles/shell.css"
+  },
   "files": [
-    "dist"
+    "dist",
+    "src/styles"
   ],
   "scripts": {
     "build": "tsc"
@@ -34,6 +43,7 @@
     "shell",
     "layout",
     "react",
+    "react-components",
     "typescript",
     "frontend",
     "application-shell",
