@@ -119,3 +119,12 @@
 @import "../components/charts/BarChart/BarChart.css";
 @import "../components/charts/DonutChart/DonutChart.css";
 @import "../components/charts/PieChart/PieChart.css";
+
+/* Layout */
+@import "../components/layout/AspectRatio/AspectRatio.css";
+@import "../components/layout/Box/Box.css";
+@import "../components/layout/Container/Container.css";
+@import "../components/layout/Flex/Flex.css";
+@import "../components/layout/Grid/Grid.css";
+@import "../components/layout/Spacer/Spacer.css";
+@import "../components/layout/Stack/Stack.css";

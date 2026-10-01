@@ -1,0 +1,74 @@
+.shivanya-grid { display: grid; }
+.shivanya-grid-columns-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.shivanya-grid-columns-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.shivanya-grid-columns-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.shivanya-grid-columns-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.shivanya-grid-columns-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.shivanya-grid-columns-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.shivanya-grid-columns-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+.shivanya-grid-rows-1 { grid-template-rows: repeat(1, minmax(0, 1fr)); }
+.shivanya-grid-rows-2 { grid-template-rows: repeat(2, minmax(0, 1fr)); }
+.shivanya-grid-rows-3 { grid-template-rows: repeat(3, minmax(0, 1fr)); }
+.shivanya-grid-rows-4 { grid-template-rows: repeat(4, minmax(0, 1fr)); }
+.shivanya-grid-rows-5 { grid-template-rows: repeat(5, minmax(0, 1fr)); }
+.shivanya-grid-rows-6 { grid-template-rows: repeat(6, minmax(0, 1fr)); }
+.shivanya-grid-gap-xs { gap: var(--shivanya-space-1); }
+.shivanya-grid-gap-sm { gap: var(--shivanya-space-2); }
+.shivanya-grid-gap-md { gap: var(--shivanya-space-4); }
+.shivanya-grid-gap-lg { gap: var(--shivanya-space-6); }
+.shivanya-grid-gap-xl { gap: var(--shivanya-space-8); }
+.shivanya-grid-column-gap-xs { column-gap: var(--shivanya-space-1); }
+.shivanya-grid-column-gap-sm { column-gap: var(--shivanya-space-2); }
+.shivanya-grid-column-gap-md { column-gap: var(--shivanya-space-4); }
+.shivanya-grid-column-gap-lg { column-gap: var(--shivanya-space-6); }
+.shivanya-grid-column-gap-xl { column-gap: var(--shivanya-space-8); }
+.shivanya-grid-row-gap-xs { row-gap: var(--shivanya-space-1); }
+.shivanya-grid-row-gap-sm { row-gap: var(--shivanya-space-2); }
+.shivanya-grid-row-gap-md { row-gap: var(--shivanya-space-4); }
+.shivanya-grid-row-gap-lg { row-gap: var(--shivanya-space-6); }
+.shivanya-grid-row-gap-xl { row-gap: var(--shivanya-space-8); }
+.shivanya-grid-align-items-start { align-items: start; }
+.shivanya-grid-align-items-center { align-items: center; }
+.shivanya-grid-align-items-end { align-items: end; }
+.shivanya-grid-align-items-stretch { align-items: stretch; }
+.shivanya-grid-justify-items-start { justify-items: start; }
+.shivanya-grid-justify-items-center { justify-items: center; }
+.shivanya-grid-justify-items-end { justify-items: end; }
+.shivanya-grid-justify-items-stretch { justify-items: stretch; }
+.shivanya-grid-align-content-start { align-content: start; }
+.shivanya-grid-align-content-center { align-content: center; }
+.shivanya-grid-align-content-end { align-content: end; }
+.shivanya-grid-align-content-stretch { align-content: stretch; }
+.shivanya-grid-align-content-between { align-content: space-between; }
+.shivanya-grid-align-content-around { align-content: space-around; }
+.shivanya-grid-align-content-evenly { align-content: space-evenly; }
+.shivanya-grid-justify-content-start { justify-content: start; }
+.shivanya-grid-justify-content-center { justify-content: center; }
+.shivanya-grid-justify-content-end { justify-content: end; }
+.shivanya-grid-justify-content-stretch { justify-content: stretch; }
+.shivanya-grid-justify-content-between { justify-content: space-between; }
+.shivanya-grid-justify-content-around { justify-content: space-around; }
+.shivanya-grid-justify-content-evenly { justify-content: space-evenly; }
+.shivanya-grid-auto-flow-row { grid-auto-flow: row; }
+.shivanya-grid-auto-flow-column { grid-auto-flow: column; }
+.shivanya-grid-auto-flow-dense { grid-auto-flow: dense; }
+.shivanya-grid-auto-flow-row-dense { grid-auto-flow: row dense; }
+.shivanya-grid-auto-flow-column-dense { grid-auto-flow: column dense; }
+
+@media (max-width: 768px) {
+  .shivanya-grid-columns-2,
+  .shivanya-grid-columns-3,
+  .shivanya-grid-columns-4,
+  .shivanya-grid-columns-5,
+  .shivanya-grid-columns-6,
+  .shivanya-grid-columns-12 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 480px) {
+  .shivanya-grid-columns-2,
+  .shivanya-grid-columns-3,
+  .shivanya-grid-columns-4,
+  .shivanya-grid-columns-5,
+  .shivanya-grid-columns-6,
+  .shivanya-grid-columns-12 { grid-template-columns: 1fr; }
+}
