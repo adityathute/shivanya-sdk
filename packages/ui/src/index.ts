@@ -7,3 +7,4 @@ export * from "./components/charts";
 export * from "./components/layout";
 export * from "./components/media";
 export * from "./components/navigation";
+export * from "./components/overlays";

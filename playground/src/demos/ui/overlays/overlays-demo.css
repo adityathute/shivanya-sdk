@@ -1,0 +1,155 @@
+.overlays-demo-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--shivanya-space-3);
+}
+
+.overlays-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--shivanya-space-2);
+}
+
+.overlays-demo-card-grid,
+.overlays-demo-context-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(180px, 1fr)
+  );
+  gap: var(--shivanya-space-3);
+  width: 100%;
+}
+
+.overlays-demo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--shivanya-space-3);
+  min-height: 190px;
+  padding: var(--shivanya-space-4);
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+  background: var(--shivanya-color-surface);
+  overflow: hidden;
+}
+
+.overlays-demo-context-area {
+  position: relative;
+  min-height: 300px;
+  padding: var(--shivanya-space-6);
+  border: 1px dashed var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+  overflow: hidden;
+}
+
+/*
+ * ContextMenu uses position:absolute.
+ * This wrapper gives every demo menu its own positioning context.
+ */
+.overlays-demo-context-preview {
+  position: relative;
+  width: 100%;
+  min-height: 145px;
+}
+
+.overlays-demo-context-preview
+  .shivanya-context-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.overlays-demo-menu-item {
+  width: 100%;
+  margin: 0;
+  padding: 9px 10px;
+  border: 0;
+  border-radius: var(--shivanya-radius-sm);
+  background: transparent;
+  color: var(--shivanya-color-text-primary);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+.overlays-demo-menu-item:hover {
+  background: var(--shivanya-color-surface-hover);
+}
+
+.overlays-demo-size-preview,
+.overlays-demo-radius-preview {
+  position: relative;
+  width: 100%;
+  min-height: 190px;
+  margin-top: var(--shivanya-space-4);
+  padding: var(--shivanya-space-4);
+  border: 1px dashed var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+  overflow: hidden;
+}
+
+.overlays-demo-size-preview
+  .shivanya-context-menu,
+.overlays-demo-radius-preview
+  .shivanya-context-menu {
+  position: absolute;
+  top: var(--shivanya-space-4);
+  left: var(--shivanya-space-4);
+}
+
+.overlays-demo-command-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--shivanya-space-2);
+  width: 100%;
+  max-width: 520px;
+}
+
+.overlays-demo-command {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  margin: 0;
+  padding: var(--shivanya-space-3);
+  border: 0;
+  border-radius: var(--shivanya-radius-sm);
+  background: transparent;
+  color: var(--shivanya-color-text-primary);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+.overlays-demo-command strong {
+  color: var(--shivanya-color-text-primary);
+}
+
+.overlays-demo-command span {
+  color: var(--shivanya-color-text-secondary);
+  font-size: 13px;
+}
+
+.overlays-demo-command:hover {
+  background: var(--shivanya-color-surface-hover);
+}
+
+@media (max-width: 640px) {
+  .overlays-demo-card-grid,
+  .overlays-demo-context-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overlays-demo-context-area {
+    min-height: 300px;
+  }
+}

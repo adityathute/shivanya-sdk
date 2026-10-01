@@ -1,0 +1,253 @@
+.shivanya-command-palette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgb(15 23 42 / 45%);
+  backdrop-filter: blur(2px);
+}
+
+.shivanya-command-palette {
+  position: fixed;
+  top: 10vh;
+  left: 50%;
+  z-index: 1001;
+
+  display: flex;
+  flex-direction: column;
+
+  width: var(--command-palette-width-md, 560px);
+  max-width: calc(100vw - 32px);
+
+  padding: var(--command-palette-padding, 16px);
+
+  transform: translateX(-50%);
+
+  border: 1px solid var(
+    --command-palette-border-color,
+    var(--shivanya-color-border)
+  );
+
+  border-radius: var(
+    --command-palette-radius-md,
+    var(--shivanya-radius-md)
+  );
+
+  background: var(
+    --command-palette-background,
+    var(--shivanya-color-surface)
+  );
+
+  color: var(--shivanya-color-text-primary);
+
+  box-shadow: var(
+    --command-palette-shadow,
+    var(--shivanya-shadow-lg)
+  );
+
+  box-sizing: border-box;
+}
+
+/* -------------------------------------------------- */
+/* Sizes */
+/* -------------------------------------------------- */
+
+.shivanya-command-palette-sm {
+  width: var(--command-palette-width-sm, 420px);
+}
+
+.shivanya-command-palette-md {
+  width: var(--command-palette-width-md, 560px);
+}
+
+.shivanya-command-palette-lg {
+  width: var(--command-palette-width-lg, 720px);
+}
+
+/* -------------------------------------------------- */
+/* Variants */
+/* -------------------------------------------------- */
+
+.shivanya-command-palette-default {
+  background: var(
+    --command-palette-background,
+    var(--shivanya-color-surface)
+  );
+
+  color: var(--shivanya-color-text-primary);
+}
+
+.shivanya-command-palette-filled {
+  background: var(
+    --command-palette-filled-background,
+    var(--shivanya-color-surface-active)
+  );
+
+  color: var(--shivanya-color-text-primary);
+
+  border-color: var(
+    --command-palette-filled-border-color,
+    var(--shivanya-color-border)
+  );
+}
+
+.shivanya-command-palette-outlined {
+  background: var(
+    --command-palette-outlined-background,
+    var(--shivanya-color-surface)
+  );
+
+  color: var(--shivanya-color-text-primary);
+
+  border: 1px solid var(
+    --command-palette-outlined-border-color,
+    var(--shivanya-color-border-focus)
+  );
+}
+
+/* -------------------------------------------------- */
+/* Radius */
+/* -------------------------------------------------- */
+
+.shivanya-command-palette-radius-none {
+  border-radius: 0;
+}
+
+.shivanya-command-palette-radius-sm {
+  border-radius: var(
+    --command-palette-radius-sm,
+    var(--shivanya-radius-sm)
+  );
+}
+
+.shivanya-command-palette-radius-md {
+  border-radius: var(
+    --command-palette-radius-md,
+    var(--shivanya-radius-md)
+  );
+}
+
+.shivanya-command-palette-radius-lg {
+  border-radius: var(
+    --command-palette-radius-lg,
+    var(--shivanya-radius-lg)
+  );
+}
+
+/* -------------------------------------------------- */
+/* Search */
+/* -------------------------------------------------- */
+
+.shivanya-command-palette-search {
+  width: 100%;
+  height: var(--command-palette-input-height, 42px);
+
+  box-sizing: border-box;
+
+  padding: 0 var(--command-palette-input-padding, 12px);
+
+  border: 1px solid var(
+    --command-palette-input-border-color,
+    var(--shivanya-color-border)
+  );
+
+  border-radius: var(
+    --command-palette-input-radius,
+    var(--shivanya-radius-sm)
+  );
+
+  outline: none;
+
+  background: var(
+    --command-palette-input-background,
+    var(--shivanya-color-background)
+  );
+
+  color: var(
+    --command-palette-input-color,
+    var(--shivanya-color-text-primary)
+  );
+
+  font: inherit;
+}
+
+.shivanya-command-palette-search:focus {
+  border-color: var(
+    --shivanya-color-border-focus
+  );
+
+  box-shadow: 0 0 0 3px
+    var(--shivanya-color-focus-ring);
+}
+
+.shivanya-command-palette-search::placeholder {
+  color: var(
+    --command-palette-input-placeholder,
+    var(--shivanya-color-text-placeholder)
+  );
+}
+
+/* -------------------------------------------------- */
+/* Content */
+/* -------------------------------------------------- */
+
+.shivanya-command-palette-content {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(
+    --command-palette-gap,
+    var(--shivanya-space-2)
+  );
+
+  margin-top: var(
+    --command-palette-content-margin-top,
+    var(--shivanya-space-3)
+  );
+
+  max-height: min(
+    60vh,
+    420px
+  );
+
+  overflow-y: auto;
+}
+
+/* -------------------------------------------------- */
+/* State */
+/* -------------------------------------------------- */
+
+.shivanya-command-palette-state-default,
+.shivanya-command-palette-open {
+  opacity: 1;
+}
+
+.shivanya-command-palette-disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* -------------------------------------------------- */
+/* Responsive */
+/* -------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .shivanya-command-palette,
+  .shivanya-command-palette-sm,
+  .shivanya-command-palette-md,
+  .shivanya-command-palette-lg {
+    top: 5vh;
+
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+  }
+}
+
+/* -------------------------------------------------- */
+/* Reduced motion */
+/* -------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .shivanya-command-palette {
+    transition: none;
+  }
+}
