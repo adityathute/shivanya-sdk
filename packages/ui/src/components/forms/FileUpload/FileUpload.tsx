@@ -1,3 +1,4 @@
+"use client";
 import { useRef, useState } from "react";
 import { CloseIcon } from "../../../icons";
 import type { FileUploadProps } from "./FileUpload.types";
@@ -102,3 +103,4 @@ export function FileUpload({
     </div>
   );
 }
+

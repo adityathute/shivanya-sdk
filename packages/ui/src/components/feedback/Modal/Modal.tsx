@@ -1,3 +1,4 @@
+"use client";
 import type { ModalProps } from "./Modal.types";
 import { useEffect } from "react";
 import { forwardRef } from "react";
@@ -93,3 +94,4 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(function Modal(
 });
 
 Modal.displayName = "Modal";
+

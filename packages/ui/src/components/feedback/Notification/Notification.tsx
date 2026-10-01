@@ -1,3 +1,4 @@
+"use client";
 import type { NotificationProps } from "./Notification.types";
 import { forwardRef, useEffect, useState } from "react";
 import { IconButton } from "../../foundation/IconButton/IconButton";

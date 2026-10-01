@@ -1,3 +1,4 @@
+"use client";
 import type { DialogProps } from "./Dialog.types";
 import { useEffect, forwardRef } from "react";
 import { IconButton } from "../../foundation/IconButton/IconButton";

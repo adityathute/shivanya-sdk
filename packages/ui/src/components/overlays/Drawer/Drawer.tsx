@@ -1,3 +1,4 @@
+"use client";
 import {
   forwardRef,
   memo,
@@ -173,3 +174,4 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 
 Drawer.displayName = "Drawer";
 export default memo(Drawer);
+

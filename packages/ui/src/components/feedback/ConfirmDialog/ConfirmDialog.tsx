@@ -1,3 +1,4 @@
+"use client";
 import type { ConfirmDialogProps } from "./ConfirmDialog.types";
 import { useEffect } from "react";
 import { forwardRef } from "react";
@@ -25,3 +26,4 @@ export const ConfirmDialog = forwardRef<HTMLDivElement, ConfirmDialogProps>(func
   </div>;
 });
 ConfirmDialog.displayName = "ConfirmDialog";
+

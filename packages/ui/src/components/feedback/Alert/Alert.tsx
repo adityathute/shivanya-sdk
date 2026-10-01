@@ -1,3 +1,4 @@
+"use client";
 import type { AlertProps } from "./Alert.types";
 import { forwardRef, useState } from "react";
 import { IconButton } from "../../foundation/IconButton/IconButton";

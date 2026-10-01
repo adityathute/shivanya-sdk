@@ -1,3 +1,4 @@
+"use client";
 import {
   cloneElement,
   forwardRef,
@@ -149,3 +150,4 @@ export const FocusTrap = forwardRef<
 });
 
 FocusTrap.displayName = "FocusTrap";
+

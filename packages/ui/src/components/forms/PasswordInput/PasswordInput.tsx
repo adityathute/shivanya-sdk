@@ -1,3 +1,4 @@
+"use client";
 import { forwardRef, useId, useState } from "react";
 import type { PasswordInputProps } from "./PasswordInput.types";
 

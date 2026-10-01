@@ -1,3 +1,4 @@
+"use client";
 import { forwardRef, useMemo, useState } from "react";
 import { CloseIcon } from "../../../icons";
 import type { AutocompleteProps } from "./Autocomplete.types";

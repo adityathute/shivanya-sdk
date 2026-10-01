@@ -1,3 +1,4 @@
+"use client";
 import { forwardRef, useId, useState } from "react";
 
 import type { SelectProps } from "./Select.types";
@@ -121,3 +122,4 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 );
 
 Select.displayName = "Select";
+

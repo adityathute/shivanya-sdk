@@ -1,3 +1,4 @@
+"use client";
 import { useEffect } from "react";
 import type { ImageCropperModalProps } from "./ImageCropper.types";
 import ImageCropper from "./ImageCropper";

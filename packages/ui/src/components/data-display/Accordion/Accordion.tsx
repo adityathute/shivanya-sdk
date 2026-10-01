@@ -1,3 +1,4 @@
+"use client";
 import {
   Children,
   cloneElement,
@@ -216,3 +217,4 @@ const Accordion = Object.assign(
 Accordion.displayName = "Accordion";
 
 export { Accordion, AccordionItem };
+

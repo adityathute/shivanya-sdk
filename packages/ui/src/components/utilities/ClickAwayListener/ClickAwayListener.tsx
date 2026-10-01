@@ -1,3 +1,4 @@
+"use client";
 import {
   cloneElement,
   forwardRef,
@@ -115,3 +116,4 @@ export const ClickAwayListener = forwardRef<
 });
 
 ClickAwayListener.displayName = "ClickAwayListener";
+

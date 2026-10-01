@@ -1,3 +1,4 @@
+"use client";
 import { Children, forwardRef, memo, useEffect, useState } from "react";
 import type { CarouselProps } from "./Carousel.types";
 import { carouselDefaultProps } from "./config";
@@ -15,3 +16,4 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(function Carousel(pro
   </div>;
 });
 Carousel.displayName = "Carousel"; export default memo(Carousel);
+

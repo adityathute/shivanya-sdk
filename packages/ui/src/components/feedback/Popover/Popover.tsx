@@ -1,3 +1,4 @@
+"use client";
 import type { PopoverProps } from "./Popover.types";
 import { useEffect, useRef, useState } from "react";
 
@@ -13,3 +14,4 @@ export function Popover({ trigger, content, header, footer, open: controlledOpen
     {open && <div className="shivanya-popover-content" role="dialog">{header && <div className="shivanya-popover-header">{header}</div>}<div className="shivanya-popover-body">{content}</div>{footer && <div className="shivanya-popover-footer">{footer}</div>}</div>}
   </div>;
 }
+

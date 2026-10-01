@@ -1,3 +1,4 @@
+"use client";
 import {
   memo,
   useEffect,
@@ -43,3 +44,4 @@ export function Portal({
 Portal.displayName = "Portal";
 
 export default memo(Portal);
+

@@ -1,3 +1,4 @@
+"use client";
 import { forwardRef, useState } from "react";
 import type { DatePickerProps } from "./DatePicker.types";
 import { CloseIcon } from "../../../icons";
@@ -111,3 +112,4 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
 );
 
 DatePicker.displayName = "DatePicker";
+
