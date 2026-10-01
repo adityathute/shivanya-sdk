@@ -1,0 +1,1 @@
+import TabsComponent from "./Tabs"; import Tab from "./Tab"; import TabPanel from "./TabPanel"; const Tabs=Object.assign(TabsComponent,{Tab,Panel:TabPanel,TabPanel}); export {Tabs,Tab,TabPanel}; export * from "./config"; export default Tabs;

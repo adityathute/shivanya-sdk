@@ -1,0 +1,289 @@
+.stepper {
+  display: flex;
+  width: 100%;
+  font-family: var(--shivanya-font-family);
+
+  --stepper-circle: 40px;
+  --stepper-gap: 10px;
+  --stepper-line: var(--navigation-border);
+}
+
+.stepper-sm {
+  --stepper-circle: 32px;
+  --stepper-gap: 8px;
+}
+
+.stepper-md {
+  --stepper-circle: 40px;
+  --stepper-gap: 10px;
+}
+
+.stepper-lg {
+  --stepper-circle: 48px;
+  --stepper-gap: 12px;
+}
+
+/* Base */
+
+.step {
+  position: relative;
+  min-width: 0;
+  color: var(--navigation-text-secondary);
+}
+
+.stepper-horizontal {
+  flex-direction: row;
+}
+
+.stepper-horizontal .step {
+  flex: 1 1 0;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+  padding-inline: 8px;
+}
+
+.stepper-vertical {
+  flex-direction: column;
+}
+
+.stepper-vertical .step {
+  display: grid;
+  grid-template-columns: var(--stepper-circle) minmax(0, 1fr);
+  column-gap: var(--stepper-gap);
+
+  min-height: 84px;
+}
+
+/* Indicator */
+
+.stepIndicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1;
+}
+
+.stepper-horizontal .stepIndicator {
+  width: 100%;
+  height: var(--stepper-circle);
+}
+
+.stepper-vertical .stepIndicator {
+  width: var(--stepper-circle);
+  height: 100%;
+  min-height: 84px;
+}
+
+/* Circle */
+
+.stepCircle {
+  position: relative;
+  z-index: 2;
+
+  width: var(--stepper-circle);
+  height: var(--stepper-circle);
+
+  flex: 0 0 var(--stepper-circle);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border: 2px solid var(--navigation-border);
+  border-radius: 50%;
+
+  background: var(--navigation-surface);
+  color: var(--navigation-text-secondary);
+
+  font-weight: var(--shivanya-font-weight-semibold);
+
+  transition:
+    background var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    border-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+/* Connector */
+
+.stepLine {
+  position: absolute;
+  z-index: 0;
+
+  background: var(--stepper-line);
+
+  transition:
+    background var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+/* Horizontal connector */
+
+.stepper-horizontal .stepLine {
+  left: calc(50% + var(--stepper-circle) / 2);
+  top: calc(var(--stepper-circle) / 2 - 1px);
+
+  width: calc(100% - var(--stepper-circle) / 2);
+  height: 2px;
+}
+
+/* Vertical connector */
+
+.stepper-vertical .stepLine {
+  left: calc(var(--stepper-circle) / 2 - 1px);
+  top: var(--stepper-circle);
+
+  width: 2px;
+  height: calc(127% - var(--stepper-circle));
+}
+
+/* Completed connector */
+
+.stepLineCompleted {
+  background: var(--step-color);
+}
+
+/* Content */
+
+.stepContent {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+  min-width: 0;
+}
+
+.stepper-horizontal .stepContent {
+  align-items: center;
+  margin-top: 8px;
+}
+
+.stepper-vertical .stepContent {
+  padding-top: 2px;
+}
+
+/* Text */
+
+.stepTitle {
+  font-size: var(--shivanya-font-size-md);
+  font-weight: var(--shivanya-font-weight-semibold);
+  color: var(--navigation-text);
+}
+
+.stepDescription {
+  font-size: var(--shivanya-font-size-sm);
+  line-height: 1.5;
+  color: var(--navigation-text-muted);
+}
+
+/* Pending */
+
+.step-pending .stepCircle {
+  background: var(--navigation-surface);
+  border-color: var(--navigation-border);
+  color: var(--navigation-text-secondary);
+}
+
+/* Active */
+
+.step-active .stepCircle {
+  background: var(--step-color);
+  border-color: var(--step-color);
+  color: var(--shivanya-color-white);
+
+  box-shadow:
+    0 0 0 4px
+    var(--shivanya-color-primary-soft);
+}
+
+/* Completed */
+
+.step-completed .stepCircle {
+  background: var(--step-color);
+  border-color: var(--step-color);
+  color: var(--shivanya-color-white);
+}
+
+.step-completed .stepLine {
+  background: var(--step-color);
+}
+
+/* Error */
+
+.step-error .stepCircle {
+  background: var(--shivanya-color-danger);
+  border-color: var(--shivanya-color-danger);
+  color: var(--shivanya-color-white);
+}
+
+/* Disabled */
+
+.step-disabled .stepCircle {
+  background: var(--shivanya-color-disabled-background);
+  border-color: var(--shivanya-color-disabled-border);
+  color: var(--shivanya-color-disabled-text);
+}
+
+.stepDisabled,
+.stepperDisabled {
+  opacity: 0.55;
+}
+
+.stepClickable {
+  cursor: pointer;
+}
+
+/* Colors */
+
+.stepColor-primary {
+  --step-color: var(--shivanya-color-primary);
+}
+
+.stepColor-secondary {
+  --step-color: var(--shivanya-color-secondary);
+}
+
+.stepColor-success {
+  --step-color: var(--shivanya-color-success);
+}
+
+.stepColor-warning {
+  --step-color: var(--shivanya-color-warning);
+}
+
+.stepColor-danger {
+  --step-color: var(--shivanya-color-danger);
+}
+
+.stepColor-info {
+  --step-color: var(--shivanya-color-info);
+}
+
+/* Responsive */
+
+@media (max-width: 640px) {
+  .stepper-horizontal .stepContent {
+    max-width: 100px;
+  }
+
+  .stepDescription {
+    display: none;
+  }
+
+  .stepTitle {
+    font-size: var(--shivanya-font-size-xs);
+  }
+}

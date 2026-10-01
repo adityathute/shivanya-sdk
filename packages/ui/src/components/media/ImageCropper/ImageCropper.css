@@ -1,0 +1,99 @@
+.imageCropperOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--image-cropper-overlay-background);
+}
+
+.imageCropperModal {
+  display: flex;
+  flex-direction: column;
+
+  width: min(92vw, var(--image-cropper-width-md));
+  max-height: 92vh;
+
+  background: var(--image-cropper-background);
+  border: 1px solid var(--image-cropper-border-color);
+  border-radius: var(--image-cropper-radius-md);
+  box-shadow: var(--image-cropper-shadow);
+
+  overflow: hidden;
+}
+
+.shivanya-image-cropper {
+  padding: var(--image-cropper-padding);
+}
+
+.imageCropperArea {
+  position: relative;
+
+  width: 100%;
+  height: var(--image-cropper-crop-height-md);
+
+  overflow: hidden;
+
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+}
+
+.imageCropperControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: var(--image-cropper-padding);
+}
+
+.imageCropperSlider {
+  width: 100%;
+
+  accent-color: var(--image-cropper-slider-accent);
+}
+
+.imageCropperHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: var(--image-cropper-header-height);
+  padding: 0 var(--image-cropper-padding);
+
+  border-bottom: 1px solid var(--image-cropper-border-color);
+}
+
+.imageCropperTitle {
+  margin: 0;
+
+  color: var(--image-cropper-title-color);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-md);
+}
+
+.imageCropperClose {
+  color: var(--image-cropper-close-color);
+}
+
+.imageCropperFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: var(--image-cropper-gap);
+
+  min-height: var(--image-cropper-footer-height);
+  padding: var(--image-cropper-padding);
+
+  border-top: 1px solid var(--image-cropper-border-color);
+}
+
+@media (max-width: 640px) {
+  .imageCropperArea {
+    height: var(--image-cropper-crop-height-sm);
+  }
+}

@@ -1,0 +1,17 @@
+.sidebar{display:flex;flex-direction:column;width:100%;font-family:var(--shivanya-font-family)}
+.sidebarExtraSmall{--sidebar-height:28px;--sidebar-padding:4px 8px;font-size:var(--shivanya-font-size-xs)}
+.sidebarSmall{--sidebar-height:32px;--sidebar-padding:6px 10px;font-size:var(--shivanya-font-size-sm)}
+.sidebarMedium{--sidebar-height:40px;--sidebar-padding:8px 12px;font-size:var(--shivanya-font-size-md)}
+.sidebarLarge{--sidebar-height:48px;--sidebar-padding:10px 14px;font-size:var(--shivanya-font-size-lg)}
+.sidebarExtraLarge{--sidebar-height:56px;--sidebar-padding:12px 16px;font-size:var(--shivanya-font-size-xl)}
+.sidebarBordered{border:1px solid var(--navigation-border)}
+.sidebarFilled{background:var(--navigation-surface);border:1px solid var(--navigation-border)}
+.sidebarGhost{background:transparent;border-color:transparent}
+.sidebarRadiusNone{border-radius:0}.sidebarRadiusSmall{border-radius:var(--navigation-radius-sm)}.sidebarRadiusMedium{border-radius:var(--navigation-radius-md)}.sidebarRadiusLarge{border-radius:var(--navigation-radius-lg)}.sidebarRadiusFull{border-radius:var(--navigation-radius-full)}
+.sidebarItemStart .sidebarItem{justify-content:flex-start;text-align:left}.sidebarItemCenter .sidebarItem{justify-content:center;text-align:center}.sidebarItemEnd .sidebarItem{justify-content:flex-end;text-align:right}
+.sidebarItem{display:flex;align-items:center;gap:var(--navigation-gap-sm);width:100%;min-height:var(--sidebar-height);padding:var(--sidebar-padding);background:transparent;border:0;border-radius:var(--navigation-radius-sm);color:var(--navigation-text-secondary);font:inherit;text-decoration:none;cursor:pointer;transition:var(--navigation-transition)}
+.sidebarItem:hover,.sidebarItemActive{background:var(--navigation-surface-hover);color:var(--navigation-text)}
+.sidebarItemDisabled,.sidebarDisabled{opacity:.55;pointer-events:none;user-select:none}.sidebarLoading{opacity:.7;pointer-events:none}
+.sidebarIcon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}.sidebarLabel{display:inline-flex;align-items:center;min-width:0}.sidebarRightSection{margin-left:auto;display:inline-flex;align-items:center}
+.sidebarItem:focus-visible{outline:2px solid var(--shivanya-color-focus);outline-offset:2px}
+.sidebar{gap:4px;max-width:320px}.sidebarItem{width:100%}.sidebarFilled .sidebarItem:hover{background:var(--navigation-primary-soft)}.sidebarItemActive{background:var(--navigation-primary-soft);color:var(--navigation-primary);font-weight:var(--shivanya-font-weight-semibold)}

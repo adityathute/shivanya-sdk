@@ -1,0 +1,1 @@
+import PaginationComponent from "./Pagination"; import PaginationItem from "./PaginationItem"; const Pagination=Object.assign(PaginationComponent,{Item:PaginationItem}); export {Pagination,PaginationItem}; export * from "./config"; export default Pagination;

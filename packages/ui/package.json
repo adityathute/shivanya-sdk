@@ -54,5 +54,8 @@
   "license": "ISC",
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "react-easy-crop": "^6.2.3"
   }
 }

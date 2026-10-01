@@ -1,0 +1,2 @@
+"use client"; import React,{forwardRef,memo,useContext} from "react"; import {cn,mergeProps} from "../../../utils"; import {DropdownContext} from "./Dropdown";
+const DropdownContent=forwardRef<HTMLDivElement,any>(function DropdownContent(props,ref){const {className,style,children,...rest}=mergeProps({},props);const ctx=useContext(DropdownContext);if(!ctx?.open)return null;return <div ref={ref} style={style} className={cn("dropdownContent",className)} role="menu" {...rest}>{children}</div>}); DropdownContent.displayName="DropdownContent"; export default memo(DropdownContent);

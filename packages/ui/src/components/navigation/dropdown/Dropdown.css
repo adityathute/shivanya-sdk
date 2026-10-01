@@ -1,0 +1,262 @@
+.dropdown {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  width: max-content;
+  max-width: 100%;
+  font-family: var(--shivanya-font-family);
+  font-size: var(--shivanya-font-size-md);
+}
+.dropdownExtraSmall {
+  --dropdown-height: 28px;
+  --dropdown-padding: 4px 8px;
+  font-size: var(--shivanya-font-size-xs);
+}
+.dropdownSmall {
+  --dropdown-height: 32px;
+  --dropdown-padding: 6px 10px;
+  font-size: var(--shivanya-font-size-sm);
+}
+.dropdownMedium {
+  --dropdown-height: 40px;
+  --dropdown-padding: 8px 12px;
+  font-size: var(--shivanya-font-size-md);
+}
+.dropdownLarge {
+  --dropdown-height: 48px;
+  --dropdown-padding: 10px 14px;
+  font-size: var(--shivanya-font-size-lg);
+}
+.dropdownExtraLarge {
+  --dropdown-height: 56px;
+  --dropdown-padding: 12px 16px;
+  font-size: var(--shivanya-font-size-xl);
+}
+.dropdownBordered .dropdownTrigger {
+  border-color: var(--navigation-primary);
+}
+.dropdownFilled .dropdownTrigger,
+.dropdownFilled .dropdownContent {
+  background: var(--navigation-surface);
+  border-color: var(--navigation-border);
+}
+.dropdownGhost .dropdownTrigger {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.dropdownRadiusNone {
+  --dropdown-radius: 0;
+}
+.dropdownRadiusSmall {
+  --dropdown-radius: var(--navigation-radius-sm);
+}
+.dropdownRadiusMedium {
+  --dropdown-radius: var(--navigation-radius-md);
+}
+.dropdownRadiusLarge {
+  --dropdown-radius: var(--navigation-radius-lg);
+}
+.dropdownRadiusFull {
+  --dropdown-radius: var(--navigation-radius-full);
+}
+.dropdownBottom {
+  --dropdown-top: calc(100% + 8px);
+  --dropdown-left: 50%;
+  --dropdown-transform: translateX(-50%);
+}
+.dropdownBottomStart {
+  --dropdown-top: calc(100% + 8px);
+  --dropdown-left: 0;
+}
+.dropdownBottomEnd {
+  --dropdown-top: calc(100% + 8px);
+  --dropdown-right: 0;
+  --dropdown-left: auto;
+}
+.dropdownTop {
+  --dropdown-bottom: calc(100% + 8px);
+  --dropdown-left: 50%;
+  --dropdown-transform: translateX(-50%);
+}
+.dropdownTopStart {
+  --dropdown-bottom: calc(100% + 8px);
+  --dropdown-left: 0;
+}
+.dropdownTopEnd {
+  --dropdown-bottom: calc(100% + 8px);
+  --dropdown-right: 0;
+  --dropdown-left: auto;
+}
+.dropdownLeft {
+  --dropdown-top: 0;
+  --dropdown-right: calc(100% + 8px);
+  --dropdown-left: auto;
+}
+.dropdownRight {
+  --dropdown-top: 0;
+  --dropdown-left: calc(100% + 8px);
+}
+.dropdownTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--navigation-gap-sm);
+  min-width: 160px;
+  height: var(--dropdown-height);
+  padding: var(--dropdown-padding);
+  background: var(--navigation-surface);
+  border: 1px solid var(--navigation-border);
+  border-radius: var(--dropdown-radius, var(--navigation-radius-md));
+  color: var(--navigation-text);
+  font: inherit;
+  cursor: pointer;
+  transition: var(--navigation-transition);
+}
+.dropdownTrigger:hover {
+  background: var(--navigation-surface-hover);
+  border-color: var(--shivanya-color-border-hover);
+}
+.dropdownTrigger:focus-visible {
+  outline: 2px solid var(--shivanya-color-focus);
+  outline-offset: 2px;
+}
+.dropdownArrow {
+  flex: 0 0 auto;
+
+  width: 8px;
+  height: 8px;
+
+  box-sizing: border-box;
+
+  border-right: 2px solid var(--shivanya-color-text-secondary);
+  border-bottom: 2px solid var(--shivanya-color-text-secondary);
+
+  transform: translateY(-25%) rotate(45deg);
+
+  pointer-events: none;
+
+  transition:
+    transform var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    border-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
+}
+
+.dropdownArrow.is-open {
+  transform: translateY(25%) rotate(225deg);
+}
+
+.dropdownTrigger:hover:not(:disabled)
+  .dropdownArrow {
+  border-color: var(--shivanya-color-text-primary);
+}
+
+.dropdownTrigger:focus-visible
+  .dropdownArrow {
+  border-color: var(--shivanya-color-focus);
+}
+
+.dropdownTrigger:disabled
+  .dropdownArrow {
+  border-color: var(--shivanya-color-disabled-text);
+}
+.dropdownExtraSmall .dropdownArrow {
+  width: 6px;
+  height: 6px;
+}
+
+.dropdownSmall .dropdownArrow {
+  width: 7px;
+  height: 7px;
+}
+
+.dropdownMedium .dropdownArrow {
+  width: 8px;
+  height: 8px;
+}
+
+.dropdownLarge .dropdownArrow {
+  width: 9px;
+  height: 9px;
+}
+
+.dropdownExtraLarge .dropdownArrow {
+  width: 10px;
+  height: 10px;
+}
+
+.dropdownContent {
+  position: absolute;
+  top: var(--dropdown-top, calc(100% + 8px));
+  right: var(--dropdown-right, auto);
+  bottom: var(--dropdown-bottom, auto);
+  left: var(--dropdown-left, 0);
+  transform: var(--dropdown-transform, none);
+  display: flex;
+  flex-direction: column;
+  min-width: 220px;
+  padding: 6px;
+  background: var(--navigation-surface);
+  border: 1px solid var(--navigation-border);
+  border-radius: var(--dropdown-radius, var(--navigation-radius-md));
+  box-shadow: var(--navigation-shadow);
+  overflow: hidden;
+  z-index: 9999;
+}
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: var(--navigation-gap-sm);
+  width: 100%;
+  min-height: var(--dropdown-height);
+  padding: var(--dropdown-padding);
+  background: transparent;
+  border: 0;
+  border-radius: calc(
+    var(--dropdown-radius, var(--navigation-radius-md)) - 2px
+  );
+  color: var(--navigation-text-secondary);
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  transition: var(--navigation-transition);
+}
+.dropdownItem:hover,
+.dropdownItemActive {
+  background: var(--navigation-surface-hover);
+  color: var(--navigation-text);
+}
+.dropdownItemDisabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+.dropdownItemStart {
+  align-items: stretch;
+}
+.dropdownItemCenter .dropdownItem {
+  text-align: center;
+  justify-content: center;
+}
+.dropdownItemEnd .dropdownItem {
+  text-align: right;
+  justify-content: flex-end;
+}
+.dropdownIcon {
+  display: inline-flex;
+  align-items: center;
+}
+.dropdownLabel {
+  flex: 1;
+}
+.dropdownRightSection {
+  margin-left: auto;
+}
+.dropdownLoading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+.dropdownDisabled {
+  opacity: 0.55;
+  pointer-events: none;
+}

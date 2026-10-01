@@ -48,83 +48,13 @@
 /* Icon foundation styles */
 @import "../icons/IconBase.css";
 
-/* Components */
-@import "../components/foundation/Button/Button.css";
-@import "../components/foundation/IconButton/IconButton.css";
-@import "../components/foundation/Typography/Typography.css";
-@import "../components/foundation/Badge/Badge.css";
-@import "../components/foundation/Divider/Divider.css";
-@import "../components/foundation/Link/Link.css";
-@import "../components/foundation/Logo/Logo.css";
-@import "../components/foundation/Progress/Progress.css";
-@import "../components/foundation/Skeleton/Skeleton.css";
-@import "../components/foundation/Spinner/Spinner.css";
-
-/* Forms */
-@import "../components/forms/Input/Input.css";
-@import "../components/forms/Autocomplete/Autocomplete.css";
-@import "../components/forms/Checkbox/Checkbox.css";
-@import "../components/forms/DatePicker/DatePicker.css";
-@import "../components/forms/DateRangePicker/DateRangePicker.css";
-@import "../components/forms/ErrorMessage/ErrorMessage.css";
-@import "../components/forms/FileUpload/FileUpload.css";
-@import "../components/forms/FormField/FormField.css";
-@import "../components/forms/FormGroup/FormGroup.css";
-@import "../components/forms/HelperText/HelperText.css";
-@import "../components/forms/Label/Label.css";
-@import "../components/forms/NumberInput/NumberInput.css";
-@import "../components/forms/OtpInput/OtpInput.css";
-@import "../components/forms/PasswordInput/PasswordInput.css";
-@import "../components/forms/Radio/Radio.css";
-@import "../components/forms/Select/Select.css";
-@import "../components/forms/Switch/Switch.css";
-@import "../components/forms/Textarea/Textarea.css";
-
-/* Utilities */
-@import "../components/utilities/ClickAwayListener/ClickAwayListener.css";
-@import "../components/utilities/FocusTrap/FocusTrap.css";
-@import "../components/utilities/Portal/Portal.css";
-@import "../components/utilities/ScrollArea/ScrollArea.css";
-@import "../components/utilities/VisuallyHidden/VisuallyHidden.css";
-@import "../components/utilities/CopyButton/CopyButton.css";
-
-/* Data Display */
-@import "../components/data-display/Accordion/Accordion.css";
-@import "../components/data-display/AnimatedNumber/AnimatedNumber.css";
-@import "../components/data-display/Avatar/Avatar.css";
-@import "../components/data-display/Calendar/Calendar.css";
-@import "../components/data-display/Card/Card.css";
-@import "../components/data-display/Chip/Chip.css";
-@import "../components/data-display/DataGrid/DataGrid.css";
-@import "../components/data-display/EmptyState/EmptyState.css";
-@import "../components/data-display/List/List.css";
-@import "../components/data-display/Statistic/Statistic.css";
-@import "../components/data-display/Table/Table.css";
-@import "../components/data-display/Timeline/Timeline.css";
-@import "../components/data-display/TreeView/TreeView.css";
-
-/* Feedback */
-@import "../components/feedback/Alert/Alert.css";
-@import "../components/feedback/Dialog/Dialog.css";
-@import "../components/feedback/ConfirmDialog/ConfirmDialog.css";
-@import "../components/feedback/Modal/Modal.css";
-@import "../components/feedback/LoadingOverlay/LoadingOverlay.css";
-@import "../components/feedback/Notification/Notification.css";
-@import "../components/feedback/Popover/Popover.css";
-@import "../components/feedback/Toast/Toast.css";
-@import "../components/feedback/Tooltip/Tooltip.css";
-
-/* Charts */
+/* UI Components styles */
+@import "../components/foundation/foundation.css";
+@import "../components/forms/forms.css";
+@import "../components/utilities/utilities.css";
+@import "../components/data-display/data-display.css";
+@import "../components/feedback/feedback.css";
 @import "../components/charts/Charts.css";
-@import "../components/charts/BarChart/BarChart.css";
-@import "../components/charts/DonutChart/DonutChart.css";
-@import "../components/charts/PieChart/PieChart.css";
-
-/* Layout */
-@import "../components/layout/AspectRatio/AspectRatio.css";
-@import "../components/layout/Box/Box.css";
-@import "../components/layout/Container/Container.css";
-@import "../components/layout/Flex/Flex.css";
-@import "../components/layout/Grid/Grid.css";
-@import "../components/layout/Spacer/Spacer.css";
-@import "../components/layout/Stack/Stack.css";
+@import "../components/layout/layout.css";
+@import "../components/media/media.css";
+@import "../components/navigation/navigation.css";

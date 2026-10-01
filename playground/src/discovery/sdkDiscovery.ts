@@ -84,12 +84,19 @@ function getDemoPath(
   categoryId: string,
   componentId: string,
 ): string | null {
-  const expectedPath =
-    `../demos/${packageId}/${categoryId}/${componentId}Demo.tsx`;
+  const componentName = formatName(componentId).replace(
+    /\s/g,
+    "",
+  );
 
-  return Object.keys(demoEntries).includes(expectedPath)
-    ? expectedPath
-    : null;
+  const expectedPath =
+    `../demos/${packageId}/${categoryId}/${componentName}Demo.tsx`;
+
+  const demoPath = Object.keys(demoEntries).find(
+    (path) => path.toLowerCase() === expectedPath.toLowerCase(),
+  );
+
+  return demoPath ?? null;
 }
 
 function getPackageDemoPath(

@@ -1,0 +1,1 @@
+import SidebarComponent from "./Sidebar"; import SidebarItem from "./SidebarItem"; const Sidebar=Object.assign(SidebarComponent,{Item:SidebarItem}); export {Sidebar,SidebarItem}; export * from "./config"; export default Sidebar;

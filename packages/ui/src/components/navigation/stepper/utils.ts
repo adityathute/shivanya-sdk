@@ -1,0 +1,1 @@
+export const getStepStatus=(index:number,activeStep:number)=>index<activeStep?"completed":index===activeStep?"active":"pending"; export const clampStep=(step:number,total:number)=>Math.max(0,Math.min(step,Math.max(0,total-1))); export const getStepProgress=(active:number,total:number)=>total<=1?0:(active/(total-1))*100;

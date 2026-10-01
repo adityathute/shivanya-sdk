@@ -1,0 +1,2 @@
+import DropdownComponent,{DropdownContext} from "./Dropdown"; import DropdownTrigger from "./DropdownTrigger"; import DropdownContent from "./DropdownContent"; import DropdownItem from "./DropdownItem";
+const Dropdown=Object.assign(DropdownComponent,{Trigger:DropdownTrigger,Content:DropdownContent,Item:DropdownItem}); export {Dropdown,DropdownContext,DropdownTrigger,DropdownContent,DropdownItem}; export * from "./config"; export default Dropdown;

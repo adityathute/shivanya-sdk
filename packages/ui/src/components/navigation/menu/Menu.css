@@ -1,0 +1,17 @@
+.menu{display:flex;flex-direction:column;width:100%;font-family:var(--shivanya-font-family)}
+.menuExtraSmall{--menu-height:28px;--menu-padding:4px 8px;font-size:var(--shivanya-font-size-xs)}
+.menuSmall{--menu-height:32px;--menu-padding:6px 10px;font-size:var(--shivanya-font-size-sm)}
+.menuMedium{--menu-height:40px;--menu-padding:8px 12px;font-size:var(--shivanya-font-size-md)}
+.menuLarge{--menu-height:48px;--menu-padding:10px 14px;font-size:var(--shivanya-font-size-lg)}
+.menuExtraLarge{--menu-height:56px;--menu-padding:12px 16px;font-size:var(--shivanya-font-size-xl)}
+.menuBordered{border:1px solid var(--navigation-border)}
+.menuFilled{background:var(--navigation-surface);border:1px solid var(--navigation-border)}
+.menuGhost{background:transparent;border-color:transparent}
+.menuRadiusNone{border-radius:0}.menuRadiusSmall{border-radius:var(--navigation-radius-sm)}.menuRadiusMedium{border-radius:var(--navigation-radius-md)}.menuRadiusLarge{border-radius:var(--navigation-radius-lg)}.menuRadiusFull{border-radius:var(--navigation-radius-full)}
+.menuItemStart .menuItem{justify-content:flex-start;text-align:left}.menuItemCenter .menuItem{justify-content:center;text-align:center}.menuItemEnd .menuItem{justify-content:flex-end;text-align:right}
+.menuItem{display:flex;align-items:center;gap:var(--navigation-gap-sm);width:100%;min-height:var(--menu-height);padding:var(--menu-padding);background:transparent;border:0;border-radius:var(--navigation-radius-sm);color:var(--navigation-text-secondary);font:inherit;text-decoration:none;cursor:pointer;transition:var(--navigation-transition)}
+.menuItem:hover,.menuItemActive{background:var(--navigation-surface-hover);color:var(--navigation-text)}
+.menuItemDisabled,.menuDisabled{opacity:.55;pointer-events:none;user-select:none}.menuLoading{opacity:.7;pointer-events:none}
+.menuIcon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}.menuLabel{display:inline-flex;align-items:center;min-width:0}.menuRightSection{margin-left:auto;display:inline-flex;align-items:center}
+.menuItem:focus-visible{outline:2px solid var(--shivanya-color-focus);outline-offset:2px}
+.menu{gap:4px}.menuFilled .menuItem:hover{background:var(--navigation-primary-soft)}

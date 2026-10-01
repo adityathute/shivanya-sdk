@@ -1,3 +1,8 @@
+
+@import "./BarChart/BarChart.css";
+@import "./DonutChart/DonutChart.css";
+@import "./PieChart/PieChart.css";
+
 :root {
   --shivanya-chart-color-1: var(--shivanya-color-primary);
   --shivanya-chart-color-2: var(--shivanya-color-success);

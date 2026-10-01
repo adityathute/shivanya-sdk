@@ -1,0 +1,1 @@
+import NavbarComponent from "./Navbar"; import NavbarItem from "./NavbarItem"; const Navbar=Object.assign(NavbarComponent,{Item:NavbarItem}); export {Navbar,NavbarItem}; export * from "./config"; export default Navbar;

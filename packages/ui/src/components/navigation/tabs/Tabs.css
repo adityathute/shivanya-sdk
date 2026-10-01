@@ -1,0 +1,246 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  gap: var(--navigation-gap-md);
+  font-family: var(--shivanya-font-family);
+}
+
+.tabsExtraSmall {
+  --tabs-height: 28px;
+  font-size: var(--shivanya-font-size-xs);
+}
+
+.tabsSmall {
+  --tabs-height: 32px;
+  font-size: var(--shivanya-font-size-sm);
+}
+
+.tabsMedium {
+  --tabs-height: 40px;
+  font-size: var(--shivanya-font-size-md);
+}
+
+.tabsLarge {
+  --tabs-height: 48px;
+  font-size: var(--shivanya-font-size-lg);
+}
+
+.tabsExtraLarge {
+  --tabs-height: 56px;
+  font-size: var(--shivanya-font-size-xl);
+}
+
+.tabsBordered {
+  border: 1px solid var(--navigation-border);
+}
+
+.tabsFilled {
+  background: var(--navigation-surface);
+  border: 1px solid var(--navigation-border);
+}
+
+.tabsGhost {
+  background: transparent;
+}
+
+.tabsRadiusNone {
+  border-radius: 0;
+}
+
+.tabsRadiusSmall {
+  border-radius: var(--navigation-radius-sm);
+}
+
+.tabsRadiusMedium {
+  border-radius: var(--navigation-radius-md);
+}
+
+.tabsRadiusLarge {
+  border-radius: var(--navigation-radius-lg);
+}
+
+.tabsRadiusFull {
+  border-radius: var(--navigation-radius-full);
+}
+
+.tabsHorizontal {
+  flex-direction: column;
+}
+
+.tabsVertical {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.tabsList {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  gap: 2px;
+  border-bottom: 1px solid var(--navigation-border);
+  overflow: hidden;
+}
+
+.tabsVertical .tabsList {
+  flex: 0 1 180px;
+  flex-direction: column;
+  min-width: 0;
+  border-bottom: 0;
+  border-right: 1px solid var(--navigation-border);
+}
+
+.tabsButton {
+  position: relative;
+  display: inline-flex;
+  flex: 1 1 0;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: var(--tabs-height);
+  padding: 0 8px;
+  background: transparent;
+  border: 0;
+  border-radius: var(--navigation-radius-sm);
+  color: var(--navigation-text-secondary);
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--navigation-transition);
+}
+
+.tabsButton:hover {
+  background: var(--navigation-surface-hover);
+  color: var(--navigation-text);
+}
+
+.tabsButtonActive {
+  color: var(--navigation-primary);
+  font-weight: var(--shivanya-font-weight-semibold);
+}
+
+.tabsButtonActive::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: -1px;
+  height: 2px;
+  background: var(--navigation-primary);
+  border-radius: 2px;
+}
+
+.tabsVertical .tabsButton {
+  flex: 0 0 auto;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.tabsVertical .tabsButtonActive::after {
+  left: auto;
+  right: -1px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  height: auto;
+}
+
+.tabsButtonDisabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.tabsButtonFullWidth {
+  flex: 1 1 0;
+}
+
+.tabsFullWidth .tabsList {
+  width: 100%;
+}
+
+.tabsPanel {
+  min-width: 0;
+  padding: var(--navigation-gap-lg) 0;
+  color: var(--navigation-text-secondary);
+  overflow-wrap: break-word;
+}
+
+.tabsPanelHidden {
+  display: none;
+}
+
+.tabsPanelVisible {
+  display: block;
+}
+
+.tabsLoading,
+.tabsDisabled {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.tabsIcon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.tabsLabel {
+  display: inline-flex;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tabsBadge {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: var(--navigation-radius-full);
+  background: var(--navigation-primary);
+  color: var(--shivanya-color-white);
+  font-size: var(--shivanya-font-size-xs);
+}
+
+@media (max-width: 640px) {
+  .tabsButton {
+    padding-inline: 6px;
+    gap: 3px;
+  }
+
+  .tabsButtonActive::after {
+    left: 5px;
+    right: 5px;
+  }
+
+  .tabsVertical {
+    flex-direction: column;
+  }
+
+  .tabsVertical .tabsList {
+    width: 100%;
+    flex: none;
+    border-right: 0;
+    border-bottom: 1px solid var(--navigation-border);
+  }
+
+  .tabsVertical .tabsButton {
+    width: auto;
+    flex: 1 1 0;
+    justify-content: center;
+  }
+
+  .tabsVertical .tabsButtonActive::after {
+    left: 5px;
+    right: 5px;
+    top: auto;
+    bottom: -1px;
+    width: auto;
+    height: 2px;
+  }
+}
