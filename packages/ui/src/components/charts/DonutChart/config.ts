@@ -1,0 +1,7 @@
+import type { DonutChartDatum } from "./DonutChart.types";
+export const donutChartSizes={xs:160,sm:220,md:280,lg:340,xl:420} as const;
+export const donutChartVariants={default:"default",bordered:"bordered",filled:"filled",ghost:"ghost"} as const;
+export const donutChartStates={default:"default",loading:"loading",empty:"empty",disabled:"disabled"} as const;
+export const donutChartLegendPositions={top:"top",right:"right",bottom:"bottom",left:"left"} as const;
+export const donutChartDefaultColors=["var(--shivanya-chart-color-1)","var(--shivanya-chart-color-2)","var(--shivanya-chart-color-3)","var(--shivanya-chart-color-4)","var(--shivanya-chart-color-5)","var(--shivanya-chart-color-6)","var(--shivanya-chart-color-7)","var(--shivanya-chart-color-8)"] as const;
+export const donutChartDefaultProps={data:[] as DonutChartDatum[],size:"md",variant:"default",state:"default",innerRadius:null,outerRadius:null,padAngle:2,cornerRadius:12,startAngle:-90,endAngle:270,colors:[...donutChartDefaultColors] as string[],showLegend:true,legendPosition:"right",showLabels:false,labelPosition:"none",showCenterValue:true,showCenterLabel:true,centerValue:null,centerLabel:"Total",showTooltip:true,tooltipPosition:"auto",animate:true,animation:"draw",animationDuration:500,hoverScale:1.05,activeIndex:null,valueFormatter:null,labelFormatter:null,tooltipFormatter:null,centerFormatter:null,onSegmentClick:null,onSegmentHover:null,onAnimationEnd:undefined} as const;

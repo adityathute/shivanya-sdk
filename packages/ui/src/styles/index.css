@@ -113,3 +113,9 @@
 @import "../components/feedback/Popover/Popover.css";
 @import "../components/feedback/Toast/Toast.css";
 @import "../components/feedback/Tooltip/Tooltip.css";
+
+/* Charts */
+@import "../components/charts/Charts.css";
+@import "../components/charts/BarChart/BarChart.css";
+@import "../components/charts/DonutChart/DonutChart.css";
+@import "../components/charts/PieChart/PieChart.css";

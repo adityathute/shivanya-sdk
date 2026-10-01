@@ -1,0 +1,5 @@
+import type { CSSProperties, HTMLAttributes, ReactNode } from "react";
+export type PieChartSize="xs"|"sm"|"md"|"lg"|"xl"; export type PieChartState="default"|"loading"|"empty"|"disabled"; export type PieChartLegendPosition="top"|"right"|"bottom"|"left";
+export interface PieChartDatum{id?:string|number;label?:string;name?:string;value?:number|string;color?:string;[key:string]:unknown}
+export interface PieChartSegment extends PieChartDatum{id:string|number;label:string;value:number;percentage:number;startAngle:number;endAngle:number;color?:string}
+export interface PieChartProps extends HTMLAttributes<HTMLDivElement>{size?:PieChartSize;data?:PieChartDatum[];state?:PieChartState;outerRadius?:number;startAngle?:number;endAngle?:number;showLabels?:boolean;showLegend?:boolean;legendPosition?:PieChartLegendPosition;valueFormatter?:((value:number|string)=>ReactNode);labelFormatter?:((value:string)=>ReactNode);onSegmentClick?:((segment:PieChartSegment)=>void);className?:string;style?:CSSProperties}

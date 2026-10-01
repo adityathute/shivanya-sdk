@@ -1,0 +1,11 @@
+export const DEFAULT_PADDING = Object.freeze({ top: 48, right: 0, bottom: 24, left: 0 });
+export const DEFAULT_ROW_HEIGHT = 44;
+export const DEFAULT_MIN_HEIGHT = 180;
+export const DEFAULT_LABEL_WIDTH = 88;
+export const DEFAULT_VALUE_WIDTH = 80;
+export const LABEL_WIDTH = DEFAULT_LABEL_WIDTH;
+export const VALUE_WIDTH = DEFAULT_VALUE_WIDTH;
+export const BAR_HEIGHT = 18;
+export const ROW_HEIGHT = 42;
+export const BAR_MIN_WIDTH = 18;
+export const BAR_GAP = 40;

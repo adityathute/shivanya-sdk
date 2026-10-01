@@ -1,0 +1,56 @@
+.shivanya-bar-chart {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  color: var(--shivanya-color-text-primary);
+}
+.shivanya-bar-chart svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.shivanya-chart-bar {
+  cursor: pointer;
+  transition:
+    filter 0.25s ease,
+    opacity 0.25s ease;
+}
+.shivanya-chart-bar:hover {
+  filter: brightness(1.08);
+}
+.shivanya-chart-skeleton {
+  fill: var(--shivanya-color-surface-hover);
+  animation: shivanya-chart-skeleton-pulse 1.4s ease-in-out infinite;
+}
+.shivanya-chart-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  color: var(--shivanya-color-text-secondary);
+}
+.shivanya-bar-chart.is-disabled {
+  opacity: 0.6;
+}
+@keyframes shivanya-chart-skeleton-pulse {
+  0% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.35;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shivanya-chart-bar,
+  .shivanya-chart-skeleton {
+    transition: none;
+    animation: none;
+  }
+}
