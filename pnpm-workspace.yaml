@@ -3,3 +3,4 @@ packages:
   - "playground"
 minimumReleaseAgeExclude:
   - shivanya-ui@1.0.0
+  - shivanya-core@1.0.0

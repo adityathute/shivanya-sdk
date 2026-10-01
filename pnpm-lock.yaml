@@ -11,8 +11,8 @@ importers:
   packages/ai:
     dependencies:
       shivanya-core:
-        specifier: workspace:*
-        version: link:../core
+        specifier: ^1.0.0
+        version: 1.0.0
     devDependencies:
       typescript:
         specifier: ^7.0.2
@@ -658,6 +658,9 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
+  shivanya-core@1.0.0:
+    resolution: {integrity: sha512-IRbL+L2L8Kft9QrQhgCMiokmer/50U0vbRKS+fhWrvGguyW8DBegZGaJ6sSWvokBFJHjMTevQ+IIsC8nA29tkQ==}
+
   shivanya-ui@1.0.0:
     resolution: {integrity: sha512-s/M6k3MCJZhkne61G7L+16UWgn/1pnNP1CBN+9km+6vxx4zfLk/RSXPf2iGSgcxjSowBkmnO2uLyonCdbAE8Ig==}
     peerDependencies:
@@ -1146,6 +1149,8 @@ snapshots:
       fast-glob: 3.3.3
       interpret: 1.4.0
       rechoir: 0.6.2
+
+  shivanya-core@1.0.0: {}
 
   shivanya-ui@1.0.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
     dependencies:
