@@ -1,0 +1,102 @@
+.shell-demo-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.shell-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.shell-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.shell-demo-card {
+  min-height: 120px;
+  padding: 20px;
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+  background: var(--shivanya-color-surface);
+  box-sizing: border-box;
+}
+.shell-demo-preview {
+  width: 100%;
+  min-height: 320px;
+  overflow: hidden;
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-lg);
+  background: var(--shivanya-color-background);
+}
+.shell-demo-preview-tall {
+  min-height: 520px;
+}
+.shell-demo-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--shivanya-color-text);
+}
+.shell-demo-muted {
+  font-size: 13px;
+  color: var(--shivanya-color-text-secondary);
+}
+.shell-demo-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+  background: var(--shivanya-color-surface);
+  color: var(--shivanya-color-text);
+  font: inherit;
+  cursor: pointer;
+}
+.shell-demo-control:hover {
+  background: var(--shivanya-color-background);
+}
+.shell-demo-control-primary {
+  border-color: var(--shivanya-color-primary);
+  background: var(--shivanya-color-primary);
+  color: var(--shivanya-color-on-primary, #fff);
+}
+.shell-demo-content {
+  padding: 24px;
+}
+.shell-demo-dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.shell-demo-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.shell-demo-stat {
+  padding: 16px;
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+  background: var(--shivanya-color-surface);
+}
+.shell-demo-code-note {
+  padding: 12px 14px;
+  border-left: 3px solid var(--shivanya-color-primary);
+  background: var(--shivanya-color-surface);
+  font-size: 13px;
+}
+.shell-demo-mobile-hint {
+  display: none;
+}
+@media (max-width: 767px) {
+  .shell-demo-grid,
+  .shell-demo-stat-grid {
+    grid-template-columns: 1fr;
+  }
+  .shell-demo-mobile-hint {
+    display: block;
+  }
+}

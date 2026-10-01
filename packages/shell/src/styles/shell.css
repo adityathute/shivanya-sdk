@@ -1,0 +1,559 @@
+.shivanya-shell {
+  min-height: 100dvh;
+  width: 100%;
+  background: var(--shivanya-color-background);
+  color: var(--shivanya-color-text-primary);
+}
+
+.shivanya-shell-body {
+  min-height: calc(100dvh - 64px);
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+}
+
+.shivanya-shell-body.no-sidebar {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.shivanya-shell-body.is-collapsed {
+  grid-template-columns: 72px minmax(0, 1fr);
+}
+
+/* -------------------------------------------------------------
+   Header
+------------------------------------------------------------- */
+
+.shivanya-shell-header {
+  z-index: 100;
+  width: 100%;
+  min-height: 64px;
+  background: var(--shivanya-color-surface);
+  border-bottom: 1px solid var(--shivanya-color-border);
+}
+
+.shivanya-shell-header-sticky {
+  position: sticky;
+  top: 0;
+}
+
+.shivanya-shell-header-fixed {
+  position: fixed;
+  inset: 0 0 auto;
+}
+
+.shivanya-shell-header-inner {
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+}
+
+.shivanya-shell-header-start,
+.shivanya-shell-header-end {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.shivanya-shell-header-end {
+  justify-content: flex-end;
+}
+
+.shivanya-shell-header-center {
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* -------------------------------------------------------------
+   Header buttons
+------------------------------------------------------------- */
+
+.shivanya-shell-menu-button,
+.shivanya-shell-mobile-close,
+.shivanya-shell-drawer-header button {
+  width: 38px;
+  height: 38px;
+  display: inline-grid;
+  place-items: center;
+
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-md);
+
+  background: var(--shivanya-color-surface);
+  color: var(--shivanya-color-text-primary);
+
+  cursor: pointer;
+}
+
+.shivanya-shell-menu-button:hover,
+.shivanya-shell-mobile-close:hover,
+.shivanya-shell-drawer-header button:hover {
+  background: var(--shivanya-color-surface-hover);
+}
+
+.shivanya-shell-menu-button:focus-visible,
+.shivanya-shell-mobile-close:focus-visible,
+.shivanya-shell-drawer-header button:focus-visible {
+  outline: 2px solid var(--shivanya-color-focus);
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------------------------
+   Brand
+------------------------------------------------------------- */
+
+.shivanya-shell-brand {
+  color: var(--shivanya-color-text-primary);
+  text-decoration: none;
+  display: inline-flex;
+  min-width: 0;
+}
+
+.shivanya-shell-brand-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.shivanya-shell-brand-image {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  border-radius: var(--shivanya-radius-md);
+  flex: 0 0 auto;
+}
+
+.shivanya-shell-brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.shivanya-shell-brand-text strong {
+  color: var(--shivanya-color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shivanya-shell-brand-text small {
+  color: var(--shivanya-color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* -------------------------------------------------------------
+   Desktop sidebar
+------------------------------------------------------------- */
+
+.shivanya-shell-desktop-sidebar {
+  min-width: 0;
+}
+
+.shivanya-shell-sidebar {
+  width: 240px;
+  min-height: calc(100dvh - 64px);
+
+  box-sizing: border-box;
+
+  background: var(--shivanya-color-surface);
+  border-right: 1px solid var(--shivanya-color-border);
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: auto;
+}
+
+.shivanya-shell-sidebar-right {
+  border-right: 0;
+  border-left: 1px solid var(--shivanya-color-border);
+}
+
+.shivanya-shell-sidebar-fixed {
+  position: sticky;
+  top: 64px;
+  height: calc(100dvh - 64px);
+}
+
+.shivanya-shell-sidebar-overlay {
+  position: fixed;
+  top: 64px;
+  bottom: 0;
+  z-index: 90;
+}
+
+.shivanya-shell-sidebar-overlay.shivanya-shell-sidebar-left {
+  left: 0;
+}
+
+.shivanya-shell-sidebar-overlay.shivanya-shell-sidebar-right {
+  right: 0;
+}
+
+/* -------------------------------------------------------------
+   Sidebar brand
+------------------------------------------------------------- */
+
+.shivanya-shell-sidebar-brand {
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--shivanya-color-border);
+}
+
+/* -------------------------------------------------------------
+   Navigation
+------------------------------------------------------------- */
+
+.shivanya-shell-nav {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.shivanya-shell-nav-item {
+  width: 100%;
+  min-height: 42px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 9px 11px;
+
+  border: 0;
+  border-radius: var(--shivanya-radius-md);
+
+  background: transparent;
+  color: var(--shivanya-color-text-primary);
+
+  text-decoration: none;
+  text-align: left;
+
+  cursor: pointer;
+  font: inherit;
+}
+
+.shivanya-shell-nav-item:hover {
+  background: var(--shivanya-color-surface-hover);
+}
+
+.shivanya-shell-nav-item.is-active {
+  background: var(--shivanya-color-primary-soft);
+  color: var(--shivanya-color-primary);
+  font-weight: 600;
+}
+
+.shivanya-shell-nav-item.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.shivanya-shell-nav-icon {
+  width: 22px;
+  min-width: 22px;
+
+  display: inline-grid;
+  place-items: center;
+}
+
+.shivanya-shell-nav-label {
+  min-width: 0;
+  flex: 1;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shivanya-shell-nav-badge,
+.shivanya-shell-nav-end {
+  flex: 0 0 auto;
+}
+
+.shivanya-shell-nav-divider {
+  height: 1px;
+  margin: 8px 4px;
+  background: var(--shivanya-color-divider);
+}
+
+/* -------------------------------------------------------------
+   Collapsed sidebar
+------------------------------------------------------------- */
+
+.shivanya-shell-sidebar-collapsed
+  .shivanya-shell-nav-item {
+  justify-content: center;
+  padding-inline: 8px;
+}
+
+.shivanya-shell-sidebar-collapsed
+  .shivanya-shell-nav-label,
+.shivanya-shell-sidebar-collapsed
+  .shivanya-shell-nav-badge,
+.shivanya-shell-sidebar-collapsed
+  .shivanya-shell-nav-end {
+  display: none;
+}
+
+.shivanya-shell-sidebar-collapsed
+  .shivanya-shell-sidebar-brand
+  .shivanya-shell-brand-text {
+  display: none;
+}
+
+/* -------------------------------------------------------------
+   Sidebar footer
+------------------------------------------------------------- */
+
+.shivanya-shell-sidebar-footer {
+  margin-top: auto;
+  padding: 14px;
+  border-top: 1px solid var(--shivanya-color-border);
+}
+
+.shivanya-shell-sidebar-footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+
+  color: var(--shivanya-color-text-muted);
+  font-size: 12px;
+}
+
+/* -------------------------------------------------------------
+   Main
+------------------------------------------------------------- */
+
+.shivanya-shell-main {
+  min-width: 0;
+  min-height: calc(100dvh - 64px);
+
+  padding: 24px;
+
+  box-sizing: border-box;
+  overflow-x: auto;
+
+  background: var(--shivanya-color-background);
+}
+
+/* -------------------------------------------------------------
+   Footer
+------------------------------------------------------------- */
+
+.shivanya-shell-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 12px;
+  padding: 20px 24px;
+
+  border-top: 1px solid var(--shivanya-color-border);
+
+  background: var(--shivanya-color-surface);
+  color: var(--shivanya-color-text-muted);
+}
+
+.shivanya-shell-footer-copy {
+  font-size: 12px;
+}
+
+/* -------------------------------------------------------------
+   Centered content
+------------------------------------------------------------- */
+
+.shivanya-shell-centered-content {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* -------------------------------------------------------------
+   Page container
+------------------------------------------------------------- */
+
+.shivanya-page-container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* -------------------------------------------------------------
+   Page header
+------------------------------------------------------------- */
+
+.shivanya-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+  flex-wrap: wrap;
+
+  margin-bottom: 24px;
+}
+
+.shivanya-page-header-content {
+  min-width: 0;
+}
+
+.shivanya-page-header-content h1 {
+  margin: 0;
+
+  color: var(--shivanya-color-text-primary);
+
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.shivanya-page-header-content p {
+  margin: 8px 0 0;
+  color: var(--shivanya-color-text-secondary);
+}
+
+.shivanya-page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* -------------------------------------------------------------
+   Mobile layer
+------------------------------------------------------------- */
+
+.shivanya-shell-mobile-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: none;
+}
+
+.shivanya-shell-mobile-backdrop {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+
+  border: 0;
+
+  background: var(--shivanya-color-overlay);
+
+  cursor: pointer;
+}
+
+.shivanya-shell-mobile-panel {
+  position: relative;
+
+  height: 100%;
+  max-width: 90vw;
+
+  background: var(--shivanya-color-surface);
+
+  box-shadow: var(--shivanya-shadow-lg);
+}
+
+.shivanya-shell-mobile-close {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  z-index: 2;
+
+  font-size: 22px;
+}
+
+.shivanya-shell-mobile-sidebar {
+  width: 100% !important;
+
+  min-height: 100%;
+  height: 100%;
+
+  border: 0;
+
+  padding-top: 56px;
+}
+
+.shivanya-shell-mobile-sidebar
+  .shivanya-shell-sidebar-brand {
+  padding-right: 64px;
+}
+
+/* -------------------------------------------------------------
+   Drawer header
+------------------------------------------------------------- */
+
+.shivanya-shell-drawer-header {
+  min-height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+  padding: 0 12px;
+
+  border-bottom: 1px solid var(--shivanya-color-border);
+
+  background: var(--shivanya-color-surface);
+}
+
+/* -------------------------------------------------------------
+   Responsive
+------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  .shivanya-shell-header-inner {
+    grid-template-columns: 1fr auto;
+    padding: 0 12px;
+  }
+
+  .shivanya-shell-header-center {
+    display: none;
+  }
+
+  .shivanya-shell-body,
+  .shivanya-shell-body.is-collapsed {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .shivanya-shell-desktop-sidebar {
+    display: none;
+  }
+
+  .shivanya-shell-mobile-layer {
+    display: block;
+  }
+
+  .shivanya-shell-main {
+    padding: 16px;
+  }
+
+  .shivanya-page-header-content h1 {
+    font-size: 1.45rem;
+  }
+}
+
+/* -------------------------------------------------------------
+   Reduced motion
+------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .shivanya-shell * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}

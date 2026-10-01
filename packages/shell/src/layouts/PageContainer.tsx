@@ -1,17 +1,22 @@
-import type { ReactNode } from "react";
-
-export interface PageContainerProps {
-  children: ReactNode;
-  className?: string;
-}
+import type { CSSProperties, ElementType, ReactNode } from "react";
 
 export function PageContainer({
   children,
+  as: Component = "main",
   className = "",
-}: PageContainerProps) {
+  style,
+}: {
+  children: ReactNode;
+  as?: ElementType;
+  className?: string;
+  style?: CSSProperties;
+}) {
   return (
-    <main className={`shivanya-page-container ${className}`.trim()}>
+    <Component
+      className={`shivanya-page-container ${className}`.trim()}
+      style={style}
+    >
       {children}
-    </main>
+    </Component>
   );
 }

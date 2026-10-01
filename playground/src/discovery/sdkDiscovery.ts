@@ -39,14 +39,17 @@ const packageManifests = import.meta.glob<SDKPackageManifest>(
 );
 
 const componentEntries = import.meta.glob(
-  "../../../packages/*/src/components/**/index.ts",
+  [
+    "../../../packages/*/src/components/**/index.ts",
+    "../../../packages/*/src/components/*.tsx",
+  ],
   {
     eager: true,
   },
 );
 
 export const demoEntries = import.meta.glob<ComponentType>(
-  "../demos/**/*.tsx",
+  "../demos/**/*Demo.tsx",
   {
     eager: true,
     import: "default",
@@ -60,59 +63,135 @@ function formatName(value: string): string {
 }
 
 function getPackageId(path: string): string {
-  const match = path.match(
+  const packageMatch = path.match(
     /(?:\.\.\/)+packages\/([^/]+)/,
   );
 
-  return match?.[1] ?? "";
+  if (packageMatch) {
+    return packageMatch[1];
+  }
+
+  const demoMatch = path.match(
+    /(?:\.\.\/)+demos\/([^/]+)/,
+  );
+
+  return demoMatch?.[1] ?? "";
 }
 
 function getComponentPath(path: string): string[] {
-  const match = path.match(
-    /(?:\.\.\/)+packages\/[^/]+\/src\/components\/(.+)\/index\.ts/,
+  const folderMatch = path.match(
+    /(?:\.\.\/)+packages\/[^/]+\/src\/components\/(.+)\/index\.ts$/,
   );
 
-  if (!match) {
-    return [];
+  if (folderMatch) {
+    return folderMatch[1].split("/");
   }
 
-  return match[1].split("/");
+  const fileMatch = path.match(
+    /(?:\.\.\/)+packages\/[^/]+\/src\/components\/([^/]+)\.tsx$/,
+  );
+
+  if (fileMatch) {
+    return ["components", fileMatch[1]];
+  }
+
+  return [];
 }
 
-function getDemoPath(
+function normalizePath(path: string): string {
+  return path.replace(/\\/g, "/").toLowerCase();
+}
+
+function findDemoPath(
   packageId: string,
   categoryId: string,
   componentId: string,
 ): string | null {
-  const componentName = formatName(componentId).replace(
-    /\s/g,
+  const expectedFile = `${componentId}Demo.tsx`;
+
+  const demoPath = Object.keys(demoEntries).find((path) => {
+    const normalized = normalizePath(path);
+
+    const parts = normalized.split("/");
+
+    const demosIndex = parts.findIndex(
+      (part) => part === "demos",
+    );
+
+    if (demosIndex === -1) {
+      return false;
+    }
+
+    const demoPackage = parts[demosIndex + 1];
+    const demoCategory = parts[demosIndex + 2];
+    const demoFile = parts[demosIndex + 3];
+
+    return (
+      demoPackage === packageId.toLowerCase() &&
+      demoCategory === categoryId.toLowerCase() &&
+      demoFile === expectedFile.toLowerCase()
+    );
+  });
+
+  return demoPath ?? null;
+}
+
+function getDemoInfo(path: string) {
+  const normalized = path.replace(/\\/g, "/");
+
+  const match = normalized.match(
+    /(?:\.\.\/)+demos\/([^/]+)\/(.+)$/,
+  );
+
+  if (!match) {
+    return null;
+  }
+
+  const packageId = match[1];
+  const relativePath = match[2];
+
+  const parts = relativePath.split("/");
+
+  if (parts.length < 2) {
+    return null;
+  }
+
+  const fileName = parts[parts.length - 1];
+
+  if (!fileName.toLowerCase().endsWith("demo.tsx")) {
+    return null;
+  }
+
+  const componentId = fileName.replace(
+    /Demo\.tsx$/i,
     "",
   );
 
-  const expectedPath =
-    `../demos/${packageId}/${categoryId}/${componentName}Demo.tsx`;
+  const categoryId = parts[0];
 
-  const demoPath = Object.keys(demoEntries).find(
-    (path) => path.toLowerCase() === expectedPath.toLowerCase(),
-  );
-
-  return demoPath ?? null;
+  return {
+    packageId,
+    categoryId,
+    componentId,
+    name: formatName(componentId),
+    categoryName: formatName(categoryId),
+    path,
+  };
 }
 
 function getPackageDemoPath(
   packageId: string,
 ): string | null {
-  const componentName = formatName(packageId).replace(
-    /\s/g,
-    "",
-  );
-
   const expectedPath =
-    `../demos/${packageId}/${componentName}Demo.tsx`;
+    `../demos/${packageId}/${formatName(packageId).replace(/\s/g, "")}Demo.tsx`;
 
-  return Object.keys(demoEntries).includes(expectedPath)
-    ? expectedPath
-    : null;
+  return (
+    Object.keys(demoEntries).find(
+      (path) =>
+        normalizePath(path) ===
+        normalizePath(expectedPath),
+    ) ?? null
+  );
 }
 
 export const sdkPackages: SDKPackage[] = Object.entries(
@@ -121,6 +200,12 @@ export const sdkPackages: SDKPackage[] = Object.entries(
   const packageId = getPackageId(manifestPath);
 
   const categoryMap = new Map<string, SDKCategory>();
+
+  /*
+   * -------------------------------------------------------------
+   * 1. Add real SDK components
+   * -------------------------------------------------------------
+   */
 
   Object.keys(componentEntries)
     .filter(
@@ -138,7 +223,9 @@ export const sdkPackages: SDKPackage[] = Object.entries(
       const componentId =
         pathParts[pathParts.length - 1];
 
-      let category = categoryMap.get(categoryId);
+      let category = categoryMap.get(
+        categoryId.toLowerCase(),
+      );
 
       if (!category) {
         category = {
@@ -148,7 +235,10 @@ export const sdkPackages: SDKPackage[] = Object.entries(
           components: [],
         };
 
-        categoryMap.set(categoryId, category);
+        categoryMap.set(
+          categoryId.toLowerCase(),
+          category,
+        );
       }
 
       category.components.push({
@@ -158,7 +248,7 @@ export const sdkPackages: SDKPackage[] = Object.entries(
         categoryId,
         categoryName: category.name,
         path: componentPath,
-        demoPath: getDemoPath(
+        demoPath: findDemoPath(
           packageId,
           categoryId,
           componentId,
@@ -166,11 +256,106 @@ export const sdkPackages: SDKPackage[] = Object.entries(
       });
     });
 
+  /*
+   * -------------------------------------------------------------
+   * 2. Add demo-only entries
+   *
+   * This is important for Shell:
+   *
+   * Components
+   * Hooks
+   * Layouts
+   * Provider
+   *
+   * Hooks/Layout/Provider are not package components, so they
+   * must be discovered directly from the demo structure.
+   * -------------------------------------------------------------
+   */
+
+  Object.keys(demoEntries)
+    .map(getDemoInfo)
+    .filter(
+      (
+        demo,
+      ): demo is NonNullable<
+        ReturnType<typeof getDemoInfo>
+      > =>
+        demo !== null &&
+        demo.packageId.toLowerCase() ===
+          packageId.toLowerCase(),
+    )
+    .forEach((demo) => {
+      let category = categoryMap.get(
+        demo.categoryId.toLowerCase(),
+      );
+
+      if (!category) {
+        category = {
+          id: demo.categoryId,
+          name: demo.categoryName,
+          packageName: packageId,
+          components: [],
+        };
+
+        categoryMap.set(
+          demo.categoryId.toLowerCase(),
+          category,
+        );
+      }
+
+      const alreadyExists = category.components.some(
+        (component) =>
+          component.id.toLowerCase() ===
+          demo.componentId.toLowerCase(),
+      );
+
+      if (alreadyExists) {
+        return;
+      }
+
+      category.components.push({
+        id: demo.componentId,
+        name: demo.name,
+        packageName: packageId,
+        categoryId: demo.categoryId,
+        categoryName: demo.categoryName,
+        path: demo.path,
+        demoPath: demo.path,
+      });
+    });
+
+  /*
+   * -------------------------------------------------------------
+   * 3. Sort categories and demos
+   * -------------------------------------------------------------
+   */
+
+  const categories = Array.from(
+    categoryMap.values(),
+  ).map((category) => ({
+    ...category,
+    components: [...category.components].sort(
+      (a, b) =>
+        a.name.localeCompare(b.name),
+    ),
+  }));
+
+  categories.sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
+
+  /*
+   * -------------------------------------------------------------
+   * 4. Package
+   * -------------------------------------------------------------
+   */
+
   return {
     id: packageId,
     name: formatName(packageId),
     description: manifest?.description ?? "",
-    packageDemoPath: getPackageDemoPath(packageId),
-    categories: Array.from(categoryMap.values()),
+    packageDemoPath:
+      getPackageDemoPath(packageId),
+    categories,
   };
 });
