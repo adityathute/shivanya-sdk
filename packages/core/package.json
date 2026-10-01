@@ -1,6 +1,6 @@
 {
     "name": "shivanya-core",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "Core client for the Shivanya platform",
     "main": "dist/index.js",
     "type": "module",
