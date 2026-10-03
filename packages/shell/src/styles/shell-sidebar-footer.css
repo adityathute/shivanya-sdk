@@ -1,0 +1,57 @@
+.shivanya-shell-sidebar-footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  min-width: 0;
+  color: var(--shivanya-color-text-secondary);
+  text-align: center;
+}
+
+.shivanya-shell-sidebar-footer-name {
+  max-width: 100%;
+  color: var(--shivanya-color-text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shivanya-shell-sidebar-footer-version {
+  color: var(--shivanya-color-text-secondary);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.shivanya-shell-sidebar-footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.shivanya-shell-sidebar-footer-actions > * {
+  flex: 0 0 auto;
+}
+
+.shivanya-shell-sidebar-collapsed
+  .shivanya-shell-sidebar-footer-content {
+  gap: 0;
+}
+
+.shivanya-shell-sidebar-collapsed
+  .shivanya-shell-sidebar-footer-name,
+.shivanya-shell-sidebar-collapsed
+  .shivanya-shell-sidebar-footer-version {
+  display: none;
+}
+
+.shivanya-shell-sidebar-collapsed
+  .shivanya-shell-sidebar-footer-actions {
+  margin-top: 0;
+}

@@ -4,4 +4,4 @@ export * from "./hooks/index.js";
 export * from "./layouts/index.js";
 export * from "./types/shell.js";
 export * from "./utils/index.js";
-import "./styles/shell.css";
+import "./styles/index.js";

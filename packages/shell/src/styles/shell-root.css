@@ -1,0 +1,9 @@
+.shivanya-shell {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--shivanya-color-background);
+  color: var(--shivanya-color-text-primary);
+  overflow: hidden;
+}

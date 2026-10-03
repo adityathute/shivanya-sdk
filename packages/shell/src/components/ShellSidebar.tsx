@@ -1,6 +1,21 @@
+"use client";
+
 import type { CSSProperties, ElementType } from "react";
-import type { ShellNavItem, ShellSidebarProps } from "../types/shell.js";
-import { getShellItemKey, isShellItemActive } from "../utils/navigation.js";
+import type {
+  ShellNavItem,
+  ShellSidebarProps,
+} from "../types/shell.js";
+
+import {
+  Sidebar,
+  SidebarItem,
+} from "shivanya-ui";
+
+import {
+  getShellItemKey,
+  isShellItemActive,
+} from "../utils/navigation.js";
+
 import { ShellBrand } from "./ShellBrand.js";
 
 export function ShellSidebar({
@@ -20,21 +35,43 @@ export function ShellSidebar({
 }: ShellSidebarProps) {
   return (
     <aside
-      className={`shivanya-shell-sidebar shivanya-shell-sidebar-${position} shivanya-shell-sidebar-${variant} ${collapsed ? "shivanya-shell-sidebar-collapsed" : ""} ${className}`.trim()}
+      className={[
+        "shivanya-shell-sidebar",
+        `shivanya-shell-sidebar-${position}`,
+        `shivanya-shell-sidebar-${variant}`,
+        collapsed
+          ? "shivanya-shell-sidebar-collapsed"
+          : "",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
       style={
         {
           "--shivanya-shell-sidebar-width":
-            typeof width === "number" ? `${width}px` : width,
+            typeof width === "number"
+              ? `${width}px`
+              : width,
         } as CSSProperties
       }
     >
       {branding && (
         <div className="shivanya-shell-sidebar-brand">
-          <ShellBrand branding={branding} compact={collapsed} />
+          <ShellBrand
+            branding={branding}
+            compact={collapsed}
+          />
         </div>
       )}
+
       {children || (
-        <nav className="shivanya-shell-nav" aria-label="Primary navigation">
+        <Sidebar
+          className="shivanya-shell-nav"
+          variant="ghost"
+          size="md"
+          radius="md"
+          itemPosition="start"
+        >
           {navigation.map((item, index) => (
             <ShellNavItemView
               key={getShellItemKey(item, index)}
@@ -45,9 +82,14 @@ export function ShellSidebar({
               onNavigate={onNavigate}
             />
           ))}
-        </nav>
+        </Sidebar>
       )}
-      {footer && <div className="shivanya-shell-sidebar-footer">{footer}</div>}
+
+      {footer && (
+        <div className="shivanya-shell-sidebar-footer">
+          {footer}
+        </div>
+      )}
     </aside>
   );
 }
@@ -65,48 +107,67 @@ function ShellNavItemView({
   collapsed: boolean;
   onNavigate?: (item: ShellNavItem) => void;
 }) {
-  if (item.divider)
-    return <div className="shivanya-shell-nav-divider" role="separator" />;
-  const className =
-    `shivanya-shell-nav-item ${active ? "is-active" : ""} ${item.disabled ? "is-disabled" : ""}`.trim();
-  const content = (
+  if (item.divider) {
+    return (
+      <div
+        className="shivanya-shell-nav-divider"
+        role="separator"
+      />
+    );
+  }
+
+  const handleClick = () => {
+    if (item.disabled) {
+      return;
+    }
+
+    item.onClick?.();
+    onNavigate?.(item);
+  };
+
+  const rightSection = (
     <>
-      <span className="shivanya-shell-nav-icon">{item.icon}</span>
-      <span className="shivanya-shell-nav-label">{item.label}</span>
       {!collapsed && item.badge ? (
-        <span className="shivanya-shell-nav-badge">{item.badge}</span>
+        <span className="shivanya-shell-nav-badge">
+          {item.badge}
+        </span>
       ) : null}
+
       {!collapsed && item.endIcon ? (
-        <span className="shivanya-shell-nav-end">{item.endIcon}</span>
+        <span className="shivanya-shell-nav-end">
+          {item.endIcon}
+        </span>
       ) : null}
     </>
   );
-  const handleClick = () => {
-    if (!item.disabled) {
-      item.onClick?.();
-      onNavigate?.(item);
-    }
-  };
-  if (Link && item.href && !item.disabled)
-    return (
-      <Link
-        className={className}
-        href={item.href}
-        onClick={handleClick}
-        title={collapsed ? String(item.label ?? "") : undefined}
-      >
-        {content}
-      </Link>
-    );
+
   return (
-    <button
-      type="button"
-      className={className}
+    <SidebarItem
+      component={Link && item.href && !item.disabled ? Link : "button"}
+      href={
+        Link && item.href && !item.disabled
+          ? item.href
+          : undefined
+      }
+      icon={item.icon}
+      rightSection={rightSection}
+      active={active}
       disabled={item.disabled}
       onClick={handleClick}
-      title={collapsed ? String(item.label ?? "") : undefined}
+      className={[
+        "shivanya-shell-nav-item",
+        active ? "is-active" : "",
+        item.disabled ? "is-disabled" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      title={
+        collapsed
+          ? String(item.label ?? "")
+          : undefined
+      }
     >
-      {content}
-    </button>
+      {item.label}
+    </SidebarItem>
   );
 }

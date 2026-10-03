@@ -1,0 +1,17 @@
+.shivanya-shell-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  overflow: auto;
+  background: var(--shivanya-color-background);
+  padding: 24px;
+}
+
+@media (max-width: 767px) {
+  .shivanya-shell-main {
+    padding: 16px;
+  }
+}

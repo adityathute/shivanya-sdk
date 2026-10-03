@@ -23,6 +23,7 @@ export function DrawerHeader({
             ...branding,
             href: undefined,
           }}
+          compact={false}
         />
       )}
 
@@ -33,6 +34,7 @@ export function DrawerHeader({
         iconRotateOnHover
         iconHoverColor="var(--shivanya-color-primary)"
         aria-label="Close menu"
+        title="Close menu"
         onClick={onClose}
       >
         <CloseIcon size="sm" />

@@ -117,8 +117,6 @@ export default function CategoryPage({
 
           const Icon = configuredIcon?.component;
 
-          console.log(category.components.map((component) => component.name));
-
           return (
             <button
               key={component.id}

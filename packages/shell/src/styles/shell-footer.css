@@ -1,0 +1,65 @@
+.shivanya-shell-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 20px 24px;
+  box-sizing: border-box;
+  border-top: 1px solid var(--shivanya-color-border);
+  background: var(--shivanya-color-surface);
+  color: var(--shivanya-color-text-muted);
+}
+
+.shivanya-shell-footer-brand {
+  min-width: 0;
+  justify-self: start;
+}
+
+.shivanya-shell-footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  min-width: 0;
+}
+
+.shivanya-shell-footer-content a {
+  color: var(--shivanya-color-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.shivanya-shell-footer-content a:hover {
+  color: var(--shivanya-color-primary);
+}
+
+.shivanya-shell-footer-copy {
+  justify-self: end;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .shivanya-shell-footer {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 14px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+
+  .shivanya-shell-footer-brand {
+    justify-self: center;
+  }
+
+  .shivanya-shell-footer-content {
+    width: 100%;
+    gap: 12px 16px;
+  }
+
+  .shivanya-shell-footer-copy {
+    justify-self: center;
+  }
+}

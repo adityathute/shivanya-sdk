@@ -1,0 +1,41 @@
+.shivanya-page-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px;
+}
+
+.shivanya-page-container-sm {
+  max-width: 960px;
+}
+
+.shivanya-page-container-md {
+  max-width: 1120px;
+}
+
+.shivanya-page-container-lg {
+  max-width: 1280px;
+}
+
+.shivanya-page-container-xl {
+  max-width: 1440px;
+}
+
+.shivanya-page-container-full {
+  max-width: none;
+}
+
+.shivanya-page-container-centered {
+  margin-inline: auto;
+}
+
+@media (max-width: 767px) {
+  .shivanya-page-container {
+    padding: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .shivanya-page-container {
+    padding: 20px;
+  }
+}

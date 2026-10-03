@@ -1,19 +1,24 @@
-"use client"
+"use client";
 
 import type { CSSProperties } from "react";
 import type { ShellLayoutProps } from "../types/shell.js";
+
 import { AppShell } from "./AppShell.js";
 import { ShellHeader } from "../components/ShellHeader.js";
 import { ShellSidebar } from "../components/ShellSidebar.js";
 import { ShellMobileNav } from "../components/ShellMobileNav.js";
 import { ShellMain } from "../components/ShellMain.js";
-import { ShellFooter } from "../components/ShellFooter.js";
 import { useShell } from "../hooks/useShell.js";
 
 export function DashboardShell(props: ShellLayoutProps) {
   return (
     <AppShell
-      className={`shivanya-dashboard-shell ${props.className ?? ""}`.trim()}
+      className={[
+        "shivanya-dashboard-shell",
+        props.className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
       defaultSidebarCollapsed={props.sidebarCollapsed}
     >
       <DashboardShellInner {...props} />
@@ -24,7 +29,7 @@ export function DashboardShell(props: ShellLayoutProps) {
 function DashboardShellInner({
   children,
   branding,
-  navigation,
+  navigation = [],
   pathname,
   linkComponent,
   headerStart,
@@ -32,10 +37,8 @@ function DashboardShellInner({
   headerEnd,
   header,
   sidebarFooter,
-  footer,
   showHeader = true,
   showSidebar = true,
-  showFooter = false,
   sidebarCollapsed,
   sidebarWidth = 240,
   contentPadding = 24,
@@ -47,19 +50,16 @@ function DashboardShellInner({
   const collapsed =
     sidebarCollapsed ?? shell.sidebarCollapsed;
 
-  const sidebar = (
-    <ShellSidebar
-      navigation={navigation}
-      pathname={pathname}
-      linkComponent={linkComponent}
-      branding={branding}
-      footer={sidebarFooter}
-      collapsed={collapsed}
-      width={sidebarWidth}
-      isActive={isActive}
-      onNavigate={onNavigate}
-    />
-  );
+  const bodyStyle = {
+    "--shivanya-shell-content-padding":
+      typeof contentPadding === "number"
+        ? `${contentPadding}px`
+        : contentPadding,
+    "--shivanya-shell-sidebar-width":
+      typeof sidebarWidth === "number"
+        ? `${sidebarWidth}px`
+        : sidebarWidth,
+  } as CSSProperties;
 
   return (
     <>
@@ -74,25 +74,27 @@ function DashboardShellInner({
         ))}
 
       <div
-        className={`shivanya-shell-body ${
-          showSidebar ? "has-sidebar" : "no-sidebar"
-        } ${collapsed ? "is-collapsed" : ""}`}
-        style={
-          {
-            "--shivanya-shell-content-padding":
-              typeof contentPadding === "number"
-                ? `${contentPadding}px`
-                : contentPadding,
-            "--shivanya-shell-sidebar-width":
-              typeof sidebarWidth === "number"
-                ? `${sidebarWidth}px`
-                : sidebarWidth,
-          } as CSSProperties
-        }
+        className={[
+          "shivanya-shell-body",
+          showSidebar ? "has-sidebar" : "no-sidebar",
+          collapsed ? "is-collapsed" : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        style={bodyStyle}
       >
         {showSidebar && (
           <div className="shivanya-shell-desktop-sidebar">
-            {sidebar}
+            <ShellSidebar
+              navigation={navigation}
+              pathname={pathname}
+              linkComponent={linkComponent}
+              footer={sidebarFooter}
+              collapsed={collapsed}
+              width={sidebarWidth}
+              isActive={isActive}
+              onNavigate={onNavigate}
+            />
           </div>
         )}
 
@@ -109,9 +111,6 @@ function DashboardShellInner({
 
         <ShellMain>{children}</ShellMain>
       </div>
-
-      {showFooter &&
-        (footer ?? <ShellFooter branding={branding} />)}
     </>
   );
 }

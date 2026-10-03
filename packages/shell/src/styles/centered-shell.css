@@ -1,0 +1,26 @@
+.shivanya-centered-shell {
+  min-height: 100dvh;
+}
+
+.shivanya-centered-shell
+  .shivanya-shell-main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.shivanya-shell-centered-content {
+  width: 100%;
+  max-width: var(
+    --shivanya-centered-shell-max-width,
+    640px
+  );
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+  .shivanya-shell-centered-content {
+    max-width: none;
+  }
+}

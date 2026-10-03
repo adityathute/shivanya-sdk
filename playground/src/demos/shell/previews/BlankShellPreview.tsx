@@ -1,3 +1,5 @@
+"use client";
+
 import { BlankShell } from "shivanya-shell";
 
 export default function BlankShellPreview() {
@@ -5,10 +7,11 @@ export default function BlankShellPreview() {
     <BlankShell>
       <div className="shell-demo-content">
         <div className="shell-demo-card">
-          <strong>Blank shell</strong>
+          <strong>Blank Shell</strong>
 
           <p className="shell-demo-muted">
-            Add only the shell primitives required by the page.
+            BlankShell provides the shared shell context without
+            imposing a predefined header, sidebar, or footer.
           </p>
         </div>
       </div>

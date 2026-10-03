@@ -7,12 +7,25 @@ export function ShellFooter({
   className = "",
 }: ShellFooterProps) {
   return (
-    <footer className={`shivanya-shell-footer ${className}`.trim()}>
-      {branding && <ShellBrand branding={branding} />}
-      {children}
-      <span className="shivanya-shell-footer-copy">
+    <footer
+      className={[
+        "shivanya-shell-footer",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      <div className="shivanya-shell-footer-brand">
+        {branding && <ShellBrand branding={branding} />}
+      </div>
+
+      <div className="shivanya-shell-footer-content">
+        {children}
+      </div>
+
+      <div className="shivanya-shell-footer-copy">
         © {new Date().getFullYear()}
-      </span>
+      </div>
     </footer>
   );
 }

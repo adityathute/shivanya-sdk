@@ -1,0 +1,68 @@
+.shivanya-shell-header {
+  z-index: 100;
+  width: 100%;
+  min-height: 64px;
+  background: var(--shivanya-color-surface);
+  border-bottom: 1px solid var(--shivanya-color-border);
+}
+
+.shivanya-shell-header-sticky {
+  position: sticky;
+  top: 0;
+}
+
+.shivanya-shell-header-fixed {
+  position: fixed;
+  inset: 0 0 auto;
+}
+
+.shivanya-shell-header-static {
+  position: static;
+}
+
+.shivanya-shell-header-inner {
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+}
+
+.shivanya-shell-header-start,
+.shivanya-shell-header-end {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.shivanya-shell-header-end {
+  justify-content: flex-end;
+}
+
+.shivanya-shell-header-center {
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.shivanya-shell-mobile-menu {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .shivanya-shell-header-inner {
+    grid-template-columns: 1fr auto;
+    padding: 0 12px;
+  }
+
+  .shivanya-shell-header-center {
+    display: none;
+  }
+
+  .shivanya-shell-mobile-menu {
+    display: flex;
+    align-items: center;
+  }
+}

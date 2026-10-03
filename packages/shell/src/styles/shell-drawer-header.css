@@ -1,0 +1,24 @@
+.shivanya-shell-drawer-header {
+  flex: 0 0 auto;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px 8px 16px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--shivanya-color-border);
+  background: var(--shivanya-color-surface);
+}
+
+.shivanya-shell-drawer-header
+  .shivanya-shell-brand {
+  min-width: 0;
+  flex: 1;
+}
+
+.shivanya-shell-drawer-header
+  .shivanya-icon-button {
+  flex: 0 0 auto;
+  margin-left: auto;
+}

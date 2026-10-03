@@ -1,0 +1,42 @@
+.shivanya-shell-brand {
+  color: var(--shivanya-color-text-primary);
+  text-decoration: none;
+  display: inline-flex;
+  min-width: 0;
+}
+
+.shivanya-shell-brand-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.shivanya-shell-brand-image {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  border-radius: var(--shivanya-radius-md);
+  flex: 0 0 auto;
+}
+
+.shivanya-shell-brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.shivanya-shell-brand-text strong {
+  color: var(--shivanya-color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shivanya-shell-brand-text small {
+  color: var(--shivanya-color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

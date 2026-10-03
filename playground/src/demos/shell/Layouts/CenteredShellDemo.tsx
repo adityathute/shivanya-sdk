@@ -1,14 +1,22 @@
+"use client";
+
 import DemoDocumentation from "../../../components/demo/DemoDocumentation";
 import DemoHeader from "../../../components/demo/DemoHeader";
 import DemoSection from "../../../components/demo/DemoSection";
 import "../../../components/demo/demo.css";
 import "../shell-demo.css";
-import { DemoButton } from "../_demo-utils";
+
+import { CenteredShell } from "shivanya-shell";
+import { DemoButton, branding } from "../_demo-utils";
 
 export default function CenteredShellDemo() {
-  const openPreview = () => {
+  const openPreview = (maxWidth?: number) => {
+    const query = maxWidth
+      ? `?maxWidth=${maxWidth}`
+      : "";
+
     window.open(
-      "/shell-preview/centered-shell",
+      `/shell-preview/centered-shell${query}`,
       "_blank",
       "noopener,noreferrer",
     );
@@ -23,23 +31,78 @@ export default function CenteredShellDemo() {
 
       <DemoSection title="Preview">
         <div className="shell-demo-row">
-          <DemoButton onClick={openPreview}>
+          <DemoButton onClick={() => openPreview()}>
             Open Full Preview
           </DemoButton>
         </div>
       </DemoSection>
 
       <DemoSection title="Max Width">
-        <div className="shell-demo-row">
-          <DemoButton>maxWidth: 480</DemoButton>
-          <DemoButton>maxWidth: 640</DemoButton>
-          <DemoButton>maxWidth: 960</DemoButton>
+        <div className="shell-demo-grid">
+          <div className="shell-demo-card">
+            <strong>480px</strong>
+
+            <p className="shell-demo-muted">
+              Compact width for forms and focused content.
+            </p>
+
+            <DemoButton onClick={() => openPreview(480)}>
+              Preview
+            </DemoButton>
+          </div>
+
+          <div className="shell-demo-card">
+            <strong>640px</strong>
+
+            <p className="shell-demo-muted">
+              Balanced width for most focused pages.
+            </p>
+
+            <DemoButton onClick={() => openPreview(640)}>
+              Preview
+            </DemoButton>
+          </div>
+
+          <div className="shell-demo-card">
+            <strong>960px</strong>
+
+            <p className="shell-demo-muted">
+              Wider layout for content-heavy screens.
+            </p>
+
+            <DemoButton onClick={() => openPreview(960)}>
+              Preview
+            </DemoButton>
+          </div>
+        </div>
+      </DemoSection>
+
+      <DemoSection title="Composition">
+        <div className="shell-demo-preview shell-demo-centered-preview">
+          <CenteredShell
+            branding={branding}
+            headerEnd={<DemoButton>Help</DemoButton>}
+            maxWidth={640}
+          >
+            <div className="shell-demo-card">
+              <strong>Centered content</strong>
+
+              <p className="shell-demo-muted">
+                The content area is centered with a configurable
+                maximum width.
+              </p>
+            </div>
+          </CenteredShell>
         </div>
       </DemoSection>
 
       <DemoDocumentation
-        importCode={'import { CenteredShell } from "shivanya-shell";'}
-        usageCode={`<CenteredShell maxWidth={640}>
+        importCode={`import { CenteredShell } from "shivanya-shell";`}
+        usageCode={`<CenteredShell
+  branding={branding}
+  headerEnd={<HelpButton />}
+  maxWidth={640}
+>
   <Content />
 </CenteredShell>`}
       />

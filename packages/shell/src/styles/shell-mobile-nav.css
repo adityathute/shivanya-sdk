@@ -1,0 +1,148 @@
+.shivanya-shell-mobile-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  overflow: hidden;
+  pointer-events: auto;
+  isolation: isolate;
+}
+
+.shivanya-shell-mobile-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: rgb(0 0 0 / 0.45);
+  cursor: pointer;
+  opacity: 0;
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+  animation: shivanya-mobile-overlay-close
+    220ms ease forwards;
+}
+
+.shivanya-shell-mobile-layer-open
+  .shivanya-shell-mobile-backdrop {
+  animation: shivanya-mobile-overlay-open
+    260ms ease forwards;
+}
+
+.shivanya-shell-mobile-panel {
+  position: relative;
+  z-index: 1;
+  width: var(--shivanya-shell-mobile-width, 280px);
+  max-width: 88vw;
+  height: 100dvh;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex: 0 0 auto;
+  background: var(--shivanya-color-surface);
+  box-shadow: var(--shivanya-shadow-lg);
+  will-change: transform;
+  animation: shivanya-mobile-drawer-close
+    260ms ease forwards;
+}
+
+.shivanya-shell-mobile-layer-open
+  .shivanya-shell-mobile-panel {
+  animation: shivanya-mobile-drawer-open
+    300ms cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+.shivanya-shell-mobile-sidebar {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+  border: 0;
+}
+
+.shivanya-shell-mobile-sidebar
+  .shivanya-shell-nav {
+  flex: 0 0 auto;
+}
+
+@keyframes shivanya-mobile-drawer-open {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes shivanya-mobile-drawer-close {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes shivanya-mobile-overlay-open {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
+  }
+
+  to {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+}
+
+@keyframes shivanya-mobile-overlay-close {
+  from {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .shivanya-shell-mobile-layer {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .shivanya-shell-mobile-panel {
+    width: var(--shivanya-shell-mobile-width, 280px);
+    max-width: 88vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shivanya-shell-mobile-backdrop,
+  .shivanya-shell-mobile-panel {
+    animation-duration: 1ms !important;
+  }
+
+  .shivanya-shell-mobile-backdrop {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}

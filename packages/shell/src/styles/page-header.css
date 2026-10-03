@@ -1,0 +1,71 @@
+.shivanya-page-header {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  box-sizing: border-box;
+  padding: 0 0 24px;
+}
+
+.shivanya-page-header-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shivanya-page-header-title {
+  margin: 0;
+  color: var(--shivanya-color-text-primary);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.shivanya-page-header-description {
+  max-width: 720px;
+  margin: 0;
+  color: var(--shivanya-color-text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.shivanya-page-header-extra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.shivanya-page-header-actions {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+@media (max-width: 767px) {
+  .shivanya-page-header {
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 20px;
+  }
+
+  .shivanya-page-header-title {
+    font-size: 24px;
+  }
+
+  .shivanya-page-header-description {
+    font-size: 13px;
+  }
+
+  .shivanya-page-header-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

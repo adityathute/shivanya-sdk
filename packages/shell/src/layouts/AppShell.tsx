@@ -23,7 +23,9 @@ export function AppShell({
       defaultSidebarCollapsed={defaultSidebarCollapsed}
       defaultMobileOpen={defaultMobileOpen}
     >
-      <ShellRoot className={className}>{children}</ShellRoot>
+      <ShellRoot className={className}>
+        {children}
+      </ShellRoot>
     </ShellProvider>
   );
 }
