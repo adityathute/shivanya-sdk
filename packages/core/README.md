@@ -16,6 +16,8 @@ import { ShivanyaClient } from "shivanya-core";
 const client = new ShivanyaClient({
   baseURL: "https://api.shivanyams.com",
 });
+
+const data = await client.request("/api/example");
 ```
 
 ## Development
@@ -39,6 +41,9 @@ pnpm --filter shivanya-core build
 ```text
 packages/core/
 ├── src/
+│   ├── client.ts
+│   ├── errors.ts
+│   └── index.ts
 ├── package.json
 └── tsconfig.json
 ```
