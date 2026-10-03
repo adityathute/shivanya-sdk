@@ -1,6 +1,6 @@
 {
   "name": "shivanya-shell",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "Reusable React shell, layout, and application structure components for Shivanya applications",
   "main": "dist/index.js",
@@ -10,17 +10,16 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./styles": "./src/styles/shell.css"
+    "./styles": "./dist/styles/shell.css"
   },
   "files": [
-    "dist",
-    "src/styles"
+    "dist"
   ],
   "scripts": {
-    "build": "tsc && shx mkdir -p dist/styles && shx cp src/styles/shell.css dist/styles/shell.css"
+    "build": "tsc && node scripts/copy-assets.mjs"
   },
   "dependencies": {
-    "shivanya-ui": "^1.0.2"
+    "shivanya-ui": "^1.0.4"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

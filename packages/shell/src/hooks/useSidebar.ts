@@ -1,3 +1,5 @@
+"use client"
+
 import { useShell } from "./useShell.js";
 
 export function useSidebar() {

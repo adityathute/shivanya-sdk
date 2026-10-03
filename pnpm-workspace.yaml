@@ -2,5 +2,5 @@ packages:
   - "packages/*"
   - "playground"
 minimumReleaseAgeExclude:
-  - shivanya-ui@1.0.0
+  - shivanya-ui@1.0.0 || 1.0.4
   - shivanya-core@1.0.0

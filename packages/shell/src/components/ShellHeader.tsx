@@ -1,3 +1,5 @@
+"use client"
+
 import type { CSSProperties } from "react";
 import type { ShellHeaderProps } from "../types/shell.js";
 import { useShell } from "../hooks/useShell.js";

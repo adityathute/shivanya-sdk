@@ -1,3 +1,5 @@
+"use client"
+
 import type { CSSProperties } from "react";
 import type { ShellLayoutProps } from "../types/shell.js";
 import { AppShell } from "./AppShell.js";

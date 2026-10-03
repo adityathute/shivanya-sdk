@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect } from "react";
 import type { ShellMobileNavProps } from "../types/shell.js";
 import { ShellSidebar } from "./ShellSidebar.js";

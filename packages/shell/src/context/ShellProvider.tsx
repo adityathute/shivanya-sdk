@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useMemo, useState, type ReactNode } from "react";
 import { ShellContext } from "./ShellContext.js";
 import type { ShellProviderProps } from "../types/shell.js";
