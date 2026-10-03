@@ -12,9 +12,16 @@ npm install shivanya-ai
 
 ```ts
 import { ShivanyaAI } from "shivanya-ai";
+import { ShivanyaClient } from "shivanya-core";
 
-const ai = new ShivanyaAI({
-  // Configure the client here
+const client = new ShivanyaClient({
+  baseURL: "https://api.shivanyams.com",
+});
+
+const ai = new ShivanyaAI(client);
+
+const response = await ai.chat({
+  message: "Hello",
 });
 ```
 
@@ -43,6 +50,9 @@ pnpm --filter shivanya-ai build
 ```text
 packages/ai/
 ├── src/
+│   ├── ai.ts
+│   ├── types.ts
+│   └── index.ts
 ├── package.json
 └── tsconfig.json
 ```
