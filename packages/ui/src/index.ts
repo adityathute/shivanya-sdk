@@ -10,3 +10,4 @@ export * from "./components/layout";
 export * from "./components/media";
 export * from "./components/navigation";
 export * from "./components/overlays";
+export * from "./icons";

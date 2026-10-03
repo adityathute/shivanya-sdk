@@ -27,8 +27,8 @@ importers:
   packages/shell:
     dependencies:
       shivanya-ui:
-        specifier: ^1.0.4
-        version: 1.0.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: ^1.0.5
+        version: 1.0.5(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
     devDependencies:
       '@types/react':
         specifier: ^19.0.0
@@ -661,8 +661,8 @@ packages:
   shivanya-core@1.0.0:
     resolution: {integrity: sha512-IRbL+L2L8Kft9QrQhgCMiokmer/50U0vbRKS+fhWrvGguyW8DBegZGaJ6sSWvokBFJHjMTevQ+IIsC8nA29tkQ==}
 
-  shivanya-ui@1.0.4:
-    resolution: {integrity: sha512-0/Ozqc3qIod4Dd0iQPbQRYIggwrHa05Y6HXw78vxu2sOKlXUHLYuvCAH2MyVYEBEyIII/FdPsTlHVGU38V6eSg==}
+  shivanya-ui@1.0.5:
+    resolution: {integrity: sha512-+yJ6w1yXgDnGfErolHTxFgUnCcjfA61VVBNnV3U1sSHAM8f6T+x7xImGAP36Rn2yAJQvcMXduMlK0nf2m/ZIew==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
@@ -1152,7 +1152,7 @@ snapshots:
 
   shivanya-core@1.0.0: {}
 
-  shivanya-ui@1.0.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+  shivanya-ui@1.0.5(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
     dependencies:
       react: 19.3.0
       react-dom: 19.3.0(react@19.3.0)

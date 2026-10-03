@@ -1,6 +1,6 @@
 {
   "name": "shivanya-ui",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "module",
   "description": "Reusable React UI components for Shivanya applications",
   "main": "dist/index.js",
