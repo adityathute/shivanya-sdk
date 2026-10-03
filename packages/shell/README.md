@@ -2,7 +2,7 @@
 
 Reusable application shell and layout components for Shivanya applications.
 
-The package provides common layout infrastructure that can be shared across different Shivanya applications without coupling the shell to a specific application.
+The package provides reusable layout infrastructure for Shivanya applications and other React projects.
 
 ## Installation
 
@@ -13,33 +13,22 @@ npm install shivanya-shell
 ## Usage
 
 ```tsx
-import {
-  AppShell,
-  PageContainer,
-} from "shivanya-shell";
+import { DashboardShell } from "shivanya-shell";
 
 export function App() {
   return (
-    <AppShell>
-      <PageContainer>
-        Your application content
-      </PageContainer>
-    </AppShell>
+    <DashboardShell>
+      Your application content
+    </DashboardShell>
   );
 }
 ```
 
-## Available Components
+## Dependency
 
-Current components:
+`shivanya-shell` uses `shivanya-ui` as a package dependency.
 
-- `AppShell`
-- `PageContainer`
-- `LayoutProvider`
-- `LayoutContext`
-- `useLayout`
-
-Additional reusable shell components will be added as the SDK develops.
+React and React DOM are peer dependencies.
 
 ## Development
 
@@ -63,23 +52,12 @@ Test changes using the SDK playground:
 pnpm --filter playground dev
 ```
 
-## Dependencies
-
-`shivanya-shell` uses:
-
-```text
-shivanya-ui
-```
-
-as a package dependency.
-
-React and React DOM are peer dependencies.
-
 ## Package Structure
 
 ```text
 packages/shell/
 ├── src/
+│   ├── components/
 │   ├── context/
 │   ├── hooks/
 │   ├── layouts/
