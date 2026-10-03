@@ -2,8 +2,6 @@
 
 Reusable application shell and layout components for Shivanya applications.
 
-The package provides reusable layout infrastructure for Shivanya applications and other React projects.
-
 ## Installation
 
 ```bash
