@@ -48,11 +48,25 @@ const componentEntries = import.meta.glob(
   },
 );
 
+export const iconEntries = import.meta.glob(
+  "../../../packages/*/src/icons/icons/*.tsx",
+  {
+    eager: true,
+  },
+);
+
 export const demoEntries = import.meta.glob<ComponentType>(
   "../demos/**/*Demo.tsx",
   {
     eager: true,
     import: "default",
+  },
+);
+
+export const previewEntries = import.meta.glob(
+  "../demos/**/previews/*Preview.tsx",
+  {
+    eager: true,
   },
 );
 
@@ -111,7 +125,6 @@ function findDemoPath(
 
   const demoPath = Object.keys(demoEntries).find((path) => {
     const normalized = normalizePath(path);
-
     const parts = normalized.split("/");
 
     const demosIndex = parts.findIndex(
@@ -122,14 +135,39 @@ function findDemoPath(
       return false;
     }
 
-    const demoPackage = parts[demosIndex + 1];
-    const demoCategory = parts[demosIndex + 2];
-    const demoFile = parts[demosIndex + 3];
+    return (
+      parts[demosIndex + 1] === packageId.toLowerCase() &&
+      parts[demosIndex + 2] === categoryId.toLowerCase() &&
+      parts[demosIndex + 3] === expectedFile.toLowerCase()
+    );
+  });
+
+  return demoPath ?? null;
+}
+
+function findCategoryDemoPath(
+  packageId: string,
+  categoryId: string,
+  demoName: string,
+): string | null {
+  const expectedFile = `${demoName}Demo.tsx`;
+
+  const demoPath = Object.keys(demoEntries).find((path) => {
+    const normalized = normalizePath(path);
+    const parts = normalized.split("/");
+
+    const demosIndex = parts.findIndex(
+      (part) => part === "demos",
+    );
+
+    if (demosIndex === -1) {
+      return false;
+    }
 
     return (
-      demoPackage === packageId.toLowerCase() &&
-      demoCategory === categoryId.toLowerCase() &&
-      demoFile === expectedFile.toLowerCase()
+      parts[demosIndex + 1] === packageId.toLowerCase() &&
+      parts[demosIndex + 2] === categoryId.toLowerCase() &&
+      parts[demosIndex + 3] === expectedFile.toLowerCase()
     );
   });
 
@@ -149,7 +187,6 @@ function getDemoInfo(path: string) {
 
   const packageId = match[1];
   const relativePath = match[2];
-
   const parts = relativePath.split("/");
 
   if (parts.length < 2) {
@@ -258,17 +295,74 @@ export const sdkPackages: SDKPackage[] = Object.entries(
 
   /*
    * -------------------------------------------------------------
-   * 2. Add demo-only entries
-   *
-   * This is important for Shell:
-   *
-   * Components
-   * Hooks
-   * Layouts
-   * Provider
-   *
-   * Hooks/Layout/Provider are not package components, so they
-   * must be discovered directly from the demo structure.
+   * 2. Add SDK icons
+   * -------------------------------------------------------------
+   */
+
+  Object.keys(iconEntries)
+    .filter(
+      (iconPath) =>
+        getPackageId(iconPath) === packageId,
+    )
+    .forEach((iconPath) => {
+      const fileName = iconPath.split("/").pop();
+
+      if (!fileName?.endsWith(".tsx")) {
+        return;
+      }
+
+      const componentId = fileName.replace(
+        /\.tsx$/,
+        "",
+      );
+
+      const categoryId = "icons";
+      const categoryName = "Icons";
+
+      let category = categoryMap.get(categoryId);
+
+      if (!category) {
+        category = {
+          id: categoryId,
+          name: categoryName,
+          packageName: packageId,
+          components: [],
+        };
+
+        categoryMap.set(categoryId, category);
+      }
+
+      const alreadyExists = category.components.some(
+        (component) =>
+          component.id.toLowerCase() ===
+          componentId.toLowerCase(),
+      );
+
+      if (alreadyExists) {
+        return;
+      }
+
+      category.components.push({
+        id: componentId,
+        name: formatName(componentId),
+        packageName: packageId,
+        categoryId,
+        categoryName,
+        path: iconPath,
+        demoPath:
+          packageId === "ui"
+            ? findCategoryDemoPath(
+              packageId,
+              categoryId,
+              "Icons",
+            )
+            : null,
+      });
+    });
+
+  /*
+   * -------------------------------------------------------------
+   * 3. Add demo-only entries
    * -------------------------------------------------------------
    */
 
@@ -281,8 +375,13 @@ export const sdkPackages: SDKPackage[] = Object.entries(
         ReturnType<typeof getDemoInfo>
       > =>
         demo !== null &&
+        !(
+          demo.packageId.toLowerCase() === "ui" &&
+          demo.categoryId.toLowerCase() === "icons" &&
+          demo.componentId.toLowerCase() === "icons"
+        ) &&
         demo.packageId.toLowerCase() ===
-          packageId.toLowerCase(),
+        packageId.toLowerCase(),
     )
     .forEach((demo) => {
       let category = categoryMap.get(
@@ -326,7 +425,7 @@ export const sdkPackages: SDKPackage[] = Object.entries(
 
   /*
    * -------------------------------------------------------------
-   * 3. Sort categories and demos
+   * 4. Sort categories and demos
    * -------------------------------------------------------------
    */
 
@@ -346,7 +445,7 @@ export const sdkPackages: SDKPackage[] = Object.entries(
 
   /*
    * -------------------------------------------------------------
-   * 4. Package
+   * 5. Package
    * -------------------------------------------------------------
    */
 

@@ -1,5 +1,8 @@
+import type { ComponentType } from "react";
+
 import {
   demoEntries,
+  iconEntries,
   sdkPackages,
 } from "../discovery/sdkDiscovery";
 
@@ -30,6 +33,38 @@ export default function ComponentPage({
     return null;
   }
 
+  if (
+    packageId === "ui" &&
+    categoryId === "icons"
+  ) {
+    const iconModule = iconEntries[
+      component.path
+    ] as Record<
+      string,
+      ComponentType<any>
+    > | undefined;
+
+    const Icon = iconModule?.[component.id];
+
+    if (!Icon) {
+      return (
+        <div className="playground-page">
+          <h1>{component.name}</h1>
+          <p>Icon could not be loaded.</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="playground-page">
+        <div className="icons-demo-item">
+          <Icon />
+          <span>{component.name}</span>
+        </div>
+      </div>
+    );
+  }
+
   if (!component.demoPath) {
     return (
       <div className="playground-page">
@@ -39,7 +74,8 @@ export default function ComponentPage({
     );
   }
 
-  const DemoComponent = demoEntries[component.demoPath];
+  const DemoComponent =
+    demoEntries[component.demoPath];
 
   if (!DemoComponent) {
     return (

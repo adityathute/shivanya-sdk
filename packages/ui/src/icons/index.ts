@@ -9,6 +9,4 @@ export type {
   IconColor,
 } from "./types";
 
-export {
-  CloseIcon,
-} from "./icons/CloseIcon";
+export * from "./icons";

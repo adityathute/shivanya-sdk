@@ -1,0 +1,845 @@
+.icons-demo {
+  width: 100%;
+}
+
+.icons-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.icons-demo-item {
+  display: flex;
+  min-height: 110px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: 10px;
+  background: var(--shivanya-color-surface);
+  color: var(--shivanya-color-text-primary);
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.icons-demo-item:hover {
+  border-color: var(--shivanya-color-border-hover);
+  background: var(--shivanya-color-surface-hover);
+  box-shadow: var(--shivanya-shadow-sm);
+}
+
+.icons-demo-item svg {
+  width: 64px;
+  height: 64px;
+}
+
+.icons-demo-item:nth-child(1) svg {
+  color: #e74040 !important;
+}
+
+.icons-demo-item:nth-child(2) svg {
+  color: #19f058 !important;
+}
+
+.icons-demo-item:nth-child(3) svg {
+  color: #ae63e3 !important;
+}
+
+.icons-demo-item:nth-child(4) svg {
+  color: #edd631 !important;
+}
+
+.icons-demo-item:nth-child(5) svg {
+  color: #20b7d5 !important;
+}
+
+.icons-demo-item:nth-child(6) svg {
+  color: #e94ea2 !important;
+}
+
+.icons-demo-item:nth-child(7) svg {
+  color: #56f122 !important;
+}
+
+.icons-demo-item:nth-child(8) svg {
+  color: #4f49df !important;
+}
+
+.icons-demo-item:nth-child(9) svg {
+  color: #eb631e !important;
+}
+
+.icons-demo-item:nth-child(10) svg {
+  color: #5fe7b4 !important;
+}
+
+.icons-demo-item:nth-child(11) svg {
+  color: #d837e6 !important;
+}
+
+.icons-demo-item:nth-child(12) svg {
+  color: #b9e60f !important;
+}
+
+.icons-demo-item:nth-child(13) svg {
+  color: #569be1 !important;
+}
+
+.icons-demo-item:nth-child(14) svg {
+  color: #ec2750 !important;
+}
+
+.icons-demo-item:nth-child(15) svg {
+  color: #45e352 !important;
+}
+
+.icons-demo-item:nth-child(16) svg {
+  color: #6d25e4 !important;
+}
+
+.icons-demo-item:nth-child(17) svg {
+  color: #f4be52 !important;
+}
+
+.icons-demo-item:nth-child(18) svg {
+  color: #40ddd7 !important;
+}
+
+.icons-demo-item:nth-child(19) svg {
+  color: #e114ad !important;
+}
+
+.icons-demo-item:nth-child(20) svg {
+  color: #95e552 !important;
+}
+
+.icons-demo-item:nth-child(21) svg {
+  color: #2e4ce5 !important;
+}
+
+.icons-demo-item:nth-child(22) svg {
+  color: #f24e36 !important;
+}
+
+.icons-demo-item:nth-child(23) svg {
+  color: #2fda77 !important;
+}
+
+.icons-demo-item:nth-child(24) svg {
+  color: #c456f0 !important;
+}
+
+.icons-demo-item:nth-child(25) svg {
+  color: #e1e23c !important;
+}
+
+.icons-demo-item:nth-child(26) svg {
+  color: #1ba2da !important;
+}
+
+.icons-demo-item:nth-child(27) svg {
+  color: #f3448c !important;
+}
+
+.icons-demo-item:nth-child(28) svg {
+  color: #4cdc38 !important;
+}
+
+.icons-demo-item:nth-child(29) svg {
+  color: #593aee !important;
+}
+
+.icons-demo-item:nth-child(30) svg {
+  color: #df7e2a !important;
+}
+
+.icons-demo-item:nth-child(31) svg {
+  color: #5cebc8 !important;
+}
+
+.icons-demo-item:nth-child(32) svg {
+  color: #f22ce9 !important;
+}
+
+.icons-demo-item:nth-child(33) svg {
+  color: #96d025 !important;
+}
+
+.icons-demo-item:nth-child(34) svg {
+  color: #4886ef !important;
+}
+
+.icons-demo-item:nth-child(35) svg {
+  color: #e13341 !important;
+}
+
+.icons-demo-item:nth-child(36) svg {
+  color: #40e764 !important;
+}
+
+.icons-demo-item:nth-child(37) svg {
+  color: #8619f0 !important;
+}
+
+.icons-demo-item:nth-child(38) svg {
+  color: #e3c963 !important;
+}
+
+.icons-demo-item:nth-child(39) svg {
+  color: #31dced !important;
+}
+
+.icons-demo-item:nth-child(40) svg {
+  color: #d52090 !important;
+}
+
+.icons-demo-item:nth-child(41) svg {
+  color: #81e94e !important;
+}
+
+.icons-demo-item:nth-child(42) svg {
+  color: #222af1 !important;
+}
+
+.icons-demo-item:nth-child(43) svg {
+  color: #df6f49 !important;
+}
+
+.icons-demo-item:nth-child(44) svg {
+  color: #1eeb8e !important;
+}
+
+.icons-demo-item:nth-child(45) svg {
+  color: #d15fe7 !important;
+}
+
+.icons-demo-item:nth-child(46) svg {
+  color: #cfe637 !important;
+}
+
+.icons-demo-item:nth-child(47) svg {
+  color: #0f8be6 !important;
+}
+
+.icons-demo-item:nth-child(48) svg {
+  color: #e1567e !important;
+}
+
+.icons-demo-item:nth-child(49) svg {
+  color: #27ec28 !important;
+}
+
+.icons-demo-item:nth-child(50) svg {
+  color: #7445e3 !important;
+}
+
+.icons-demo-item:nth-child(51) svg {
+  color: #e49625 !important;
+}
+
+.icons-demo-item:nth-child(52) svg {
+  color: #52f4e1 !important;
+}
+
+.icons-demo-item:nth-child(53) svg {
+  color: #dd40c2 !important;
+}
+
+.icons-demo-item:nth-child(54) svg {
+  color: #82e114 !important;
+}
+
+.icons-demo-item:nth-child(55) svg {
+  color: #5276e5 !important;
+}
+
+.icons-demo-item:nth-child(56) svg {
+  color: #e5372e !important;
+}
+
+.icons-demo-item:nth-child(57) svg {
+  color: #36f276 !important;
+}
+
+.icons-demo-item:nth-child(58) svg {
+  color: #9b2fda !important;
+}
+
+.icons-demo-item:nth-child(59) svg {
+  color: #f0e556 !important;
+}
+
+.icons-demo-item:nth-child(60) svg {
+  color: #3cbee2 !important;
+}
+
+.icons-demo-item:nth-child(61) svg {
+  color: #da1b79 !important;
+}
+
+.icons-demo-item:nth-child(62) svg {
+  color: #67f344 !important;
+}
+
+.icons-demo-item:nth-child(63) svg {
+  color: #4738dc !important;
+}
+
+.icons-demo-item:nth-child(64) svg {
+  color: #ee7f3a !important;
+}
+
+.icons-demo-item:nth-child(65) svg {
+  color: #2adfa4 !important;
+}
+
+.icons-demo-item:nth-child(66) svg {
+  color: #e65ceb !important;
+}
+
+.icons-demo-item:nth-child(67) svg {
+  color: #bef22c !important;
+}
+
+.icons-demo-item:nth-child(68) svg {
+  color: #2572d0 !important;
+}
+
+.icons-demo-item:nth-child(69) svg {
+  color: #ef4862 !important;
+}
+
+.icons-demo-item:nth-child(70) svg {
+  color: #33e14a !important;
+}
+
+.icons-demo-item:nth-child(71) svg {
+  color: #8740e7 !important;
+}
+
+.icons-demo-item:nth-child(72) svg {
+  color: #f0b319 !important;
+}
+
+.icons-demo-item:nth-child(73) svg {
+  color: #63e2e3 !important;
+}
+
+.icons-demo-item:nth-child(74) svg {
+  color: #ed31b4 !important;
+}
+
+.icons-demo-item:nth-child(75) svg {
+  color: #6ad520 !important;
+}
+
+.icons-demo-item:nth-child(76) svg {
+  color: #4e60e9 !important;
+}
+
+.icons-demo-item:nth-child(77) svg {
+  color: #f14722 !important;
+}
+
+.icons-demo-item:nth-child(78) svg {
+  color: #49df8f !important;
+}
+
+.icons-demo-item:nth-child(79) svg {
+  color: #ba1eeb !important;
+}
+
+.icons-demo-item:nth-child(80) svg {
+  color: #e0e75f !important;
+}
+
+.icons-demo-item:nth-child(81) svg {
+  color: #37aae6 !important;
+}
+
+.icons-demo-item:nth-child(82) svg {
+  color: #e60f5d !important;
+}
+
+.icons-demo-item:nth-child(83) svg {
+  color: #60e156 !important;
+}
+
+.icons-demo-item:nth-child(84) svg {
+  color: #5227ec !important;
+}
+
+.icons-demo-item:nth-child(85) svg {
+  color: #e39645 !important;
+}
+
+.icons-demo-item:nth-child(86) svg {
+  color: #25e4be !important;
+}
+
+.icons-demo-item:nth-child(87) svg {
+  color: #f452e5 !important;
+}
+
+.icons-demo-item:nth-child(88) svg {
+  color: #a1dd40 !important;
+}
+
+.icons-demo-item:nth-child(89) svg {
+  color: #1456e1 !important;
+}
+
+.icons-demo-item:nth-child(90) svg {
+  color: #e55256 !important;
+}
+
+.icons-demo-item:nth-child(91) svg {
+  color: #2ee55e !important;
+}
+
+.icons-demo-item:nth-child(92) svg {
+  color: #9e36f2 !important;
+}
+
+.icons-demo-item:nth-child(93) svg {
+  color: #dac02f !important;
+}
+
+.icons-demo-item:nth-child(94) svg {
+  color: #56dbf0 !important;
+}
+
+.icons-demo-item:nth-child(95) svg {
+  color: #e23c9b !important;
+}
+
+.icons-demo-item:nth-child(96) svg {
+  color: #50da1b !important;
+}
+
+.icons-demo-item:nth-child(97) svg {
+  color: #4644f3 !important;
+}
+
+.icons-demo-item:nth-child(98) svg {
+  color: #dc6a38 !important;
+}
+
+.icons-demo-item:nth-child(99) svg {
+  color: #3aeea5 !important;
+}
+
+.icons-demo-item:nth-child(100) svg {
+  color: #cb2adf !important;
+}
+
+.icons-demo-item:nth-child(101) svg {
+  color: #d1eb5c !important;
+}
+
+.icons-demo-item:nth-child(102) svg {
+  color: #2c94f2 !important;
+}
+
+.icons-demo-item:nth-child(103) svg {
+  color: #d0254d !important;
+}
+
+.icons-demo-item:nth-child(104) svg {
+  color: #48ef51 !important;
+}
+
+.icons-demo-item:nth-child(105) svg {
+  color: #6f33e1 !important;
+}
+
+.icons-demo-item:nth-child(106) svg {
+  color: #e7ab40 !important;
+}
+
+.icons-demo-item:nth-child(107) svg {
+  color: #19f0e1 !important;
+}
+
+.icons-demo-item:nth-child(108) svg {
+  color: #e363c7 !important;
+}
+
+.icons-demo-item:nth-child(109) svg {
+  color: #8ced31 !important;
+}
+
+.icons-demo-item:nth-child(110) svg {
+  color: #2043d5 !important;
+}
+
+.icons-demo-item:nth-child(111) svg {
+  color: #e95d4e !important;
+}
+
+.icons-demo-item:nth-child(112) svg {
+  color: #22f173 !important;
+}
+
+.icons-demo-item:nth-child(113) svg {
+  color: #af49df !important;
+}
+
+.icons-demo-item:nth-child(114) svg {
+  color: #ebe61e !important;
+}
+
+.icons-demo-item:nth-child(115) svg {
+  color: #5fc3e7 !important;
+}
+
+.icons-demo-item:nth-child(116) svg {
+  color: #e63785 !important;
+}
+
+.icons-demo-item:nth-child(117) svg {
+  color: #2fe60f !important;
+}
+
+.icons-demo-item:nth-child(118) svg {
+  color: #6956e1 !important;
+}
+
+.icons-demo-item:nth-child(119) svg {
+  color: #ec7c27 !important;
+}
+
+.icons-demo-item:nth-child(120) svg {
+  color: #45e3b7 !important;
+}
+
+.icons-demo-item:nth-child(121) svg {
+  color: #e425e1 !important;
+}
+
+.icons-demo-item:nth-child(122) svg {
+  color: #c2f452 !important;
+}
+
+.icons-demo-item:nth-child(123) svg {
+  color: #407fdd !important;
+}
+
+.icons-demo-item:nth-child(124) svg {
+  color: #e1142a !important;
+}
+
+.icons-demo-item:nth-child(125) svg {
+  color: #52e56d !important;
+}
+
+.icons-demo-item:nth-child(126) svg {
+  color: #852ee5 !important;
+}
+
+.icons-demo-item:nth-child(127) svg {
+  color: #f2c636 !important;
+}
+
+.icons-demo-item:nth-child(128) svg {
+  color: #2fd0da !important;
+}
+
+.icons-demo-item:nth-child(129) svg {
+  color: #f056ba !important;
+}
+
+.icons-demo-item:nth-child(130) svg {
+  color: #77e23c !important;
+}
+
+.icons-demo-item:nth-child(131) svg {
+  color: #1b28da !important;
+}
+
+.icons-demo-item:nth-child(132) svg {
+  color: #f36b44 !important;
+}
+
+.icons-demo-item:nth-child(133) svg {
+  color: #38dc8d !important;
+}
+
+.icons-demo-item:nth-child(134) svg {
+  color: #cb3aee !important;
+}
+
+.icons-demo-item:nth-child(135) svg {
+  color: #cddf2a !important;
+}
+
+.icons-demo-item:nth-child(136) svg {
+  color: #5cb3eb !important;
+}
+
+.icons-demo-item:nth-child(137) svg {
+  color: #f22c6a !important;
+}
+
+.icons-demo-item:nth-child(138) svg {
+  color: #29d025 !important;
+}
+
+.icons-demo-item:nth-child(139) svg {
+  color: #7548ef !important;
+}
+
+.icons-demo-item:nth-child(140) svg {
+  color: #e19433 !important;
+}
+
+.icons-demo-item:nth-child(141) svg {
+  color: #40e7cf !important;
+}
+
+.icons-demo-item:nth-child(142) svg {
+  color: #f019d1 !important;
+}
+
+.icons-demo-item:nth-child(143) svg {
+  color: #ace363 !important;
+}
+
+.icons-demo-item:nth-child(144) svg {
+  color: #3164ed !important;
+}
+
+.icons-demo-item:nth-child(145) svg {
+  color: #d52320 !important;
+}
+
+.icons-demo-item:nth-child(146) svg {
+  color: #4ee97e !important;
+}
+
+.icons-demo-item:nth-child(147) svg {
+  color: #9f22f1 !important;
+}
+
+.icons-demo-item:nth-child(148) svg {
+  color: #dfcf49 !important;
+}
+
+.icons-demo-item:nth-child(149) svg {
+  color: #1ec5eb !important;
+}
+
+.icons-demo-item:nth-child(150) svg {
+  color: #e75fa6 !important;
+}
+
+.icons-demo-item:nth-child(151) svg {
+  color: #60e637 !important;
+}
+
+.icons-demo-item:nth-child(152) svg {
+  color: #1c0fe6 !important;
+}
+
+.icons-demo-item:nth-child(153) svg {
+  color: #e18756 !important;
+}
+
+.icons-demo-item:nth-child(154) svg {
+  color: #27eca6 !important;
+}
+
+.icons-demo-item:nth-child(155) svg {
+  color: #d945e3 !important;
+}
+
+.icons-demo-item:nth-child(156) svg {
+  color: #b8e425 !important;
+}
+
+.icons-demo-item:nth-child(157) svg {
+  color: #52a0f4 !important;
+}
+
+.icons-demo-item:nth-child(158) svg {
+  color: #dd405e !important;
+}
+
+.icons-demo-item:nth-child(159) svg {
+  color: #14e129 !important;
+}
+
+.icons-demo-item:nth-child(160) svg {
+  color: #8c52e5 !important;
+}
+
+.icons-demo-item:nth-child(161) svg {
+  color: #e5ac2e !important;
+}
+
+.icons-demo-item:nth-child(162) svg {
+  color: #36f2ee !important;
+}
+
+.icons-demo-item:nth-child(163) svg {
+  color: #da2fac !important;
+}
+
+.icons-demo-item:nth-child(164) svg {
+  color: #9af056 !important;
+}
+
+.icons-demo-item:nth-child(165) svg {
+  color: #3c54e2 !important;
+}
+
+.icons-demo-item:nth-child(166) svg {
+  color: #da371b !important;
+}
+
+.icons-demo-item:nth-child(167) svg {
+  color: #44f391 !important;
+}
+
+.icons-demo-item:nth-child(168) svg {
+  color: #af38dc !important;
+}
+
+.icons-demo-item:nth-child(169) svg {
+  color: #eaee3a !important;
+}
+
+.icons-demo-item:nth-child(170) svg {
+  color: #2aa6df !important;
+}
+
+.icons-demo-item:nth-child(171) svg {
+  color: #eb5c94 !important;
+}
+
+.icons-demo-item:nth-child(172) svg {
+  color: #40f22c !important;
+}
+
+.icons-demo-item:nth-child(173) svg {
+  color: #4525d0 !important;
+}
+
+.icons-demo-item:nth-child(174) svg {
+  color: #ef9848 !important;
+}
+
+.icons-demo-item:nth-child(175) svg {
+  color: #33e1b9 !important;
+}
+
+.icons-demo-item:nth-child(176) svg {
+  color: #e740dd !important;
+}
+
+.icons-demo-item:nth-child(177) svg {
+  color: #a4f019 !important;
+}
+
+.icons-demo-item:nth-child(178) svg {
+  color: #6390e3 !important;
+}
+
+.icons-demo-item:nth-child(179) svg {
+  color: #ed313c !important;
+}
+
+.icons-demo-item:nth-child(180) svg {
+  color: #20d54a !important;
+}
+
+.icons-demo-item:nth-child(181) svg {
+  color: #9f4ee9 !important;
+}
+
+.icons-demo-item:nth-child(182) svg {
+  color: #f1cb22 !important;
+}
+
+.icons-demo-item:nth-child(183) svg {
+  color: #49cfdf !important;
+}
+
+.icons-demo-item:nth-child(184) svg {
+  color: #eb1e99 !important;
+}
+
+.icons-demo-item:nth-child(185) svg {
+  color: #89e75f !important;
+}
+
+.icons-demo-item:nth-child(186) svg {
+  color: #373ae6 !important;
+}
+
+.icons-demo-item:nth-child(187) svg {
+  color: #e64a0f !important;
+}
+
+.icons-demo-item:nth-child(188) svg {
+  color: #56e1a5 !important;
+}
+
+.icons-demo-item:nth-child(189) svg {
+  color: #d027ec !important;
+}
+
+.icons-demo-item:nth-child(190) svg {
+  color: #cbe345 !important;
+}
+
+.icons-demo-item:nth-child(191) svg {
+  color: #2590e4 !important;
+}
+
+.icons-demo-item:nth-child(192) svg {
+  color: #f4527e !important;
+}
+
+.icons-demo-item:nth-child(193) svg {
+  color: #40dd44 !important;
+}
+
+.icons-demo-item:nth-child(194) svg {
+  color: #5514e1 !important;
+}
+
+.icons-demo-item:nth-child(195) svg {
+  color: #e5ac52 !important;
+}
+
+.icons-demo-item:nth-child(196) svg {
+  color: #2ee5d3 !important;
+}
+
+.icons-demo-item:nth-child(197) svg {
+  color: #f236ce !important;
+}
+
+.icons-demo-item:nth-child(198) svg {
+  color: #87da2f !important;
+}
+
+.icons-demo-item:nth-child(199) svg {
+  color: #5679f0 !important;
+}
+
+.icons-demo-item:nth-child(200) svg {
+  color: #e2473c !important;
+}
+
+.icons-demo-item span {
+  font-size: 13px;
+  color: var(--shivanya-color-text-secondary);
+  text-align: center;
+}

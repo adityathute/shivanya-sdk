@@ -11,10 +11,18 @@ import CategoryPage from "./pages/CategoryPage";
 import ComponentPage from "./pages/ComponentPage";
 import HomePage from "./pages/HomePage";
 
+import { getPreviewComponent } from "./discovery/previewDiscovery";
+
 function App() {
   const [activePackage, setActivePackage] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [activeComponent, setActiveComponent] = useState<string | null>(null);
+
+  const Preview = getPreviewComponent(window.location.pathname);
+
+  if (Preview) {
+    return <Preview />;
+  }
 
   const handlePackageSelect = (packageId: string | null) => {
     setActivePackage(packageId);
