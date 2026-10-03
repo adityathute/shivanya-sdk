@@ -40,12 +40,6 @@ packages/shell/
 
 Then refresh the playground in the browser.
 
-Example:
-
-```tsx
-import { Button, Input, Typography } from "shivanya-ui";
-```
-
 ## Build
 
 Build the playground:
