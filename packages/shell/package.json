@@ -19,7 +19,7 @@
     "build": "tsc && node scripts/copy-assets.mjs"
   },
   "dependencies": {
-    "shivanya-ui": "^1.0.5"
+    "shivanya-ui": "^1.0.6"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
