@@ -30,16 +30,6 @@ export function Example() {
 }
 ```
 
-## Available Components
-
-Current components:
-
-- `Button`
-- `Input`
-- `Typography`
-
-More reusable components will be added as the SDK grows.
-
 ## Development
 
 This package is developed inside the Shivanya SDK pnpm workspace.
@@ -61,8 +51,6 @@ Test changes using the SDK playground:
 ```bash
 pnpm --filter playground dev
 ```
-
-The playground consumes `shivanya-ui` directly from the workspace.
 
 ## Package Structure
 
