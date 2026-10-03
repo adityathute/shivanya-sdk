@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState, type RefObject } from "react";
 export default function useResizeObserver(ref: RefObject<HTMLElement | null>) {
   const [size, setSize] = useState({ width: 0, height: 0 });

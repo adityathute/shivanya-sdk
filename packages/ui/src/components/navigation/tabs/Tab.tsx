@@ -1,1 +1,45 @@
-import React,{forwardRef,memo} from "react"; import {cn,mergeProps} from "../../../utils"; const Tab=forwardRef<HTMLButtonElement,any>(function Tab(props,ref){const {className,style,children,icon,badge,active=false,disabled=false,fullWidth=false,onClick,value,...rest}=mergeProps({},props);return <button ref={ref} type="button" style={style} className={cn("tabsButton",active&&"tabsButtonActive",disabled&&"tabsButtonDisabled",fullWidth&&"tabsButtonFullWidth",className)} disabled={disabled} role="tab" aria-selected={active} onClick={onClick} data-value={value} {...rest}>{icon&&<span className="tabsIcon">{icon}</span>}<span className="tabsLabel">{children}</span>{badge!==undefined&&<span className="tabsBadge">{badge}</span>}</button>}); Tab.displayName="Tab"; export default memo(Tab);
+"use client";
+
+import React, { forwardRef, memo } from "react";
+import { cn, mergeProps } from "../../../utils";
+const Tab = forwardRef<HTMLButtonElement, any>(function Tab(props, ref) {
+  const {
+    className,
+    style,
+    children,
+    icon,
+    badge,
+    active = false,
+    disabled = false,
+    fullWidth = false,
+    onClick,
+    value,
+    ...rest
+  } = mergeProps({}, props);
+  return (
+    <button
+      ref={ref}
+      type="button"
+      style={style}
+      className={cn(
+        "tabsButton",
+        active && "tabsButtonActive",
+        disabled && "tabsButtonDisabled",
+        fullWidth && "tabsButtonFullWidth",
+        className,
+      )}
+      disabled={disabled}
+      role="tab"
+      aria-selected={active}
+      onClick={onClick}
+      data-value={value}
+      {...rest}
+    >
+      {icon && <span className="tabsIcon">{icon}</span>}
+      <span className="tabsLabel">{children}</span>
+      {badge !== undefined && <span className="tabsBadge">{badge}</span>}
+    </button>
+  );
+});
+Tab.displayName = "Tab";
+export default memo(Tab);

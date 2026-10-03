@@ -1,3 +1,5 @@
+"use client";
+
 import Cropper from "react-easy-crop";
 import type { ChangeEvent } from "react";
 import type { ImageCropperProps } from "./ImageCropper.types";

@@ -1,6 +1,6 @@
 {
   "name": "shivanya-ui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "Reusable React UI components for Shivanya applications",
   "main": "dist/index.js",
@@ -14,15 +14,13 @@
       "types": "./dist/icons/index.d.ts",
       "import": "./dist/icons/index.js"
     },
-    "./styles": "./src/styles/index.css"
+    "./styles": "./dist/styles/index.css"
   },
   "files": [
-    "dist",
-    "src/styles",
-    "src/assets/fonts"
+    "dist"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && node scripts/copy-assets.mjs"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

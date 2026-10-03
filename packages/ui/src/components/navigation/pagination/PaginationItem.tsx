@@ -1,1 +1,41 @@
-import React,{forwardRef,memo} from "react"; import {cn,mergeProps} from "../../../utils"; const PaginationItem=forwardRef<HTMLButtonElement,any>(function PaginationItem(props,ref){const {className,style,children,active=false,disabled=false,loading=false,onClick,...rest}=mergeProps({},props);return <button ref={ref} type="button" style={style} className={cn("paginationItem",active&&"paginationItemActive",disabled&&"paginationItemDisabled",loading&&"paginationItemLoading",className)} disabled={disabled||loading} aria-current={active?"page":undefined} aria-disabled={disabled||loading||undefined} onClick={onClick} {...rest}>{children}</button>}); PaginationItem.displayName="PaginationItem"; export default memo(PaginationItem);
+"use client";
+
+import React, { forwardRef, memo } from "react";
+import { cn, mergeProps } from "../../../utils";
+const PaginationItem = forwardRef<HTMLButtonElement, any>(
+  function PaginationItem(props, ref) {
+    const {
+      className,
+      style,
+      children,
+      active = false,
+      disabled = false,
+      loading = false,
+      onClick,
+      ...rest
+    } = mergeProps({}, props);
+    return (
+      <button
+        ref={ref}
+        type="button"
+        style={style}
+        className={cn(
+          "paginationItem",
+          active && "paginationItemActive",
+          disabled && "paginationItemDisabled",
+          loading && "paginationItemLoading",
+          className,
+        )}
+        disabled={disabled || loading}
+        aria-current={active ? "page" : undefined}
+        aria-disabled={disabled || loading || undefined}
+        onClick={onClick}
+        {...rest}
+      >
+        {children}
+      </button>
+    );
+  },
+);
+PaginationItem.displayName = "PaginationItem";
+export default memo(PaginationItem);

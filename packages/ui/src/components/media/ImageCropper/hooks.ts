@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useState } from "react";
 import { IMAGE_CROPPER_DEFAULTS } from "./config";
 import type { CropArea, CropPoint, CropperZoomOptions } from "./ImageCropper.types";
