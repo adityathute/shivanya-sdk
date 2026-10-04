@@ -28,12 +28,36 @@ export interface AuthSession {
   current?: boolean;
 }
 
+export type AuthMode = "cookie" | "token";
+
+export type AuthFeature =
+  | "login"
+  | "register"
+  | "forgot"
+  | "reset"
+  | "verify"
+  | "account";
+
 export interface AuthConfig {
   baseUrl: string;
   apiPrefix?: string;
+  mode?: AuthMode;
+  authUrl?: string;
   csrfCookieName?: string;
   csrfHeaderName?: string;
   credentials?: RequestCredentials;
+  tokenStorage?: import("./token-storage").AuthTokenStorage;
+  tokenRefreshPath?: string;
+  tokenLoginResponse?: {
+    accessToken?: string;
+    refreshToken?: string;
+  };
+}
+
+export interface AuthTokenResponse {
+  accessToken: string;
+  refreshToken?: string | null;
+  user?: AuthUser;
 }
 
 export interface RegisterInput {
