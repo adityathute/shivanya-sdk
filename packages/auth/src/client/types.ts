@@ -36,6 +36,7 @@ export type AuthFeature =
   | "forgot"
   | "reset"
   | "verify"
+  | "google"
   | "account";
 
 export interface AuthConfig {
