@@ -9,9 +9,11 @@ import { AuthMessage } from "../shared/AuthMessage";
 export function Register({
   onSuccess,
   onLogin,
+  showGoogle = true,
 }: {
   onSuccess?: (email: string) => void;
   onLogin?: () => void;
+  showGoogle?: boolean;
 }) {
   const { client } = useAuth();
 
