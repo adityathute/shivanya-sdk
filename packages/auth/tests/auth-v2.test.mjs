@@ -24,6 +24,7 @@ test("auth feature configuration supports minimal and full flows", () => {
   assert.equal(minimal.has("login"), true);
   assert.equal(minimal.has("register"), true);
   assert.equal(minimal.has("forgot"), false);
+  assert.equal(minimal.has("google"), false);
   assert.equal(minimal.has("account"), false);
 
   const full = resolveAuthFeatures();
@@ -32,6 +33,7 @@ test("auth feature configuration supports minimal and full flows", () => {
   assert.equal(full.has("forgot"), true);
   assert.equal(full.has("reset"), true);
   assert.equal(full.has("verify"), true);
+  assert.equal(full.has("google"), true);
   assert.equal(full.has("account"), true);
 });
 
