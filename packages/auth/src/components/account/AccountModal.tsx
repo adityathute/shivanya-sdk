@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Avatar, Button, Modal, Sidebar, SidebarItem, Typography } from "shivanya-ui";
 import { useAuth } from "../../hooks/useAuth";
 import { Profile } from "../profile/Profile";
@@ -21,6 +21,7 @@ export interface AccountModalProps {
 export function AccountModal({ open, onClose, initialView = "overview", onThemeChange }: AccountModalProps) {
   const { user, logout } = useAuth();
   const [view, setView] = useState<AccountView>(initialView);
+  useEffect(() => { if (open) setView(initialView); }, [open, initialView]);
   const navigate = (next: AccountView) => setView(next);
   const fullName = `${user?.first_name ?? ""} ${user?.last_name ?? ""}`.trim() || user?.email || "Account";
 
