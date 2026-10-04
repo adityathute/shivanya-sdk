@@ -12,9 +12,12 @@
     },
     "./styles": "./dist/styles/index.css"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc && node scripts/copy-assets.mjs"
+    "build": "tsc && node scripts/copy-assets.mjs",
+    "test": "pnpm build && node --test tests/*.test.mjs"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
