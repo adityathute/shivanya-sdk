@@ -2,12 +2,15 @@ import "./styles/index.css";
 
 export * from "./client/types";
 export * from "./client/auth-client";
+export * from "./client/token-storage";
+export * from "./client/redirect";
 export * from "./context/AuthProvider";
 export * from "./hooks/useAuth";
 export * from "./hooks/useAuthAction";
 export * from "./components/account/AuthModal";
 export * from "./components/account/AccountModal";
 export * from "./components/account/AuthPage";
+export * from "./components/account/auth-features";
 export * from "./components/login/Login";
 export * from "./components/register/Register";
 export * from "./components/forgot-password/ForgotPassword";
