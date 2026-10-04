@@ -97,7 +97,7 @@ test("unwraps API responses that use a data envelope", async () => {
 });
 
 test("adds the configured CSRF header to unsafe requests", async () => {
-  globalThis.document = { cookie: "csrfToken=csrf-value" };
+  globalThis.document = { cookie: "csrftoken=csrf-value" };
 
   let request;
   globalThis.fetch = async (url, options) => {
