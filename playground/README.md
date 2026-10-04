@@ -53,6 +53,16 @@ For Auth V2 changes, run the automated tests separately:
 pnpm --filter shivanya-auth test
 ```
 
+## Test
+
+Run the playground build smoke test:
+
+```bash
+pnpm --filter playground test
+```
+
+This builds the playground and verifies that the production output and workspace dependencies are present.
+
 ## Build
 
 Build the playground:
