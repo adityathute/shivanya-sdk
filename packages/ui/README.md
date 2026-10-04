@@ -8,6 +8,8 @@ Reusable React UI components for Shivanya applications.
 npm install shivanya-ui
 ```
 
+React and React DOM are peer dependencies.
+
 ## Usage
 
 ```tsx
@@ -16,15 +18,9 @@ import { Button, Input, Typography } from "shivanya-ui";
 export function Example() {
   return (
     <div>
-      <Typography variant="h1">
-        Shivanya
-      </Typography>
-
+      <Typography variant="h1">Shivanya</Typography>
       <Input placeholder="Enter something" />
-
-      <Button>
-        Continue
-      </Button>
+      <Button>Continue</Button>
     </div>
   );
 }
@@ -32,44 +28,57 @@ export function Example() {
 
 ## Development
 
-This package is developed inside the Shivanya SDK pnpm workspace.
-
 From the SDK root:
 
 ```bash
 pnpm install
-```
-
-Build the package:
-
-```bash
 pnpm --filter shivanya-ui build
 ```
 
-Test changes using the SDK playground:
+The build also generates the package icon entrypoints and copies required assets.
+
+Build the complete workspace:
+
+```bash
+pnpm build
+```
+
+Use the playground for visual development:
 
 ```bash
 pnpm --filter playground dev
 ```
 
-## Package Structure
+## Package structure
 
 ```text
 packages/ui/
 ├── src/
 │   ├── components/
 │   └── index.ts
+├── scripts/
 ├── package.json
 └── tsconfig.json
 ```
 
-## React Compatibility
+## React compatibility
 
 The package supports React 18 and React 19 through peer dependencies.
 
+## Publish
+
+After testing and confirming the package version:
+
+```bash
+cd packages/ui
+npm publish
+```
+
+The package is configured for public npm publishing.
+
 ## Contributing
 
-Make changes in the package source, test them through the playground, build the package, and submit a pull request.
+Make changes in `packages/ui/src`, test visual changes through the playground, build the package, and commit the change.
 
 ## License
 
