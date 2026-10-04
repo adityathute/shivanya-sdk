@@ -41,12 +41,17 @@ Use authentication from a component:
 import { useAuth } from "shivanya-auth";
 
 export function AccountButton() {
-  const { user, loading, logout } = useAuth();
+  const { user, loading, isAuthenticated, logout } = useAuth();
 
   if (loading) return <div>Loading...</div>;
-  if (!user) return <div>Not signed in</div>;
+  if (!isAuthenticated) return <div>Not signed in</div>;
 
-  return <button onClick={() => logout()}>Logout</button>;
+  return (
+    <div>
+      <span>{user?.email}</span>
+      <button onClick={() => logout()}>Logout</button>
+    </div>
+  );
 }
 ```
 
@@ -96,11 +101,11 @@ Token mode sends:
 Authorization: Bearer <access-token>
 ```
 
-The SDK refreshes the access token after an authentication failure and protects concurrent requests with a shared refresh operation.
+The SDK automatically attempts one refresh after a `401` response and shares the refresh operation across concurrent requests.
 
 `MemoryAuthTokenStorage` is suitable for development and tests. A production mobile application should provide an `AuthTokenStorage` implementation backed by the platform's secure storage.
 
-The server used with token mode must return an access token and, when applicable, a refresh token from login/refresh responses. The SDK accepts both camelCase and snake_case token response fields.
+The Auth API used with token mode must return an access token from login/refresh responses and should return a refresh token when refresh-token rotation is used. The SDK accepts both camelCase and snake_case token response fields.
 
 ## Auth client
 
@@ -114,7 +119,10 @@ const auth = new AuthClient({
   mode: "cookie",
 });
 
-await auth.login("user@example.com", "password");
+await auth.login({
+  email: "user@example.com",
+  password: "password",
+});
 
 const user = await auth.getCurrentUser();
 
@@ -123,24 +131,71 @@ await auth.logout();
 
 The same client API is used for cookie and token modes.
 
-Common operations include:
+Common operations:
 
 ```ts
-await auth.login(email, password);
-await auth.register(email, password, name);
-await auth.logout();
-await auth.refresh();
+await auth.login({
+  email: "user@example.com",
+  password: "password",
+});
+
+await auth.register({
+  first_name: "John",
+  last_name: "Doe",
+  email: "user@example.com",
+  password: "password",
+  confirm_password: "password",
+});
+
 await auth.getCurrentUser();
 await auth.getProfile();
 await auth.getSessions();
-await auth.getSecurity();
-await auth.forgotPassword(email);
-await auth.resetPassword(token, password);
-await auth.verifyEmail(token);
-await auth.resendVerification();
+await auth.getConnections();
+
+await auth.forgotPassword("user@example.com");
+
+await auth.validateResetPassword("reset-token");
+
+await auth.resetPassword({
+  token: "reset-token",
+  new_password: "new-password",
+  confirm_password: "new-password",
+});
+
+await auth.verifyEmail("verification-token");
+await auth.resendVerification("user@example.com");
+
+await auth.changePassword({
+  current_password: "old-password",
+  new_password: "new-password",
+  confirm_password: "new-password",
+});
+
+await auth.updateProfile({
+  first_name: "John",
+});
+
+await auth.updateUsername("john");
+
+await auth.revokeSession("session-id");
+await auth.revokeOtherSessions();
+
+await auth.disconnectGoogle();
+
+await auth.deleteAccount("current-password");
+await auth.verifyDeleteAccount("current-password");
+await auth.cancelDeleteAccount();
+
+await auth.refresh();
+await auth.logout();
 ```
 
-The exact parameter shape for an operation is defined by the exported TypeScript types.
+Google OAuth URLs can be generated with:
+
+```ts
+const loginUrl = auth.googleStartUrl(window.location.href);
+const connectUrl = auth.googleConnectStartUrl(window.location.href);
+```
 
 ## Auth UI
 
@@ -175,7 +230,7 @@ Available features:
 - `google`
 - `account`
 
-If `features` is omitted, the complete configured Auth flow is available.
+If `features` is omitted, all currently supported Auth features are enabled.
 
 ### AuthPage
 
@@ -221,14 +276,14 @@ The main `AuthConfig` options are:
 | Option | Purpose |
 | --- | --- |
 | `baseUrl` | Auth API base URL |
-| `apiPrefix` | Optional API prefix |
+| `apiPrefix` | Optional API prefix; defaults to `api/v1` |
 | `mode` | `cookie` or `token`; defaults to `cookie` |
 | `authUrl` | Optional hosted Auth page URL |
 | `csrfCookieName` | CSRF cookie name; defaults to `csrftoken` |
 | `csrfHeaderName` | CSRF header name; defaults to `X-CSRFToken` |
-| `credentials` | Fetch credential mode; automatically selected from the auth mode when omitted |
+| `credentials` | Fetch credential mode; selected automatically from the auth mode when omitted |
 | `tokenStorage` | Token storage implementation for token mode |
-| `tokenRefreshPath` | Optional refresh endpoint override |
+| `tokenRefreshPath` | Optional refresh endpoint override; defaults to `auth/refresh/` |
 
 ## Token storage
 
@@ -249,13 +304,17 @@ export class MyTokenStorage implements AuthTokenStorage {
     return null;
   }
 
-  async setTokens(tokens: AuthTokenPair) {}
+  async setTokens(tokens: AuthTokenPair) {
+    // Store tokens in platform-secure storage.
+  }
 
-  async clearTokens() {}
+  async clearTokens() {
+    // Remove stored tokens.
+  }
 }
 ```
 
-Do not store production refresh tokens in ordinary browser localStorage when a safer storage mechanism is available.
+For production mobile applications, use secure platform storage rather than ordinary browser localStorage.
 
 ## Redirect helper
 
@@ -296,7 +355,7 @@ Run the workspace build:
 pnpm build
 ```
 
-The Auth test suite includes token login, Authorization headers, refresh rotation, concurrent refresh, failed refresh cleanup, logout cleanup, redirect URLs, feature configuration, Google feature selection, and public exports.
+The Auth test suite covers token login, Authorization headers, refresh rotation, concurrent refresh, failed refresh cleanup, logout cleanup, redirect URLs, feature configuration, Google feature selection, and public exports.
 
 ## Test files
 
@@ -319,7 +378,7 @@ npm pack
 npm publish
 ```
 
-Check the package contents with `npm pack` before publishing a release.
+Review the files produced by `npm pack` before publishing a release.
 
 ## Package structure
 
@@ -340,7 +399,7 @@ packages/auth/
 
 The SDK is a client library. It does not include the private Shivanya Auth backend, database, signing secrets, OAuth secrets, or other server-side credentials.
 
-Hosted deployments and self-hosted deployments must expose an Auth API compatible with the SDK.
+Hosted and self-hosted deployments must expose an Auth API compatible with the SDK. Token-mode server support must be configured on the Auth API; enabling `mode: "token"` in the client does not convert a cookie-only backend into a token API.
 
 ## License
 
