@@ -16,7 +16,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc && node scripts/copy-assets.mjs"
+    "build": "tsc && node scripts/copy-assets.mjs",
+    "test": "pnpm build && node --test tests/*.test.mjs"
   },
   "dependencies": {
     "shivanya-ui": "^1.0.6"
