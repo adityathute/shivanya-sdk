@@ -37,6 +37,16 @@ pnpm --filter shivanya-ui build
 
 The build also generates the package icon entrypoints and copies required assets.
 
+## Test
+
+Run UI tests:
+
+```bash
+pnpm --filter shivanya-ui test
+```
+
+Tests verify the public entrypoint, package exports, generated declaration output, CSS, and icon build assets.
+
 Build the complete workspace:
 
 ```bash
