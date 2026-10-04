@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import { Modal } from "shivanya-ui";
 import { useAuth } from "../../hooks/useAuth";
 import type { AuthFeature } from "../../client/types";
-import { useAuthAction } from "../../hooks/useAuthAction";
 import { Login } from "../login/Login";
 import { Register } from "../register/Register";
 import { ForgotPassword } from "../forgot-password/ForgotPassword";
@@ -55,10 +54,6 @@ export function AuthModal({
   const enabled = useMemo(() => resolveAuthFeatures(features), [features]);
   const [view, setView] = useState<AuthView>(() => enabled.has(viewFeature[initialView]) ? initialView : firstAvailableView(enabled));
   const [accountOpen, setAccountOpen] = useState(false);
-  const { run: authenticate } = useAuthAction(async () => {
-    setAccountOpen(true);
-    onAuthenticated?.();
-  });
 
   useEffect(() => {
     if (open) setView(enabled.has(viewFeature[initialView]) ? initialView : firstAvailableView(enabled));
@@ -84,7 +79,7 @@ export function AuthModal({
       <div className="shivanya-auth-modal-body">
         {view === "login" && enabled.has("login") && (
           <Login
-            onSuccess={() => void authenticate()}
+            onSuccess={() => { if (enabled.has("account")) setAccountOpen(true); onAuthenticated?.(); }}
             onRegister={enabled.has("register") ? () => setView("register") : undefined}
             onForgotPassword={enabled.has("forgot") ? () => setView("forgot") : undefined}
           />
