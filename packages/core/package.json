@@ -1,34 +1,35 @@
 {
-    "name": "shivanya-core",
-    "version": "1.0.0",
-    "description": "Core client for the Shivanya platform",
-    "main": "dist/index.js",
-    "type": "module",
-    "types": "dist/index.d.ts",
-    "files": [
-        "dist"
-    ],
-    "scripts": {
-        "build": "tsc"
-    },
-    "devDependencies": {
-        "typescript": "^7.0.2"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/adityathute/shivanya-sdk.git"
-    },
-    "keywords": [
-        "shivanya",
-        "core",
-        "sdk",
-        "typescript",
-        "api",
-        "client"
-    ],
-    "author": "Aditya Thute",
-    "license": "ISC",
-    "publishConfig": {
-        "access": "public"
-    }
+  "name": "shivanya-core",
+  "version": "1.0.0",
+  "description": "Core client for the Shivanya platform",
+  "main": "dist/index.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "pnpm build && node --test tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityathute/shivanya-sdk.git"
+  },
+  "keywords": [
+    "shivanya",
+    "core",
+    "sdk",
+    "typescript",
+    "api",
+    "client"
+  ],
+  "author": "Aditya Thute",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
 }
