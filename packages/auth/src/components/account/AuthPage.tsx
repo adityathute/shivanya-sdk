@@ -66,10 +66,11 @@ export function AuthPage({
           onSuccess={onAuthenticated}
           onRegister={enabled.has("register") ? () => setView("register") : undefined}
           onForgotPassword={enabled.has("forgot") ? () => setView("forgot") : undefined}
+          showGoogle={enabled.has("google")}
         />
       )}
       {view === "register" && enabled.has("register") && (
-        <Register onLogin={enabled.has("login") ? () => setView("login") : undefined} />
+        <Register onLogin={enabled.has("login") ? () => setView("login") : undefined} showGoogle={enabled.has("google")} />
       )}
       {view === "forgot" && enabled.has("forgot") && (
         <ForgotPassword onBack={enabled.has("login") ? () => setView("login") : undefined} />
