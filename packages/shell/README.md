@@ -35,6 +35,16 @@ pnpm install
 pnpm --filter shivanya-shell build
 ```
 
+## Test
+
+Run Shell tests:
+
+```bash
+pnpm --filter shivanya-shell test
+```
+
+Tests verify the public Shell entrypoint, exported component/layout/context/hook groups, declarations, and generated CSS.
+
 Build the complete workspace:
 
 ```bash
