@@ -110,8 +110,9 @@ export class AuthClient {
     return { method: "POST", body: JSON.stringify(body) };
   }
 
-  async login(input: LoginInput) {
-    return this.request<{ user: AuthUser }>("auth/login/", this.json(input));
+  async login(input: LoginInput): Promise<AuthUser> {
+    await this.request<{ user: Pick<AuthUser, "id" | "email"> }>("auth/login/", this.json(input));
+    return this.getCurrentUser();
   }
 
   async register(input: RegisterInput) {
@@ -139,7 +140,7 @@ export class AuthClient {
   }
 
   async verifyEmail(token: string) {
-    return this.request<AuthUser>("auth/verify-email/", this.json({ token }));
+    return this.request<{ email: string; email_verified: boolean }>("auth/verify-email/", this.json({ token }));
   }
 
   async resendVerification(email: string) {
