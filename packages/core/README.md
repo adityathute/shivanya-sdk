@@ -31,6 +31,16 @@ pnpm install
 pnpm --filter shivanya-core build
 ```
 
+## Test
+
+Run Core tests:
+
+```bash
+pnpm --filter shivanya-core test
+```
+
+Tests cover URL normalization, JSON requests, API-key authorization, and API errors.
+
 Build the complete workspace:
 
 ```bash
