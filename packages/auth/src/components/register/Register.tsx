@@ -128,18 +128,22 @@ export function Register({
         </Button>
       </form>
 
-      <div className="shivanya-auth-divider">
-        <span>or</span>
-      </div>
+      {showGoogle && (
+        <>
+          <div className="shivanya-auth-divider">
+            <span>or</span>
+          </div>
 
-      <Button
-        type="button"
-        variant="outline"
-        fullWidth
-        onClick={continueWithGoogle}
-      >
-        Continue with Google
-      </Button>
+          <Button
+            type="button"
+            variant="outline"
+            fullWidth
+            onClick={continueWithGoogle}
+          >
+            Continue with Google
+          </Button>
+        </>
+      )}
 
       <div className="shivanya-auth-switch">
         <span>Already have an account?</span>
