@@ -1,0 +1,50 @@
+{
+  "name": "shivanya-auth",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Reusable authentication and account UI for Shivanya applications",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles": "./dist/styles/index.css"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc && node scripts/copy-assets.mjs"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "shivanya-ui": "^1.0.6"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "typescript": "^7.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityathute/shivanya-sdk.git"
+  },
+  "keywords": [
+    "shivanya",
+    "auth",
+    "sdk",
+    "react",
+    "authentication",
+    "account"
+  ],
+  "author": "Aditya Thute",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -14,7 +14,8 @@
     "shivanya-shell": "workspace:*",
     "shivanya-ui": "workspace:*",
     "shivanya-core": "workspace:*",
-    "shivanya-ai": "workspace:*"
+    "shivanya-ai": "workspace:*",
+    "shivanya-auth": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",
