@@ -1,13 +1,13 @@
 # Shivanya SDK Playground
 
-Small local development environment for testing Shivanya SDK packages.
+Local development environment for testing Shivanya SDK packages.
 
-This playground is for contributors and maintainers. It is not a published SDK package.
+The playground is for contributors and maintainers. It is not a published SDK package.
 
 ## Requirements
 
 - Node.js
-- pnpm
+- pnpm 11+
 
 ## Setup
 
@@ -23,22 +23,35 @@ pnpm install
 pnpm --filter playground dev
 ```
 
-Open the local URL shown by Vite, usually:
+Vite normally starts the playground at:
 
 ```text
 http://localhost:5173
 ```
 
-## Test SDK Changes
+Use the URL printed by the terminal if the port is different.
 
-Edit packages such as:
+## Test SDK changes
 
-```text
-packages/ui/
-packages/shell/
+Build the package being changed first when useful:
+
+```bash
+pnpm --filter shivanya-ui build
+pnpm --filter shivanya-shell build
+pnpm --filter shivanya-auth build
 ```
 
-Then refresh the playground in the browser.
+Then start the playground:
+
+```bash
+pnpm --filter playground dev
+```
+
+For Auth V2 changes, run the automated tests separately:
+
+```bash
+pnpm --filter shivanya-auth test
+```
 
 ## Build
 
@@ -54,8 +67,17 @@ Build the complete SDK workspace:
 pnpm build
 ```
 
+## Development workflow
+
+1. Edit a package under `packages/`.
+2. Build the affected package.
+3. Start the playground.
+4. Verify the UI or integration manually.
+5. Run the package tests when tests exist.
+6. Run `pnpm build` before committing.
+
 ## Important
 
-The playground exists only for local development and contribution.
+The playground is for local development only. It is not included in published npm packages.
 
-It is not included in the published npm packages.
+Do not place production secrets or private backend credentials in the playground.
