@@ -2,6 +2,7 @@ import type {
   ApiResponse,
   AuthConfig,
   AuthSession,
+  AuthTokenResponse,
   AuthUser,
   ChangePasswordInput,
   LoginInput,
@@ -10,6 +11,8 @@ import type {
   ResetPasswordInput,
 } from "./types";
 import { AuthError } from "./types";
+import { createAuthRedirectUrl } from "./redirect";
+import { MemoryAuthTokenStorage, type AuthTokenPair, type AuthTokenStorage } from "./token-storage";
 
 const unsafeMethods = new Set(["POST", "PUT", "PATCH", "DELETE"]);
 
@@ -41,20 +44,46 @@ function extractMessage(data: unknown, fallback: string) {
   return fallback;
 }
 
+function readTokenPair(data: unknown): AuthTokenPair | null {
+  if (!data || typeof data !== "object") return null;
+  const value = data as Record<string, unknown>;
+  const accessToken = typeof value.accessToken === "string"
+    ? value.accessToken
+    : typeof value.access_token === "string"
+      ? value.access_token
+      : null;
+  const refreshToken = typeof value.refreshToken === "string"
+    ? value.refreshToken
+    : typeof value.refresh_token === "string"
+      ? value.refresh_token
+      : null;
+
+  if (!accessToken) return null;
+  return { accessToken, refreshToken };
+}
+
 export class AuthClient {
   private readonly baseUrl: string;
   private readonly apiPrefix: string;
+  private readonly mode: NonNullable<AuthConfig["mode"]>;
+  private readonly authUrl?: string;
   private readonly csrfCookieName: string;
   private readonly csrfHeaderName: string;
   private readonly credentials: RequestCredentials;
+  private readonly tokenRefreshPath: string;
+  private readonly tokenStorage: AuthTokenStorage;
   private refreshPromise: Promise<boolean> | null = null;
 
   constructor(config: AuthConfig) {
     this.baseUrl = trimUrl(config.baseUrl);
     this.apiPrefix = `/${(config.apiPrefix ?? "api/v1").replace(/^\/+|\/+$/g, "")}`;
-    this.csrfCookieName = config.csrfCookieName ?? "csrfToken";
+    this.mode = config.mode ?? "cookie";
+    this.authUrl = config.authUrl;
+    this.csrfCookieName = config.csrfCookieName ?? "csrftoken";
     this.csrfHeaderName = config.csrfHeaderName ?? "X-CSRFToken";
-    this.credentials = config.credentials ?? "include";
+    this.credentials = config.credentials ?? (this.mode === "cookie" ? "include" : "omit");
+    this.tokenRefreshPath = config.tokenRefreshPath ?? "auth/refresh/";
+    this.tokenStorage = config.tokenStorage ?? new MemoryAuthTokenStorage();
   }
 
   private url(path: string) {
@@ -70,7 +99,14 @@ export class AuthClient {
       headers.set("Content-Type", "application/json");
     }
 
-    if (unsafeMethods.has(method)) {
+    if (this.mode === "token") {
+      const accessToken = await this.tokenStorage.getAccessToken();
+      if (accessToken && !headers.has("Authorization")) {
+        headers.set("Authorization", `Bearer ${accessToken}`);
+      }
+    }
+
+    if (this.mode === "cookie" && unsafeMethods.has(method)) {
       const csrf = readCookie(this.csrfCookieName);
       if (csrf) headers.set(this.csrfHeaderName, csrf);
     }
@@ -90,7 +126,13 @@ export class AuthClient {
       data = await response.text().catch(() => "");
     }
 
-    if (response.status === 401 && retry && !path.startsWith("auth/refresh/") && !path.startsWith("auth/login/") && !path.startsWith("auth/register/")) {
+    if (
+      response.status === 401 &&
+      retry &&
+      path !== this.tokenRefreshPath &&
+      !path.startsWith("auth/login/") &&
+      !path.startsWith("auth/register/")
+    ) {
       const refreshed = await this.refresh();
       if (refreshed) return this.request<T>(path, options, false);
     }
@@ -99,10 +141,13 @@ export class AuthClient {
       throw new AuthError(extractMessage(data, "Authentication request failed."), response.status, data);
     }
 
+    return this.unwrap<T>(data);
+  }
+
+  private unwrap<T>(data: unknown): T {
     if (data && typeof data === "object" && "data" in data) {
       return (data as ApiResponse<T>).data as T;
     }
-
     return data as T;
   }
 
@@ -111,7 +156,13 @@ export class AuthClient {
   }
 
   async login(input: LoginInput): Promise<AuthUser> {
-    await this.request<{ user: Pick<AuthUser, "id" | "email"> }>("auth/login/", this.json(input));
+    const data = await this.request<AuthTokenResponse & { user?: AuthUser }>("auth/login/", this.json(input));
+    if (this.mode === "token") {
+      const tokens = readTokenPair(data);
+      if (!tokens) throw new AuthError("Token authentication response did not contain an access token.", 500, data);
+      await this.tokenStorage.setTokens(tokens);
+    }
+    if (data?.user) return data.user;
     return this.getCurrentUser();
   }
 
@@ -120,19 +171,44 @@ export class AuthClient {
   }
 
   async logout() {
-    return this.request<unknown>("auth/logout/", this.json({}));
+    try {
+      const refreshToken = this.mode === "token" ? await this.tokenStorage.getRefreshToken() : null;
+      return await this.request<unknown>("auth/logout/", this.json(refreshToken ? { refresh_token: refreshToken } : {}), false);
+    } finally {
+      if (this.mode === "token") await this.tokenStorage.clearTokens();
+    }
   }
 
   async refresh() {
     if (!this.refreshPromise) {
-      this.refreshPromise = this.request<unknown>("auth/refresh/", this.json({}), false)
-        .then(() => true)
-        .catch(() => false)
-        .finally(() => {
+      this.refreshPromise = (async () => {
+        try {
+          const refreshToken = this.mode === "token" ? await this.tokenStorage.getRefreshToken() : null;
+          const data = await this.request<AuthTokenResponse>(this.tokenRefreshPath, this.json(
+            refreshToken ? { refresh_token: refreshToken } : {},
+          ), false);
+          if (this.mode === "token") {
+            const tokens = readTokenPair(data);
+            if (!tokens) {
+              await this.tokenStorage.clearTokens();
+              return false;
+            }
+            await this.tokenStorage.setTokens(tokens);
+          }
+          return true;
+        } catch {
+          if (this.mode === "token") await this.tokenStorage.clearTokens();
+          return false;
+        } finally {
           this.refreshPromise = null;
-        });
+        }
+      })();
     }
     return this.refreshPromise;
+  }
+
+  async getAccessToken() {
+    return this.mode === "token" ? this.tokenStorage.getAccessToken() : null;
   }
 
   async getCurrentUser() {
@@ -236,14 +312,8 @@ export class AuthClient {
   }
 
   googleConnectStartUrl(next?: string) {
-    const url = new URL(
-      `${this.baseUrl}${this.apiPrefix}/auth/google/connect/start/`,
-    );
-
-    if (next) {
-      url.searchParams.set("next", next);
-    }
-
+    const url = new URL(`${this.baseUrl}${this.apiPrefix}/auth/google/connect/start/`);
+    if (next) url.searchParams.set("next", next);
     return url.toString();
   }
 
@@ -251,5 +321,16 @@ export class AuthClient {
     const url = new URL(`${this.baseUrl}${this.apiPrefix}/auth/google/start/`);
     if (next) url.searchParams.set("next", next);
     return url.toString();
+  }
+
+  authPageUrl(next?: string) {
+    if (!this.authUrl) throw new AuthError("authUrl is required for redirect authentication.", 0);
+    return createAuthRedirectUrl(this.authUrl, next);
+  }
+
+  redirectToAuth(next?: string) {
+    const url = this.authPageUrl(next);
+    if (typeof window === "undefined") throw new AuthError("Redirect authentication requires a browser.", 0);
+    window.location.assign(url);
   }
 }
