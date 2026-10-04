@@ -99,7 +99,7 @@ export class AuthClient {
       headers.set("Content-Type", "application/json");
     }
 
-    if (this.mode === "token") {
+    if (this.mode === "token" && path !== this.tokenRefreshPath) {
       const accessToken = await this.tokenStorage.getAccessToken();
       if (accessToken && !headers.has("Authorization")) {
         headers.set("Authorization", `Bearer ${accessToken}`);
