@@ -40,6 +40,16 @@ pnpm install
 pnpm --filter shivanya-ai build
 ```
 
+## Test
+
+Run AI tests:
+
+```bash
+pnpm --filter shivanya-ai test
+```
+
+Tests verify the chat request path, method, message payload, model, temperature, and returned response.
+
 Build the complete workspace:
 
 ```bash
