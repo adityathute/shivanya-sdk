@@ -53,20 +53,42 @@ pnpm --filter shivanya-auth build
 
 ## Test
 
-Run the Auth V2 test suite:
+Run all package tests:
 
 ```bash
+pnpm --filter shivanya-core test
+pnpm --filter shivanya-ai test
+pnpm --filter shivanya-ui test
+pnpm --filter shivanya-shell test
 pnpm --filter shivanya-auth test
+pnpm --filter playground test
 ```
 
-The Auth package test command builds the package first and then runs its Node test files.
+Run the full build and then all tests:
+
+```bash
+pnpm build
+pnpm --filter shivanya-core test
+pnpm --filter shivanya-ai test
+pnpm --filter shivanya-ui test
+pnpm --filter shivanya-shell test
+pnpm --filter shivanya-auth test
+pnpm --filter playground test
+```
+
+Each package test command builds its package first and then runs its Node test files. Auth has the most extensive integration-style coverage; the other packages have focused API, export, artifact, and playground smoke coverage.
 
 Before committing SDK changes, run:
 
 ```bash
 pnpm install
 pnpm build
+pnpm --filter shivanya-core test
+pnpm --filter shivanya-ai test
+pnpm --filter shivanya-ui test
+pnpm --filter shivanya-shell test
 pnpm --filter shivanya-auth test
+pnpm --filter playground test
 git status
 git diff
 ```
