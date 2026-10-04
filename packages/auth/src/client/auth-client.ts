@@ -235,6 +235,18 @@ export class AuthClient {
     return this.request<{ google_connected: boolean }>("profile/connections/google/", { method: "DELETE" });
   }
 
+  googleConnectStartUrl(next?: string) {
+    const url = new URL(
+      `${this.baseUrl}${this.apiPrefix}/auth/google/connect/start/`,
+    );
+
+    if (next) {
+      url.searchParams.set("next", next);
+    }
+
+    return url.toString();
+  }
+
   googleStartUrl(next?: string) {
     const url = new URL(`${this.baseUrl}${this.apiPrefix}/auth/google/start/`);
     if (next) url.searchParams.set("next", next);
