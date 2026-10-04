@@ -43,8 +43,7 @@ export function AuthProvider({ config, children }: { config: AuthConfig; childre
   }, [client]);
 
   const login = useCallback(async (email: string, password: string) => {
-    const result = await client.login({ email, password });
-    const nextUser = result.user ?? await client.getCurrentUser();
+    const nextUser = await client.login({ email, password });
     setUser(nextUser);
     return nextUser;
   }, [client]);
