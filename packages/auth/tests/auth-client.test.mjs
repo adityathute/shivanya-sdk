@@ -33,12 +33,22 @@ test("build output contains the public JavaScript and stylesheet entrypoints", a
   await readFile(join(packageRoot, "dist/styles/index.css"));
 });
 
-test("login sends JSON credentials to the configured API prefix", async () => {
+test("login sends credentials and loads the authenticated user", async () => {
   const calls = [];
 
   globalThis.fetch = async (url, options) => {
     calls.push({ url, options });
-    return jsonResponse({ user: { id: "u1", email: "user@example.com" } });
+
+    if (url.endsWith("/auth/login/")) {
+      return jsonResponse({ user: { id: "u1", email: "user@example.com" } });
+    }
+
+    return jsonResponse({
+      id: "u1",
+      email: "user@example.com",
+      username: "user",
+      email_verified: true,
+    });
   };
 
   const client = new AuthClient({
@@ -50,11 +60,13 @@ test("login sends JSON credentials to the configured API prefix", async () => {
     password: "secret",
   });
 
-  assert.deepEqual(result.user, {
+  assert.deepEqual(result, {
     id: "u1",
     email: "user@example.com",
+    username: "user",
+    email_verified: true,
   });
-  assert.equal(calls.length, 1);
+  assert.equal(calls.length, 2);
   assert.equal(calls[0].url, "https://api.example.com/api/v1/auth/login/");
   assert.equal(calls[0].options.method, "POST");
   assert.equal(calls[0].options.credentials, "include");
@@ -63,6 +75,7 @@ test("login sends JSON credentials to the configured API prefix", async () => {
     email: "user@example.com",
     password: "secret",
   });
+  assert.equal(calls[1].url, "https://api.example.com/api/v1/auth/me/");
 });
 
 test("unwraps API responses that use a data envelope", async () => {
