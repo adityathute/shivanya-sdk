@@ -6,6 +6,7 @@ export const defaultAuthFeatures: AuthFeature[] = [
   "forgot",
   "reset",
   "verify",
+  "google",
   "account",
 ];
 
