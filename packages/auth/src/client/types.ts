@@ -49,15 +49,13 @@ export interface AuthConfig {
   credentials?: RequestCredentials;
   tokenStorage?: import("./token-storage").AuthTokenStorage;
   tokenRefreshPath?: string;
-  tokenLoginResponse?: {
-    accessToken?: string;
-    refreshToken?: string;
-  };
 }
 
 export interface AuthTokenResponse {
-  accessToken: string;
+  accessToken?: string;
+  access_token?: string;
   refreshToken?: string | null;
+  refresh_token?: string | null;
   user?: AuthUser;
 }
 
