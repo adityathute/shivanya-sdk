@@ -53,7 +53,13 @@ pnpm --filter shivanya-auth build
 
 ## Test
 
-Run all package tests:
+Run the complete SDK test suite with one command:
+
+```bash
+pnpm test
+```
+
+Or run packages individually:
 
 ```bash
 pnpm --filter shivanya-core test
