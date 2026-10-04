@@ -1,36 +1,93 @@
-# shivanya-auth
+# Shivanya Auth
 
-Reusable authentication and account UI for Shivanya applications.
+Reusable authentication SDK and account UI for React applications.
 
-## Architecture
+## Modes
 
-`shivanya-auth` is the reusable frontend package. It talks to the Django `shivanya-auth` backend through `AuthClient` and uses `shivanya-ui` for the visual system.
+Cookie mode is the default and is intended for browser applications.
 
-## Setup
-
-```tsx
-import { AuthProvider, AuthModal } from "shivanya-auth";
-import "shivanya-auth/styles";
-
-export function App() {
-  return (
-    <AuthProvider config={{ baseUrl: "http://127.0.0.1:8000" }}>
-      <YourApp />
+    <AuthProvider
+      config={{
+        baseUrl: "https://auth.example.com",
+        mode: "cookie",
+      }}
+    >
+      <App />
     </AuthProvider>
-  );
-}
-```
 
-Open the modal from any application without navigating away:
+Token mode is intended for mobile-style clients and API integrations.
 
-```tsx
-<AuthModal open={open} onClose={() => setOpen(false)} />
-```
+    import { MemoryAuthTokenStorage } from "shivanya-auth";
 
-For an explicit standalone authentication page:
+    <AuthProvider
+      config={{
+        baseUrl: "https://auth.example.com",
+        mode: "token",
+        tokenStorage: new MemoryAuthTokenStorage(),
+      }}
+    >
+      <App />
+    </AuthProvider>
 
-```tsx
-<AuthPage />
-```
+The SDK uses the same AuthClient API for both modes. Token storage can be replaced with a persistent or platform-specific implementation.
 
-The package supports login, registration, password recovery, email verification, profile, sessions, security, Google connection state, account deletion, settings, and logout.
+## Auth UI
+
+Use the complete flow by default:
+
+    <AuthModal open={open} onClose={() => setOpen(false)} />
+
+Or enable only the features an application needs:
+
+    <AuthModal
+      open={open}
+      onClose={() => setOpen(false)}
+      features={["login", "register"]}
+    />
+
+Available features:
+
+- `login`
+- `register`
+- `forgot`
+- `reset`
+- `verify`
+- `google`
+- `account`
+
+## Hosted Auth Redirect
+
+For a standalone hosted Auth application:
+
+    <AuthProvider
+      config={{
+        baseUrl: "https://api.example.com",
+        authUrl: "https://auth.shivanya.com",
+      }}
+    >
+      <App />
+    </AuthProvider>
+
+Then:
+
+    auth.redirectToAuth(window.location.href);
+
+The SDK does not expose backend secrets. Hosted and self-hosted deployments only require public API configuration in the client.
+
+## Public API
+
+The package exports:
+
+- `AuthClient`
+- `AuthProvider`
+- `useAuth`
+- `AuthModal`
+- `AuthPage`
+- `AccountModal`
+- token storage interfaces and implementations
+- redirect helpers
+- authentication types and errors
+
+## Testing
+
+The V2 suite covers token login, token storage, Authorization headers, refresh rotation, concurrent refresh, failed refresh cleanup, logout cleanup, redirect URLs, feature configuration, Google feature selection, and public exports.
