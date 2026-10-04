@@ -3,7 +3,8 @@
   "version": "0.1.2",
   "description": "Shivanya SDK monorepo",
   "scripts": {
-    "build": "pnpm -r build"
+    "build": "pnpm -r build",
+    "test": "pnpm --filter shivanya-core test && pnpm --filter shivanya-ai test && pnpm --filter shivanya-ui test && pnpm --filter shivanya-shell test && pnpm --filter shivanya-auth test && pnpm --filter playground test"
   },
   "repository": {
     "type": "git",
