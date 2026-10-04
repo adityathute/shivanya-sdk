@@ -20,23 +20,24 @@ const client = new ShivanyaClient({
 const data = await client.request("/api/example");
 ```
 
-## Development
+Use the core client when another SDK package needs a shared API client.
 
-This package is developed inside the Shivanya SDK pnpm workspace.
+## Development
 
 From the SDK root:
 
 ```bash
 pnpm install
-```
-
-Build the package:
-
-```bash
 pnpm --filter shivanya-core build
 ```
 
-## Package Structure
+Build the complete workspace:
+
+```bash
+pnpm build
+```
+
+## Package structure
 
 ```text
 packages/core/
@@ -48,9 +49,20 @@ packages/core/
 └── tsconfig.json
 ```
 
+## Publish
+
+After testing and confirming the package version:
+
+```bash
+cd packages/core
+npm publish
+```
+
+The package is configured for public npm publishing.
+
 ## Contributing
 
-Make changes in the package source, build the package, and submit a pull request.
+Make changes in `packages/core/src`, build the package, verify dependent packages if needed, then commit the change.
 
 ## License
 
