@@ -25,27 +25,28 @@ const response = await ai.chat({
 });
 ```
 
+The exact API behavior is determined by the backend connected to `ShivanyaClient`.
+
 ## Dependency
 
-`shivanya-ai` uses `shivanya-core` as a package dependency.
+`shivanya-ai` uses `shivanya-core`.
 
 ## Development
-
-This package is developed inside the Shivanya SDK pnpm workspace.
 
 From the SDK root:
 
 ```bash
 pnpm install
-```
-
-Build the package:
-
-```bash
 pnpm --filter shivanya-ai build
 ```
 
-## Package Structure
+Build the complete workspace:
+
+```bash
+pnpm build
+```
+
+## Package structure
 
 ```text
 packages/ai/
@@ -57,9 +58,20 @@ packages/ai/
 └── tsconfig.json
 ```
 
+## Publish
+
+Check the package version, build it, and publish from this package directory:
+
+```bash
+cd packages/ai
+npm publish
+```
+
+The package is configured for public npm publishing.
+
 ## Contributing
 
-Make changes in the package source, build the package, and submit a pull request.
+Make changes in `packages/ai/src`, build the package, verify dependent packages if needed, then commit the change.
 
 ## License
 
