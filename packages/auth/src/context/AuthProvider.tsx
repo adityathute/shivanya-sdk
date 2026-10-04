@@ -12,12 +12,23 @@ export interface AuthContextValue {
   refreshUser: () => Promise<AuthUser | null>;
   login: (email: string, password: string) => Promise<AuthUser>;
   logout: () => Promise<void>;
+  getAccessToken: () => Promise<string | null>;
 }
 
 export const AuthContext = createContext<AuthContextValue | null>(null);
 
 export function AuthProvider({ config, children }: { config: AuthConfig; children: ReactNode }) {
-  const client = useMemo(() => new AuthClient(config), [config.baseUrl, config.apiPrefix, config.csrfCookieName, config.csrfHeaderName, config.credentials]);
+  const client = useMemo(() => new AuthClient(config), [
+    config.baseUrl,
+    config.apiPrefix,
+    config.mode,
+    config.authUrl,
+    config.csrfCookieName,
+    config.csrfHeaderName,
+    config.credentials,
+    config.tokenStorage,
+    config.tokenRefreshPath,
+  ]);
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -52,6 +63,8 @@ export function AuthProvider({ config, children }: { config: AuthConfig; childre
     try { await client.logout(); } finally { setUser(null); }
   }, [client]);
 
+  const getAccessToken = useCallback(() => client.getAccessToken(), [client]);
+
   const value = useMemo<AuthContextValue>(() => ({
     client,
     user,
@@ -60,7 +73,8 @@ export function AuthProvider({ config, children }: { config: AuthConfig; childre
     refreshUser,
     login,
     logout,
-  }), [client, user, loading, refreshUser, login, logout]);
+    getAccessToken,
+  }), [client, user, loading, refreshUser, login, logout, getAccessToken]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
