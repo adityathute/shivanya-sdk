@@ -40,7 +40,14 @@ test("login sends credentials and loads the authenticated user", async () => {
     calls.push({ url, options });
 
     if (url.endsWith("/auth/login/")) {
-      return jsonResponse({ user: { id: "u1", email: "user@example.com" } });
+      return jsonResponse({
+        user: {
+          id: "u1",
+          email: "user@example.com",
+          username: "user",
+          email_verified: true,
+        },
+      });
     }
 
     return jsonResponse({
@@ -66,7 +73,7 @@ test("login sends credentials and loads the authenticated user", async () => {
     username: "user",
     email_verified: true,
   });
-  assert.equal(calls.length, 2);
+  assert.equal(calls.length, 1);
   assert.equal(calls[0].url, "https://api.example.com/api/v1/auth/login/");
   assert.equal(calls[0].options.method, "POST");
   assert.equal(calls[0].options.credentials, "include");
@@ -75,7 +82,6 @@ test("login sends credentials and loads the authenticated user", async () => {
     email: "user@example.com",
     password: "secret",
   });
-  assert.equal(calls[1].url, "https://api.example.com/api/v1/auth/me/");
 });
 
 test("unwraps API responses that use a data envelope", async () => {

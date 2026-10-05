@@ -47,8 +47,16 @@ test("token mode stores login tokens and sends the access token", async () => {
 
   assert.deepEqual(user, { id: "u1", email: "user@example.com" });
   assert.equal(await client.getAccessToken(), "access-1");
+  assert.equal(calls.length, 1);
   assert.equal(calls[0].options.credentials, "omit");
-  assert.equal(calls[1].options.headers.get("Authorization"), "Bearer access-1");
+
+  await client.getCurrentUser();
+
+  assert.equal(calls.length, 2);
+  assert.equal(
+    calls[1].options.headers.get("Authorization"),
+    "Bearer access-1",
+  );
 });
 
 test("token mode refreshes and retries with the rotated access token", async () => {
