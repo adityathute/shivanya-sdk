@@ -1,27 +1,27 @@
-import { AuthPage, AuthProvider, useAuth } from "shivanya-auth";
+import { AuthProvider, useAuth } from "shivanya-auth";
 
-function AuthTestPanel() {
-  const { user, loading, isAuthenticated, logout, refreshUser, client } =
-    useAuth();
+function AuthProviderTest() {
+  const { user, loading, isAuthenticated, refreshUser, logout } = useAuth();
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p>Loading authentication state…</p>;
   }
 
   return (
-    <div>
-      <p>Status: {isAuthenticated ? "Logged in" : "Logged out"}</p>
-
-      {user && <p>User: {user.email}</p>}
-
+    <div className="demo">
+      <p>Status: {isAuthenticated ? "Authenticated" : "Not authenticated"}</p>
+      {user?.email && <p>User: {user.email}</p>}
       {isAuthenticated ? (
-        <>
-          <button onClick={logout}>Logout</button>
-          <button onClick={refreshUser}>Refresh User</button>
-          <button onClick={() => client.refresh()}>Refresh Session</button>
-        </>
+        <div className="auth-demo-actions">
+          <button type="button" onClick={refreshUser}>
+            Refresh user
+          </button>
+          <button type="button" onClick={logout}>
+            Logout
+          </button>
+        </div>
       ) : (
-        <p>Login using the Auth UI above.</p>
+        <p>Open the Auth V2 package demo to sign in.</p>
       )}
     </div>
   );
@@ -30,12 +30,11 @@ function AuthTestPanel() {
 export default function AuthProviderDemo() {
   return (
     <section className="demo">
-      <h1>Auth package</h1>
-      <p>Workspace import and UI integration check.</p>
+      <h1>AuthProvider</h1>
+      <p>Provider state and session integration.</p>
 
-      <AuthProvider config={{ baseUrl: "http://localhost:8000" }}>
-        <AuthPage />
-        <AuthTestPanel />
+      <AuthProvider config={{ baseUrl: "http://localhost:8000", mode: "cookie" }}>
+        <AuthProviderTest />
       </AuthProvider>
     </section>
   );
