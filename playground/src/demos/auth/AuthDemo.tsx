@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import {
+  AuthClient,
   AuthModal,
   AuthProvider,
   type AuthMode,
@@ -88,7 +89,7 @@ function AuthDemoContent({
   );
 
   const openHostedAuth = () => {
-    const client = new (require("shivanya-auth").AuthClient)(config);
+    const client = new AuthClient(config);
     client.redirectToAuth(window.location.href);
   };
 
