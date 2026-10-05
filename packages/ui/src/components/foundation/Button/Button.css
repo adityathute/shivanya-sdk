@@ -456,6 +456,131 @@
   background: var(--shivanya-color-info-soft-active);
 }
 
+/* ---------------------------------------------------------------
+ * Outline Primary
+ * --------------------------------------------------------------- */
+
+.shivanya-button-outline-primary {
+  background: var(--shivanya-color-primary-soft);
+  color: var(--shivanya-color-primary);
+  border-color: var(--shivanya-color-primary);
+}
+
+.shivanya-button-outline-primary:hover:not(:disabled) {
+  background: var(--shivanya-color-primary-soft-hover);
+  border-color: var(--shivanya-color-primary-hover);
+}
+
+.shivanya-button-outline-primary:active:not(:disabled) {
+  background: var(--shivanya-color-primary-soft-active);
+  border-color: var(--shivanya-color-primary-active);
+}
+
+
+/* ---------------------------------------------------------------
+ * Outline Secondary
+ * --------------------------------------------------------------- */
+
+.shivanya-button-outline-secondary {
+  background: var(--shivanya-color-secondary-soft);
+  color: var(--shivanya-color-secondary);
+  border-color: var(--shivanya-color-secondary);
+}
+
+.shivanya-button-outline-secondary:hover:not(:disabled) {
+  background: var(--shivanya-color-secondary-soft-hover);
+  border-color: var(--shivanya-color-secondary-hover);
+}
+
+.shivanya-button-outline-secondary:active:not(:disabled) {
+  background: var(--shivanya-color-secondary-soft-active);
+  border-color: var(--shivanya-color-secondary-active);
+}
+
+
+/* ---------------------------------------------------------------
+ * Outline Success
+ * --------------------------------------------------------------- */
+
+.shivanya-button-outline-success {
+  background: var(--shivanya-color-success-soft);
+  color: var(--shivanya-color-success);
+  border-color: var(--shivanya-color-success);
+}
+
+.shivanya-button-outline-success:hover:not(:disabled) {
+  background: var(--shivanya-color-success-soft-hover);
+  border-color: var(--shivanya-color-success-hover);
+}
+
+.shivanya-button-outline-success:active:not(:disabled) {
+  background: var(--shivanya-color-success-soft-active);
+  border-color: var(--shivanya-color-success-active);
+}
+
+
+/* ---------------------------------------------------------------
+ * Outline Warning
+ * --------------------------------------------------------------- */
+
+.shivanya-button-outline-warning {
+  background: var(--shivanya-color-warning-soft);
+  color: var(--shivanya-color-warning-active);
+  border-color: var(--shivanya-color-warning);
+}
+
+.shivanya-button-outline-warning:hover:not(:disabled) {
+  background: var(--shivanya-color-warning-soft-hover);
+  border-color: var(--shivanya-color-warning-hover);
+}
+
+.shivanya-button-outline-warning:active:not(:disabled) {
+  background: var(--shivanya-color-warning-soft-active);
+  border-color: var(--shivanya-color-warning-active);
+}
+
+
+/* ---------------------------------------------------------------
+ * Outline Danger
+ * --------------------------------------------------------------- */
+
+.shivanya-button-outline-danger {
+  background: var(--shivanya-color-danger-soft);
+  color: var(--shivanya-color-danger);
+  border-color: var(--shivanya-color-danger);
+}
+
+.shivanya-button-outline-danger:hover:not(:disabled) {
+  background: var(--shivanya-color-danger-soft-hover);
+  border-color: var(--shivanya-color-danger-hover);
+}
+
+.shivanya-button-outline-danger:active:not(:disabled) {
+  background: var(--shivanya-color-danger-soft-active);
+  border-color: var(--shivanya-color-danger-active);
+}
+
+
+/* ---------------------------------------------------------------
+ * Outline Info
+ * --------------------------------------------------------------- */
+
+.shivanya-button-outline-info {
+  background: var(--shivanya-color-info-soft);
+  color: var(--shivanya-color-info-active);
+  border-color: var(--shivanya-color-info);
+}
+
+.shivanya-button-outline-info:hover:not(:disabled) {
+  background: var(--shivanya-color-info-soft-hover);
+  border-color: var(--shivanya-color-info-hover);
+}
+
+.shivanya-button-outline-info:active:not(:disabled) {
+  background: var(--shivanya-color-info-soft-active);
+  border-color: var(--shivanya-color-info-active);
+}
+
 /*
  * ---------------------------------------------------------------
  * Sizes

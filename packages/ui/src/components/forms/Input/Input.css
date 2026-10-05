@@ -84,6 +84,21 @@
   appearance: none;
 }
 
+.shivanya-input:-webkit-autofill,
+.shivanya-input:-webkit-autofill:hover,
+.shivanya-input:-webkit-autofill:focus,
+.shivanya-input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--shivanya-color-text-primary);
+  -webkit-box-shadow:
+    0 0 0 1000px var(--shivanya-color-background) inset;
+  box-shadow:
+    0 0 0 1000px var(--shivanya-color-background) inset;
+  caret-color: var(--shivanya-color-text-primary);
+  transition:
+    background-color 9999s ease-out,
+    color 9999s ease-out;
+}
+
 .shivanya-input::placeholder {
   color: var(--shivanya-color-text-placeholder);
 }

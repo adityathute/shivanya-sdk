@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Modal } from "shivanya-ui";
+import {
+  CloseIcon,
+  IconButton,
+  LockIcon,
+  Modal,
+  Typography,
+} from "shivanya-ui";
 import { useAuth } from "../../hooks/useAuth";
 import type { AuthFeature } from "../../client/types";
 import { Login } from "../login/Login";
@@ -11,8 +17,15 @@ import { ResetPassword } from "../reset-password/ResetPassword";
 import { VerifyEmail } from "../verify-email/VerifyEmail";
 import { AccountModal, type AccountView } from "./AccountModal";
 import { resolveAuthFeatures } from "./auth-features";
+import { RegisterEmail } from "../register/RegisterEmail";
 
-export type AuthView = "login" | "register" | "forgot" | "reset" | "verify";
+export type AuthView =
+  | "login"
+  | "register"
+  | "register-email"
+  | "forgot"
+  | "reset"
+  | "verify";
 
 export interface AuthModalProps {
   open: boolean;
@@ -28,16 +41,66 @@ export interface AuthModalProps {
 const viewFeature: Record<AuthView, AuthFeature> = {
   login: "login",
   register: "register",
+  "register-email": "register",
   forgot: "forgot",
   reset: "reset",
   verify: "verify",
 };
 
 function firstAvailableView(features: Set<AuthFeature>): AuthView {
-  for (const view of ["login", "register", "forgot", "reset", "verify"] as AuthView[]) {
-    if (features.has(viewFeature[view])) return view;
+  for (const view of [
+    "login",
+    "register",
+    "forgot",
+    "reset",
+    "verify",
+  ] as AuthView[]) {
+    if (features.has(viewFeature[view])) {
+      return view;
+    }
   }
+
   return "login";
+}
+
+function getTitle(view: AuthView) {
+  switch (view) {
+    case "login":
+      return "Welcome Back";
+
+    case "register":
+    case "register-email":
+      return "Create Account";
+
+    case "forgot":
+      return "Reset Your Password";
+
+    case "reset":
+      return "Choose a New Password";
+
+    case "verify":
+      return "Verify Your Email";
+  }
+}
+
+function getSubtitle(view: AuthView) {
+  switch (view) {
+    case "login":
+      return "Sign in to your account";
+
+    case "register":
+    case "register-email":
+      return "Register to get started with ShivanyaMS";
+
+    case "forgot":
+      return "We'll help you reset your password";
+
+    case "reset":
+      return "Choose a new password for your account";
+
+    case "verify":
+      return "Verify your email address";
+  }
 }
 
 export function AuthModal({
@@ -51,51 +114,160 @@ export function AuthModal({
   onAuthenticated,
 }: AuthModalProps) {
   const { isAuthenticated } = useAuth();
+
+  const currentYear = new Date().getFullYear();
+
   const enabled = useMemo(() => resolveAuthFeatures(features), [features]);
-  const [view, setView] = useState<AuthView>(() => enabled.has(viewFeature[initialView]) ? initialView : firstAvailableView(enabled));
+
+  const [view, setView] = useState<AuthView>(() =>
+    enabled.has(viewFeature[initialView])
+      ? initialView
+      : firstAvailableView(enabled),
+  );
+
   const [accountOpen, setAccountOpen] = useState(false);
 
   useEffect(() => {
-    if (open) setView(enabled.has(viewFeature[initialView]) ? initialView : firstAvailableView(enabled));
+    if (open) {
+      setView(
+        enabled.has(viewFeature[initialView])
+          ? initialView
+          : firstAvailableView(enabled),
+      );
+    }
   }, [open, initialView, enabled]);
 
   useEffect(() => {
-    if (open && isAuthenticated && enabled.has("account")) setAccountOpen(true);
+    if (open && isAuthenticated && enabled.has("account")) {
+      setAccountOpen(true);
+    }
   }, [open, isAuthenticated, enabled]);
 
   if (isAuthenticated && accountOpen && enabled.has("account")) {
-    return <AccountModal open={open} onClose={() => { setAccountOpen(false); onClose(); }} initialView={accountView} />;
+    return (
+      <AccountModal
+        open={open}
+        onClose={() => {
+          setAccountOpen(false);
+          onClose();
+        }}
+        initialView={accountView}
+      />
+    );
   }
 
-  const title =
-    view === "login" ? "Welcome back" :
-    view === "register" ? "Create your account" :
-    view === "forgot" ? "Reset your password" :
-    view === "reset" ? "Choose a new password" :
-    "Verify your email";
+  const success = () => {
+    if (enabled.has("account")) {
+      setAccountOpen(true);
+    }
+
+    onAuthenticated?.();
+  };
+
+  const title = getTitle(view);
+  const subtitle = getSubtitle(view);
 
   return (
-    <Modal open={open} onClose={onClose} title={title} size="md">
-      <div className="shivanya-auth-modal-body">
-        {view === "login" && enabled.has("login") && (
-          <Login
-            onSuccess={() => { if (enabled.has("account")) setAccountOpen(true); onAuthenticated?.(); }}
-            onRegister={enabled.has("register") ? () => setView("register") : undefined}
-            onForgotPassword={enabled.has("forgot") ? () => setView("forgot") : undefined}
-            showGoogle={enabled.has("google")}
-          />
+    <Modal
+      open={open}
+      onClose={onClose}
+      closable={false}
+      size="md"
+      radius="lg"
+      className="shivanya-auth-modal"
+    >
+      <div className="shivanya-auth-modal-content">
+        <IconButton
+          size="md"
+          variant="ghost"
+          iconRotateOnHover
+          iconHoverColor="var(--shivanya-color-danger)"
+          className="shivanya-auth-modal-close"
+          onClick={onClose}
+          aria-label="Close"
+        >
+          <CloseIcon />
+        </IconButton>
+
+        {view !== "forgot" && (
+          <div className="shivanya-auth-modal-heading">
+            <div className="shivanya-auth-modal-icon">
+              <LockIcon />
+            </div>
+
+            <Typography
+              as="h2"
+              variant="h3"
+              weight="bold"
+              align="center"
+              className="shivanya-auth-modal-title"
+            >
+              {title}
+            </Typography>
+
+            <Typography
+              as="p"
+              variant="body"
+              size="sm"
+              color="secondary"
+              align="center"
+              className="shivanya-auth-modal-subtitle"
+            >
+              {subtitle}
+            </Typography>
+          </div>
         )}
-        {view === "register" && enabled.has("register") && (
-          <Register onLogin={enabled.has("login") ? () => setView("login") : undefined} showGoogle={enabled.has("google")} />
-        )}
-        {view === "forgot" && enabled.has("forgot") && (
-          <ForgotPassword onBack={enabled.has("login") ? () => setView("login") : undefined} />
-        )}
-        {view === "reset" && enabled.has("reset") && resetToken && (
-          <ResetPassword token={resetToken} onComplete={() => setView("login")} />
-        )}
-        {view === "verify" && enabled.has("verify") && verifyToken && (
-          <VerifyEmail token={verifyToken} onComplete={() => setView("login")} />
+
+        <div className="shivanya-auth-modal-body">
+          {view === "login" && (
+            <Login
+              onSuccess={success}
+              onRegister={() => setView("register")}
+              onForgotPassword={() => setView("forgot")}
+            />
+          )}
+
+          {view === "register" && (
+            <Register
+              onRegisterWithEmail={() => setView("register-email")}
+              onLogin={() => setView("login")}
+            />
+          )}
+
+          {view === "register-email" && (
+            <RegisterEmail onLogin={() => setView("login")} />
+          )}
+
+          {view === "forgot" && (
+            <ForgotPassword onBack={() => setView("login")} />
+          )}
+
+          {view === "reset" && resetToken && (
+            <ResetPassword
+              token={resetToken}
+              onComplete={() => setView("login")}
+            />
+          )}
+
+          {view === "verify" && verifyToken && (
+            <VerifyEmail
+              token={verifyToken}
+              onComplete={() => setView("login")}
+            />
+          )}
+        </div>
+
+        {view === "login" && (
+          <Typography
+            as="p"
+            variant="caption"
+            color="muted"
+            align="center"
+            size="sm"
+            className="shivanya-auth-modal-footer"
+          >
+            © {currentYear} ShivanyaMS • All rights reserved.
+          </Typography>
         )}
       </div>
     </Modal>

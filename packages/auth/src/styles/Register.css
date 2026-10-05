@@ -1,0 +1,69 @@
+.shivanya-register {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+.shivanya-register-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin: 18px 0;
+}
+
+.shivanya-register-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--shivanya-color-border);
+}
+
+.shivanya-register-google {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.shivanya-register-google-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.shivanya-register-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 28px;
+  text-align: center;
+}
+
+.shivanya-register-link {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--shivanya-color-primary);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.shivanya-register-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 520px) {
+  .shivanya-register-divider {
+    margin: 16px 0;
+  }
+
+  .shivanya-register-switch {
+    margin-top: 22px;
+  }
+}

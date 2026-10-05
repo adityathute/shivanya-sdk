@@ -1,4 +1,5 @@
 "use client";
+
 import type { DialogProps } from "./Dialog.types";
 import { useEffect, forwardRef } from "react";
 import { IconButton } from "../../foundation/IconButton/IconButton";
@@ -27,6 +28,18 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
   ) {
     const isDisabled =
       disabled || state === "disabled";
+
+    useEffect(() => {
+      if (!open) return;
+
+      const previousOverflow = document.body.style.overflow;
+
+      document.body.style.overflow = "hidden";
+
+      return () => {
+        document.body.style.overflow = previousOverflow;
+      };
+    }, [open]);
 
     useEffect(() => {
       if (
@@ -86,8 +99,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
         onMouseDown={(event) => {
           if (
             closeOnOverlayClick &&
-            event.target ===
-              event.currentTarget &&
+            event.target === event.currentTarget &&
             !isDisabled
           ) {
             onClose?.();

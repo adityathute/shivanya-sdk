@@ -1,0 +1,115 @@
+.shivanya-register-email {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+.shivanya-register-email-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shivanya-register-email-name-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.shivanya-register-email-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shivanya-register-email-google-link,
+.shivanya-register-email-link {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--shivanya-color-primary);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.shivanya-register-email-google-link {
+  align-self: center;
+  margin-top: 18px;
+}
+
+.shivanya-register-email-google-link:hover,
+.shivanya-register-email-link:hover {
+  text-decoration: underline;
+}
+
+.shivanya-register-email-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 28px;
+  text-align: center;
+}
+
+.shivanya-register-email input::placeholder {
+  color: var(--shivanya-color-text-muted);
+  opacity: 1;
+}
+
+.shivanya-register-email-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.shivanya-register-email-success-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--shivanya-color-primary-soft);
+  color: var(--shivanya-color-primary);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.shivanya-register-email-success h3,
+.shivanya-register-email-success p {
+  margin: 0;
+}
+
+@media (max-width: 520px) {
+  .shivanya-register-email-form {
+    gap: 14px;
+  }
+
+  .shivanya-register-email-name-fields {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .shivanya-register-email-fields {
+    gap: 14px;
+  }
+
+  .shivanya-register-email-google-link {
+    margin-top: 16px;
+  }
+
+  .shivanya-register-email-switch {
+    margin-top: 22px;
+  }
+
+  .shivanya-register-email-success {
+    padding: 12px 0;
+  }
+}

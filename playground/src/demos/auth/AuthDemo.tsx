@@ -8,6 +8,7 @@ import {
   type AuthMode,
   useAuth,
 } from "shivanya-auth";
+import { Button, Input, Typography } from "shivanya-ui";
 import "./auth-demo.css";
 
 const apiUrl =
@@ -27,6 +28,7 @@ function AuthStatus() {
     client,
     getAccessToken,
   } = useAuth();
+
   const [token, setToken] = useState<string | null>(null);
 
   const readToken = async () => {
@@ -34,36 +36,77 @@ function AuthStatus() {
   };
 
   if (loading) {
-    return <div className="auth-demo-status">Checking session…</div>;
+    return (
+      <div className="auth-demo-status">
+        <Typography variant="body">
+          Checking session…
+        </Typography>
+      </div>
+    );
   }
 
   return (
     <div className="auth-demo-status">
       <div className="auth-demo-status-row">
-        <strong>{isAuthenticated ? "Authenticated" : "Not authenticated"}</strong>
-        {user?.email && <span>{user.email}</span>}
+        <div>
+          <Typography variant="body">
+            {isAuthenticated
+              ? "Authenticated"
+              : "Not authenticated"}
+          </Typography>
+
+          {user?.email && (
+            <Typography variant="body">
+              {user.email}
+            </Typography>
+          )}
+        </div>
+
+        <span
+          className={`auth-demo-indicator ${
+            isAuthenticated ? "authenticated" : ""
+          }`}
+        />
       </div>
 
       {isAuthenticated && (
         <div className="auth-demo-actions">
-          <button type="button" onClick={refreshUser}>
+          <Button
+            variant="secondary"
+            onClick={refreshUser}
+          >
             Refresh user
-          </button>
-          <button type="button" onClick={() => client.refresh()}>
+          </Button>
+
+          <Button
+            variant="secondary"
+            onClick={() => client.refresh()}
+          >
             Refresh session
-          </button>
-          <button type="button" onClick={readToken}>
+          </Button>
+
+          <Button
+            variant="secondary"
+            onClick={readToken}
+          >
             Read access token
-          </button>
-          <button type="button" onClick={logout}>
+          </Button>
+
+          <Button
+            variant="danger"
+            onClick={logout}
+          >
             Logout
-          </button>
+          </Button>
         </div>
       )}
 
       {token && (
         <div className="auth-demo-token">
-          <span>Access token</span>
+          <Typography variant="body">
+            Access token
+          </Typography>
+
           <code>{token}</code>
         </div>
       )}
@@ -79,6 +122,7 @@ function AuthDemoContent({
   authUrl: string;
 }) {
   const [modalOpen, setModalOpen] = useState(false);
+
   const config = useMemo(
     () => ({
       baseUrl: apiUrl,
@@ -98,33 +142,46 @@ function AuthDemoContent({
       <div className="auth-demo-panel">
         <div className="auth-demo-header">
           <div>
-            <h2>{mode === "cookie" ? "Cookie mode" : "Token mode"}</h2>
-            <p>
+            <Typography variant="h2">
+              {mode === "cookie"
+                ? "Cookie mode"
+                : "Token mode"}
+            </Typography>
+
+            <Typography variant="body">
               {mode === "cookie"
                 ? "Browser session using HttpOnly cookies."
                 : "Access and refresh tokens with Bearer authentication."}
-            </p>
+            </Typography>
           </div>
-          <span className="auth-demo-badge">{mode}</span>
+
+          <span className="auth-demo-badge">
+            {mode}
+          </span>
         </div>
 
         <div className="auth-demo-actions">
-          <button type="button" onClick={() => setModalOpen(true)}>
+          <Button
+            variant="primary"
+            onClick={() => setModalOpen(true)}
+          >
             Open Auth Modal
-          </button>
-          <button
-            type="button"
+          </Button>
+
+          <Button
+            variant="secondary"
             disabled={!authUrl}
             onClick={openHostedAuth}
           >
             Open Hosted Auth
-          </button>
+          </Button>
         </div>
 
         {!authUrl && (
-          <p className="auth-demo-help">
-            Set <code>VITE_AUTH_URL</code> to enable hosted Auth redirect.
-          </p>
+          <Typography variant="body">
+            Set <code>VITE_AUTH_URL</code> to enable hosted Auth
+            redirect.
+          </Typography>
         )}
 
         <AuthStatus />
@@ -146,38 +203,46 @@ export default function AuthDemo() {
     <section className="demo auth-demo">
       <div className="auth-demo-title">
         <div>
-          <h1>Auth V2</h1>
-          <p>Test Cookie and Token authentication with the Auth UI.</p>
+          <Typography variant="h1">
+            Auth
+          </Typography>
+
+          <Typography variant="body">
+            Test Cookie and Token authentication with the Auth UI.
+          </Typography>
         </div>
 
         <div className="auth-demo-mode">
-          <button
-            type="button"
-            className={mode === "cookie" ? "active" : ""}
+          <Button
+            variant={mode === "cookie" ? "primary" : "secondary"}
             onClick={() => setMode("cookie")}
           >
             Cookie
-          </button>
-          <button
-            type="button"
-            className={mode === "token" ? "active" : ""}
+          </Button>
+
+          <Button
+            variant={mode === "token" ? "primary" : "secondary"}
             onClick={() => setMode("token")}
           >
             Token
-          </button>
+          </Button>
         </div>
       </div>
 
-      <label className="auth-demo-input">
-        <span>Hosted Auth URL</span>
-        <input
+      <div className="auth-demo-input">
+        <Input
+          label="Hosted Auth URL"
           value={authUrl}
           onChange={(event) => setAuthUrl(event.target.value)}
           placeholder="http://localhost:3000/auth"
+          fullWidth
         />
-      </label>
+      </div>
 
-      <AuthDemoContent mode={mode} authUrl={authUrl} />
+      <AuthDemoContent
+        mode={mode}
+        authUrl={authUrl}
+      />
     </section>
   );
 }

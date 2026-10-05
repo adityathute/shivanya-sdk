@@ -42,19 +42,24 @@
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-sm);
 
-  background: var(--shivanya-color-surface);
+  background: var(--shivanya-color-background);
   color: transparent;
 
   font-size: var(--shivanya-font-size-sm);
   line-height: 1;
 
   transition:
-    background var(--shivanya-duration-fast)
+    background-color var(--shivanya-duration-fast)
       var(--shivanya-ease-standard),
     border-color var(--shivanya-duration-fast)
       var(--shivanya-ease-standard),
     box-shadow var(--shivanya-duration-fast)
       var(--shivanya-ease-standard);
+}
+
+.shivanya-checkbox:hover:not(:has(input:disabled))
+  .shivanya-checkbox-box {
+  border-color: var(--shivanya-color-border-hover);
 }
 
 .shivanya-checkbox input:checked + .shivanya-checkbox-box {
@@ -146,4 +151,18 @@
 .shivanya-checkbox:has(input:disabled) {
   cursor: not-allowed;
   opacity: 0.65;
+}
+
+.shivanya-checkbox:has(input:disabled)
+  .shivanya-checkbox-box {
+  background: var(--shivanya-color-disabled-background);
+  border-color: var(--shivanya-color-disabled-border);
+  color: var(--shivanya-color-disabled-text);
+}
+
+.shivanya-checkbox:has(input:disabled)
+  .shivanya-checkbox-label,
+.shivanya-checkbox:has(input:disabled)
+  .shivanya-checkbox-description {
+  color: var(--shivanya-color-disabled-text);
 }

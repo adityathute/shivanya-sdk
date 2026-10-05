@@ -10,11 +10,16 @@ import { Button, Popover, popoverDocs } from "shivanya-ui";
 
 export default function PopoverDemo() {
   const [open, setOpen] = useState(false);
-  const [placement, setPlacement] = useState<"top" | "right" | "bottom" | "left">("bottom");
+  const [placement, setPlacement] = useState<
+    "top" | "right" | "bottom" | "left"
+  >("bottom");
 
   return (
     <section className="demo">
-      <DemoHeader title={popoverDocs.name} description={popoverDocs.description} />
+      <DemoHeader
+        title={popoverDocs.name}
+        description={popoverDocs.description}
+      />
 
       <DemoSection title="Basic">
         <Popover
@@ -27,20 +32,53 @@ export default function PopoverDemo() {
 
       <DemoSection title="Placements">
         <div className="feedback-demo-actions">
-          <Button onClick={() => { setPlacement("top"); setOpen(true); }}>Top</Button>
-          <Button onClick={() => { setPlacement("right"); setOpen(true); }}>Right</Button>
-          <Button onClick={() => { setPlacement("bottom"); setOpen(true); }}>Bottom</Button>
-          <Button onClick={() => { setPlacement("left"); setOpen(true); }}>Left</Button>
+          <Button
+            onClick={() => {
+              setPlacement("top");
+              setOpen(true);
+            }}
+          >
+            Top
+          </Button>
+
+          <Button
+            onClick={() => {
+              setPlacement("right");
+              setOpen(true);
+            }}
+          >
+            Right
+          </Button>
+
+          <Button
+            onClick={() => {
+              setPlacement("bottom");
+              setOpen(true);
+            }}
+          >
+            Bottom
+          </Button>
+
+          <Button
+            onClick={() => {
+              setPlacement("left");
+              setOpen(true);
+            }}
+          >
+            Left
+          </Button>
         </div>
 
-        <Popover
-          trigger={<Button variant="outline">Controlled popover</Button>}
-          open={open}
-          onOpenChange={setOpen}
-          placement={placement}
-          header={`Placement: ${placement}`}
-          content="This popover is controlled by React state."
-        />
+        <div className="feedback-demo-popover-stage">
+          <Popover
+            trigger={<Button variant="outline">Controlled popover</Button>}
+            open={open}
+            onOpenChange={setOpen}
+            placement={placement}
+            header={`Placement: ${placement}`}
+            content="This popover is controlled by React state."
+          />
+        </div>
       </DemoSection>
 
       <DemoSection title="Sizes">

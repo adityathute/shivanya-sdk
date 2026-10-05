@@ -29,7 +29,13 @@ export type ButtonVariant =
   | "soft-danger"
   | "soft-success"
   | "soft-warning"
-  | "soft-info";
+  | "soft-info"
+  | "outline-primary"
+  | "outline-secondary"
+  | "outline-danger"
+  | "outline-success"
+  | "outline-warning"
+  | "outline-info";
 
 export type ButtonSize =
   | "xs"

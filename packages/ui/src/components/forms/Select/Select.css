@@ -33,7 +33,6 @@
   -webkit-appearance: none;
 
   box-sizing: border-box;
-
   display: block;
 
   width: 100%;
@@ -50,7 +49,7 @@
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-md);
 
-  background: var(--shivanya-color-surface);
+  background: var(--shivanya-color-background);
   color: var(--shivanya-color-text-primary);
 
   font: inherit;
@@ -64,7 +63,7 @@
       var(--shivanya-ease-standard),
     box-shadow var(--shivanya-duration-fast)
       var(--shivanya-ease-standard),
-    background var(--shivanya-duration-fast)
+    background-color var(--shivanya-duration-fast)
       var(--shivanya-ease-standard);
 }
 
@@ -73,10 +72,10 @@
 }
 
 .shivanya-select:focus {
-  border-color: var(--shivanya-color-focus);
+  border-color: var(--shivanya-color-border-focus);
 
   box-shadow:
-    0 0 0 4px
+    0 0 0 3px
     var(--shivanya-color-focus-ring);
 }
 
@@ -132,11 +131,23 @@
   border-color: var(--shivanya-color-disabled-text);
 }
 
+/* Sizes */
+
+.shivanya-select-sm {
+  height: 32px;
+  font-size: var(--shivanya-font-size-sm);
+}
+
 .shivanya-select-sm
   + .shivanya-select-arrow {
   right: 12px;
   width: 7px;
   height: 7px;
+}
+
+.shivanya-select-lg {
+  height: 48px;
+  font-size: var(--shivanya-font-size-lg);
 }
 
 .shivanya-select-lg

@@ -18,12 +18,20 @@ export const BUTTON_VARIANTS = {
   dark: "shivanya-button-dark",
   light: "shivanya-button-light",
   neutral: "shivanya-button-neutral",
+
   "soft-primary": "shivanya-button-soft-primary",
   "soft-secondary": "shivanya-button-soft-secondary",
   "soft-danger": "shivanya-button-soft-danger",
   "soft-success": "shivanya-button-soft-success",
   "soft-warning": "shivanya-button-soft-warning",
   "soft-info": "shivanya-button-soft-info",
+
+  "outline-primary": "shivanya-button-outline-primary",
+  "outline-secondary": "shivanya-button-outline-secondary",
+  "outline-danger": "shivanya-button-outline-danger",
+  "outline-success": "shivanya-button-outline-success",
+  "outline-warning": "shivanya-button-outline-warning",
+  "outline-info": "shivanya-button-outline-info",
 } as const;
 
 export const BUTTON_SIZES = {

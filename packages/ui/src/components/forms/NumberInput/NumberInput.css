@@ -1,8 +1,9 @@
 :where(.shivanya-form-control) {
   box-sizing: border-box;
+  width: 100%;
   font: inherit;
   color: var(--shivanya-color-text-primary);
-  background: var(--shivanya-color-surface);
+  background: var(--shivanya-color-background);
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-md);
 
@@ -11,7 +12,7 @@
       var(--shivanya-ease-standard),
     box-shadow var(--shivanya-duration-fast)
       var(--shivanya-ease-standard),
-    background var(--shivanya-duration-fast)
+    background-color var(--shivanya-duration-fast)
       var(--shivanya-ease-standard);
 }
 
@@ -32,17 +33,35 @@
   cursor: not-allowed;
 }
 
+:where(.shivanya-form-control):-webkit-autofill,
+:where(.shivanya-form-control):-webkit-autofill:hover,
+:where(.shivanya-form-control):-webkit-autofill:focus,
+:where(.shivanya-form-control):-webkit-autofill:active {
+  -webkit-text-fill-color: var(--shivanya-color-text-primary);
+  -webkit-box-shadow:
+    0 0 0 1000px var(--shivanya-color-background) inset;
+  box-shadow:
+    0 0 0 1000px var(--shivanya-color-background) inset;
+  caret-color: var(--shivanya-color-text-primary);
+
+  transition:
+    background-color 9999s ease-out,
+    color 9999s ease-out;
+}
+
 .shivanya-number-input {
   display: flex;
   align-items: stretch;
+
   width: 100%;
   max-width: 360px;
+
   overflow: hidden;
 
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-md);
-  background: var(--shivanya-color-surface);
 
+  background: var(--shivanya-color-background);
   color: var(--shivanya-color-text-primary);
 
   transition:
@@ -50,7 +69,7 @@
       var(--shivanya-ease-standard),
     box-shadow var(--shivanya-duration-fast)
       var(--shivanya-ease-standard),
-    background var(--shivanya-duration-fast)
+    background-color var(--shivanya-duration-fast)
       var(--shivanya-ease-standard);
 }
 
@@ -72,18 +91,24 @@
 .shivanya-number-main {
   display: flex;
   align-items: center;
+
   flex: 1;
   min-width: 0;
+
   gap: var(--shivanya-space-2);
+
   padding: 0 var(--shivanya-space-3);
 }
 
 .shivanya-number-main input {
   box-sizing: border-box;
+
   flex: 1;
+
   min-width: 0;
   width: 100%;
   height: 100%;
+
   padding: 0;
 
   border: 0;
@@ -91,7 +116,24 @@
 
   background: transparent;
   color: inherit;
+
   font: inherit;
+}
+
+.shivanya-number-main input:-webkit-autofill,
+.shivanya-number-main input:-webkit-autofill:hover,
+.shivanya-number-main input:-webkit-autofill:focus,
+.shivanya-number-main input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--shivanya-color-text-primary);
+  -webkit-box-shadow:
+    0 0 0 1000px var(--shivanya-color-background) inset;
+  box-shadow:
+    0 0 0 1000px var(--shivanya-color-background) inset;
+  caret-color: var(--shivanya-color-text-primary);
+
+  transition:
+    background-color 9999s ease-out,
+    color 9999s ease-out;
 }
 
 .shivanya-number-main input::-webkit-inner-spin-button,
@@ -122,8 +164,10 @@
 .shivanya-number-actions {
   display: grid;
   grid-template-rows: 1fr 1fr;
+
   flex: none;
   width: 40px;
+
   border-left: 1px solid var(--shivanya-color-border);
 }
 
@@ -131,30 +175,36 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   width: 100%;
   min-width: 0;
   min-height: 0;
+
   margin: 0;
   padding: 0;
 
   border: 0;
+
   background: transparent;
   color: var(--shivanya-color-text-secondary);
 
   font: inherit;
   font-size: var(--shivanya-font-size-sm);
   line-height: 1;
+
   cursor: pointer;
 }
 
 .shivanya-number-actions button:hover:not(:disabled) {
-  background: var(--shivanya-color-surface-hover);
+  background: var(--shivanya-color-background-hover);
   color: var(--shivanya-color-text-primary);
 }
 
 .shivanya-number-actions button:focus-visible {
   outline: 0;
-  box-shadow: inset 0 0 0 2px var(--shivanya-color-focus-ring);
+  box-shadow:
+    inset 0 0 0 2px
+    var(--shivanya-color-focus-ring);
 }
 
 .shivanya-number-actions button + button {

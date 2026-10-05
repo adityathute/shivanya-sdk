@@ -1,0 +1,10 @@
+.shivanya-auth-message {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 520px) {
+  .shivanya-auth-message {
+    margin-bottom: 14px;
+  }
+}

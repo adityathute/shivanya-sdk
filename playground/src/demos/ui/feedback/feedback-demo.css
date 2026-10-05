@@ -101,11 +101,18 @@
   }
 }
 
-
 .feedback-demo-note {
   max-width: 760px;
   margin: 0;
   color: var(--shivanya-color-text-secondary);
   font-size: var(--shivanya-font-size-sm);
   line-height: 1.5;
+}
+
+.feedback-demo-popover-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  padding: 80px 120px;
 }

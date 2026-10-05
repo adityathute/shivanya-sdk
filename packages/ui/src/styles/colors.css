@@ -34,7 +34,7 @@
   --shivanya-color-primary-soft: rgb(37 99 235 / 10%);
   --shivanya-color-primary-soft-hover: rgb(37 99 235 / 16%);
   --shivanya-color-primary-soft-active: rgb(37 99 235 / 22%);
-
+  --shivanya-color-overlay: rgb(15 23 42 / 45%);
   /*
    * ---------------------------------------------------------------
    * Secondary
@@ -173,11 +173,13 @@
  */
 
   --shivanya-color-background: #f8fafc;
+
   --shivanya-color-surface: #ffffff;
   --shivanya-color-surface-hover: #f1f5f9;
   --shivanya-color-surface-active: #e2e8f0;
-  --shivanya-color-overlay: rgb(15 23 42 / 50%);
 
+  --shivanya-color-modal-background: #f8fafc;
+  --shivanya-color-modal-border: #cbd5e1;
   /* 
  * ---------------------------------------------------------------
  * Code / Documentation
@@ -229,7 +231,7 @@
    * ---------------------------------------------------------------
    */
 
-  --shivanya-color-disabled-background: #f1f5f9;
+  --shivanya-color-disabled-background: var(--shivanya-color-background);
   --shivanya-color-disabled-border: #e2e8f0;
   --shivanya-color-disabled-text: #94a3b8;
 }

@@ -21,7 +21,7 @@ export const buttonDocs = {
         {
             name: "variant",
             type:
-                '"primary" | "secondary" | "outline" | "ghost" | "danger" | "success" | "warning" | "info" | "link" | "dark" | "light" | "neutral" | "soft-primary" | "soft-secondary" | "soft-danger" | "soft-success" | "soft-warning" | "soft-info"',
+                '"primary" | "secondary" | "outline" | "ghost" | "danger" | "success" | "warning" | "info" | "link" | "dark" | "light" | "neutral" | "soft-primary" | "soft-secondary" | "soft-danger" | "soft-success" | "soft-warning" | "soft-info" | "outline-primary" | "outline-secondary" | "outline-danger" | "outline-success" | "outline-warning" | "outline-info"',
             defaultValue: '"primary"',
             description: "Controls the visual style of the button.",
         },
@@ -128,6 +128,12 @@ export const buttonDocs = {
         "soft-success",
         "soft-warning",
         "soft-info",
+        "outline-primary",
+        "outline-secondary",
+        "outline-danger",
+        "outline-success",
+        "outline-warning",
+        "outline-info",
     ],
 
     sizes: ["xs", "sm", "md", "lg", "xl"],

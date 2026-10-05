@@ -21,8 +21,8 @@ importers:
   packages/auth:
     dependencies:
       shivanya-ui:
-        specifier: ^1.0.6
-        version: 1.0.6(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: workspace:*
+        version: link:../ui
     devDependencies:
       '@types/react':
         specifier: ^19.0.0
@@ -49,8 +49,8 @@ importers:
   packages/shell:
     dependencies:
       shivanya-ui:
-        specifier: ^1.0.6
-        version: 1.0.6(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: workspace:*
+        version: link:../ui
     devDependencies:
       '@types/react':
         specifier: ^19.0.0
@@ -686,12 +686,6 @@ packages:
   shivanya-core@1.0.0:
     resolution: {integrity: sha512-IRbL+L2L8Kft9QrQhgCMiokmer/50U0vbRKS+fhWrvGguyW8DBegZGaJ6sSWvokBFJHjMTevQ+IIsC8nA29tkQ==}
 
-  shivanya-ui@1.0.6:
-    resolution: {integrity: sha512-TeKvRmUSxmYvAahk/VLpqOlC3J09Tjk6yDFTGyzRPmbf/OVUxlY2OMUSW5KORSZohg+LD2mq5iNGXV7kpYRLWw==}
-    peerDependencies:
-      react: ^18.0.0 || ^19.0.0
-      react-dom: ^18.0.0 || ^19.0.0
-
   shx@0.4.0:
     resolution: {integrity: sha512-Z0KixSIlGPpijKgcH6oCMCbltPImvaKy0sGH8AkLRXw1KyzpKtaCTizP2xen+hNDqVF4xxgvA0KXSb9o4Q6hnA==}
     engines: {node: '>=18'}
@@ -1176,12 +1170,6 @@ snapshots:
       rechoir: 0.6.2
 
   shivanya-core@1.0.0: {}
-
-  shivanya-ui@1.0.6(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
-    dependencies:
-      react: 19.3.0
-      react-dom: 19.3.0(react@19.3.0)
-      react-easy-crop: 6.2.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
 
   shx@0.4.0:
     dependencies:

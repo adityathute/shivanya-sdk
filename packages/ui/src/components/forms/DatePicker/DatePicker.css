@@ -1,14 +1,19 @@
 :where(.shivanya-form-control) {
   box-sizing: border-box;
+  width: 100%;
   font: inherit;
   color: var(--shivanya-color-text-primary);
-  background: var(--shivanya-color-surface);
+  background: var(--shivanya-color-background);
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-md);
+
   transition:
-    border-color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
-    box-shadow var(--shivanya-duration-fast) var(--shivanya-ease-standard),
-    background var(--shivanya-duration-fast) var(--shivanya-ease-standard);
+    border-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    background-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
 }
 
 :where(.shivanya-form-control):hover:not(:disabled) {
@@ -28,24 +33,47 @@
   cursor: not-allowed;
 }
 
+:where(.shivanya-form-control):-webkit-autofill,
+:where(.shivanya-form-control):-webkit-autofill:hover,
+:where(.shivanya-form-control):-webkit-autofill:focus,
+:where(.shivanya-form-control):-webkit-autofill:active {
+  -webkit-text-fill-color: var(--shivanya-color-text-primary);
+  -webkit-box-shadow:
+    0 0 0 1000px var(--shivanya-color-background) inset;
+  box-shadow:
+    0 0 0 1000px var(--shivanya-color-background) inset;
+  caret-color: var(--shivanya-color-text-primary);
+
+  transition:
+    background-color 9999s ease-out,
+    color 9999s ease-out;
+}
+
 .shivanya-date-picker {
   display: inline-flex;
   align-items: center;
+
   box-sizing: border-box;
+
   width: 300px;
   max-width: 100%;
   min-width: 0;
+
   overflow: hidden;
 
   color: var(--shivanya-color-text-primary);
-  background: var(--shivanya-color-surface);
+  background: var(--shivanya-color-background);
+
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-md);
 
   transition:
-    border-color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
-    box-shadow var(--shivanya-duration-fast) var(--shivanya-ease-standard),
-    background var(--shivanya-duration-fast) var(--shivanya-ease-standard);
+    border-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    background-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
 }
 
 .shivanya-date-picker:hover:not(:has(input:disabled)) {
@@ -54,7 +82,10 @@
 
 .shivanya-date-picker:focus-within {
   border-color: var(--shivanya-color-focus);
-  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
+
+  box-shadow:
+    0 0 0 3px
+    var(--shivanya-color-focus-ring);
 }
 
 .shivanya-date-picker.is-full {
@@ -63,17 +94,39 @@
 
 .shivanya-date-picker input {
   flex: 1;
+
   min-width: 0;
   width: 100%;
+
   box-sizing: border-box;
 
   border: 0;
   outline: 0;
+
   background: transparent;
   color: inherit;
 
   padding: 0 var(--shivanya-space-3);
   height: 40px;
+}
+
+.shivanya-date-picker input:-webkit-autofill,
+.shivanya-date-picker input:-webkit-autofill:hover,
+.shivanya-date-picker input:-webkit-autofill:focus,
+.shivanya-date-picker input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--shivanya-color-text-primary);
+
+  -webkit-box-shadow:
+    0 0 0 1000px var(--shivanya-color-background) inset;
+
+  box-shadow:
+    0 0 0 1000px var(--shivanya-color-background) inset;
+
+  caret-color: var(--shivanya-color-text-primary);
+
+  transition:
+    background-color 9999s ease-out,
+    color 9999s ease-out;
 }
 
 .shivanya-date-picker input::-webkit-calendar-picker-indicator {
@@ -101,17 +154,23 @@
 
 .shivanya-date-picker-clear {
   flex: none;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   width: 32px;
   height: 32px;
+
   margin-right: var(--shivanya-space-1);
   padding: 0;
+
   border: 0;
   border-radius: var(--shivanya-radius-sm);
+
   background: transparent;
   color: var(--shivanya-color-text-secondary);
+
   cursor: pointer;
 }
 
@@ -122,7 +181,10 @@
 
 .shivanya-date-picker-clear:focus-visible {
   outline: 0;
-  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
+
+  box-shadow:
+    0 0 0 4px
+    var(--shivanya-color-focus-ring);
 }
 
 .shivanya-date-picker-clear svg {

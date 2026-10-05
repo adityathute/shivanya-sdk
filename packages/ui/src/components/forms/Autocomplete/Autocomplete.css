@@ -1,79 +1,158 @@
 :where(.shivanya-form-control) {
   box-sizing: border-box;
+  width: 100%;
   font: inherit;
   color: var(--shivanya-color-text-primary);
-  background: var(--shivanya-color-surface);
+  background: var(--shivanya-color-background);
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-md);
+
   transition:
-    border-color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
-    box-shadow var(--shivanya-duration-fast) var(--shivanya-ease-standard),
-    background var(--shivanya-duration-fast) var(--shivanya-ease-standard);
+    border-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    background-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
 }
+
 :where(.shivanya-form-control):hover:not(:disabled) {
   border-color: var(--shivanya-color-border-hover);
 }
+
 :where(.shivanya-form-control):focus {
   outline: 0;
   border-color: var(--shivanya-color-focus);
   box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
 }
+
 :where(.shivanya-form-control):disabled {
   background: var(--shivanya-color-disabled-background);
   border-color: var(--shivanya-color-disabled-border);
   color: var(--shivanya-color-disabled-text);
   cursor: not-allowed;
 }
+
+:where(.shivanya-form-control):-webkit-autofill,
+:where(.shivanya-form-control):-webkit-autofill:hover,
+:where(.shivanya-form-control):-webkit-autofill:focus,
+:where(.shivanya-form-control):-webkit-autofill:active {
+  -webkit-text-fill-color: var(--shivanya-color-text-primary);
+  -webkit-box-shadow:
+    0 0 0 1000px var(--shivanya-color-background) inset;
+  box-shadow:
+    0 0 0 1000px var(--shivanya-color-background) inset;
+  caret-color: var(--shivanya-color-text-primary);
+
+  transition:
+    background-color 9999s ease-out,
+    color 9999s ease-out;
+}
+
 .shivanya-autocomplete {
   position: relative;
   max-width: 480px;
 }
+
 .shivanya-autocomplete.is-full {
   max-width: none;
   width: 100%;
 }
+
 .shivanya-autocomplete-control {
   display: flex;
   align-items: center;
-}
-.shivanya-autocomplete-control input {
-  flex: 1;
-  min-width: 0;
-  height: 40px;
-  padding: 0 12px;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: inherit;
-}
-.shivanya-autocomplete-control:focus-within {
-  border-color: var(--shivanya-color-focus);
-  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
-}
-.shivanya-autocomplete-control {
+
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-md);
-  background: var(--shivanya-color-surface);
+  background: var(--shivanya-color-background);
+
+  transition:
+    border-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard),
+    background-color var(--shivanya-duration-fast)
+      var(--shivanya-ease-standard);
 }
+
+.shivanya-autocomplete-control:hover:not(:has(input:disabled)) {
+  border-color: var(--shivanya-color-border-hover);
+}
+
+.shivanya-autocomplete-control:focus-within {
+  border-color: var(--shivanya-color-focus);
+
+  box-shadow:
+    0 0 0 3px
+    var(--shivanya-color-focus-ring);
+}
+
+.shivanya-autocomplete-control:has(input:disabled) {
+  background: var(--shivanya-color-disabled-background);
+  border-color: var(--shivanya-color-disabled-border);
+}
+
+.shivanya-autocomplete-control input {
+  flex: 1;
+
+  min-width: 0;
+  width: 100%;
+  height: 40px;
+
+  padding: 0 12px;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.shivanya-autocomplete-control input:-webkit-autofill,
+.shivanya-autocomplete-control input:-webkit-autofill:hover,
+.shivanya-autocomplete-control input:-webkit-autofill:focus,
+.shivanya-autocomplete-control input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--shivanya-color-text-primary);
+
+  -webkit-box-shadow:
+    0 0 0 1000px var(--shivanya-color-background) inset;
+
+  box-shadow:
+    0 0 0 1000px var(--shivanya-color-background) inset;
+
+  caret-color: var(--shivanya-color-text-primary);
+
+  transition:
+    background-color 9999s ease-out,
+    color 9999s ease-out;
+}
+
 .shivanya-autocomplete-sm input {
   height: 32px;
 }
+
 .shivanya-autocomplete-lg input {
   height: 48px;
 }
+
 .shivanya-autocomplete-clear {
   flex: none;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
   width: 32px;
   height: 32px;
+
   margin-right: var(--shivanya-space-1);
   padding: 0;
 
   border: 0;
   border-radius: var(--shivanya-radius-sm);
+
   background: transparent;
   color: var(--shivanya-color-text-secondary);
 
@@ -87,7 +166,10 @@
 
 .shivanya-autocomplete-clear:focus-visible {
   outline: 0;
-  box-shadow: 0 0 0 4px var(--shivanya-color-focus-ring);
+
+  box-shadow:
+    0 0 0 4px
+    var(--shivanya-color-focus-ring);
 }
 
 .shivanya-autocomplete-clear svg {
@@ -95,9 +177,11 @@
   width: 16px;
   height: 16px;
 }
+
 .shivanya-autocomplete-list {
   position: absolute;
   z-index: 20;
+
   top: calc(100% + 6px);
   left: 0;
   right: 0;
@@ -107,10 +191,11 @@
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-md);
 
-  background: var(--shivanya-color-surface);
+  background: var(--shivanya-color-background);
   box-shadow: var(--shivanya-shadow-lg);
 
   max-height: 240px;
+
   overflow-x: hidden;
   overflow-y: auto;
 
@@ -136,17 +221,23 @@
 .shivanya-autocomplete-list::-webkit-scrollbar-thumb:hover {
   background: var(--shivanya-color-border-hover);
 }
+
 .shivanya-autocomplete-list button {
   display: block;
+
   width: 100%;
-  text-align: left;
-  border: 0;
-  background: transparent;
   padding: 10px 12px;
+
+  border: 0;
   border-radius: 6px;
+
+  background: transparent;
   color: var(--shivanya-color-text-primary);
+
+  text-align: left;
   cursor: pointer;
 }
+
 .shivanya-autocomplete-list button:hover {
   background: var(--shivanya-color-surface-hover);
 }

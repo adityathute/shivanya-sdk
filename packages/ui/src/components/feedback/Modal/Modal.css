@@ -8,23 +8,27 @@
   padding: 24px;
   box-sizing: border-box;
   background: var(--shivanya-color-overlay);
-  overflow: auto;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  overflow: hidden;
 }
 .shivanya-modal {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-height: calc(100vh - 48px);
-  overflow: auto;
+  overflow: hidden;
   box-sizing: border-box;
-  background: var(--shivanya-color-surface);
+  background: var(--shivanya-color-modal-background);
   color: var(--shivanya-color-text-primary);
-  border: 1px solid var(--shivanya-color-border);
+  border: 1px solid var(--shivanya-color-modal-border);
   box-shadow: var(--shivanya-shadow-lg);
 }
 .shivanya-modal-sm {
   max-width: 400px;
 }
 .shivanya-modal-md {
-  max-width: 560px;
+  max-width: 500px;
 }
 .shivanya-modal-lg {
   max-width: 720px;
@@ -56,21 +60,24 @@
   align-items: center;
   justify-content: space-between;
   padding: 18px 20px;
-  border-bottom: 1px solid var(--shivanya-color-border);
+  border-bottom: 1px solid var(--shivanya-color-modal-border);
 }
 .shivanya-modal-title {
   margin: 0;
   font-size: 18px;
 }
 .shivanya-modal-body {
+  flex: 1;
+  min-height: 0;
   padding: 20px;
+  overflow: auto;
 }
 .shivanya-modal-footer {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
   padding: 16px 20px;
-  border-top: 1px solid var(--shivanya-color-border);
+  border-top: 1px solid var(--shivanya-color-modal-border);
 }
 .shivanya-modal-close {
   flex-shrink: 0;

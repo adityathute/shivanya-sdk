@@ -1,4 +1,5 @@
 "use client";
+
 import type { ModalProps } from "./Modal.types";
 import { useEffect } from "react";
 import { forwardRef } from "react";
@@ -24,6 +25,18 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(function Modal(
   ref,
 ) {
   useEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
+
+  useEffect(() => {
     if (!open || !closeOnEscape) return;
 
     const handle = (event: KeyboardEvent) => {
@@ -34,7 +47,9 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(function Modal(
 
     document.addEventListener("keydown", handle);
 
-    return () => document.removeEventListener("keydown", handle);
+    return () => {
+      document.removeEventListener("keydown", handle);
+    };
   }, [open, closeOnEscape, onClose]);
 
   if (!open) return null;
@@ -87,11 +102,12 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(function Modal(
 
         <div className="shivanya-modal-body">{children}</div>
 
-        {footer && <div className="shivanya-modal-footer">{footer}</div>}
+        {footer && (
+          <div className="shivanya-modal-footer">{footer}</div>
+        )}
       </div>
     </div>
   );
 });
 
 Modal.displayName = "Modal";
-

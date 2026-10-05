@@ -30,10 +30,13 @@
   :root:not([data-theme="light"]):not([data-theme="dark"]) {
     --shivanya-color-background: #0f172a;
 
-    --shivanya-color-surface: #1e293b;
+    --shivanya-color-surface: #172236;
     --shivanya-color-surface-hover: #334155;
     --shivanya-color-surface-active: #475569;
 
+    --shivanya-color-modal-background: #111b2e;
+    --shivanya-color-modal-border: #334155;
+    --shivanya-color-overlay: rgb(2 6 23 / 65%);
     --shivanya-color-text-primary: #f8fafc;
     --shivanya-color-text-secondary: #cbd5e1;
     --shivanya-color-text-muted: #94a3b8;
@@ -73,7 +76,7 @@
     --shivanya-color-neutral-hover: #475569;
     --shivanya-color-neutral-active: #64748b;
 
-    --shivanya-color-disabled-background: #1e293b;
+    --shivanya-color-disabled-background: var(--shivanya-color-background);
     --shivanya-color-disabled-border: #475569;
     --shivanya-color-disabled-text: #64748b;
 
@@ -98,10 +101,13 @@
 html[data-theme="dark"] {
   --shivanya-color-background: #0f172a;
 
-  --shivanya-color-surface: #1e293b;
+  --shivanya-color-surface: #172236;
   --shivanya-color-surface-hover: #334155;
   --shivanya-color-surface-active: #475569;
 
+  --shivanya-color-modal-background: #111b2e;
+  --shivanya-color-modal-border: #334155;
+  --shivanya-color-overlay: rgb(2 6 23 / 65%);
   --shivanya-color-text-primary: #f8fafc;
   --shivanya-color-text-secondary: #cbd5e1;
   --shivanya-color-text-muted: #94a3b8;
@@ -141,7 +147,7 @@ html[data-theme="dark"] {
   --shivanya-color-neutral-hover: #475569;
   --shivanya-color-neutral-active: #64748b;
 
-  --shivanya-color-disabled-background: #1e293b;
+  --shivanya-color-disabled-background: var(--shivanya-color-background);
   --shivanya-color-disabled-border: #475569;
   --shivanya-color-disabled-text: #64748b;
 

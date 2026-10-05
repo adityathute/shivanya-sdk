@@ -90,6 +90,30 @@ export default function ButtonDemo() {
           <Button variant="soft-info">
             Soft Info
           </Button>
+
+          <Button variant="outline-primary">
+            Outline Primary
+          </Button>
+
+          <Button variant="outline-secondary">
+            Outline Secondary
+          </Button>
+
+          <Button variant="outline-success">
+            Outline Success
+          </Button>
+
+          <Button variant="outline-warning">
+            Outline Warning
+          </Button>
+
+          <Button variant="outline-danger">
+            Outline Danger
+          </Button>
+
+          <Button variant="outline-info">
+            Outline Info
+          </Button>
         </div>
       </DemoSection>
 

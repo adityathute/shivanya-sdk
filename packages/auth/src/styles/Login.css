@@ -1,0 +1,124 @@
+.shivanya-login {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+.shivanya-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shivanya-login-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shivanya-login-forgot {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -6px;
+}
+
+.shivanya-login-link {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--shivanya-color-primary);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.shivanya-login-link:hover {
+  text-decoration: underline;
+}
+
+.shivanya-login-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin: 18px 0;
+}
+
+.shivanya-login-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--shivanya-color-border);
+}
+
+.shivanya-login-google {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.shivanya-login-google-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  color: #4285f4;
+}
+
+.shivanya-login-register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 22px;
+  text-align: center;
+}
+
+.shivanya-login-register .shivanya-login-link {
+  font-weight: 600;
+}
+
+.shivanya-login input::placeholder {
+  color: var(--shivanya-color-text-muted);
+  opacity: 1;
+}
+
+@media (max-width: 520px) {
+  .shivanya-login-form {
+    gap: 14px;
+  }
+
+  .shivanya-login-fields {
+    gap: 14px;
+  }
+
+  .shivanya-login-divider {
+    margin: 16px 0;
+  }
+
+  .shivanya-login-register {
+    margin-top: 18px;
+  }
+}
+
+.shivanya-login-google {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.shivanya-login-google-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
