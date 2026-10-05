@@ -12,7 +12,7 @@ function AuthProviderTest() {
       <p>Status: {isAuthenticated ? "Authenticated" : "Not authenticated"}</p>
       {user?.email && <p>User: {user.email}</p>}
       {isAuthenticated ? (
-        <div className="auth-demo-actions">
+        <div className="demo-actions">
           <button type="button" onClick={refreshUser}>
             Refresh user
           </button>
