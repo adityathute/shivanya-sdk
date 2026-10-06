@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import {
   Button,
+  ErrorMessage,
   Input,
   PasswordInput,
   Typography,
@@ -31,7 +32,12 @@ export function RegisterEmail({
   const [confirm, setConfirm] = useState("");
   const [created, setCreated] = useState(false);
 
-  const { run, loading, error } = useAuthAction(async () =>
+  const {
+    run,
+    loading,
+    error,
+    fieldErrors,
+  } = useAuthAction(async () =>
     client.register({
       first_name: firstName.trim(),
       last_name: lastName.trim(),
@@ -40,6 +46,8 @@ export function RegisterEmail({
       confirm_password: confirm,
     }),
   );
+
+  const hasFieldErrors = Object.keys(fieldErrors).length > 0;
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
@@ -96,76 +104,121 @@ export function RegisterEmail({
 
   return (
     <div className="shivanya-register-email">
-      <AuthMessage message={error} />
+      {!hasFieldErrors && <AuthMessage message={error} />}
 
       <form
         className="shivanya-register-email-form"
         onSubmit={submit}
       >
         <div className="shivanya-register-email-name-fields">
-          <Input
-            label="First Name"
-            placeholder="Enter your first name"
-            autoComplete="given-name"
-            value={firstName}
-            onChange={(event) =>
-              setFirstName(event.target.value)
-            }
-            required
-            fullWidth
-          />
+          <div>
+            <Input
+              label="First Name"
+              placeholder="Enter your first name"
+              autoComplete="given-name"
+              value={firstName}
+              onChange={(event) =>
+                setFirstName(event.target.value)
+              }
+              required
+              fullWidth
+              error={fieldErrors.first_name}
+            />
 
-          <Input
-            label="Last Name"
-            placeholder="Enter your last name"
-            autoComplete="family-name"
-            value={lastName}
-            onChange={(event) =>
-              setLastName(event.target.value)
-            }
-            required
-            fullWidth
-          />
+            {fieldErrors.first_name && (
+              <ErrorMessage size="sm" variant="error">
+                {fieldErrors.first_name}
+              </ErrorMessage>
+            )}
+          </div>
+
+          <div>
+            <Input
+              label="Last Name"
+              placeholder="Enter your last name"
+              autoComplete="family-name"
+              value={lastName}
+              onChange={(event) =>
+                setLastName(event.target.value)
+              }
+              required
+              fullWidth
+              error={fieldErrors.last_name}
+            />
+
+            {fieldErrors.last_name && (
+              <ErrorMessage size="sm" variant="error">
+                {fieldErrors.last_name}
+              </ErrorMessage>
+            )}
+          </div>
         </div>
 
         <div className="shivanya-register-email-fields">
-          <Input
-            label="Email"
-            type="email"
-            placeholder="Enter your email"
-            autoComplete="email"
-            value={email}
-            onChange={(event) =>
-              setEmail(event.target.value)
-            }
-            required
-            fullWidth
-          />
+          <div>
+            <Input
+              label="Email"
+              type="email"
+              placeholder="Enter your email"
+              autoComplete="email"
+              value={email}
+              onChange={(event) =>
+                setEmail(event.target.value)
+              }
+              required
+              fullWidth
+              error={fieldErrors.email}
+            />
 
-          <PasswordInput
-            label="Password"
-            placeholder="Enter your password"
-            autoComplete="new-password"
-            helperText="Use at least 12 characters."
-            value={password}
-            onChange={(event) =>
-              setPassword(event.target.value)
-            }
-            required
-            fullWidth
-          />
+            {fieldErrors.email && (
+              <ErrorMessage size="sm" variant="error">
+                {fieldErrors.email}
+              </ErrorMessage>
+            )}
+          </div>
 
-          <PasswordInput
-            label="Confirm Password"
-            placeholder="Confirm your password"
-            autoComplete="new-password"
-            value={confirm}
-            onChange={(event) =>
-              setConfirm(event.target.value)
-            }
-            required
-            fullWidth
-          />
+          <div>
+            <PasswordInput
+              label="Password"
+              placeholder="Enter your password"
+              autoComplete="new-password"
+              helperText="Use at least 8 characters."
+              value={password}
+              onChange={(event) =>
+                setPassword(event.target.value)
+              }
+              required
+              fullWidth
+              error={fieldErrors.password}
+            />
+
+            {fieldErrors.password && (
+              <ErrorMessage size="sm" variant="error">
+                {fieldErrors.password}
+              </ErrorMessage>
+            )}
+          </div>
+
+          <div>
+            <PasswordInput
+              label="Confirm Password"
+              placeholder="Confirm your password"
+              autoComplete="new-password"
+              value={confirm}
+              onChange={(event) =>
+                setConfirm(event.target.value)
+              }
+              required
+              fullWidth
+              error={fieldErrors.confirm_password}
+            />
+
+            {fieldErrors.confirm_password && (
+              <ErrorMessage size="sm" variant="error">
+                {fieldErrors.confirm_password}
+              </ErrorMessage>
+            )}
+          </div>
         </div>
 
         <Button
