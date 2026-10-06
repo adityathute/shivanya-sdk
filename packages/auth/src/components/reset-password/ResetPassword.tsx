@@ -4,6 +4,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import {
   Button,
   CheckIcon,
+  ErrorMessage,
   LockIcon,
   PasswordInput,
   Typography,
@@ -28,13 +29,20 @@ export function ResetPassword({
   const [confirm, setConfirm] = useState("");
   const [completed, setCompleted] = useState(false);
 
-  const { run, loading, error } = useAuthAction(async () =>
+  const {
+    run,
+    loading,
+    error,
+    fieldErrors,
+  } = useAuthAction(async () =>
     client.resetPassword({
       token,
       new_password: password,
       confirm_password: confirm,
     }),
   );
+
+  const hasFieldErrors = Object.keys(fieldErrors).length > 0;
 
   useEffect(() => {
     let active = true;
@@ -191,32 +199,50 @@ export function ResetPassword({
         </Typography>
       </div>
 
-      <AuthMessage message={error} />
+      {!hasFieldErrors && <AuthMessage message={error} />}
 
       <form
         className="shivanya-reset-password-form"
         onSubmit={submit}
       >
-        <PasswordInput
-          label="New password"
-          placeholder="Enter your new password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          autoComplete="new-password"
-          helperText="Use at least 12 characters."
-          required
-          fullWidth
-        />
+        <div>
+          <PasswordInput
+            label="New password"
+            placeholder="Enter your new password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            autoComplete="new-password"
+            helperText="Use at least 8 characters."
+            required
+            fullWidth
+            error={fieldErrors.new_password}
+          />
 
-        <PasswordInput
-          label="Confirm password"
-          placeholder="Confirm your new password"
-          value={confirm}
-          onChange={(event) => setConfirm(event.target.value)}
-          autoComplete="new-password"
-          required
-          fullWidth
-        />
+          {fieldErrors.new_password && (
+            <ErrorMessage size="sm" variant="error">
+              {fieldErrors.new_password}
+            </ErrorMessage>
+          )}
+        </div>
+
+        <div>
+          <PasswordInput
+            label="Confirm password"
+            placeholder="Confirm your new password"
+            value={confirm}
+            onChange={(event) => setConfirm(event.target.value)}
+            autoComplete="new-password"
+            required
+            fullWidth
+            error={fieldErrors.confirm_password}
+          />
+
+          {fieldErrors.confirm_password && (
+            <ErrorMessage size="sm" variant="error">
+              {fieldErrors.confirm_password}
+            </ErrorMessage>
+          )}
+        </div>
 
         <Button
           type="submit"
