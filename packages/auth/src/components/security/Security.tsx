@@ -8,22 +8,17 @@ import {
 } from "shivanya-ui";
 import { useAuth } from "../../hooks/useAuth";
 import { useAuthAction } from "../../hooks/useAuthAction";
-import { AuthMessage } from "../shared/AuthMessage";
 
 export function Security() {
-  const { logout } = useAuth();
+  const { client, logout } = useAuth();
+
   const [current, setCurrent] = useState("");
   const [next, setNext] = useState("");
   const [confirm, setConfirm] = useState("");
   const [deletionPassword, setDeletionPassword] = useState("");
 
-  const {
-    run,
-    loading,
-    error,
-    fieldErrors,
-  } = useAuthAction(async () =>
-    useAuth().client.changePassword({
+  const changePassword = useAuthAction(async () =>
+    client.changePassword({
       current_password: current,
       new_password: next,
       confirm_password: confirm,
@@ -31,15 +26,15 @@ export function Security() {
   );
 
   const deletion = useAuthAction(async () =>
-    useAuth().client.deleteAccount(deletionPassword),
+    client.deleteAccount(deletionPassword),
   );
 
   const hasPasswordFieldErrors =
-    Object.keys(fieldErrors).length > 0;
+    Object.keys(changePassword.fieldErrors).length > 0;
 
   const submitPassword = async () => {
     try {
-      await run();
+      await changePassword.run();
       setCurrent("");
       setNext("");
       setConfirm("");
@@ -68,9 +63,12 @@ export function Security() {
         <h4>Change password</h4>
         <p>Use a new password you do not reuse elsewhere.</p>
 
-        {!hasPasswordFieldErrors && (
-          <AuthMessage message={error} />
-        )}
+        {!hasPasswordFieldErrors &&
+          changePassword.error && (
+            <ErrorMessage size="sm" variant="error">
+              {changePassword.error}
+            </ErrorMessage>
+          )}
 
         <div className="shivanya-auth-fields">
           <div>
@@ -79,14 +77,9 @@ export function Security() {
               value={current}
               onChange={(e) => setCurrent(e.target.value)}
               fullWidth
-              error={fieldErrors.current_password}
+              error={changePassword.fieldErrors.current_password}
             />
-
-            {fieldErrors.current_password && (
-              <ErrorMessage size="sm" variant="error">
-                {fieldErrors.current_password}
-              </ErrorMessage>
-            )}
+            {!changePassword.fieldErrors.current_password && null}
           </div>
 
           <div>
@@ -96,12 +89,11 @@ export function Security() {
               onChange={(e) => setNext(e.target.value)}
               helperText="At least 8 characters."
               fullWidth
-              error={fieldErrors.new_password}
+              error={changePassword.fieldErrors.new_password}
             />
-
-            {fieldErrors.new_password && (
+            {changePassword.fieldErrors.new_password && (
               <ErrorMessage size="sm" variant="error">
-                {fieldErrors.new_password}
+                {changePassword.fieldErrors.new_password}
               </ErrorMessage>
             )}
           </div>
@@ -112,18 +104,20 @@ export function Security() {
               value={confirm}
               onChange={(e) => setConfirm(e.target.value)}
               fullWidth
-              error={fieldErrors.confirm_password}
+              error={changePassword.fieldErrors.confirm_password}
             />
-
-            {fieldErrors.confirm_password && (
+            {changePassword.fieldErrors.confirm_password && (
               <ErrorMessage size="sm" variant="error">
-                {fieldErrors.confirm_password}
+                {changePassword.fieldErrors.confirm_password}
               </ErrorMessage>
             )}
           </div>
         </div>
 
-        <Button loading={loading} onClick={submitPassword}>
+        <Button
+          loading={changePassword.loading}
+          onClick={submitPassword}
+        >
           Change password
         </Button>
       </section>
@@ -140,9 +134,20 @@ export function Security() {
           value={deletionPassword}
           onChange={(e) => setDeletionPassword(e.target.value)}
           fullWidth
+          error={deletion.fieldErrors.current_password}
         />
 
-        <AuthMessage message={deletion.error} />
+        {deletion.fieldErrors.current_password && (
+          <ErrorMessage size="sm" variant="error">
+            {deletion.fieldErrors.current_password}
+          </ErrorMessage>
+        )}
+
+        {!Object.keys(deletion.fieldErrors).length && deletion.error && (
+          <ErrorMessage size="sm" variant="error">
+            {deletion.error}
+          </ErrorMessage>
+        )}
 
         <Button
           variant="danger"
