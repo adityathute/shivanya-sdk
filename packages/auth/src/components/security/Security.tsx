@@ -60,7 +60,7 @@ export function Security() {
             label="New password"
             value={next}
             onChange={(e) => setNext(e.target.value)}
-            helperText="At least 12 characters."
+            helperText="At least 8 characters."
             fullWidth
           />
           <PasswordInput

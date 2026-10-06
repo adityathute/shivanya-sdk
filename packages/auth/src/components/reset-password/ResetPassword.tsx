@@ -203,7 +203,7 @@ export function ResetPassword({
           value={password}
           onChange={(event) => setPassword(event.target.value)}
           autoComplete="new-password"
-          helperText="Use at least 12 characters."
+          helperText="Use at least 8 characters."
           required
           fullWidth
         />
