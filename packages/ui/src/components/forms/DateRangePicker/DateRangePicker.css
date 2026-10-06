@@ -45,8 +45,8 @@
   caret-color: var(--shivanya-color-text-primary);
 
   transition:
-    background-color 9999s ease-out,
-    color 9999s ease-out;
+    background-color 9999s var(--shivanya-ease-out),
+    color 9999s var(--shivanya-ease-out);
 }
 
 .shivanya-date-range {
@@ -101,7 +101,7 @@
 
   box-sizing: border-box;
 
-  height: 40px;
+  height: var(--shivanya-control-height-md);
   padding: 0 var(--shivanya-space-2);
 
   border: 0;
@@ -126,8 +126,8 @@
   caret-color: var(--shivanya-color-text-primary);
 
   transition:
-    background-color 9999s ease-out,
-    color 9999s ease-out;
+    background-color 9999s var(--shivanya-ease-out),
+    color 9999s var(--shivanya-ease-out);
 }
 
 .shivanya-date-range input::-webkit-calendar-picker-indicator {
@@ -146,12 +146,12 @@
 }
 
 .shivanya-date-range-sm input {
-  height: 32px;
+  height: var(--shivanya-control-height-sm);
   font-size: var(--shivanya-font-size-sm);
 }
 
 .shivanya-date-range-lg input {
-  height: 48px;
+  height: var(--shivanya-control-height-lg);
 }
 
 .shivanya-date-range-radius-sm {
@@ -178,8 +178,8 @@
   align-items: center;
   justify-content: center;
 
-  width: 32px;
-  height: 32px;
+  width: var(--shivanya-control-height-sm);
+  height: var(--shivanya-control-height-sm);
 
   margin-right: var(--shivanya-space-1);
   padding: 0;
@@ -208,6 +208,6 @@
 
 .shivanya-date-range-clear svg {
   display: block;
-  width: 16px;
-  height: 16px;
+  width: var(--shivanya-icon-size-sm);
+  height: var(--shivanya-icon-size-sm);
 }

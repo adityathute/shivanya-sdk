@@ -1,1 +1,90 @@
-.shivanya-video{display:block;width:var(--video-width-md);height:var(--video-height-md);background:var(--video-background);object-fit:cover;transition:var(--video-transition)}.videoExtraSmall{width:var(--video-width-xs);height:var(--video-height-xs)}.videoSmall{width:var(--video-width-sm);height:var(--video-height-sm)}.videoMedium{width:var(--video-width-md);height:var(--video-height-md)}.videoLarge{width:var(--video-width-lg);height:var(--video-height-lg)}.videoExtraLarge{width:var(--video-width-xl);height:var(--video-height-xl)}.videoDefault{border:0}.videoBordered{border:1px solid var(--video-border-color)}.videoShadow{box-shadow:var(--video-shadow)}.videoRadiusNone{border-radius:0}.videoRadiusSmall{border-radius:var(--video-radius-sm)}.videoRadiusMedium{border-radius:var(--video-radius-md)}.videoRadiusLarge{border-radius:var(--video-radius-lg)}.videoRadiusFull{border-radius:var(--video-radius-full)}.videoDefaultState,.videoPlaying{opacity:1}.videoLoading{opacity:.8}.videoPaused{opacity:.95}.videoDisabled{opacity:var(--video-disabled-opacity);pointer-events:none;user-select:none}@media(prefers-reduced-motion:reduce){.shivanya-video{transition:none}}
+.shivanya-video {
+  display: block;
+  width: var(--video-width-md);
+  height: var(--video-height-md);
+  background: var(--shivanya-color-surface);
+  object-fit: cover;
+  transition: var(--video-transition);
+}
+
+.videoExtraSmall {
+  width: var(--video-width-xs);
+  height: var(--video-height-xs);
+}
+
+.videoSmall {
+  width: var(--video-width-sm);
+  height: var(--video-height-sm);
+}
+
+.videoMedium {
+  width: var(--video-width-md);
+  height: var(--video-height-md);
+}
+
+.videoLarge {
+  width: var(--video-width-lg);
+  height: var(--video-height-lg);
+}
+
+.videoExtraLarge {
+  width: var(--video-width-xl);
+  height: var(--video-height-xl);
+}
+
+.videoDefault {
+  border: 0;
+}
+
+.videoBordered {
+  border: 1px solid var(--shivanya-color-border);
+}
+
+.videoShadow {
+  box-shadow: var(--video-shadow);
+}
+
+.videoRadiusNone {
+  border-radius: 0;
+}
+
+.videoRadiusSmall {
+  border-radius: var(--shivanya-radius-sm);
+}
+
+.videoRadiusMedium {
+  border-radius: var(--shivanya-radius-md);
+}
+
+.videoRadiusLarge {
+  border-radius: var(--shivanya-radius-lg);
+}
+
+.videoRadiusFull {
+  border-radius: var(--shivanya-radius-full);
+}
+
+.videoDefaultState,
+.videoPlaying {
+  opacity: 1;
+}
+
+.videoLoading {
+  opacity: 0.8;
+}
+
+.videoPaused {
+  opacity: 0.95;
+}
+
+.videoDisabled {
+  opacity: var(--video-disabled-opacity);
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shivanya-video {
+    transition: none;
+  }
+}

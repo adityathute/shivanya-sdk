@@ -234,4 +234,24 @@
   --shivanya-color-disabled-background: var(--shivanya-color-background);
   --shivanya-color-disabled-border: #e2e8f0;
   --shivanya-color-disabled-text: #94a3b8;
+
+    /*
+   * ---------------------------------------------------------------
+   * Chart colors
+   * ---------------------------------------------------------------
+   *
+   * Shared palette used by chart components.
+   *
+   * The first colors reuse semantic colors from the global system.
+   * Additional colors extend the palette for charts with more series.
+   */
+
+  --shivanya-chart-color-1: var(--shivanya-color-primary);
+  --shivanya-chart-color-2: var(--shivanya-color-success);
+  --shivanya-chart-color-3: var(--shivanya-color-warning);
+  --shivanya-chart-color-4: var(--shivanya-color-danger);
+  --shivanya-chart-color-5: #7c3aed;
+  --shivanya-chart-color-6: var(--shivanya-color-info);
+  --shivanya-chart-color-7: #db2777;
+  --shivanya-chart-color-8: #ea580c;
 }

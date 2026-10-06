@@ -628,3 +628,24 @@
     min-width: 560px;
   }
 }
+
+.data-display-demo-accordion {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--shivanya-space-3);
+  width: min(100%, 640px);
+  max-width: 100%;
+  min-width: 0;
+}
+
+.data-display-demo-accordion .shivanya-accordion {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .data-display-demo-accordion {
+    width: 100%;
+  }
+}

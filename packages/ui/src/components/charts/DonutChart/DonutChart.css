@@ -1,32 +1,44 @@
 .shivanya-donut-chart {
   --donut-size: 280px;
+
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: var(--shivanya-space-6);
+
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
+  overflow: hidden;
+
   color: var(--shivanya-color-text-primary);
-    overflow: visible;
 }
+
 .shivanya-donut-chart-default {
   background: transparent;
 }
+
 .shivanya-donut-chart-bordered {
-  padding: 1.25rem;
+  padding: var(--shivanya-space-5);
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-lg);
   background: var(--shivanya-color-background);
 }
+
 .shivanya-donut-chart-filled {
-  padding: 1.25rem;
+  padding: var(--shivanya-space-5);
   border-radius: var(--shivanya-radius-lg);
   background: var(--shivanya-color-surface);
 }
+
 .shivanya-donut-chart-ghost {
-  padding: 1rem;
+  padding: var(--shivanya-space-4);
   border-radius: var(--shivanya-radius-lg);
 }
+
 .shivanya-donut-chart-size-xs {
   --donut-size: 160px;
 }
@@ -46,108 +58,134 @@
 .shivanya-donut-chart-size-xl {
   --donut-size: 420px;
 }
+
 .shivanya-donut-chart-svg {
+  display: block;
   width: var(--donut-size);
   height: var(--donut-size);
-  display: block;
+  max-width: 100%;
   overflow: visible;
-  flex-shrink: 0;
+  flex-shrink: 1;
 }
+
 .shivanya-donut-chart-track,
 .shivanya-donut-chart-segment {
   shape-rendering: geometricPrecision;
 }
+
 .shivanya-donut-chart-track {
   stroke: var(--shivanya-color-border);
   opacity: 0.55;
 }
+
 .shivanya-donut-chart-segment {
   cursor: pointer;
   transition:
-    filter 0.2s ease,
-    opacity 0.2s ease,
-    transform 0.2s ease;
+    filter var(--shivanya-duration-normal) var(--shivanya-ease-standard),
+    opacity var(--shivanya-duration-normal) var(--shivanya-ease-standard),
+    transform var(--shivanya-duration-normal) var(--shivanya-ease-standard);
 }
+
 .shivanya-donut-chart-segment:hover,
 .shivanya-donut-chart-segment.is-hovered {
   filter: brightness(1.08);
   opacity: 0.95;
 }
+
 .shivanya-donut-chart-segment.is-active {
   filter: brightness(1.12);
   opacity: 1;
 }
+
 .shivanya-donut-chart-segment:focus-visible {
   outline: none;
-  filter: brightness(1.08) drop-shadow(0 0 0.4rem rgb(59 130 246 / 0.45));
+  filter: brightness(1.08) drop-shadow(0 0 0.4rem rgb(59 130 246 / 45%));
 }
+
 .shivanya-donut-chart-center-value {
   fill: var(--shivanya-color-text-primary);
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: var(--shivanya-font-weight-bold);
 }
+
 .shivanya-donut-chart-center-label {
   fill: var(--shivanya-color-text-secondary);
   font-size: 0.8rem;
 }
+
 .shivanya-donut-chart-legend {
   min-width: 0;
   max-width: 100%;
   box-sizing: border-box;
 }
+
 .shivanya-donut-chart-legend-top,
 .shivanya-donut-chart-legend-bottom {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .shivanya-donut-chart-legend-right,
 .shivanya-donut-chart-legend-left {
   flex-direction: column;
   width: fit-content;
 }
+
 .shivanya-donut-chart-legend-right {
-  margin-left: 1.5rem;
+  margin-left: var(--shivanya-space-6);
 }
 
 .shivanya-donut-chart-legend-left {
-  margin-right: 1.5rem;
+  margin-right: var(--shivanya-space-6);
 }
+
 .shivanya-donut-chart-legend-bottom {
   order: 1;
 }
+
 .shivanya-donut-chart-legend-top {
   order: -1;
 }
+
 .shivanya-donut-chart-legend-item {
   display: flex;
   align-items: center;
   gap: 0.875rem;
+
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem var(--shivanya-space-4);
+
   border: 0;
   border-radius: var(--shivanya-radius-md);
+
   background: transparent;
+  color: inherit;
+
   cursor: pointer;
   text-align: left;
-  color: inherit;
+
   transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+    background var(--shivanya-duration-normal) var(--shivanya-ease-standard),
+    transform var(--shivanya-duration-normal) var(--shivanya-ease-standard);
 }
+
 .shivanya-donut-chart-legend-item:hover {
   background: var(--shivanya-color-surface-hover);
   transform: translateY(-1px);
 }
+
 .shivanya-donut-chart-legend-item.is-active {
   background: var(--shivanya-color-surface-hover);
 }
+
 .shivanya-donut-chart-legend-color {
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
+  width: var(--shivanya-icon-size-xs);
+  height: var(--shivanya-icon-size-xs);
+  border-radius: var(--shivanya-radius-full);
   flex-shrink: 0;
 }
+
 .shivanya-donut-chart-legend-content {
   display: flex;
   flex-direction: column;
@@ -155,171 +193,128 @@
   flex: 1;
   min-width: 0;
 }
+
 .shivanya-donut-chart-legend-label {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
   color: var(--shivanya-color-text-primary);
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: var(--shivanya-font-size-sm);
+  font-weight: var(--shivanya-font-weight-semibold);
 }
+
 .shivanya-donut-chart-legend-percentage {
   margin-top: 0.15rem;
   color: var(--shivanya-color-text-secondary);
-  font-size: 0.75rem;
+  font-size: var(--shivanya-font-size-xs);
 }
+
 .shivanya-donut-chart-legend-value {
   margin-left: auto;
   color: var(--shivanya-color-text-primary);
-  font-size: 0.875rem;
-  font-weight: 700;
+  font-size: var(--shivanya-font-size-sm);
+  font-weight: var(--shivanya-font-weight-bold);
   white-space: nowrap;
 }
+
 .shivanya-donut-chart-tooltip {
   position: fixed;
   z-index: 9999;
+
   min-width: 180px;
   max-width: 260px;
+
   padding: 0.875rem;
+
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-lg);
+
   background: var(--shivanya-color-surface);
   box-shadow: var(--shivanya-shadow-lg);
+
   pointer-events: none;
+
   animation: shivanya-donut-tooltip 0.16s ease;
 }
+
 .shivanya-donut-chart-tooltip-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  gap: var(--shivanya-space-2);
+  margin-bottom: var(--shivanya-space-3);
 }
+
 .shivanya-donut-chart-tooltip-color {
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
+  width: var(--shivanya-icon-size-xs);
+  height: var(--shivanya-icon-size-xs);
+  border-radius: var(--shivanya-radius-full);
   flex-shrink: 0;
 }
+
 .shivanya-donut-chart-tooltip-title {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
   color: var(--shivanya-color-text-primary);
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
 }
+
 .shivanya-donut-chart-tooltip-body {
   display: flex;
   flex-direction: column;
   gap: 0.375rem;
 }
+
 .shivanya-donut-chart-tooltip-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: var(--shivanya-space-4);
+
   font-size: 0.8125rem;
   color: var(--shivanya-color-text-secondary);
 }
+
 .shivanya-donut-chart-tooltip-row strong {
   color: var(--shivanya-color-text-primary);
 }
+
 .shivanya-donut-chart.is-disabled {
-  opacity: 0.6;
+  opacity: var(--shivanya-opacity-disabled);
 }
+
 .shivanya-donut-chart.is-disabled .shivanya-donut-chart-segment,
 .shivanya-donut-chart.is-disabled .shivanya-donut-chart-legend-item {
   pointer-events: none;
   cursor: not-allowed;
 }
-@keyframes shivanya-donut-tooltip {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@media (max-width: 900px) {
-  .shivanya-donut-chart {
-    flex-direction: column;
-  }
-  .shivanya-donut-chart-legend-right,
-  .shivanya-donut-chart-legend-left {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-  }
-}
-@media (max-width: 640px) {
-  .shivanya-donut-chart-svg {
-    width: min(100%, var(--donut-size));
-    height: auto;
-  }
-  .shivanya-donut-chart-tooltip {
-    display: none;
-  }
-}
-@media (max-width: 480px) {
-  .shivanya-donut-chart {
-    gap: 1rem;
-  }
-  .shivanya-donut-chart-legend-item {
-    width: 100%;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .shivanya-donut-chart-segment,
-  .shivanya-donut-chart-legend-item,
-  .shivanya-donut-chart-tooltip {
-    transition: none;
-    animation: none;
-  }
-}
-
-.shivanya-donut-chart {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  overflow: hidden;
-}
-
-.shivanya-donut-chart-svg {
-  display: block;
-  width: var(--donut-size);
-  height: var(--donut-size);
-  max-width: 100%;
-  flex-shrink: 1;
-}
 
 .shivanya-donut-chart-segment.is-draw {
-  animation: shivanya-donut-draw
+  animation:
+    shivanya-donut-draw
     var(--donut-animation-duration, 500ms)
-    ease-out
+    var(--shivanya-ease-out)
     both;
 }
 
 .shivanya-donut-chart-segment.is-fade {
-  animation: shivanya-donut-fade
+  animation:
+    shivanya-donut-fade
     var(--donut-animation-duration, 500ms)
-    ease-out
+    var(--shivanya-ease-out)
     both;
 }
 
 .shivanya-donut-chart-segment.is-scale {
   transform-box: fill-box;
   transform-origin: center;
-  animation: shivanya-donut-scale
+
+  animation:
+    shivanya-donut-scale
     var(--donut-animation-duration, 500ms)
-    ease-out
+    var(--shivanya-ease-out)
     both;
 }
 
@@ -352,5 +347,61 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes shivanya-donut-tooltip {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .shivanya-donut-chart {
+    flex-direction: column;
+  }
+
+  .shivanya-donut-chart-legend-right,
+  .shivanya-donut-chart-legend-left {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .shivanya-donut-chart-svg {
+    width: min(100%, var(--donut-size));
+    height: auto;
+  }
+
+  .shivanya-donut-chart-tooltip {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .shivanya-donut-chart {
+    gap: var(--shivanya-space-4);
+  }
+
+  .shivanya-donut-chart-legend-item {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shivanya-donut-chart-segment,
+  .shivanya-donut-chart-legend-item,
+  .shivanya-donut-chart-tooltip {
+    transition: none;
+    animation: none;
   }
 }

@@ -95,8 +95,8 @@
     0 0 0 1000px var(--shivanya-color-background) inset;
   caret-color: var(--shivanya-color-text-primary);
   transition:
-    background-color 9999s ease-out,
-    color 9999s ease-out;
+    background-color 9999s var(--shivanya-ease-out),
+    color 9999s var(--shivanya-ease-out);
 }
 
 .shivanya-input::placeholder {
@@ -130,7 +130,9 @@
 .shivanya-input-success:focus-within {
   border-color: var(--shivanya-color-success);
 
-  box-shadow: 0 0 0 3px rgb(22 163 74 / 20%);
+  box-shadow:
+    0 0 0 3px
+    var(--shivanya-color-success-soft);
 }
 
 .shivanya-input-warning {
@@ -140,7 +142,9 @@
 .shivanya-input-warning:focus-within {
   border-color: var(--shivanya-color-warning);
 
-  box-shadow: 0 0 0 3px rgb(245 158 11 / 20%);
+  box-shadow:
+    0 0 0 3px
+    var(--shivanya-color-warning-soft);
 }
 
 .shivanya-input-error {
@@ -150,7 +154,9 @@
 .shivanya-input-error:focus-within {
   border-color: var(--shivanya-color-danger);
 
-  box-shadow: 0 0 0 3px rgb(220 38 38 / 20%);
+  box-shadow:
+    0 0 0 3px
+    var(--shivanya-color-danger-soft);
 }
 
 /* States */

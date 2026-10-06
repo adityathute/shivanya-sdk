@@ -1,1 +1,137 @@
-.shivanya-carousel{position:relative;overflow:hidden;background:var(--carousel-background);transition:var(--carousel-transition);}.carouselTrack{display:flex;width:100%;height:100%;transition:transform var(--duration-normal);}.carouselSlide{flex:0 0 100%;width:100%;height:100%;}.carouselSlide>*{width:100%;height:100%;object-fit:cover;}.carouselArrow{position:absolute;top:50%;display:flex;align-items:center;justify-content:center;width:var(--carousel-arrow-size);height:var(--carousel-arrow-size);border:0;border-radius:50%;background:var(--carousel-arrow-background);color:var(--carousel-arrow-color);cursor:pointer;transform:translateY(-50%);}.carouselArrowPrev{left:var(--space-sm);}.carouselArrowNext{right:var(--space-sm);}.carouselIndicators{position:absolute;bottom:var(--space-sm);left:50%;display:flex;gap:var(--carousel-indicator-gap);transform:translateX(-50%);}.carouselIndicator{width:var(--carousel-indicator-size);height:var(--carousel-indicator-size);padding:0;border:0;border-radius:50%;background:var(--carousel-indicator-color);cursor:pointer;}.carouselIndicatorActive{background:var(--carousel-indicator-active-color);}.carouselSmall{height:var(--carousel-height-sm);}.carouselMedium{height:var(--carousel-height-md);}.carouselLarge{height:var(--carousel-height-lg);}.carouselDefault{border:0;}.carouselBordered{border:1px solid var(--carousel-border-color);}.carouselShadow{box-shadow:var(--carousel-shadow);}.carouselRadiusNone{border-radius:0;}.carouselRadiusSmall{border-radius:var(--carousel-radius-sm);}.carouselRadiusMedium{border-radius:var(--carousel-radius-md);}.carouselRadiusLarge{border-radius:var(--carousel-radius-lg);}.carouselRadiusFull{border-radius:var(--carousel-radius-full);}.carouselDefaultState,.carouselAutoplay{opacity:1;}.carouselPaused{opacity:.9;}.carouselDisabled{opacity:var(--carousel-disabled-opacity);pointer-events:none;}@media(prefers-reduced-motion:reduce){.shivanya-carousel,.carouselTrack{transition:none;}}
+.shivanya-carousel {
+  position: relative;
+  overflow: hidden;
+  background: var(--shivanya-color-surface);
+  transition: var(--shivanya-duration-normal) var(--shivanya-ease-standard);
+}
+
+.carouselTrack {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--shivanya-duration-normal);
+}
+
+.carouselSlide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.carouselSlide > * {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carouselArrow {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--shivanya-control-height-sm);
+  height: var(--shivanya-control-height-sm);
+  border: 0;
+  border-radius: var(--shivanya-radius-full);
+  background: var(--shivanya-color-surface);
+  color: var(--shivanya-color-text-primary);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.carouselArrowPrev {
+  left: var(--shivanya-space-2);
+}
+
+.carouselArrowNext {
+  right: var(--shivanya-space-2);
+}
+
+.carouselIndicators {
+  position: absolute;
+  bottom: var(--shivanya-space-2);
+  left: 50%;
+  display: flex;
+  gap: var(--shivanya-space-2);
+  transform: translateX(-50%);
+}
+
+.carouselIndicator {
+  width: var(--shivanya-icon-size-sm);
+  height: var(--shivanya-icon-size-sm);
+  padding: 0;
+  border: 0;
+  border-radius: var(--shivanya-radius-full);
+  background: var(--shivanya-color-neutral);
+  cursor: pointer;
+}
+
+.carouselIndicatorActive {
+  background: var(--shivanya-color-primary);
+}
+
+.carouselSmall {
+  height: var(--shivanya-control-height-lg);
+}
+
+.carouselMedium {
+  height: var(--shivanya-control-height-xl);
+}
+
+.carouselLarge {
+  height: var(--shivanya-space-16);
+}
+
+.carouselDefault {
+  border: 0;
+}
+
+.carouselBordered {
+  border: 1px solid var(--shivanya-color-border);
+}
+
+.carouselShadow {
+  box-shadow: var(--shivanya-shadow-md);
+}
+
+.carouselRadiusNone {
+  border-radius: 0;
+}
+
+.carouselRadiusSmall {
+  border-radius: var(--shivanya-radius-sm);
+}
+
+.carouselRadiusMedium {
+  border-radius: var(--shivanya-radius-md);
+}
+
+.carouselRadiusLarge {
+  border-radius: var(--shivanya-radius-lg);
+}
+
+.carouselRadiusFull {
+  border-radius: var(--shivanya-radius-full);
+}
+
+.carouselDefaultState,
+.carouselAutoplay {
+  opacity: 1;
+}
+
+.carouselPaused {
+  opacity: 0.9;
+}
+
+.carouselDisabled {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shivanya-carousel,
+  .carouselTrack {
+    transition: none;
+  }
+}

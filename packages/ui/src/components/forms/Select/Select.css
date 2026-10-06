@@ -14,8 +14,8 @@
 .shivanya-select-label {
   color: var(--shivanya-color-text-primary);
   font-size: var(--shivanya-font-size-md);
-  font-weight: 600;
-  line-height: 1.5;
+  font-weight: var(--shivanya-font-weight-semibold);
+  line-height: var(--shivanya-line-height-md);
 }
 
 .shivanya-select-required {
@@ -37,7 +37,7 @@
 
   width: 100%;
   min-width: 0;
-  height: 40px;
+  height: var(--shivanya-control-height-md);
 
   margin: 0;
   padding:
@@ -134,7 +134,7 @@
 /* Sizes */
 
 .shivanya-select-sm {
-  height: 32px;
+  height: var(--shivanya-control-height-sm);
   font-size: var(--shivanya-font-size-sm);
 }
 
@@ -146,7 +146,7 @@
 }
 
 .shivanya-select-lg {
-  height: 48px;
+  height: var(--shivanya-control-height-lg);
   font-size: var(--shivanya-font-size-lg);
 }
 
@@ -192,7 +192,7 @@
   margin: 0;
 
   font-size: var(--shivanya-font-size-sm);
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 }
 
 .shivanya-select-help {

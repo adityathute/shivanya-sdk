@@ -1,11 +1,18 @@
 .shivanya-account-modal {
-  overflow: hidden;
+  height: 700px;
+  max-height: calc(100vh - 48px);
+}
+
+.shivanya-account-modal .shivanya-modal-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .shivanya-account-layout {
   display: grid;
   grid-template-columns: 190px minmax(0, 1fr);
-  height: 600px;
+  flex: 1;
   min-height: 0;
   margin: -20px;
   overflow: hidden;
@@ -13,7 +20,7 @@
 
 .shivanya-account-sidebar {
   min-height: 0;
-  padding: 8px;
+  padding: var(--shivanya-space-2);
   border-right: 1px solid var(--shivanya-color-border);
   overflow-y: auto;
 }
@@ -21,9 +28,9 @@
 .shivanya-account-content {
   min-width: 0;
   min-height: 0;
-  padding: 20px;
+  padding: var(--shivanya-space-5);
+  overflow-x: visible;
   overflow-y: auto;
-
   scrollbar-width: thin;
   scrollbar-color:
     var(--shivanya-color-modal-border)
@@ -40,7 +47,7 @@
 
 .shivanya-account-content::-webkit-scrollbar-thumb {
   background: var(--shivanya-color-modal-border);
-  border-radius: 999px;
+  border-radius: var(--shivanya-radius-full);
 }
 
 .shivanya-account-content::-webkit-scrollbar-thumb:hover {
@@ -50,13 +57,13 @@
 .shivanya-account-section {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--shivanya-space-3);
 }
 
 .shivanya-account-hero {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--shivanya-space-4);
   padding: 18px;
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-lg);
@@ -67,34 +74,35 @@
 }
 
 .shivanya-account-hero-info h3 {
-  margin: 0 0 4px;
+  margin: 0 0 var(--shivanya-space-1);
 }
 
 .shivanya-account-hero-info p {
-  margin: 0 0 8px;
-  color: var(--shivanya-color-text-secondary);
+  margin: 0 0 var(--shivanya-space-2);
+  font-size: var(--shivanya-font-size-xs);
+  font-weight: var(--shivanya-font-weight-medium);
+  color: var(--shivanya-color-text-muted);
 }
 
 .shivanya-account-verified {
   display: inline-flex;
   align-items: center;
-  font-size: 12px;
+  font-size: var(--shivanya-font-size-xs);
   color: var(--shivanya-color-success);
 }
 
 .shivanya-account-overview-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: var(--shivanya-space-3);
 }
 
 .shivanya-account-overview-grid button {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
+  align-items: center;
+  gap: var(--shivanya-space-3);
   width: 100%;
-  padding: 16px;
+  padding: var(--shivanya-space-4);
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-md);
   background: var(--shivanya-color-surface);
@@ -119,24 +127,47 @@
   outline-offset: 2px;
 }
 
-.shivanya-account-overview-grid button strong {
-  font-size: 14px;
+.shivanya-account-overview-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: var(--shivanya-color-primary);
 }
 
-.shivanya-account-overview-grid button span {
-  font-size: 12px;
+.shivanya-account-overview-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--shivanya-space-1);
+  min-width: 0;
+}
+
+.shivanya-account-overview-content strong {
+  font-size: var(--shivanya-font-size-sm);
+}
+
+.shivanya-account-overview-content span {
+  font-size: var(--shivanya-font-size-xs);
   color: var(--shivanya-color-text-secondary);
 }
 
 @media (max-width: 700px) {
+  .shivanya-account-modal {
+    height: calc(100dvh - 48px);
+    max-height: calc(100dvh - 48px);
+  }
+
   .shivanya-account-layout {
     grid-template-columns: 1fr;
-    height: auto;
-    max-height: calc(100vh - 48px);
+    grid-template-rows: auto minmax(0, 1fr);
+    min-height: 0;
     margin: -20px;
+    overflow: hidden;
   }
 
   .shivanya-account-sidebar {
+    min-height: 0;
+    padding: var(--shivanya-space-2);
     border-right: 0;
     border-bottom: 1px solid var(--shivanya-color-border);
     overflow-x: auto;
@@ -145,17 +176,25 @@
 
   .shivanya-account-sidebar nav {
     display: flex;
-    gap: 4px;
+    flex-direction: row;
+    gap: var(--shivanya-space-1);
+    width: max-content;
+    max-width: none;
     overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .shivanya-account-sidebar nav > * {
-    flex-shrink: 0;
+    flex: 0 0 auto;
+    width: auto;
     white-space: nowrap;
   }
 
   .shivanya-account-content {
-    padding: 16px;
+    min-height: 0;
+    padding: var(--shivanya-space-4);
+    overflow-x: visible;
+    overflow-y: auto;
   }
 
   .shivanya-account-overview-grid {

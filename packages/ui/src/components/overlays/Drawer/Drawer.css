@@ -2,11 +2,15 @@
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: var(--drawer-overlay-background, rgb(0 0 0 / 0.35));
+
+  background: rgb(0 0 0 / 35%);
+
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+
   backdrop-filter: blur(0);
+
   transition:
     opacity 220ms ease,
     backdrop-filter 220ms ease,
@@ -30,19 +34,26 @@
 .shivanya-drawer {
   position: fixed;
   z-index: 1001;
+
   display: flex;
   flex-direction: column;
+
   height: 100dvh;
   padding-bottom: env(safe-area-inset-bottom);
-  background: var(--drawer-background, var(--shivanya-color-surface));
-  box-shadow: var(--drawer-shadow, 0 16px 48px rgb(0 0 0 / 0.18));
+
+  background: var(--shivanya-color-surface);
+
+  box-shadow: 0 16px 48px rgb(0 0 0 / 18%);
+
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+
   transition:
     transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 220ms ease,
     visibility 0s linear 320ms;
+
   will-change: transform, opacity;
   backface-visibility: hidden;
   transform-style: preserve-3d;
@@ -121,83 +132,115 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
+
   -webkit-overflow-scrolling: touch;
+
   padding-bottom: env(safe-area-inset-bottom);
 }
 
 .shivanya-drawer-header,
 .shivanya-drawer-footer {
   flex-shrink: 0;
-  padding: var(--drawer-padding, 16px);
+  padding: var(--shivanya-space-4);
 }
 
 .shivanya-drawer-header {
-  border-bottom: 1px solid var(--drawer-border-color, var(--shivanya-color-border));
+  border-bottom: 1px solid var(--shivanya-color-border);
 }
 
 .shivanya-drawer-footer {
-  border-top: 1px solid var(--drawer-border-color, var(--shivanya-color-border));
+  border-top: 1px solid var(--shivanya-color-border);
 }
 
-.shivanya-drawer-xs { width: var(--drawer-width-xs, 280px); }
-.shivanya-drawer-sm { width: var(--drawer-width-sm, 340px); }
-.shivanya-drawer-md { width: var(--drawer-width-md, 440px); }
-.shivanya-drawer-lg { width: var(--drawer-width-lg, 560px); }
-.shivanya-drawer-xl { width: var(--drawer-width-xl, 720px); }
-.shivanya-drawer-full { width: 100vw; height: 100dvh; }
+.shivanya-drawer-xs {
+  width: 280px;
+}
+
+.shivanya-drawer-sm {
+  width: 340px;
+}
+
+.shivanya-drawer-md {
+  width: 440px;
+}
+
+.shivanya-drawer-lg {
+  width: 560px;
+}
+
+.shivanya-drawer-xl {
+  width: 720px;
+}
+
+.shivanya-drawer-full {
+  width: 100vw;
+  height: 100dvh;
+}
 
 .shivanya-drawer-top.shivanya-drawer-xs,
 .shivanya-drawer-bottom.shivanya-drawer-xs {
   width: 100%;
-  height: var(--drawer-height-xs, 240px);
+  height: 240px;
 }
 
 .shivanya-drawer-top.shivanya-drawer-sm,
 .shivanya-drawer-bottom.shivanya-drawer-sm {
   width: 100%;
-  height: var(--drawer-height-sm, 320px);
+  height: 320px;
 }
 
 .shivanya-drawer-top.shivanya-drawer-md,
 .shivanya-drawer-bottom.shivanya-drawer-md {
   width: 100%;
-  height: var(--drawer-height-md, 440px);
+  height: 440px;
 }
 
 .shivanya-drawer-top.shivanya-drawer-lg,
 .shivanya-drawer-bottom.shivanya-drawer-lg {
   width: 100%;
-  height: var(--drawer-height-lg, 560px);
+  height: 560px;
 }
 
 .shivanya-drawer-top.shivanya-drawer-xl,
 .shivanya-drawer-bottom.shivanya-drawer-xl {
   width: 100%;
-  height: var(--drawer-height-xl, 720px);
+  height: 720px;
 }
 
 .shivanya-drawer-default {
-  background: var(--drawer-background, var(--shivanya-color-surface));
+  background: var(--shivanya-color-surface);
 }
 
 .shivanya-drawer-filled {
-  background: var(--color-surface, var(--shivanya-color-surface));
+  background: var(--shivanya-color-surface);
 }
 
 .shivanya-drawer-outlined {
-  border: 1px solid var(--drawer-border-color, var(--shivanya-color-border));
+  border: 1px solid var(--shivanya-color-border);
 }
 
-.shivanya-drawer-radius-none { border-radius: 0; }
-.shivanya-drawer-radius-sm { border-radius: var(--drawer-radius-sm, var(--shivanya-radius-sm)); }
-.shivanya-drawer-radius-md { border-radius: var(--drawer-radius-md, var(--shivanya-radius-md)); }
-.shivanya-drawer-radius-lg { border-radius: var(--drawer-radius-lg, var(--shivanya-radius-lg)); }
+.shivanya-drawer-radius-none {
+  border-radius: 0;
+}
+
+.shivanya-drawer-radius-sm {
+  border-radius: var(--shivanya-radius-sm);
+}
+
+.shivanya-drawer-radius-md {
+  border-radius: var(--shivanya-radius-md);
+}
+
+.shivanya-drawer-radius-lg {
+  border-radius: var(--shivanya-radius-lg);
+}
 
 .shivanya-drawer-disabled {
-  opacity: var(--drawer-disabled-opacity, 0.6);
+  opacity: 0.6;
   pointer-events: none;
 }
 

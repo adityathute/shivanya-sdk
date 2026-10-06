@@ -1,0 +1,157 @@
+.shivanya-connections {
+  width: 100%;
+  min-width: 0;
+}
+
+.shivanya-connections-header {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: var(--shivanya-space-6);
+}
+
+.shivanya-connections-title {
+  display: flex;
+  align-items: flex-start;
+  min-width: 0;
+  gap: var(--shivanya-space-3);
+}
+
+.shivanya-connections-title-icon {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: var(--shivanya-control-height-md);
+  height: var(--shivanya-control-height-md);
+  border-radius: var(--shivanya-radius-md);
+  background: var(--shivanya-color-primary-soft);
+  color: var(--shivanya-color-primary);
+}
+
+.shivanya-connections-title-content {
+  min-width: 0;
+}
+
+.shivanya-connections-title-content p {
+  margin-top: var(--shivanya-space-1);
+}
+
+.shivanya-connections-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+}
+
+.shivanya-connection-list {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: var(--shivanya-space-4);
+  width: 100%;
+  min-width: 0;
+}
+
+/* Account modal */
+.shivanya-account-content .shivanya-connection-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.shivanya-connection-card {
+  position: relative;
+  min-width: 0;
+  box-sizing: border-box;
+  border-color: var(--shivanya-color-border);
+  transition:
+    border-color var(--shivanya-duration-normal),
+    background-color var(--shivanya-duration-normal);
+}
+
+.shivanya-connection-card.is-connected {
+  border-color: var(--shivanya-color-border-focus);
+}
+
+.shivanya-connection-card .shivanya-card-body {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "icon info actions";
+  align-items: center;
+  gap: var(--shivanya-space-3);
+  min-width: 0;
+}
+
+.shivanya-connection-icon {
+  display: flex;
+  grid-area: icon;
+  align-items: center;
+  justify-content: center;
+  width: var(--shivanya-control-height-lg);
+  height: var(--shivanya-control-height-lg);
+  border-radius: var(--shivanya-radius-md);
+  background: var(--shivanya-color-neutral);
+  color: var(--shivanya-color-text-secondary);
+}
+
+.shivanya-connection-info {
+  display: flex;
+  grid-area: info;
+  flex-direction: column;
+  min-width: 0;
+  gap: var(--shivanya-space-1);
+}
+
+.shivanya-connection-info h4 {
+  min-width: 0;
+  overflow: hidden;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shivanya-connection-status {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: var(--shivanya-space-1);
+}
+
+.shivanya-connection-status-dot {
+  flex: 0 0 auto;
+  width: var(--shivanya-space-1);
+  height: var(--shivanya-space-1);
+  border-radius: var(--shivanya-radius-full);
+  background: var(--shivanya-color-text-muted);
+}
+
+.shivanya-connection-status-dot.is-connected {
+  background: var(--shivanya-color-success);
+}
+
+.shivanya-connection-actions {
+  display: flex;
+  grid-area: actions;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .shivanya-connection-list,
+  .shivanya-account-content .shivanya-connection-list {
+    grid-template-columns: 1fr;
+  }
+
+  .shivanya-connection-card {
+    width: 100%;
+  }
+
+  .shivanya-connection-card .shivanya-card-body {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: "icon info actions";
+    gap: var(--shivanya-space-2);
+  }
+
+  .shivanya-connection-actions {
+    justify-content: flex-end;
+  }
+}

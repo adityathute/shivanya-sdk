@@ -3,7 +3,7 @@
   align-items: center;
   gap: var(--shivanya-space-1);
   color: var(--shivanya-color-text-primary);
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
   cursor: pointer;
 }
 

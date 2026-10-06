@@ -2,15 +2,15 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--breadcrumb-gap, 8px);
+  gap: var(--breadcrumb-gap, var(--shivanya-space-2));
   width: 100%;
   font-family: var(--shivanya-font-family);
-  color: var(--navigation-text);
+  color: var(--shivanya-color-text-primary);
 }
 
 .breadcrumbExtraSmall {
   font-size: var(--shivanya-font-size-xs);
-  --breadcrumb-gap: 4px;
+  --breadcrumb-gap: var(--shivanya-space-1);
   --breadcrumb-item-height: 28px;
   --breadcrumb-item-padding: 4px 6px;
 }
@@ -18,28 +18,28 @@
 .breadcrumbSmall {
   font-size: var(--shivanya-font-size-sm);
   --breadcrumb-gap: 6px;
-  --breadcrumb-item-height: 32px;
+  --breadcrumb-item-height: var(--shivanya-control-height-sm);
   --breadcrumb-item-padding: 6px 8px;
 }
 
 .breadcrumbMedium {
   font-size: var(--shivanya-font-size-md);
-  --breadcrumb-gap: 8px;
-  --breadcrumb-item-height: 40px;
+  --breadcrumb-gap: var(--shivanya-space-2);
+  --breadcrumb-item-height: var(--shivanya-control-height-md);
   --breadcrumb-item-padding: 8px 10px;
 }
 
 .breadcrumbLarge {
   font-size: var(--shivanya-font-size-lg);
   --breadcrumb-gap: 10px;
-  --breadcrumb-item-height: 48px;
+  --breadcrumb-item-height: var(--shivanya-control-height-lg);
   --breadcrumb-item-padding: 10px 12px;
 }
 
 .breadcrumbExtraLarge {
   font-size: var(--shivanya-font-size-xl);
-  --breadcrumb-gap: 12px;
-  --breadcrumb-item-height: 56px;
+  --breadcrumb-gap: var(--shivanya-space-3);
+  --breadcrumb-item-height: var(--shivanya-control-height-xl);
   --breadcrumb-item-padding: 12px 14px;
 }
 
@@ -48,15 +48,15 @@
 }
 
 .breadcrumbFilled {
-  padding: var(--navigation-gap-md);
-  background: var(--navigation-surface);
-  border: 1px solid var(--navigation-border);
+  padding: var(--shivanya-space-4);
+  background: var(--shivanya-color-surface);
+  border: 1px solid var(--shivanya-color-border);
 }
 
 .breadcrumbOutlined {
-  padding: var(--navigation-gap-md);
+  padding: var(--shivanya-space-4);
   background: transparent;
-  border: 1px solid var(--navigation-border);
+  border: 1px solid var(--shivanya-color-border);
 }
 
 .breadcrumbGhost {
@@ -69,42 +69,42 @@
 }
 
 .breadcrumbRadiusSmall {
-  border-radius: var(--navigation-radius-sm);
+  border-radius: var(--shivanya-radius-sm);
 }
 
 .breadcrumbRadiusMedium {
-  border-radius: var(--navigation-radius-md);
+  border-radius: var(--shivanya-radius-md);
 }
 
 .breadcrumbRadiusLarge {
-  border-radius: var(--navigation-radius-lg);
+  border-radius: var(--shivanya-radius-lg);
 }
 
 .breadcrumbRadiusFull {
-  border-radius: var(--navigation-radius-full);
+  border-radius: var(--shivanya-radius-full);
 }
 
 .breadcrumbItem {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--navigation-gap-xs);
+  gap: var(--shivanya-space-1);
   min-height: var(--breadcrumb-item-height);
   padding: var(--breadcrumb-item-padding);
-  border-radius: var(--navigation-radius-sm);
-  color: var(--navigation-text-secondary);
+  border-radius: var(--shivanya-radius-sm);
+  color: var(--shivanya-color-text-secondary);
   text-decoration: none;
   white-space: nowrap;
-  transition: var(--navigation-transition);
+  transition: var(--shivanya-duration-normal) var(--shivanya-ease-standard);
 }
 
 .breadcrumbItem:hover {
-  color: var(--navigation-primary);
-  background: var(--navigation-surface-hover);
+  color: var(--shivanya-color-primary);
+  background: var(--shivanya-color-surface-hover);
 }
 
 .breadcrumbItemCurrent {
-  color: var(--navigation-text);
+  color: var(--shivanya-color-text-primary);
   font-weight: var(--shivanya-font-weight-semibold);
   pointer-events: none;
 }
@@ -139,7 +139,7 @@
   justify-content: center;
   flex: 0 0 auto;
   min-width: 12px;
-  color: var(--navigation-text-muted);
+  color: var(--shivanya-color-text-muted);
   line-height: 1;
   user-select: none;
   pointer-events: none;
@@ -151,7 +151,7 @@
   justify-content: center;
   min-height: var(--breadcrumb-item-height);
   padding: var(--breadcrumb-item-padding);
-  color: var(--navigation-text-muted);
+  color: var(--shivanya-color-text-muted);
 }
 
 .breadcrumbDefaultState {

@@ -34,12 +34,12 @@
 
 .shivanya-typography-h5 {
   font-size: var(--shivanya-font-size-md);
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 }
 
 .shivanya-typography-h6 {
   font-size: var(--shivanya-font-size-sm);
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 }
 
 .shivanya-typography-body {

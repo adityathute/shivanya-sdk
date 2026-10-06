@@ -94,13 +94,10 @@
 
   box-sizing: border-box;
 
-  border: 2px solid
-    var(--shivanya-color-primary);
-
+  border: 2px solid var(--shivanya-color-primary);
   border-radius: var(--shivanya-radius-full);
 
   background: var(--shivanya-color-primary);
-
   color: var(--shivanya-color-text-inverse);
 
   font-size: 9px;
@@ -119,7 +116,6 @@
 .shivanya-timeline-line {
   position: absolute;
   z-index: 1;
-
   pointer-events: none;
 }
 
@@ -133,8 +129,7 @@
 
   width: 0;
 
-  border-left: 1px solid
-    var(--shivanya-color-border);
+  border-left: 1px solid var(--shivanya-color-border);
 }
 
 /* Horizontal connector */
@@ -147,8 +142,7 @@
 
   height: 0;
 
-  border-top: 1px solid
-    var(--shivanya-color-border);
+  border-top: 1px solid var(--shivanya-color-border);
 }
 
 /* Last item */
@@ -209,7 +203,7 @@
 .shivanya-timeline-title {
   min-width: 0;
 
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
   line-height: 1.4;
 }
 
@@ -267,7 +261,6 @@
   top: 17px;
 }
 
-
 .shivanya-timeline-sm
   .shivanya-timeline-indicator {
   flex-basis: 30px;
@@ -288,7 +281,6 @@
   top: 18px;
 }
 
-
 .shivanya-timeline-md
   .shivanya-timeline-indicator {
   flex-basis: 32px;
@@ -306,7 +298,6 @@
   .shivanya-timeline-line {
   top: 19px;
 }
-
 
 .shivanya-timeline-lg
   .shivanya-timeline-indicator {
@@ -327,7 +318,6 @@
   .shivanya-timeline-line {
   top: 20px;
 }
-
 
 .shivanya-timeline-xl
   .shivanya-timeline-indicator {

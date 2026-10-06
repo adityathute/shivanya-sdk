@@ -55,7 +55,7 @@
   width: 44px;
   height: 24px;
 
-  padding: 2px;
+  padding: var(--shivanya-space-1);
 
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-full);
@@ -151,7 +151,7 @@
   width: 36px;
   height: 20px;
 
-  padding: 2px;
+  padding: var(--shivanya-space-1);
 }
 
 .shivanya-switch-sm
@@ -180,7 +180,7 @@
   width: 44px;
   height: 24px;
 
-  padding: 2px;
+  padding: var(--shivanya-space-1);
 }
 
 .shivanya-switch-md
@@ -209,7 +209,7 @@
   width: 52px;
   height: 28px;
 
-  padding: 2px;
+  padding: var(--shivanya-space-1);
 }
 
 .shivanya-switch-lg
@@ -239,9 +239,9 @@
   color: var(--shivanya-color-text-primary);
 
   font-size: var(--shivanya-font-size-md);
-  font-weight: 500;
+  font-weight: var(--shivanya-font-weight-medium);
 
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 }
 
 .shivanya-switch-description {
@@ -249,7 +249,7 @@
 
   font-size: var(--shivanya-font-size-sm);
 
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 }
 
 .shivanya-switch-error {
@@ -257,7 +257,7 @@
 
   font-size: var(--shivanya-font-size-sm);
 
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 }
 
 /* Error */

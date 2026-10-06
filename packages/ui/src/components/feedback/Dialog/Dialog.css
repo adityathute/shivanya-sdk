@@ -5,13 +5,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: var(--shivanya-space-6);
   box-sizing: border-box;
   background: var(--shivanya-color-overlay);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   overflow: auto;
 }
+
 .shivanya-dialog {
   width: 100%;
   max-height: calc(100vh - 48px);
@@ -22,33 +23,43 @@
   border: 1px solid var(--shivanya-color-border);
   box-shadow: var(--shivanya-shadow-lg);
 }
+
 .shivanya-dialog-sm {
   max-width: 400px;
 }
+
 .shivanya-dialog-md {
   max-width: 560px;
 }
+
 .shivanya-dialog-lg {
   max-width: 720px;
 }
+
 .shivanya-dialog-xl {
   max-width: 900px;
 }
+
 .shivanya-dialog-radius-none {
   border-radius: 0;
 }
+
 .shivanya-dialog-radius-sm {
   border-radius: var(--shivanya-radius-sm);
 }
+
 .shivanya-dialog-radius-md {
   border-radius: var(--shivanya-radius-md);
 }
+
 .shivanya-dialog-radius-lg {
   border-radius: var(--shivanya-radius-lg);
 }
+
 .shivanya-dialog-radius-full {
   border-radius: var(--shivanya-radius-xl);
 }
+
 .shivanya-dialog-header {
   display: flex;
   align-items: center;
@@ -57,23 +68,28 @@
   padding: 18px 20px;
   border-bottom: 1px solid var(--shivanya-color-border);
 }
+
 .shivanya-dialog-title {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--shivanya-font-size-lg);
 }
+
 .shivanya-dialog-body {
-  padding: 20px;
+  padding: var(--shivanya-space-5);
 }
+
 .shivanya-dialog-footer {
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
-  padding: 16px 20px;
+  gap: var(--shivanya-space-2);
+  padding: var(--shivanya-space-4) var(--shivanya-space-5);
   border-top: 1px solid var(--shivanya-color-border);
 }
+
 .shivanya-dialog-close {
   flex-shrink: 0;
 }
+
 .shivanya-dialog.is-disabled {
-  opacity: 0.6;
+  opacity: var(--shivanya-opacity-disabled);
 }

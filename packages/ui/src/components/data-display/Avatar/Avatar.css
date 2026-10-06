@@ -32,33 +32,33 @@
 }
 
 .shivanya-avatar-xs {
-  width: 24px;
-  height: 24px;
-  font-size: 10px;
+  width: var(--shivanya-control-height-xs);
+  height: var(--shivanya-control-height-xs);
+  font-size: var(--shivanya-font-size-2xs);
 }
 
 .shivanya-avatar-sm {
-  width: 32px;
-  height: 32px;
-  font-size: 12px;
+  width: var(--shivanya-control-height-sm);
+  height: var(--shivanya-control-height-sm);
+  font-size: var(--shivanya-font-size-xs);
 }
 
 .shivanya-avatar-md {
-  width: 40px;
-  height: 40px;
-  font-size: 14px;
+  width: var(--shivanya-control-height-md);
+  height: var(--shivanya-control-height-md);
+  font-size: var(--shivanya-font-size-sm);
 }
 
 .shivanya-avatar-lg {
-  width: 48px;
-  height: 48px;
-  font-size: 16px;
+  width: var(--shivanya-control-height-lg);
+  height: var(--shivanya-control-height-lg);
+  font-size: var(--shivanya-font-size-md);
 }
 
 .shivanya-avatar-xl {
-  width: 64px;
-  height: 64px;
-  font-size: 20px;
+  width: var(--shivanya-control-height-xl);
+  height: var(--shivanya-control-height-xl);
+  font-size: var(--shivanya-font-size-lg);
 }
 
 .shivanya-avatar-filled {
@@ -154,7 +154,7 @@
   width: 100%;
   height: 100%;
 
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
 }
 
 .shivanya-avatar.is-clickable,

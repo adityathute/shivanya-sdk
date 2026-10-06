@@ -94,8 +94,8 @@
 .shivanya-file-item img {
   flex: none;
 
-  width: 40px;
-  height: 40px;
+  width: var(--shivanya-control-height-md);
+  height: var(--shivanya-control-height-md);
 
   object-fit: cover;
 
@@ -129,8 +129,8 @@
   align-items: center;
   justify-content: center;
 
-  width: 32px;
-  height: 32px;
+  width: var(--shivanya-control-height-sm);
+  height: var(--shivanya-control-height-sm);
 
   padding: 0;
 
@@ -157,10 +157,10 @@
 }
 
 .shivanya-file-item button svg {
-  width: 16px;
-  height: 16px;
+  width: var(--shivanya-icon-size-sm);
+  height: var(--shivanya-icon-size-sm);
 }
 
 .shivanya-file-upload.is-disabled {
-  opacity: 0.6;
+  opacity: var(--shivanya-opacity-disabled);
 }

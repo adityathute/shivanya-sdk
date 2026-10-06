@@ -282,6 +282,14 @@ export class AuthClient {
     return this.request<unknown>("profile/avatar/", { method: "DELETE" });
   }
 
+  async checkUsernameAvailability(
+    username: string,
+  ): Promise<{ available: boolean; valid: boolean }> {
+    return this.request<{ available: boolean; valid: boolean }>(
+      `profile/username/?username=${encodeURIComponent(username)}`,
+    );
+  }
+
   async updateUsername(username: string) {
     return this.request<AuthUser>("profile/username/", {
       method: "PATCH",

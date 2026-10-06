@@ -19,15 +19,13 @@ function extractFieldErrors(value: unknown): AuthFieldErrors {
   }
 
   const data = error.data as Record<string, unknown>;
-  const errors = data.errors;
 
-  if (
-    !errors ||
-    typeof errors !== "object" ||
-    Array.isArray(errors)
-  ) {
-    return {};
-  }
+  const errors =
+    data.errors &&
+    typeof data.errors === "object" &&
+    !Array.isArray(data.errors)
+      ? data.errors
+      : data;
 
   const fieldErrors: AuthFieldErrors = {};
 

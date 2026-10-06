@@ -31,8 +31,8 @@
   place-items: center;
   flex: none;
 
-  width: 20px;
-  height: 20px;
+  width: var(--shivanya-icon-size-md);
+  height: var(--shivanya-icon-size-md);
 
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-full);
@@ -72,8 +72,8 @@
 }
 
 .shivanya-radio-sm .shivanya-radio-dot {
-  width: 16px;
-  height: 16px;
+  width: var(--shivanya-icon-size-sm);
+  height: var(--shivanya-icon-size-sm);
 }
 
 .shivanya-radio-sm .shivanya-radio-dot::after {
@@ -82,8 +82,8 @@
 }
 
 .shivanya-radio-lg .shivanya-radio-dot {
-  width: 24px;
-  height: 24px;
+  width: var(--shivanya-icon-size-lg);
+  height: var(--shivanya-icon-size-lg);
 }
 
 .shivanya-radio-lg .shivanya-radio-dot::after {
@@ -98,19 +98,19 @@
 }
 
 .shivanya-radio-label {
-  font-weight: 500;
+  font-weight: var(--shivanya-font-weight-medium);
 }
 
 .shivanya-radio-description {
   color: var(--shivanya-color-text-secondary);
   font-size: var(--shivanya-font-size-sm);
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 }
 
 .shivanya-radio-error {
   color: var(--shivanya-color-danger);
   font-size: var(--shivanya-font-size-sm);
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 }
 
 .shivanya-radio-error .shivanya-radio-dot {

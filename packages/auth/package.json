@@ -24,7 +24,8 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "shivanya-ui": "workspace:*"
+    "shivanya-ui": "workspace:*",
+    "shivanya-core": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",

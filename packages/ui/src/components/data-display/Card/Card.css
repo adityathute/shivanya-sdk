@@ -79,7 +79,7 @@
 }
 
 .shivanya-card-radius-xl {
-  border-radius: var(--shivanya-radius-lg);
+  border-radius: var(--shivanya-radius-xl);
 }
 
 .shivanya-card-radius-full {
@@ -225,7 +225,7 @@
 }
 
 .shivanya-card.is-disabled {
-  opacity: 0.6;
+  opacity: var(--shivanya-opacity-disabled);
   pointer-events: none;
 }
 

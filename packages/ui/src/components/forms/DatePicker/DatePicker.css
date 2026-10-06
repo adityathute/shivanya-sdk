@@ -45,8 +45,8 @@
   caret-color: var(--shivanya-color-text-primary);
 
   transition:
-    background-color 9999s ease-out,
-    color 9999s ease-out;
+    background-color 9999s var(--shivanya-ease-out),
+    color 9999s var(--shivanya-ease-out);
 }
 
 .shivanya-date-picker {
@@ -84,8 +84,7 @@
   border-color: var(--shivanya-color-focus);
 
   box-shadow:
-    0 0 0 3px
-    var(--shivanya-color-focus-ring);
+    0 0 0 3px var(--shivanya-color-focus-ring);
 }
 
 .shivanya-date-picker.is-full {
@@ -107,7 +106,7 @@
   color: inherit;
 
   padding: 0 var(--shivanya-space-3);
-  height: 40px;
+  height: var(--shivanya-control-height-md);
 }
 
 .shivanya-date-picker input:-webkit-autofill,
@@ -125,8 +124,8 @@
   caret-color: var(--shivanya-color-text-primary);
 
   transition:
-    background-color 9999s ease-out,
-    color 9999s ease-out;
+    background-color 9999s var(--shivanya-ease-out),
+    color 9999s var(--shivanya-ease-out);
 }
 
 .shivanya-date-picker input::-webkit-calendar-picker-indicator {
@@ -145,11 +144,11 @@
 }
 
 .shivanya-date-picker-sm input {
-  height: 32px;
+  height: var(--shivanya-control-height-sm);
 }
 
 .shivanya-date-picker-lg input {
-  height: 48px;
+  height: var(--shivanya-control-height-lg);
 }
 
 .shivanya-date-picker-clear {
@@ -159,8 +158,8 @@
   align-items: center;
   justify-content: center;
 
-  width: 32px;
-  height: 32px;
+  width: var(--shivanya-control-height-sm);
+  height: var(--shivanya-control-height-sm);
 
   margin-right: var(--shivanya-space-1);
   padding: 0;
@@ -183,14 +182,13 @@
   outline: 0;
 
   box-shadow:
-    0 0 0 4px
-    var(--shivanya-color-focus-ring);
+    0 0 0 4px var(--shivanya-color-focus-ring);
 }
 
 .shivanya-date-picker-clear svg {
   display: block;
-  width: 16px;
-  height: 16px;
+  width: var(--shivanya-icon-size-sm);
+  height: var(--shivanya-icon-size-sm);
 }
 
 .shivanya-date-picker-radius-sm {

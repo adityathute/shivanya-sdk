@@ -1,20 +1,79 @@
-.shivanya-stack { display: flex; }
-.shivanya-stack-row { flex-direction: row; }
-.shivanya-stack-column { flex-direction: column; }
-.shivanya-stack-align-start { align-items: flex-start; }
-.shivanya-stack-align-center { align-items: center; }
-.shivanya-stack-align-end { align-items: flex-end; }
-.shivanya-stack-align-stretch { align-items: stretch; }
-.shivanya-stack-align-baseline { align-items: baseline; }
-.shivanya-stack-justify-start { justify-content: flex-start; }
-.shivanya-stack-justify-center { justify-content: center; }
-.shivanya-stack-justify-end { justify-content: flex-end; }
-.shivanya-stack-justify-between { justify-content: space-between; }
-.shivanya-stack-justify-around { justify-content: space-around; }
-.shivanya-stack-justify-evenly { justify-content: space-evenly; }
-.shivanya-stack-gap-xs { gap: var(--shivanya-space-1); }
-.shivanya-stack-gap-sm { gap: var(--shivanya-space-2); }
-.shivanya-stack-gap-md { gap: var(--shivanya-space-4); }
-.shivanya-stack-gap-lg { gap: var(--shivanya-space-6); }
-.shivanya-stack-gap-xl { gap: var(--shivanya-space-8); }
-.shivanya-stack-wrap { flex-wrap: wrap; }
+.shivanya-stack {
+  display: flex;
+}
+
+.shivanya-stack-row {
+  flex-direction: row;
+}
+
+.shivanya-stack-column {
+  flex-direction: column;
+}
+
+.shivanya-stack-align-start {
+  align-items: flex-start;
+}
+
+.shivanya-stack-align-center {
+  align-items: center;
+}
+
+.shivanya-stack-align-end {
+  align-items: flex-end;
+}
+
+.shivanya-stack-align-stretch {
+  align-items: stretch;
+}
+
+.shivanya-stack-align-baseline {
+  align-items: baseline;
+}
+
+.shivanya-stack-justify-start {
+  justify-content: flex-start;
+}
+
+.shivanya-stack-justify-center {
+  justify-content: center;
+}
+
+.shivanya-stack-justify-end {
+  justify-content: flex-end;
+}
+
+.shivanya-stack-justify-between {
+  justify-content: space-between;
+}
+
+.shivanya-stack-justify-around {
+  justify-content: space-around;
+}
+
+.shivanya-stack-justify-evenly {
+  justify-content: space-evenly;
+}
+
+.shivanya-stack-gap-xs {
+  gap: var(--shivanya-space-1);
+}
+
+.shivanya-stack-gap-sm {
+  gap: var(--shivanya-space-2);
+}
+
+.shivanya-stack-gap-md {
+  gap: var(--shivanya-space-4);
+}
+
+.shivanya-stack-gap-lg {
+  gap: var(--shivanya-space-6);
+}
+
+.shivanya-stack-gap-xl {
+  gap: var(--shivanya-space-8);
+}
+
+.shivanya-stack-wrap {
+  flex-wrap: wrap;
+}

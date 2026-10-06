@@ -8,9 +8,17 @@
   border-radius: var(--shivanya-radius-full);
 }
 
-.shivanya-progress-sm { height: var(--shivanya-space-2); }
-.shivanya-progress-md { height: var(--shivanya-control-height-sm); }
-.shivanya-progress-lg { height: var(--shivanya-control-height-md); }
+.shivanya-progress-sm {
+  height: var(--shivanya-space-2);
+}
+
+.shivanya-progress-md {
+  height: var(--shivanya-control-height-sm);
+}
+
+.shivanya-progress-lg {
+  height: var(--shivanya-control-height-md);
+}
 
 .shivanya-progress-bar {
   height: 100%;
@@ -19,12 +27,29 @@
   transition: width var(--shivanya-duration-normal) var(--shivanya-ease-standard);
 }
 
-.shivanya-progress-primary { background: var(--shivanya-color-primary); }
-.shivanya-progress-secondary { background: var(--shivanya-color-secondary); }
-.shivanya-progress-success { background: var(--shivanya-color-success); }
-.shivanya-progress-warning { background: var(--shivanya-color-warning); }
-.shivanya-progress-danger { background: var(--shivanya-color-danger); }
-.shivanya-progress-info { background: var(--shivanya-color-info); }
+.shivanya-progress-primary {
+  background: var(--shivanya-color-primary);
+}
+
+.shivanya-progress-secondary {
+  background: var(--shivanya-color-secondary);
+}
+
+.shivanya-progress-success {
+  background: var(--shivanya-color-success);
+}
+
+.shivanya-progress-warning {
+  background: var(--shivanya-color-warning);
+}
+
+.shivanya-progress-danger {
+  background: var(--shivanya-color-danger);
+}
+
+.shivanya-progress-info {
+  background: var(--shivanya-color-info);
+}
 
 .shivanya-progress-value {
   position: absolute;
@@ -41,5 +66,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .shivanya-progress-bar { transition: none; }
+  .shivanya-progress-bar {
+    transition: none;
+  }
 }

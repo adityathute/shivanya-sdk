@@ -126,9 +126,12 @@ export function AuthModal({
   );
 
   const [accountOpen, setAccountOpen] = useState(false);
+  const [registerSuccess, setRegisterSuccess] = useState(false);
 
   useEffect(() => {
     if (open) {
+      setRegisterSuccess(false);
+
       setView(
         enabled.has(viewFeature[initialView])
           ? initialView
@@ -189,7 +192,7 @@ export function AuthModal({
           <CloseIcon />
         </IconButton>
 
-        {view !== "forgot" && (
+        {view !== "forgot" && !registerSuccess && (
           <div className="shivanya-auth-modal-heading">
             <div className="shivanya-auth-modal-icon">
               <LockIcon />
@@ -235,7 +238,13 @@ export function AuthModal({
           )}
 
           {view === "register-email" && (
-            <RegisterEmail onLogin={() => setView("login")} />
+            <RegisterEmail
+              onLogin={() => {
+                setRegisterSuccess(false);
+                setView("login");
+              }}
+              onSuccess={() => setRegisterSuccess(true)}
+            />
           )}
 
           {view === "forgot" && (

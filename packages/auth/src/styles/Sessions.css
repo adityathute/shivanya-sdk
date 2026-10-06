@@ -1,0 +1,207 @@
+.shivanya-sessions {
+  width: 100%;
+  min-width: 0;
+}
+
+.shivanya-sessions-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--shivanya-space-4);
+  width: 100%;
+  margin-bottom: var(--shivanya-space-6);
+}
+
+.shivanya-sessions-title {
+  display: flex;
+  align-items: flex-start;
+  min-width: 0;
+  gap: var(--shivanya-space-3);
+}
+
+.shivanya-sessions-title-icon {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: var(--shivanya-control-height-md);
+  height: var(--shivanya-control-height-md);
+  border-radius: var(--shivanya-radius-md);
+  background: var(--shivanya-color-primary-soft);
+  color: var(--shivanya-color-primary);
+}
+
+.shivanya-sessions-title-content {
+  min-width: 0;
+}
+
+.shivanya-sessions-title-content p {
+  margin-top: var(--shivanya-space-1);
+}
+
+.shivanya-sessions-header > button {
+  flex: 0 0 auto;
+}
+
+.shivanya-sessions-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+}
+
+.shivanya-session-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--shivanya-space-4);
+  width: 100%;
+  min-width: 0;
+}
+
+/* Account modal */
+.shivanya-account-content .shivanya-session-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.shivanya-session-card {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-color: var(--shivanya-color-border);
+  transition:
+    border-color var(--shivanya-duration-normal),
+    background-color var(--shivanya-duration-normal);
+}
+
+.shivanya-session-card.is-current {
+  border-color: var(--shivanya-color-border-focus);
+}
+
+.shivanya-session-card .shivanya-card-body {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "device info actions";
+  align-items: center;
+  gap: var(--shivanya-space-4);
+  min-width: 0;
+}
+
+.shivanya-session-device {
+  display: flex;
+  grid-area: device;
+  align-items: center;
+  justify-content: center;
+}
+
+.shivanya-session-device-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--shivanya-control-height-lg);
+  height: var(--shivanya-control-height-lg);
+  border-radius: var(--shivanya-radius-md);
+  background: var(--shivanya-color-neutral);
+  color: var(--shivanya-color-text-secondary);
+}
+
+.shivanya-session-info {
+  display: flex;
+  grid-area: info;
+  flex-direction: column;
+  min-width: 0;
+  gap: var(--shivanya-space-1);
+}
+
+.shivanya-session-name {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: var(--shivanya-space-2);
+}
+
+.shivanya-session-name h4 {
+  min-width: 0;
+  overflow: hidden;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shivanya-session-live-dot {
+  position: absolute;
+  top: var(--shivanya-space-3);
+  right: var(--shivanya-space-3);
+  width: var(--shivanya-space-2);
+  height: var(--shivanya-space-2);
+  border-radius: var(--shivanya-radius-full);
+  background: var(--shivanya-color-success);
+  box-shadow: 0 0 0 0 var(--shivanya-color-success-soft);
+  animation: shivanya-session-live 2s infinite;
+}
+
+.shivanya-session-actions {
+  display: flex;
+  grid-area: actions;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.shivanya-sessions-empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: var(--shivanya-space-6);
+  text-align: center;
+}
+
+@keyframes shivanya-session-live {
+  0% {
+    box-shadow: 0 0 0 0 var(--shivanya-color-success-soft);
+  }
+
+  70% {
+    box-shadow: 0 0 0 var(--shivanya-space-2) var(--shivanya-color-success-soft);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 var(--shivanya-color-success-soft);
+  }
+}
+
+@media (max-width: 640px) {
+  .shivanya-session-list,
+  .shivanya-account-content .shivanya-session-list {
+    grid-template-columns: 1fr;
+  }
+
+  .shivanya-session-card {
+    width: 100%;
+  }
+
+  .shivanya-session-card .shivanya-card-body {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "device info"
+      "device actions";
+    gap: var(--shivanya-space-3);
+  }
+
+  .shivanya-session-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .shivanya-sessions-header {
+    flex-direction: column;
+  }
+
+  .shivanya-sessions-header > button {
+    width: 100%;
+  }
+
+  .shivanya-session-card .shivanya-card-body {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+}

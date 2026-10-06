@@ -4,11 +4,25 @@
   width: 100%;
 }
 
-.shivanya-aspect-ratio-1x1 { aspect-ratio: 1 / 1; }
-.shivanya-aspect-ratio-4x3 { aspect-ratio: 4 / 3; }
-.shivanya-aspect-ratio-3x2 { aspect-ratio: 3 / 2; }
-.shivanya-aspect-ratio-16x9 { aspect-ratio: 16 / 9; }
-.shivanya-aspect-ratio-21x9 { aspect-ratio: 21 / 9; }
+.shivanya-aspect-ratio-1x1 {
+  aspect-ratio: 1 / 1;
+}
+
+.shivanya-aspect-ratio-4x3 {
+  aspect-ratio: 4 / 3;
+}
+
+.shivanya-aspect-ratio-3x2 {
+  aspect-ratio: 3 / 2;
+}
+
+.shivanya-aspect-ratio-16x9 {
+  aspect-ratio: 16 / 9;
+}
+
+.shivanya-aspect-ratio-21x9 {
+  aspect-ratio: 21 / 9;
+}
 
 .shivanya-aspect-ratio > * {
   width: 100%;

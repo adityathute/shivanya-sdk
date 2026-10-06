@@ -39,17 +39,13 @@
 
 .shivanya-copy-button:focus-visible {
   outline: none;
-  box-shadow:
-    0 0 0 3px var(--shivanya-color-focus-ring);
+  box-shadow: 0 0 0 3px var(--shivanya-color-focus-ring);
 }
 
 .shivanya-copy-button:disabled {
-  background:
-    var(--shivanya-color-disabled-background);
-  border-color:
-    var(--shivanya-color-disabled-border);
-  color:
-    var(--shivanya-color-disabled-text);
+  background: var(--shivanya-color-disabled-background);
+  border-color: var(--shivanya-color-disabled-border);
+  color: var(--shivanya-color-disabled-text);
   cursor: not-allowed;
 }
 
@@ -99,10 +95,8 @@
 }
 
 .shivanya-copy-button-primary:hover:not(:disabled) {
-  background:
-    var(--shivanya-color-primary-hover);
-  border-color:
-    var(--shivanya-color-primary-hover);
+  background: var(--shivanya-color-primary-hover);
+  border-color: var(--shivanya-color-primary-hover);
 }
 
 /* Secondary */
@@ -114,10 +108,8 @@
 }
 
 .shivanya-copy-button-secondary:hover:not(:disabled) {
-  background:
-    var(--shivanya-color-secondary-hover);
-  border-color:
-    var(--shivanya-color-secondary-hover);
+  background: var(--shivanya-color-secondary-hover);
+  border-color: var(--shivanya-color-secondary-hover);
 }
 
 /* Success */
@@ -129,10 +121,8 @@
 }
 
 .shivanya-copy-button-success:hover:not(:disabled) {
-  background:
-    var(--shivanya-color-success-hover);
-  border-color:
-    var(--shivanya-color-success-hover);
+  background: var(--shivanya-color-success-hover);
+  border-color: var(--shivanya-color-success-hover);
 }
 
 /* Warning */
@@ -144,10 +134,8 @@
 }
 
 .shivanya-copy-button-warning:hover:not(:disabled) {
-  background:
-    var(--shivanya-color-warning-hover);
-  border-color:
-    var(--shivanya-color-warning-hover);
+  background: var(--shivanya-color-warning-hover);
+  border-color: var(--shivanya-color-warning-hover);
 }
 
 /* Danger */
@@ -159,10 +147,8 @@
 }
 
 .shivanya-copy-button-danger:hover:not(:disabled) {
-  background:
-    var(--shivanya-color-danger-hover);
-  border-color:
-    var(--shivanya-color-danger-hover);
+  background: var(--shivanya-color-danger-hover);
+  border-color: var(--shivanya-color-danger-hover);
 }
 
 /* Info */
@@ -174,10 +160,8 @@
 }
 
 .shivanya-copy-button-info:hover:not(:disabled) {
-  background:
-    var(--shivanya-color-info-hover);
-  border-color:
-    var(--shivanya-color-info-hover);
+  background: var(--shivanya-color-info-hover);
+  border-color: var(--shivanya-color-info-hover);
 }
 
 /* Outline */
@@ -189,10 +173,8 @@
 }
 
 .shivanya-copy-button-outline:hover:not(:disabled) {
-  background:
-    var(--shivanya-color-surface-hover);
-  border-color:
-    var(--shivanya-color-border-hover);
+  background: var(--shivanya-color-surface-hover);
+  border-color: var(--shivanya-color-border-hover);
 }
 
 /* Ghost */
@@ -204,6 +186,5 @@
 }
 
 .shivanya-copy-button-ghost:hover:not(:disabled) {
-  background:
-    var(--shivanya-color-surface-hover);
+  background: var(--shivanya-color-surface-hover);
 }

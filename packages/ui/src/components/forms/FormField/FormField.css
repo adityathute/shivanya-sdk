@@ -8,14 +8,14 @@
 .shivanya-form-field > label {
   color: var(--shivanya-color-text-primary);
   font-size: var(--shivanya-font-size-md);
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
 }
 
 .shivanya-form-field > p {
   margin: 0;
   color: var(--shivanya-color-text-secondary);
   font-size: var(--shivanya-font-size-sm);
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 }
 
 .shivanya-form-field > p.is-error {

@@ -4,6 +4,7 @@
   gap: var(--shivanya-space-2);
   color: var(--shivanya-color-text-primary);
 }
+
 .shivanya-accordion-item {
   overflow: hidden;
   border: 1px solid var(--shivanya-color-border);
@@ -13,35 +14,45 @@
     background var(--shivanya-duration-fast) var(--shivanya-ease-standard),
     box-shadow var(--shivanya-duration-fast) var(--shivanya-ease-standard);
 }
+
 .shivanya-accordion-default .shivanya-accordion-item {
   border-color: var(--shivanya-color-border);
 }
+
 .shivanya-accordion-bordered .shivanya-accordion-item {
   background: transparent;
 }
+
 .shivanya-accordion-filled .shivanya-accordion-item {
   border-color: transparent;
   background: var(--shivanya-color-surface-hover);
 }
+
 .shivanya-accordion-ghost .shivanya-accordion-item {
   border-color: transparent;
   background: transparent;
 }
+
 .shivanya-accordion-radius-none .shivanya-accordion-item {
   border-radius: 0;
 }
+
 .shivanya-accordion-radius-sm .shivanya-accordion-item {
   border-radius: var(--shivanya-radius-sm);
 }
+
 .shivanya-accordion-radius-md .shivanya-accordion-item {
   border-radius: var(--shivanya-radius-md);
 }
+
 .shivanya-accordion-radius-lg .shivanya-accordion-item {
   border-radius: var(--shivanya-radius-lg);
 }
+
 .shivanya-accordion-radius-full .shivanya-accordion-item {
   border-radius: var(--shivanya-radius-full);
 }
+
 .shivanya-accordion-header {
   display: flex;
   align-items: center;
@@ -56,61 +67,70 @@
   text-align: left;
   cursor: pointer;
 }
+
 .shivanya-accordion-header:hover:not(:disabled) {
   background: var(--shivanya-color-surface-hover);
 }
+
 .shivanya-accordion-header:focus-visible {
   outline: 0;
   box-shadow: inset 0 0 0 3px var(--shivanya-color-focus-ring);
 }
+
 .shivanya-accordion-heading {
   display: grid;
   gap: var(--shivanya-space-1);
   min-width: 0;
 }
+
 .shivanya-accordion-title {
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
 }
+
 .shivanya-accordion-subtitle {
   font-size: var(--shivanya-font-size-sm);
   color: var(--shivanya-color-text-secondary);
 }
+
 .shivanya-accordion-icon {
   flex: none;
   font-size: 18px;
   color: var(--shivanya-color-text-secondary);
 }
+
 .shivanya-accordion-content {
   padding: var(--shivanya-space-4);
   color: var(--shivanya-color-text-secondary);
   line-height: 1.6;
 }
+
 .shivanya-accordion-xs .shivanya-accordion-header {
   padding: var(--shivanya-space-2) var(--shivanya-space-3);
 }
+
 .shivanya-accordion-sm .shivanya-accordion-header {
   padding: var(--shivanya-space-3);
 }
+
 .shivanya-accordion-lg .shivanya-accordion-header {
   padding: var(--shivanya-space-5);
 }
+
 .shivanya-accordion-xl .shivanya-accordion-header {
   padding: var(--shivanya-space-6);
 }
+
 .shivanya-accordion-loading {
   opacity: 0.7;
 }
+
 .shivanya-accordion-disabled,
 .shivanya-accordion-item.is-disabled {
-  opacity: 0.6;
-}
-.shivanya-accordion-item.is-disabled {
-  cursor: not-allowed;
+  opacity: var(--shivanya-opacity-disabled);
 }
 
-.shivanya-accordion-ghost .shivanya-accordion-item {
-  border-color: transparent;
-  background: transparent;
+.shivanya-accordion-item.is-disabled {
+  cursor: not-allowed;
 }
 
 .shivanya-accordion-ghost .shivanya-accordion-item:hover {

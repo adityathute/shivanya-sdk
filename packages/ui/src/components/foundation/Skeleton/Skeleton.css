@@ -35,28 +35,47 @@
 }
 
 .shivanya-skeleton-animation-pulse {
-  animation: shivanya-skeleton-pulse var(--shivanya-duration-slow) var(--shivanya-ease-standard) infinite;
+  animation:
+    shivanya-skeleton-pulse
+    var(--shivanya-duration-slow)
+    var(--shivanya-ease-standard)
+    infinite;
 }
 
 .shivanya-skeleton-animation-wave::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 0%, var(--shivanya-color-surface-hover) 50%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--shivanya-color-surface-hover) 50%,
+    transparent 100%
+  );
   transform: translateX(-100%);
   animation: shivanya-skeleton-wave 1.4s linear infinite;
 }
 
 @keyframes shivanya-skeleton-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: .55; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
 }
 
 @keyframes shivanya-skeleton-wave {
-  100% { transform: translateX(100%); }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .shivanya-skeleton-animation-pulse,
-  .shivanya-skeleton-animation-wave::after { animation: none; }
+  .shivanya-skeleton-animation-wave::after {
+    animation: none;
+  }
 }

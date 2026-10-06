@@ -23,20 +23,23 @@
 .shivanya-calendar-sm {
   width: 280px;
   padding: var(--shivanya-space-3);
-  font-size: 12px;
+  font-size: var(--shivanya-font-size-xs);
 }
 
 .shivanya-calendar-lg {
   width: 360px;
   padding: var(--shivanya-space-5);
-  font-size: 15px;
+  font-size: var(--shivanya-font-size-md);
 }
 
 /* Header */
 
 .shivanya-calendar-header {
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr) 32px;
+  grid-template-columns:
+    var(--shivanya-control-height-sm)
+    minmax(0, 1fr)
+    var(--shivanya-control-height-sm);
   align-items: center;
   gap: var(--shivanya-space-2);
 }
@@ -46,8 +49,8 @@
   align-items: center;
   justify-content: center;
 
-  width: 32px;
-  height: 32px;
+  width: var(--shivanya-control-height-sm);
+  height: var(--shivanya-control-height-sm);
   padding: 0;
 
   border: 0;
@@ -80,12 +83,12 @@
 
 .shivanya-calendar-title {
   width: 100% !important;
-  height: 32px !important;
+  height: var(--shivanya-control-height-sm) !important;
 
-  padding: 0 6px !important;
+  padding: 0 var(--shivanya-space-1) !important;
 
-  font-size: 14px !important;
-  font-weight: 600 !important;
+  font-size: var(--shivanya-font-size-sm) !important;
+  font-weight: var(--shivanya-font-weight-semibold) !important;
 
   white-space: nowrap;
 }
@@ -95,7 +98,7 @@
 .shivanya-calendar-weekdays {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 4px;
+  gap: var(--shivanya-space-1);
 }
 
 .shivanya-calendar-weekdays span {
@@ -108,8 +111,8 @@
 
   color: var(--shivanya-color-text-muted);
 
-  font-size: 11px;
-  font-weight: 600;
+  font-size: var(--shivanya-font-size-3xs);
+  font-weight: var(--shivanya-font-weight-semibold);
 
   user-select: none;
 }
@@ -119,7 +122,7 @@
 .shivanya-calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 4px;
+  gap: var(--shivanya-space-1);
 
   width: 100%;
 }
@@ -208,14 +211,14 @@
 .shivanya-calendar-picker-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+  gap: var(--shivanya-space-2);
 }
 
 .shivanya-calendar-picker-grid button {
   min-width: 0;
-  min-height: 48px;
+  min-height: var(--shivanya-control-height-lg);
 
-  padding: 8px;
+  padding: var(--shivanya-space-2);
 
   border: 1px solid transparent;
   border-radius: var(--shivanya-radius-md);
@@ -244,7 +247,7 @@
 .shivanya-calendar-picker-grid button.is-selected {
   background: var(--shivanya-color-primary-soft);
   color: var(--shivanya-color-primary);
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
 }
 
 .shivanya-calendar-picker-grid button:disabled {
@@ -267,17 +270,20 @@
 /* Small */
 
 .shivanya-calendar-sm .shivanya-calendar-header > button {
-  width: 28px;
-  height: 28px;
+  width: var(--shivanya-control-height-xs);
+  height: var(--shivanya-control-height-xs);
 }
 
 .shivanya-calendar-sm .shivanya-calendar-header {
-  grid-template-columns: 28px minmax(0, 1fr) 28px;
+  grid-template-columns:
+    var(--shivanya-control-height-xs)
+    minmax(0, 1fr)
+    var(--shivanya-control-height-xs);
 }
 
 .shivanya-calendar-sm .shivanya-calendar-weekdays span {
   min-height: 24px;
-  font-size: 10px;
+  font-size: var(--shivanya-font-size-2xs);
 }
 
 /* Large */

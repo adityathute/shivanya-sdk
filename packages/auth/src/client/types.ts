@@ -114,3 +114,8 @@ export class AuthError extends Error {
     this.data = data;
   }
 }
+
+export interface UsernameAvailability {
+  available: boolean;
+  valid: boolean;
+}

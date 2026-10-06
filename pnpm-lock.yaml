@@ -20,6 +20,9 @@ importers:
 
   packages/auth:
     dependencies:
+      shivanya-core:
+        specifier: workspace:*
+        version: link:../core
       shivanya-ui:
         specifier: workspace:*
         version: link:../ui

@@ -3,23 +3,23 @@
   width: 100%;
   font-family: var(--shivanya-font-family);
 
-  --stepper-circle: 40px;
+  --stepper-circle: var(--shivanya-control-height-md);
   --stepper-gap: 10px;
-  --stepper-line: var(--navigation-border);
+  --stepper-line: var(--shivanya-color-border);
 }
 
 .stepper-sm {
-  --stepper-circle: 32px;
-  --stepper-gap: 8px;
+  --stepper-circle: var(--shivanya-control-height-sm);
+  --stepper-gap: var(--shivanya-space-2);
 }
 
 .stepper-md {
-  --stepper-circle: 40px;
+  --stepper-circle: var(--shivanya-control-height-md);
   --stepper-gap: 10px;
 }
 
 .stepper-lg {
-  --stepper-circle: 48px;
+  --stepper-circle: var(--shivanya-control-height-lg);
   --stepper-gap: 12px;
 }
 
@@ -28,7 +28,7 @@
 .step {
   position: relative;
   min-width: 0;
-  color: var(--navigation-text-secondary);
+  color: var(--shivanya-color-text-secondary);
 }
 
 .stepper-horizontal {
@@ -98,23 +98,19 @@
 
   box-sizing: border-box;
 
-  border: 2px solid var(--navigation-border);
-  border-radius: 50%;
+  border: 2px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-full);
 
-  background: var(--navigation-surface);
-  color: var(--navigation-text-secondary);
+  background: var(--shivanya-color-surface);
+  color: var(--shivanya-color-text-secondary);
 
   font-weight: var(--shivanya-font-weight-semibold);
 
   transition:
-    background var(--shivanya-duration-fast)
-      var(--shivanya-ease-standard),
-    border-color var(--shivanya-duration-fast)
-      var(--shivanya-ease-standard),
-    color var(--shivanya-duration-fast)
-      var(--shivanya-ease-standard),
-    box-shadow var(--shivanya-duration-fast)
-      var(--shivanya-ease-standard);
+    background var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    border-color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    box-shadow var(--shivanya-duration-fast) var(--shivanya-ease-standard);
 }
 
 /* Connector */
@@ -126,8 +122,7 @@
   background: var(--stepper-line);
 
   transition:
-    background var(--shivanya-duration-fast)
-      var(--shivanya-ease-standard);
+    background var(--shivanya-duration-fast) var(--shivanya-ease-standard);
 }
 
 /* Horizontal connector */
@@ -162,13 +157,13 @@
   display: flex;
   flex-direction: column;
 
-  gap: 4px;
+  gap: var(--shivanya-space-1);
   min-width: 0;
 }
 
 .stepper-horizontal .stepContent {
   align-items: center;
-  margin-top: 8px;
+  margin-top: var(--shivanya-space-2);
 }
 
 .stepper-vertical .stepContent {
@@ -180,21 +175,21 @@
 .stepTitle {
   font-size: var(--shivanya-font-size-md);
   font-weight: var(--shivanya-font-weight-semibold);
-  color: var(--navigation-text);
+  color: var(--shivanya-color-text-primary);
 }
 
 .stepDescription {
   font-size: var(--shivanya-font-size-sm);
-  line-height: 1.5;
-  color: var(--navigation-text-muted);
+  line-height: var(--shivanya-line-height-md);
+  color: var(--shivanya-color-text-muted);
 }
 
 /* Pending */
 
 .step-pending .stepCircle {
-  background: var(--navigation-surface);
-  border-color: var(--navigation-border);
-  color: var(--navigation-text-secondary);
+  background: var(--shivanya-color-surface);
+  border-color: var(--shivanya-color-border);
+  color: var(--shivanya-color-text-secondary);
 }
 
 /* Active */

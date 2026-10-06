@@ -45,8 +45,8 @@
   caret-color: var(--shivanya-color-text-primary);
 
   transition:
-    background-color 9999s ease-out,
-    color 9999s ease-out;
+    background-color 9999s var(--shivanya-ease-out),
+    color 9999s var(--shivanya-ease-out);
 }
 
 .shivanya-otp-field {
@@ -58,7 +58,7 @@
 
 .shivanya-otp-field > label {
   color: var(--shivanya-color-text-primary);
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
 }
 
 .shivanya-otp {
@@ -71,7 +71,7 @@
   box-sizing: border-box;
 
   width: 44px;
-  height: 48px;
+  height: var(--shivanya-control-height-lg);
   padding: 0;
 
   border: 1px solid var(--shivanya-color-border);
@@ -82,7 +82,7 @@
 
   font: inherit;
   font-size: var(--shivanya-font-size-lg);
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
   line-height: 1;
   text-align: center;
 
@@ -125,19 +125,19 @@
   caret-color: var(--shivanya-color-text-primary);
 
   transition:
-    background-color 9999s ease-out,
-    color 9999s ease-out;
+    background-color 9999s var(--shivanya-ease-out),
+    color 9999s var(--shivanya-ease-out);
 }
 
 .shivanya-otp-sm input {
   width: 36px;
-  height: 40px;
+  height: var(--shivanya-control-height-md);
   font-size: var(--shivanya-font-size-md);
 }
 
 .shivanya-otp-lg input {
   width: 52px;
-  height: 56px;
+  height: var(--shivanya-control-height-xl);
   font-size: var(--shivanya-font-size-lg);
 }
 
@@ -153,7 +153,7 @@
   margin: 0;
   color: var(--shivanya-color-text-secondary);
   font-size: var(--shivanya-font-size-sm);
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 }
 
 .shivanya-otp-field p.is-error {

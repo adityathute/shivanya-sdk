@@ -18,9 +18,9 @@
   color: var(--shivanya-color-text-primary);
 
   font-size: var(--shivanya-font-size-md);
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
 
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 }
 
 .shivanya-textarea-required {
@@ -51,7 +51,7 @@
   color: var(--shivanya-color-text-primary);
 
   font: inherit;
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 
   outline: 0;
 
@@ -89,8 +89,8 @@
   caret-color: var(--shivanya-color-text-primary);
 
   transition:
-    background-color 9999s ease-out,
-    color 9999s ease-out;
+    background-color 9999s var(--shivanya-ease-out),
+    color 9999s var(--shivanya-ease-out);
 }
 
 /* Hover */
@@ -185,7 +185,7 @@
   margin: 0;
 
   font-size: var(--shivanya-font-size-sm);
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 }
 
 .shivanya-textarea-help {

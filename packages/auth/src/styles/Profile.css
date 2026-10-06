@@ -1,0 +1,144 @@
+.shivanya-profile {
+  gap: var(--shivanya-space-5);
+}
+
+.shivanya-profile-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--shivanya-space-5);
+  overflow: visible;
+}
+
+.shivanya-profile-header-info {
+  min-width: 0;
+}
+
+.shivanya-profile-title {
+  display: flex;
+  align-items: center;
+  gap: var(--shivanya-space-3);
+}
+
+.shivanya-profile-title-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--shivanya-control-height-md);
+  height: var(--shivanya-control-height-md);
+  border-radius: var(--shivanya-radius-sm);
+  background: var(--shivanya-color-primary-soft);
+  color: var(--shivanya-color-primary);
+}
+
+.shivanya-profile-avatar-trigger {
+  min-width: 0 !important;
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--shivanya-radius-full);
+  background: transparent;
+  box-shadow: none;
+}
+
+.shivanya-profile-avatar-trigger:hover {
+  background: transparent;
+  border-color: transparent;
+}
+
+.shivanya-profile-avatar-trigger:focus-visible {
+  outline: 2px solid var(--shivanya-color-focus);
+  outline-offset: 4px;
+}
+
+.shivanya-profile-avatar-trigger .dropdownArrow {
+  display: none;
+}
+
+.shivanya-profile-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--shivanya-space-4);
+}
+
+/* Account modal */
+.shivanya-account-content .shivanya-profile-fields {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.shivanya-profile-field {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: var(--shivanya-space-1);
+}
+
+.shivanya-profile-field-full {
+  grid-column: 1 / -1;
+}
+
+.shivanya-profile-file-error {
+  margin-top: -8px;
+  color: var(--shivanya-color-danger);
+  font-size: var(--shivanya-font-size-sm);
+  line-height: var(--shivanya-line-height-md);
+}
+
+.shivanya-profile-remove-avatar {
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-profile-remove-avatar:hover {
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-profile-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--shivanya-space-3);
+  padding-top: var(--shivanya-space-1);
+}
+
+@media (max-width: 700px) {
+  .shivanya-profile-header {
+    align-items: flex-start;
+  }
+
+  .shivanya-profile-fields,
+  .shivanya-account-content .shivanya-profile-fields {
+    grid-template-columns: 1fr;
+    gap: var(--shivanya-space-3);
+  }
+
+  .shivanya-profile-field-full {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .shivanya-profile-header {
+    align-items: flex-start;
+  }
+
+  .shivanya-profile-title {
+    align-items: flex-start;
+  }
+
+  .shivanya-profile-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .shivanya-profile-actions button {
+    width: 100%;
+  }
+}
+
+.shivanya-profile-username-status {
+  margin-top: var(--shivanya-space-2);
+}

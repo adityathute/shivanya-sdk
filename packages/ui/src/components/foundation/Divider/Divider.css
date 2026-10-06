@@ -36,13 +36,29 @@
   border-top-style: solid;
 }
 
-.shivanya-divider-horizontal.shivanya-divider-sm { height: 1px; }
-.shivanya-divider-horizontal.shivanya-divider-md { height: 2px; }
-.shivanya-divider-horizontal.shivanya-divider-lg { height: 3px; }
+.shivanya-divider-horizontal.shivanya-divider-sm {
+  height: 1px;
+}
 
-.shivanya-divider-vertical.shivanya-divider-sm { width: 1px; }
-.shivanya-divider-vertical.shivanya-divider-md { width: 2px; }
-.shivanya-divider-vertical.shivanya-divider-lg { width: 3px; }
+.shivanya-divider-horizontal.shivanya-divider-md {
+  height: 2px;
+}
+
+.shivanya-divider-horizontal.shivanya-divider-lg {
+  height: 3px;
+}
+
+.shivanya-divider-vertical.shivanya-divider-sm {
+  width: 1px;
+}
+
+.shivanya-divider-vertical.shivanya-divider-md {
+  width: 2px;
+}
+
+.shivanya-divider-vertical.shivanya-divider-lg {
+  width: 3px;
+}
 
 .shivanya-divider-dashed.shivanya-divider-horizontal,
 .shivanya-divider-dotted.shivanya-divider-horizontal {
@@ -57,21 +73,45 @@
 }
 
 .shivanya-divider-dashed.shivanya-divider-horizontal.shivanya-divider-md,
-.shivanya-divider-dotted.shivanya-divider-horizontal.shivanya-divider-md { border-top-width: 2px; }
+.shivanya-divider-dotted.shivanya-divider-horizontal.shivanya-divider-md {
+  border-top-width: 2px;
+}
 
 .shivanya-divider-dashed.shivanya-divider-horizontal.shivanya-divider-lg,
-.shivanya-divider-dotted.shivanya-divider-horizontal.shivanya-divider-lg { border-top-width: 3px; }
+.shivanya-divider-dotted.shivanya-divider-horizontal.shivanya-divider-lg {
+  border-top-width: 3px;
+}
 
 .shivanya-divider-dashed.shivanya-divider-vertical.shivanya-divider-md,
-.shivanya-divider-dotted.shivanya-divider-vertical.shivanya-divider-md { border-left-width: 2px; }
+.shivanya-divider-dotted.shivanya-divider-vertical.shivanya-divider-md {
+  border-left-width: 2px;
+}
 
 .shivanya-divider-dashed.shivanya-divider-vertical.shivanya-divider-lg,
-.shivanya-divider-dotted.shivanya-divider-vertical.shivanya-divider-lg { border-left-width: 3px; }
+.shivanya-divider-dotted.shivanya-divider-vertical.shivanya-divider-lg {
+  border-left-width: 3px;
+}
 
-.shivanya-divider-spacing-sm.shivanya-divider-horizontal { margin-block: var(--shivanya-space-2); }
-.shivanya-divider-spacing-md.shivanya-divider-horizontal { margin-block: var(--shivanya-space-4); }
-.shivanya-divider-spacing-lg.shivanya-divider-horizontal { margin-block: var(--shivanya-space-6); }
+.shivanya-divider-spacing-sm.shivanya-divider-horizontal {
+  margin-block: var(--shivanya-space-2);
+}
 
-.shivanya-divider-spacing-sm.shivanya-divider-vertical { margin-inline: var(--shivanya-space-2); }
-.shivanya-divider-spacing-md.shivanya-divider-vertical { margin-inline: var(--shivanya-space-4); }
-.shivanya-divider-spacing-lg.shivanya-divider-vertical { margin-inline: var(--shivanya-space-6); }
+.shivanya-divider-spacing-md.shivanya-divider-horizontal {
+  margin-block: var(--shivanya-space-4);
+}
+
+.shivanya-divider-spacing-lg.shivanya-divider-horizontal {
+  margin-block: var(--shivanya-space-6);
+}
+
+.shivanya-divider-spacing-sm.shivanya-divider-vertical {
+  margin-inline: var(--shivanya-space-2);
+}
+
+.shivanya-divider-spacing-md.shivanya-divider-vertical {
+  margin-inline: var(--shivanya-space-4);
+}
+
+.shivanya-divider-spacing-lg.shivanya-divider-vertical {
+  margin-inline: var(--shivanya-space-6);
+}

@@ -2,7 +2,7 @@
   display: block;
   margin: 0;
   color: var(--shivanya-color-text-secondary);
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 }
 
 .shivanya-errormessage-sm {

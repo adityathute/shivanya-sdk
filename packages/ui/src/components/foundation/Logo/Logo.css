@@ -28,8 +28,8 @@
 
 .shivanya-logo-image,
 .shivanya-logo-mark {
-  width: 32px;
-  height: 32px;
+  width: var(--shivanya-control-height-sm);
+  height: var(--shivanya-control-height-sm);
   flex-shrink: 0;
   object-fit: contain;
 }
@@ -66,7 +66,7 @@
 
 .shivanya-logo-subtitle {
   display: block;
-  margin-top: 2px;
+  margin-top: var(--shivanya-space-1);
   overflow: hidden;
   color: var(--shivanya-color-text-secondary);
   font-size: var(--shivanya-font-size-xs);

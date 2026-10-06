@@ -27,11 +27,7 @@
 
 :root {
   --shivanya-font-family:
-    "Outfit",
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
+    "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
 
   /*
@@ -41,6 +37,8 @@
    * Shared type scale used by SDK components.
    */
 
+  --shivanya-font-size-2xs: 0.625rem;
+  --shivanya-font-size-3xs: 0.6875rem;
   --shivanya-font-size-xs: 0.75rem;
   --shivanya-font-size-sm: 0.875rem;
   --shivanya-font-size-md: 1rem;
@@ -48,6 +46,7 @@
   --shivanya-font-size-xl: 1.25rem;
   --shivanya-font-size-2xl: 1.5rem;
   --shivanya-font-size-3xl: 1.875rem;
+  --shivanya-font-size-15: 0.9375rem;
 
   /*
    * -------------------------------------------------------------

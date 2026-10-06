@@ -33,13 +33,13 @@
 .shivanya-chip-xs {
   min-height: 22px;
   padding: 2px 7px;
-  font-size: 11px;
+  font-size: var(--shivanya-font-size-3xs);
 }
 
 .shivanya-chip-sm {
   min-height: 26px;
   padding: 3px 8px;
-  font-size: 12px;
+  font-size: var(--shivanya-font-size-xs);
 }
 
 .shivanya-chip-md {
@@ -51,7 +51,7 @@
 .shivanya-chip-lg {
   min-height: 38px;
   padding: 7px 12px;
-  font-size: 14px;
+  font-size: var(--shivanya-font-size-sm);
 }
 
 .shivanya-chip-xl {
@@ -263,8 +263,7 @@
 }
 
 .shivanya-chip.is-selected {
-  box-shadow:
-    0 0 0 3px var(--shivanya-color-focus-ring);
+  box-shadow: 0 0 0 3px var(--shivanya-color-focus-ring);
 }
 
 .shivanya-chip.is-loading {

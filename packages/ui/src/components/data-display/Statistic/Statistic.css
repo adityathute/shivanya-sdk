@@ -20,7 +20,7 @@
   justify-content: center;
   flex: none;
   color: var(--shivanya-color-primary);
-  font-size: 24px;
+  font-size: var(--shivanya-icon-size-lg);
   line-height: 1;
 }
 
@@ -46,8 +46,8 @@
   display: flex;
   align-items: baseline;
   min-width: 0;
-  gap: 4px;
-  font-weight: 700;
+  gap: var(--shivanya-space-1);
+  font-weight: var(--shivanya-font-weight-bold);
   font-variant-numeric: tabular-nums;
   line-height: 1.15;
 }
@@ -60,12 +60,12 @@
 .shivanya-statistic-prefix,
 .shivanya-statistic-suffix {
   flex: none;
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
 }
 
 .shivanya-statistic-sm
   .shivanya-statistic-value {
-  font-size: 20px;
+  font-size: var(--shivanya-font-size-xl);
 }
 
 .shivanya-statistic-md
@@ -87,11 +87,11 @@
 .shivanya-statistic-trend {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--shivanya-space-1);
   width: fit-content;
   max-width: 100%;
   font-size: var(--shivanya-font-size-sm);
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
   line-height: 1.4;
 }
 
@@ -147,7 +147,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 32px;
+  min-height: var(--shivanya-control-height-sm);
 }
 
 .shivanya-statistic-loading span {
@@ -157,7 +157,7 @@
   border-radius: var(--shivanya-radius-sm);
   background: var(--shivanya-color-surface-hover);
   animation: shivanya-statistic-pulse
-    1.4s ease-in-out infinite;
+    1.4s var(--shivanya-ease-in-out) infinite;
 }
 
 .shivanya-statistic-sm
@@ -167,7 +167,7 @@
 
 .shivanya-statistic-lg
   .shivanya-statistic-loading span {
-  height: 40px;
+  height: var(--shivanya-control-height-lg);
 }
 
 .shivanya-statistic-loading-label {

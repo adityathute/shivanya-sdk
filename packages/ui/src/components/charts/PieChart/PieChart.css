@@ -1,3 +1,124 @@
-.shivanya-pie-chart{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;gap:1.5rem;color:var(--shivanya-color-text-primary)}.shivanya-pie-chart svg{display:block;overflow:visible}.shivanya-pie-chart-segment{cursor:pointer;transition:opacity .2s ease,transform .2s ease,filter .2s ease;transform-origin:center}.shivanya-pie-chart-segment:hover{opacity:.9;filter:brightness(1.08)}.shivanya-pie-chart-label{fill:var(--shivanya-color-text-primary);font-size:.75rem;font-weight:600;user-select:none;pointer-events:none}.shivanya-pie-chart-legend{display:flex;flex-direction:column;gap:12px;width:fit-content;margin:24px auto 0}.shivanya-pie-chart-legend-top{order:-1;flex-direction:row;flex-wrap:wrap;justify-content:center;width:100%;margin-bottom:1.5rem}.shivanya-pie-chart-legend-bottom{order:1;flex-direction:row;flex-wrap:wrap;justify-content:center;width:100%;margin-top:1.5rem}.shivanya-pie-chart-legend-right,.shivanya-pie-chart-legend-left{flex-direction:column}.shivanya-pie-chart-legend-item{display:flex;align-items:center;gap:12px}.shivanya-pie-chart-legend-color{width:12px;height:12px;border-radius:50%;flex-shrink:0}.shivanya-pie-chart-legend-label{flex:1;color:var(--shivanya-color-text-primary);font-size:.9rem}.shivanya-pie-chart-legend-value{color:var(--shivanya-color-text-secondary);font-size:.875rem;font-weight:600}.shivanya-pie-chart.is-disabled{opacity:.65}.shivanya-pie-chart-state{display:flex;align-items:center;justify-content:center;min-height:180px;color:var(--shivanya-color-text-secondary)}
-@media(max-width:768px){.shivanya-pie-chart{gap:1rem}.shivanya-pie-chart svg{max-width:260px}.shivanya-pie-chart-legend-item{gap:.5rem}}
-@media(prefers-reduced-motion:reduce){.shivanya-pie-chart-segment{transition:none}}
+.shivanya-pie-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: var(--shivanya-space-6);
+  color: var(--shivanya-color-text-primary);
+}
+
+.shivanya-pie-chart svg {
+  display: block;
+  overflow: visible;
+}
+
+.shivanya-pie-chart-segment {
+  cursor: pointer;
+  transition:
+    opacity var(--shivanya-duration-normal) var(--shivanya-ease-standard),
+    transform var(--shivanya-duration-normal) var(--shivanya-ease-standard),
+    filter var(--shivanya-duration-normal) var(--shivanya-ease-standard);
+  transform-origin: center;
+}
+
+.shivanya-pie-chart-segment:hover {
+  opacity: 0.9;
+  filter: brightness(1.08);
+}
+
+.shivanya-pie-chart-label {
+  fill: var(--shivanya-color-text-primary);
+  font-size: var(--shivanya-font-size-xs);
+  font-weight: var(--shivanya-font-weight-semibold);
+  user-select: none;
+  pointer-events: none;
+}
+
+.shivanya-pie-chart-legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--shivanya-space-3);
+  width: fit-content;
+  margin: var(--shivanya-space-6) auto 0;
+}
+
+.shivanya-pie-chart-legend-top {
+  order: -1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: var(--shivanya-space-6);
+}
+
+.shivanya-pie-chart-legend-bottom {
+  order: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: var(--shivanya-space-6);
+}
+
+.shivanya-pie-chart-legend-right,
+.shivanya-pie-chart-legend-left {
+  flex-direction: column;
+}
+
+.shivanya-pie-chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--shivanya-space-3);
+}
+
+.shivanya-pie-chart-legend-color {
+  width: var(--shivanya-icon-size-xs);
+  height: var(--shivanya-icon-size-xs);
+  border-radius: var(--shivanya-radius-full);
+  flex-shrink: 0;
+}
+
+.shivanya-pie-chart-legend-label {
+  flex: 1;
+  color: var(--shivanya-color-text-primary);
+  font-size: var(--shivanya-font-size-sm);
+}
+
+.shivanya-pie-chart-legend-value {
+  color: var(--shivanya-color-text-secondary);
+  font-size: var(--shivanya-font-size-sm);
+  font-weight: var(--shivanya-font-weight-semibold);
+}
+
+.shivanya-pie-chart.is-disabled {
+  opacity: var(--shivanya-opacity-disabled);
+}
+
+.shivanya-pie-chart-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  color: var(--shivanya-color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .shivanya-pie-chart {
+    gap: var(--shivanya-space-4);
+  }
+
+  .shivanya-pie-chart svg {
+    max-width: 260px;
+  }
+
+  .shivanya-pie-chart-legend-item {
+    gap: var(--shivanya-space-2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shivanya-pie-chart-segment {
+    transition: none;
+  }
+}

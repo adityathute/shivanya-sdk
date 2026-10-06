@@ -18,7 +18,7 @@
   border-collapse: separate;
   border-spacing: 0;
   background: var(--shivanya-color-surface);
-  font-size: 14px;
+  font-size: var(--shivanya-font-size-sm);
 }
 
 .shivanya-data-grid.is-bordered table {
@@ -38,7 +38,7 @@
 
 .shivanya-data-grid th {
   background: var(--shivanya-color-surface-hover);
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
   white-space: nowrap;
 }
 
@@ -67,13 +67,13 @@
 .shivanya-data-grid-sm th,
 .shivanya-data-grid-sm td {
   padding: 8px 10px;
-  font-size: 12px;
+  font-size: var(--shivanya-font-size-xs);
 }
 
 .shivanya-data-grid-lg th,
 .shivanya-data-grid-lg td {
-  padding: 16px;
-  font-size: 15px;
+  padding: var(--shivanya-space-4);
+  font-size: var(--shivanya-font-size-15);
 }
 
 .shivanya-data-grid .align-left {
@@ -137,7 +137,7 @@
 }
 
 .data-grid-empty {
-  padding: 40px !important;
+  padding: var(--shivanya-space-10) !important;
   color: var(--shivanya-color-text-secondary);
   text-align: center !important;
 }
@@ -148,7 +148,7 @@
   height: 16px;
   border-radius: var(--shivanya-radius-sm);
   background: var(--shivanya-color-surface-hover);
-  animation: data-grid-pulse 1.2s ease-in-out infinite;
+  animation: data-grid-pulse 1.2s var(--shivanya-ease-in-out) infinite;
 }
 
 .data-grid-skeleton-row

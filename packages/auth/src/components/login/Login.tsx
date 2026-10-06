@@ -24,9 +24,11 @@ export function Login({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { run, loading, error } = useAuthAction(async () =>
+  const { run, loading, error, fieldErrors } = useAuthAction(async () =>
     login(email.trim(), password),
   );
+
+  const nonFieldError = fieldErrors.non_field_errors;
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
@@ -39,7 +41,7 @@ export function Login({
 
   return (
     <div className="shivanya-login">
-      <AuthMessage message={error} />
+      <AuthMessage message={nonFieldError || error} />
 
       <form className="shivanya-login-form" onSubmit={submit}>
         <div className="shivanya-login-fields">

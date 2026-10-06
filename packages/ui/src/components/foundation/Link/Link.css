@@ -2,34 +2,73 @@
   display: inline-flex;
   align-items: center;
   max-width: 100%;
+
   color: var(--shivanya-color-primary);
   font-family: var(--shivanya-font-family);
   font-weight: var(--shivanya-font-weight-medium);
   line-height: var(--shivanya-line-height-md);
+
   text-decoration: none;
   cursor: pointer;
-  transition: color var(--shivanya-duration-fast) var(--shivanya-ease-standard), opacity var(--shivanya-duration-fast) var(--shivanya-ease-standard);
+
+  transition:
+    color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    opacity var(--shivanya-duration-fast) var(--shivanya-ease-standard);
 }
 
-.shivanya-link:hover { text-decoration: underline; }
+.shivanya-link:hover {
+  text-decoration: underline;
+}
+
 .shivanya-link:focus-visible {
   outline: 2px solid var(--shivanya-color-focus);
   outline-offset: 2px;
 }
 
-.shivanya-link-default { color: var(--shivanya-color-text-primary); }
-.shivanya-link-primary { color: var(--shivanya-color-primary); }
-.shivanya-link-secondary { color: var(--shivanya-color-secondary); }
-.shivanya-link-muted { color: var(--shivanya-color-text-secondary); }
-.shivanya-link-danger { color: var(--shivanya-color-danger); }
+.shivanya-link-default {
+  color: var(--shivanya-color-text-primary);
+}
 
-.shivanya-link-xs { font-size: var(--shivanya-font-size-xs); }
-.shivanya-link-sm { font-size: var(--shivanya-font-size-sm); }
-.shivanya-link-md { font-size: var(--shivanya-font-size-md); }
-.shivanya-link-lg { font-size: var(--shivanya-font-size-lg); }
-.shivanya-link-xl { font-size: var(--shivanya-font-size-xl); }
+.shivanya-link-primary {
+  color: var(--shivanya-color-primary);
+}
 
-.shivanya-link-underline { text-decoration: underline; }
+.shivanya-link-secondary {
+  color: var(--shivanya-color-secondary);
+}
+
+.shivanya-link-muted {
+  color: var(--shivanya-color-text-secondary);
+}
+
+.shivanya-link-danger {
+  color: var(--shivanya-color-danger);
+}
+
+.shivanya-link-xs {
+  font-size: var(--shivanya-font-size-xs);
+}
+
+.shivanya-link-sm {
+  font-size: var(--shivanya-font-size-sm);
+}
+
+.shivanya-link-md {
+  font-size: var(--shivanya-font-size-md);
+}
+
+.shivanya-link-lg {
+  font-size: var(--shivanya-font-size-lg);
+}
+
+.shivanya-link-xl {
+  font-size: var(--shivanya-font-size-xl);
+}
+
+.shivanya-link-underline {
+  text-decoration: underline;
+}
+
 .shivanya-link-disabled {
   pointer-events: none;
   color: var(--shivanya-color-text-disabled);

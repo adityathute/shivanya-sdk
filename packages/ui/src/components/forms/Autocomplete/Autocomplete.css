@@ -82,7 +82,6 @@
 
 .shivanya-autocomplete-control:focus-within {
   border-color: var(--shivanya-color-focus);
-
   box-shadow:
     0 0 0 3px
     var(--shivanya-color-focus-ring);
@@ -95,11 +94,9 @@
 
 .shivanya-autocomplete-control input {
   flex: 1;
-
   min-width: 0;
   width: 100%;
-  height: 40px;
-
+  height: var(--shivanya-control-height-md);
   padding: 0 12px;
 
   border: 0;
@@ -130,11 +127,11 @@
 }
 
 .shivanya-autocomplete-sm input {
-  height: 32px;
+  height: var(--shivanya-control-height-sm);
 }
 
 .shivanya-autocomplete-lg input {
-  height: 48px;
+  height: var(--shivanya-control-height-lg);
 }
 
 .shivanya-autocomplete-clear {
@@ -144,8 +141,8 @@
   align-items: center;
   justify-content: center;
 
-  width: 32px;
-  height: 32px;
+  width: var(--shivanya-control-height-sm);
+  height: var(--shivanya-control-height-sm);
 
   margin-right: var(--shivanya-space-1);
   padding: 0;
@@ -174,8 +171,8 @@
 
 .shivanya-autocomplete-clear svg {
   display: block;
-  width: 16px;
-  height: 16px;
+  width: var(--shivanya-icon-size-sm);
+  height: var(--shivanya-icon-size-sm);
 }
 
 .shivanya-autocomplete-list {
@@ -229,7 +226,7 @@
   padding: 10px 12px;
 
   border: 0;
-  border-radius: 6px;
+  border-radius: var(--shivanya-radius-sm);
 
   background: transparent;
   color: var(--shivanya-color-text-primary);

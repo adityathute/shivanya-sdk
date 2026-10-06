@@ -36,6 +36,7 @@
   --shivanya-space-4: 16px;
   --shivanya-space-5: 20px;
   --shivanya-space-6: 24px;
+  --shivanya-space-7: 28px;
   --shivanya-space-8: 32px;
   --shivanya-space-10: 40px;
   --shivanya-space-12: 48px;
@@ -110,6 +111,7 @@
   --shivanya-duration-fast: 150ms;
   --shivanya-duration-normal: 250ms;
   --shivanya-duration-slow: 350ms;
+  --shivanya-opacity-disabled: 0.6;
 
   /*
    * Standard easing functions.
@@ -121,4 +123,5 @@
   --shivanya-ease-standard: ease;
   --shivanya-ease-in: ease-in;
   --shivanya-ease-out: ease-out;
+  --shivanya-ease-in-out: ease-in-out;
 }

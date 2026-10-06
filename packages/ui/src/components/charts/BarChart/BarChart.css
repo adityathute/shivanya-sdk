@@ -16,8 +16,8 @@
 .shivanya-chart-bar {
   cursor: pointer;
   transition:
-    filter 0.25s ease,
-    opacity 0.25s ease;
+    filter var(--shivanya-duration-normal) var(--shivanya-ease-standard),
+    opacity var(--shivanya-duration-normal) var(--shivanya-ease-standard);
 }
 .shivanya-chart-bar:hover {
   filter: brightness(1.08);
@@ -34,7 +34,7 @@
   color: var(--shivanya-color-text-secondary);
 }
 .shivanya-bar-chart.is-disabled {
-  opacity: 0.6;
+  opacity: var(--shivanya-opacity-disabled);
 }
 @keyframes shivanya-chart-skeleton-pulse {
   0% {

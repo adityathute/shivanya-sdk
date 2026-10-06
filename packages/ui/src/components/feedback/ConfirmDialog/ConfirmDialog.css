@@ -8,31 +8,38 @@
   border-radius: var(--shivanya-radius-md);
   box-shadow: var(--shivanya-shadow-lg);
 }
+
 .shivanya-confirm-dialog-sm {
   max-width: 400px;
 }
+
 .shivanya-confirm-dialog-lg {
   max-width: 720px;
 }
+
 .shivanya-confirm-dialog.is-full {
   max-width: none;
 }
+
 .shivanya-confirm-dialog-header {
-  padding: 20px;
+  padding: var(--shivanya-space-5);
 }
+
 .shivanya-confirm-dialog-title {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--shivanya-font-size-lg);
 }
+
 .shivanya-confirm-dialog-message {
-  margin-top: 8px;
+  margin-top: var(--shivanya-space-2);
   color: var(--shivanya-color-text-secondary);
-  line-height: 1.5;
+  line-height: var(--shivanya-line-height-md);
 }
+
 .shivanya-confirm-dialog-footer {
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
-  padding: 16px 20px;
+  gap: var(--shivanya-space-2);
+  padding: var(--shivanya-space-4) var(--shivanya-space-5);
   border-top: 1px solid var(--shivanya-color-border);
 }

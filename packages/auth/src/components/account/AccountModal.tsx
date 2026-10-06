@@ -2,11 +2,18 @@
 
 import { useEffect, useState } from "react";
 import {
+  HomeIcon,
+  UserIcon,
+  HistoryIcon,
+  ShieldCheckIcon,
+  LinkIcon,
+  SettingsIcon,
   Avatar,
   Modal,
   Sidebar,
   SidebarItem,
 } from "shivanya-ui";
+import { capitalizeWords } from "shivanya-core";
 import { useAuth } from "../../hooks/useAuth";
 import { Profile } from "../profile/Profile";
 import { Sessions } from "../sessions/Sessions";
@@ -35,7 +42,7 @@ export function AccountModal({
   initialView = "overview",
   onThemeChange,
 }: AccountModalProps) {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const [view, setView] = useState<AccountView>(initialView);
 
   useEffect(() => {
@@ -49,7 +56,7 @@ export function AccountModal({
   };
 
   const fullName =
-    `${user?.first_name ?? ""} ${user?.last_name ?? ""}`.trim() ||
+    capitalizeWords(`${user?.first_name ?? ""} ${user?.last_name ?? ""}`) ||
     user?.email ||
     "Account";
 
@@ -76,44 +83,59 @@ export function AccountModal({
         </div>
 
         <div className="shivanya-account-overview-grid">
-          <button
-            type="button"
-            onClick={() => navigate("profile")}
-          >
-            <strong>Profile</strong>
-            <span>Personal information</span>
+          <button type="button" onClick={() => navigate("profile")}>
+            <span className="shivanya-account-overview-icon">
+              <UserIcon size="md" />
+            </span>
+
+            <span className="shivanya-account-overview-content">
+              <strong>Profile</strong>
+              <span>Personal information</span>
+            </span>
           </button>
 
-          <button
-            type="button"
-            onClick={() => navigate("sessions")}
-          >
-            <strong>Sessions</strong>
-            <span>Devices and active sessions</span>
+          <button type="button" onClick={() => navigate("sessions")}>
+            <span className="shivanya-account-overview-icon">
+              <HistoryIcon size="md" />
+            </span>
+
+            <span className="shivanya-account-overview-content">
+              <strong>Sessions</strong>
+              <span>Devices and active sessions</span>
+            </span>
           </button>
 
-          <button
-            type="button"
-            onClick={() => navigate("security")}
-          >
-            <strong>Security</strong>
-            <span>Password and account protection</span>
+          <button type="button" onClick={() => navigate("security")}>
+            <span className="shivanya-account-overview-icon">
+              <ShieldCheckIcon size="md" />
+            </span>
+
+            <span className="shivanya-account-overview-content">
+              <strong>Security</strong>
+              <span>Password and account protection</span>
+            </span>
           </button>
 
-          <button
-            type="button"
-            onClick={() => navigate("connections")}
-          >
-            <strong>Connections</strong>
-            <span>Connected services</span>
+          <button type="button" onClick={() => navigate("connections")}>
+            <span className="shivanya-account-overview-icon">
+              <LinkIcon size="md" />
+            </span>
+
+            <span className="shivanya-account-overview-content">
+              <strong>Connections</strong>
+              <span>Connected services</span>
+            </span>
           </button>
 
-          <button
-            type="button"
-            onClick={() => navigate("settings")}
-          >
-            <strong>Settings</strong>
-            <span>Account preferences</span>
+          <button type="button" onClick={() => navigate("settings")}>
+            <span className="shivanya-account-overview-icon">
+              <SettingsIcon size="md" />
+            </span>
+
+            <span className="shivanya-account-overview-content">
+              <strong>Settings</strong>
+              <span>Account preferences</span>
+            </span>
           </button>
         </div>
       </div>
@@ -142,6 +164,7 @@ export function AccountModal({
             <SidebarItem
               active={view === "overview"}
               onClick={() => navigate("overview")}
+              icon={<HomeIcon size="sm" />}
             >
               Overview
             </SidebarItem>
@@ -149,6 +172,7 @@ export function AccountModal({
             <SidebarItem
               active={view === "profile"}
               onClick={() => navigate("profile")}
+              icon={<UserIcon size="sm" />}
             >
               Profile
             </SidebarItem>
@@ -156,6 +180,7 @@ export function AccountModal({
             <SidebarItem
               active={view === "sessions"}
               onClick={() => navigate("sessions")}
+              icon={<HistoryIcon size="sm" />}
             >
               Sessions
             </SidebarItem>
@@ -163,6 +188,7 @@ export function AccountModal({
             <SidebarItem
               active={view === "security"}
               onClick={() => navigate("security")}
+              icon={<ShieldCheckIcon size="sm" />}
             >
               Security
             </SidebarItem>
@@ -170,6 +196,7 @@ export function AccountModal({
             <SidebarItem
               active={view === "connections"}
               onClick={() => navigate("connections")}
+              icon={<LinkIcon size="sm" />}
             >
               Connections
             </SidebarItem>
@@ -177,16 +204,9 @@ export function AccountModal({
             <SidebarItem
               active={view === "settings"}
               onClick={() => navigate("settings")}
+              icon={<SettingsIcon size="sm" />}
             >
               Settings
-            </SidebarItem>
-
-            <SidebarItem
-              onClick={() => {
-                void logout().then(onClose);
-              }}
-            >
-              Logout
             </SidebarItem>
           </Sidebar>
         </aside>

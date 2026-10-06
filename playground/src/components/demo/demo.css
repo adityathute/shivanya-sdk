@@ -695,3 +695,29 @@
     font-size: 12px;
   }
 }
+
+.demo-file-input {
+  padding: var(--shivanya-space-1);
+}
+
+.demo-file-input::file-selector-button {
+  margin-right: var(--shivanya-space-2);
+  padding: 6px var(--shivanya-space-3);
+
+  border: 0;
+  border-radius: var(--shivanya-radius-sm);
+
+  background: var(--shivanya-color-neutral);
+  color: var(--shivanya-color-neutral-text);
+
+  font: inherit;
+  cursor: pointer;
+}
+
+.demo-file-input::file-selector-button:hover {
+  background: var(--shivanya-color-neutral-hover);
+}
+
+.demo-file-input::file-selector-button:active {
+  background: var(--shivanya-color-neutral-active);
+}

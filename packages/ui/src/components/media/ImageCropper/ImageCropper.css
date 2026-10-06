@@ -7,7 +7,8 @@
   align-items: center;
   justify-content: center;
 
-  background: var(--image-cropper-overlay-background);
+  background: var(--shivanya-color-overlay);
+  backdrop-filter: blur(2px);
 }
 
 .imageCropperModal {
@@ -17,10 +18,10 @@
   width: min(92vw, var(--image-cropper-width-md));
   max-height: 92vh;
 
-  background: var(--image-cropper-background);
-  border: 1px solid var(--image-cropper-border-color);
-  border-radius: var(--image-cropper-radius-md);
-  box-shadow: var(--image-cropper-shadow);
+  background: var(--shivanya-color-modal-background);
+  border: 1px solid var(--shivanya-color-modal-border);
+  border-radius: var(--shivanya-radius-md);
+  box-shadow: var(--shivanya-shadow-lg);
 
   overflow: hidden;
 }
@@ -37,8 +38,8 @@
 
   overflow: hidden;
 
-  background: var(--color-surface);
-  border-radius: var(--radius-sm);
+  background: var(--shivanya-color-surface);
+  border-radius: var(--shivanya-radius-sm);
 }
 
 .imageCropperControls {
@@ -52,7 +53,7 @@
 .imageCropperSlider {
   width: 100%;
 
-  accent-color: var(--image-cropper-slider-accent);
+  accent-color: var(--shivanya-color-primary);
 }
 
 .imageCropperHeader {
@@ -63,20 +64,20 @@
   min-height: var(--image-cropper-header-height);
   padding: 0 var(--image-cropper-padding);
 
-  border-bottom: 1px solid var(--image-cropper-border-color);
+  border-bottom: 1px solid var(--shivanya-color-modal-border);
 }
 
 .imageCropperTitle {
   margin: 0;
 
-  color: var(--image-cropper-title-color);
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-md);
+  color: var(--shivanya-color-text-primary);
+  font-size: var(--shivanya-font-size-md);
+  font-weight: var(--shivanya-font-weight-semibold);
+  line-height: var(--shivanya-line-height-md);
 }
 
 .imageCropperClose {
-  color: var(--image-cropper-close-color);
+  color: var(--shivanya-color-text-primary);
 }
 
 .imageCropperFooter {
@@ -89,7 +90,7 @@
   min-height: var(--image-cropper-footer-height);
   padding: var(--image-cropper-padding);
 
-  border-top: 1px solid var(--image-cropper-border-color);
+  border-top: 1px solid var(--shivanya-color-modal-border);
 }
 
 @media (max-width: 640px) {

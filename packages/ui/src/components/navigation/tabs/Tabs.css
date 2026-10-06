@@ -3,42 +3,42 @@
   flex-direction: column;
   width: 100%;
   min-width: 0;
-  gap: var(--navigation-gap-md);
+  gap: var(--shivanya-space-4);
   font-family: var(--shivanya-font-family);
 }
 
 .tabsExtraSmall {
-  --tabs-height: 28px;
+  --tabs-height: var(--shivanya-control-height-xs);
   font-size: var(--shivanya-font-size-xs);
 }
 
 .tabsSmall {
-  --tabs-height: 32px;
+  --tabs-height: var(--shivanya-control-height-sm);
   font-size: var(--shivanya-font-size-sm);
 }
 
 .tabsMedium {
-  --tabs-height: 40px;
+  --tabs-height: var(--shivanya-control-height-md);
   font-size: var(--shivanya-font-size-md);
 }
 
 .tabsLarge {
-  --tabs-height: 48px;
+  --tabs-height: var(--shivanya-control-height-lg);
   font-size: var(--shivanya-font-size-lg);
 }
 
 .tabsExtraLarge {
-  --tabs-height: 56px;
+  --tabs-height: var(--shivanya-control-height-xl);
   font-size: var(--shivanya-font-size-xl);
 }
 
 .tabsBordered {
-  border: 1px solid var(--navigation-border);
+  border: 1px solid var(--shivanya-color-border);
 }
 
 .tabsFilled {
-  background: var(--navigation-surface);
-  border: 1px solid var(--navigation-border);
+  background: var(--shivanya-color-surface);
+  border: 1px solid var(--shivanya-color-border);
 }
 
 .tabsGhost {
@@ -50,19 +50,19 @@
 }
 
 .tabsRadiusSmall {
-  border-radius: var(--navigation-radius-sm);
+  border-radius: var(--shivanya-radius-sm);
 }
 
 .tabsRadiusMedium {
-  border-radius: var(--navigation-radius-md);
+  border-radius: var(--shivanya-radius-md);
 }
 
 .tabsRadiusLarge {
-  border-radius: var(--navigation-radius-lg);
+  border-radius: var(--shivanya-radius-lg);
 }
 
 .tabsRadiusFull {
-  border-radius: var(--navigation-radius-full);
+  border-radius: var(--shivanya-radius-full);
 }
 
 .tabsHorizontal {
@@ -79,7 +79,7 @@
   width: 100%;
   min-width: 0;
   gap: 2px;
-  border-bottom: 1px solid var(--navigation-border);
+  border-bottom: 1px solid var(--shivanya-color-border);
   overflow: hidden;
 }
 
@@ -88,7 +88,7 @@
   flex-direction: column;
   min-width: 0;
   border-bottom: 0;
-  border-right: 1px solid var(--navigation-border);
+  border-right: 1px solid var(--shivanya-color-border);
 }
 
 .tabsButton {
@@ -103,21 +103,23 @@
   padding: 0 8px;
   background: transparent;
   border: 0;
-  border-radius: var(--navigation-radius-sm);
-  color: var(--navigation-text-secondary);
+  border-radius: var(--shivanya-radius-sm);
+  color: var(--shivanya-color-text-secondary);
   font: inherit;
   cursor: pointer;
   white-space: nowrap;
-  transition: var(--navigation-transition);
+  transition:
+    background var(--shivanya-duration-normal) var(--shivanya-ease-standard),
+    color var(--shivanya-duration-normal) var(--shivanya-ease-standard);
 }
 
 .tabsButton:hover {
-  background: var(--navigation-surface-hover);
-  color: var(--navigation-text);
+  background: var(--shivanya-color-surface-hover);
+  color: var(--shivanya-color-text-primary);
 }
 
 .tabsButtonActive {
-  color: var(--navigation-primary);
+  color: var(--shivanya-color-primary);
   font-weight: var(--shivanya-font-weight-semibold);
 }
 
@@ -128,7 +130,7 @@
   right: 8px;
   bottom: -1px;
   height: 2px;
-  background: var(--navigation-primary);
+  background: var(--shivanya-color-primary);
   border-radius: 2px;
 }
 
@@ -162,8 +164,8 @@
 
 .tabsPanel {
   min-width: 0;
-  padding: var(--navigation-gap-lg) 0;
-  color: var(--navigation-text-secondary);
+  padding: var(--shivanya-space-6) 0;
+  color: var(--shivanya-color-text-secondary);
   overflow-wrap: break-word;
 }
 
@@ -201,8 +203,8 @@
   min-width: 18px;
   height: 18px;
   padding: 0 5px;
-  border-radius: var(--navigation-radius-full);
-  background: var(--navigation-primary);
+  border-radius: var(--shivanya-radius-full);
+  background: var(--shivanya-color-primary);
   color: var(--shivanya-color-white);
   font-size: var(--shivanya-font-size-xs);
 }
@@ -226,7 +228,7 @@
     width: 100%;
     flex: none;
     border-right: 0;
-    border-bottom: 1px solid var(--navigation-border);
+    border-bottom: 1px solid var(--shivanya-color-border);
   }
 
   .tabsVertical .tabsButton {

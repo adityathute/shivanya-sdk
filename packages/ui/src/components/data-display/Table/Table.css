@@ -23,7 +23,7 @@
   color: var(--shivanya-color-text-primary);
   background: var(--shivanya-color-surface);
 
-  font-size: 14px;
+  font-size: var(--shivanya-font-size-sm);
 }
 
 /* Cells */
@@ -33,8 +33,7 @@
   box-sizing: border-box;
   padding: 13px 14px;
 
-  border-bottom: 1px solid
-    var(--shivanya-color-border);
+  border-bottom: 1px solid var(--shivanya-color-border);
 
   text-align: left;
   vertical-align: middle;
@@ -43,11 +42,10 @@
 }
 
 .shivanya-table th {
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
   white-space: nowrap;
 
-  background:
-    var(--shivanya-color-surface-hover);
+  background: var(--shivanya-color-surface-hover);
 }
 
 .shivanya-table td {
@@ -64,15 +62,12 @@
 
 .shivanya-table tfoot td,
 .shivanya-table tfoot th {
-  border-top: 1px solid
-    var(--shivanya-color-border);
-
+  border-top: 1px solid var(--shivanya-color-border);
   border-bottom: 0;
 
-  background:
-    var(--shivanya-color-surface-hover);
+  background: var(--shivanya-color-surface-hover);
 
-  font-weight: 600;
+  font-weight: var(--shivanya-font-weight-semibold);
 }
 
 /* =========================================================
@@ -80,22 +75,17 @@
    ========================================================= */
 
 .shivanya-table-bordered {
-  border: 1px solid
-    var(--shivanya-color-border);
-
+  border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-md);
-
   overflow: hidden;
 }
 
 .shivanya-table-filled {
-  background:
-    var(--shivanya-color-surface-hover);
+  background: var(--shivanya-color-surface-hover);
 }
 
 .shivanya-table-filled tbody tr {
-  background:
-    var(--shivanya-color-surface);
+  background: var(--shivanya-color-surface);
 }
 
 /* =========================================================
@@ -112,7 +102,7 @@
    ========================================================= */
 
 .shivanya-table-sm {
-  font-size: 12px;
+  font-size: var(--shivanya-font-size-xs);
 }
 
 .shivanya-table-sm th,
@@ -121,16 +111,16 @@
 }
 
 .shivanya-table-md {
-  font-size: 14px;
+  font-size: var(--shivanya-font-size-sm);
 }
 
 .shivanya-table-lg {
-  font-size: 15px;
+  font-size: var(--shivanya-font-size-15);
 }
 
 .shivanya-table-lg th,
 .shivanya-table-lg td {
-  padding: 16px;
+  padding: var(--shivanya-space-4);
 }
 
 /* =========================================================
@@ -141,14 +131,13 @@
   tbody
   tr {
   transition:
-    background-color 120ms ease;
+    background-color 120ms var(--shivanya-ease-standard);
 }
 
 .shivanya-table.is-hoverable
   tbody
   tr:hover {
-  background:
-    var(--shivanya-color-surface-hover);
+  background: var(--shivanya-color-surface-hover);
 }
 
 /* =========================================================
@@ -158,8 +147,7 @@
 .shivanya-table.is-striped
   tbody
   tr:nth-child(even) {
-  background:
-    var(--shivanya-color-surface-hover);
+  background: var(--shivanya-color-surface-hover);
 }
 
 /* =========================================================
@@ -169,15 +157,13 @@
 .shivanya-table
   tbody
   tr.is-selected {
-  background:
-    var(--shivanya-color-primary-soft);
+  background: var(--shivanya-color-primary-soft);
 }
 
 .shivanya-table.is-hoverable
   tbody
   tr.is-selected:hover {
-  background:
-    var(--shivanya-color-primary-soft);
+  background: var(--shivanya-color-primary-soft);
 }
 
 /* =========================================================
@@ -191,8 +177,7 @@
   top: 0;
   z-index: 2;
 
-  background:
-    var(--shivanya-color-surface-hover);
+  background: var(--shivanya-color-surface-hover);
 }
 
 /* When scrolling inside a bordered table */
@@ -287,7 +272,7 @@
 
 .shivanya-table-wrapper.has-max-height::-webkit-scrollbar-thumb {
   background: var(--shivanya-color-border);
-  border-radius: 999px;
+  border-radius: var(--shivanya-radius-full);
 }
 
 .shivanya-table-wrapper.has-max-height::-webkit-scrollbar-thumb:hover {

@@ -28,8 +28,8 @@
   min-height: 36px;
   border-radius: var(--shivanya-radius-sm);
   transition:
-    background-color 120ms ease,
-    color 120ms ease;
+    background-color 120ms var(--shivanya-ease-standard),
+    color 120ms var(--shivanya-ease-standard);
 }
 
 .shivanya-tree-item:hover:not(.is-disabled) {
@@ -115,15 +115,14 @@
 
 .shivanya-tree.has-lines
   .shivanya-tree-children {
-  margin-left: 20px;
-  border-left: 1px solid
-    var(--shivanya-color-border);
+  margin-left: var(--shivanya-space-5);
+  border-left: 1px solid var(--shivanya-color-border);
 }
 
 .shivanya-tree-sm
   .shivanya-tree-item {
   min-height: 30px;
-  font-size: 12px;
+  font-size: var(--shivanya-font-size-xs);
 }
 
 .shivanya-tree-sm
@@ -135,7 +134,7 @@
 .shivanya-tree-lg
   .shivanya-tree-item {
   min-height: 42px;
-  font-size: 15px;
+  font-size: var(--shivanya-font-size-15);
 }
 
 .shivanya-tree-lg
@@ -150,9 +149,7 @@
 
 .shivanya-tree-default
   .shivanya-tree-item.is-selected {
-  background: var(
-    --shivanya-color-primary-soft
-  );
+  background: var(--shivanya-color-primary-soft);
 }
 
 @media (prefers-reduced-motion: reduce) {

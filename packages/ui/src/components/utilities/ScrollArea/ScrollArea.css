@@ -2,7 +2,7 @@
   box-sizing: border-box;
   overflow: auto;
   max-width: 100%;
-  padding: 8px;
+  padding: var(--shivanya-space-2);
   background: var(--shivanya-color-surface);
   border-radius: var(--shivanya-radius-md);
 }

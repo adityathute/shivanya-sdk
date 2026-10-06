@@ -27,12 +27,9 @@
   border-radius: var(--shivanya-radius-md);
 
   transition:
-    color var(--shivanya-duration-fast)
-      var(--shivanya-ease-standard),
-    background-color var(--shivanya-duration-fast)
-      var(--shivanya-ease-standard),
-    border-color var(--shivanya-duration-fast)
-      var(--shivanya-ease-standard);
+    color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    background-color var(--shivanya-duration-fast) var(--shivanya-ease-standard),
+    border-color var(--shivanya-duration-fast) var(--shivanya-ease-standard);
 }
 
 .shivanya-icon-button:hover {
@@ -45,7 +42,7 @@
 }
 
 .shivanya-icon-button:disabled {
-  color: var(--shivanya-color-disabled);
+  color: var(--shivanya-color-disabled-text);
   background: var(--shivanya-color-disabled-background);
   cursor: not-allowed;
 }
@@ -61,8 +58,7 @@
   height: var(--shivanya-icon-button-icon-size);
 
   transition:
-    transform var(--shivanya-duration-normal)
-      var(--shivanya-ease-standard);
+    transform var(--shivanya-duration-normal) var(--shivanya-ease-standard);
 }
 
 .shivanya-icon-button-icon svg {
