@@ -97,13 +97,6 @@ export function Connections() {
               </Typography>
 
               <div className="shivanya-connection-status">
-                <span
-                  className={`shivanya-connection-status-dot ${
-                    connected ? "is-connected" : ""
-                  }`}
-                  aria-hidden="true"
-                />
-
                 <Typography
                   variant="caption"
                   size="xs"
@@ -128,7 +121,7 @@ export function Connections() {
                 </Button>
               ) : (
                 <Button
-                  size="sm"
+                  size="xs"
                   loading={working}
                   disabled={working}
                   onClick={connectGoogle}

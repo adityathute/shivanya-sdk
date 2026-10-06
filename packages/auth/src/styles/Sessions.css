@@ -60,7 +60,7 @@
 
 /* Account modal */
 .shivanya-account-content .shivanya-session-list {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .shivanya-session-card {
@@ -82,14 +82,16 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   grid-template-areas: "device info actions";
-  align-items: center;
+  align-items: end;
   gap: var(--shivanya-space-4);
+  width: 100%;
   min-width: 0;
 }
 
 .shivanya-session-device {
   display: flex;
   grid-area: device;
+  height: 100%;
   align-items: center;
   justify-content: center;
 }

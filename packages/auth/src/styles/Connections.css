@@ -46,19 +46,19 @@
 
 .shivanya-connection-list {
   display: grid;
-  grid-template-columns: repeat(3, max-content);
+  grid-template-columns: repeat(0, max-content);
   gap: var(--shivanya-space-4);
   width: 100%;
   min-width: 0;
 }
 
-/* Account modal */
 .shivanya-account-content .shivanya-connection-list {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .shivanya-connection-card {
   position: relative;
+  width: 100%;
   min-width: 0;
   box-sizing: border-box;
   border-color: var(--shivanya-color-border);
@@ -77,6 +77,7 @@
   grid-template-areas: "icon info actions";
   align-items: center;
   gap: var(--shivanya-space-3);
+  width: 100%;
   min-width: 0;
 }
 
@@ -113,14 +114,6 @@
   align-items: center;
   min-width: 0;
   gap: var(--shivanya-space-1);
-}
-
-.shivanya-connection-status-dot {
-  flex: 0 0 auto;
-  width: var(--shivanya-space-1);
-  height: var(--shivanya-space-1);
-  border-radius: var(--shivanya-radius-full);
-  background: var(--shivanya-color-text-muted);
 }
 
 .shivanya-connection-status-dot.is-connected {

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { Button, Card, MonitorIcon, Spinner, Typography } from "shivanya-ui";
+import { capitalizeWords } from "shivanya-core";
 
 import { useAuth } from "../../hooks/useAuth";
 import { AuthMessage } from "../shared/AuthMessage";
@@ -123,7 +124,7 @@ export function Sessions() {
               <div className="shivanya-session-info">
                 <div className="shivanya-session-name">
                   <Typography as="h4" variant="body" weight="semibold">
-                    {session.device || "Unknown device"}
+                    {capitalizeWords(session.device || "Unknown device")}
                   </Typography>
 
                   {session.current && (
