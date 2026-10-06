@@ -19,7 +19,6 @@ function extractFieldErrors(value: unknown): AuthFieldErrors {
   }
 
   const data = error.data as Record<string, unknown>;
-
   const errors = data.errors;
 
   if (
