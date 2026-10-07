@@ -124,12 +124,15 @@ export function ResetPassword({ token, onComplete }: ResetPasswordProps) {
           color="secondary"
           align="center"
         >
-          Your password has been changed successfully.
+          Your password has been changed successfully. Please sign in again
+          with your new password.
         </Typography>
 
-        <Button type="button" fullWidth onClick={onComplete}>
-          Back to sign in
-        </Button>
+        {onComplete && (
+          <Button type="button" fullWidth onClick={onComplete}>
+            Sign in
+          </Button>
+        )}
       </div>
     );
   }
