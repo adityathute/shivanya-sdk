@@ -113,7 +113,7 @@ export function Security() {
       setNext("");
       setConfirm("");
 
-      await logout();
+      clearAuth();
     } catch {}
   };
 

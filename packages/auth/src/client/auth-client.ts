@@ -188,10 +188,10 @@ export class AuthClient {
   }
 
   async clearAuth() {
-  if (this.mode === "token") {
-    await this.tokenStorage.clearTokens();
+    if (this.mode === "token") {
+      await this.tokenStorage.clearTokens();
+    }
   }
-}
 
   async refresh() {
     if (!this.refreshPromise) {
@@ -246,11 +246,29 @@ export class AuthClient {
   }
 
   async resetPassword(input: ResetPasswordInput) {
-    return this.request<unknown>("auth/reset-password/", this.json(input));
+    const result = await this.request<unknown>(
+      "auth/reset-password/",
+      this.json(input),
+    );
+
+    if (this.mode === "token") {
+      await this.tokenStorage.clearTokens();
+    }
+
+    return result;
   }
 
   async changePassword(input: ChangePasswordInput) {
-    return this.request<unknown>("auth/change-password/", this.json(input));
+    const result = await this.request<unknown>(
+      "auth/change-password/",
+      this.json(input),
+    );
+
+    if (this.mode === "token") {
+      await this.tokenStorage.clearTokens();
+    }
+
+    return result;
   }
 
   async deleteAccount(current_password: string) {
