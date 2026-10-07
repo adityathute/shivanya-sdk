@@ -1,28 +1,49 @@
 "use client";
 
 import { useState } from "react";
-import { Button, SettingsIcon, Select, Typography } from "shivanya-ui";
+import {
+  Button,
+  SettingsIcon,
+  Select,
+  Typography,
+} from "shivanya-ui";
 
 import { useAuth } from "../../hooks/useAuth";
+import { useAuthAction } from "../../hooks/useAuthAction";
 
 export interface SettingsProps {
   onThemeChange?: (theme: string) => void;
 }
 
-export function Settings({ onThemeChange }: SettingsProps) {
-  const { user } = useAuth();
+export function Settings({
+  onThemeChange,
+}: SettingsProps) {
+  const { user, client, refreshUser } = useAuth();
 
-  const [theme, setTheme] = useState(user?.settings?.theme ?? "system");
+  const [theme, setTheme] = useState(
+    user?.settings?.theme ?? "system",
+  );
 
-  const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = event.target.value;
+  const updateSettings = useAuthAction(async () =>
+    client.updateSettings({
+      theme,
+    }),
+  );
 
-    setTheme(value);
-    onThemeChange?.(value);
+  const handleThemeChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    setTheme(event.target.value);
   };
 
-  const applyAppearance = () => {
-    onThemeChange?.(theme);
+  const applyAppearance = async () => {
+    try {
+      await updateSettings.run();
+
+      await refreshUser();
+
+      onThemeChange?.(theme);
+    } catch {}
   };
 
   return (
@@ -34,11 +55,21 @@ export function Settings({ onThemeChange }: SettingsProps) {
           </span>
 
           <div className="shivanya-settings-title-content">
-            <Typography as="h3" variant="h3" size="lg" weight="semibold">
+            <Typography
+              as="h3"
+              variant="h3"
+              size="lg"
+              weight="semibold"
+            >
               Settings
             </Typography>
 
-            <Typography as="p" variant="body" size="xs" color="muted">
+            <Typography
+              as="p"
+              variant="body"
+              size="xs"
+              color="muted"
+            >
               Control your account experience and appearance.
             </Typography>
           </div>
@@ -47,11 +78,19 @@ export function Settings({ onThemeChange }: SettingsProps) {
 
       <section className="shivanya-settings-card">
         <div className="shivanya-settings-card-header">
-          <Typography as="h4" variant="body" weight="semibold">
+          <Typography
+            as="h4"
+            variant="body"
+            weight="semibold"
+          >
             Appearance
           </Typography>
 
-          <Typography as="p" variant="caption" color="muted">
+          <Typography
+            as="p"
+            variant="caption"
+            color="muted"
+          >
             Choose how ShivanyaMS should appear on your device.
           </Typography>
         </div>
@@ -71,11 +110,26 @@ export function Settings({ onThemeChange }: SettingsProps) {
           </div>
 
           <div className="shivanya-settings-actions">
-            <Button variant="outline" onClick={applyAppearance}>
+            <Button
+              variant="outline"
+              loading={updateSettings.loading}
+              onClick={applyAppearance}
+            >
               Apply appearance
             </Button>
           </div>
         </div>
+
+        {updateSettings.error &&
+          !Object.keys(updateSettings.fieldErrors).length && (
+            <Typography
+              as="p"
+              variant="caption"
+              color="danger"
+            >
+              {updateSettings.error}
+            </Typography>
+          )}
       </section>
     </div>
   );

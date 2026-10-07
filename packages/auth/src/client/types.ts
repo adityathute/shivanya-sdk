@@ -119,3 +119,7 @@ export interface UsernameAvailability {
   available: boolean;
   valid: boolean;
 }
+
+export interface UpdateSettingsInput {
+  theme?: string;
+}

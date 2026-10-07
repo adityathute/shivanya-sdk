@@ -9,6 +9,7 @@ import type {
   ProfileInput,
   RegisterInput,
   ResetPasswordInput,
+  UpdateSettingsInput
 } from "./types";
 import { AuthError } from "./types";
 import { createAuthRedirectUrl } from "./redirect";
@@ -322,6 +323,13 @@ export class AuthClient {
 
   async disconnectGoogle() {
     return this.request<{ google_connected: boolean }>("profile/connections/google/", { method: "DELETE" });
+  }
+
+  async updateSettings(input: { theme: string }) {
+    return this.request<{ theme: string }>("profile/settings/", {
+      method: "PATCH",
+      body: JSON.stringify(input),
+    });
   }
 
   googleConnectStartUrl(next?: string) {
