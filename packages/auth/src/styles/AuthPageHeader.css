@@ -1,0 +1,28 @@
+.shivanya-auth-page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--shivanya-space-1);
+  margin-bottom: var(--shivanya-space-6);
+}
+
+.shivanya-auth-page-header-icon {
+  display: grid;
+  place-items: center;
+  width: var(--shivanya-control-height-lg);
+  height: var(--shivanya-control-height-lg);
+  margin-bottom: var(--shivanya-space-2);
+  border-radius: var(--shivanya-radius-full);
+  background: var(--shivanya-color-primary-soft);
+  color: var(--shivanya-color-primary);
+}
+
+.shivanya-auth-page-header-icon svg {
+  width: var(--shivanya-icon-size-md);
+  height: var(--shivanya-icon-size-md);
+}
+
+.shivanya-auth-page-header-title,
+.shivanya-auth-page-header-subtitle {
+  margin: 0;
+}

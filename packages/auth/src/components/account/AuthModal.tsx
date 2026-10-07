@@ -18,6 +18,8 @@ import { VerifyEmail } from "../verify-email/VerifyEmail";
 import { AccountModal, type AccountView } from "./AccountModal";
 import { resolveAuthFeatures } from "./auth-features";
 import { RegisterEmail } from "../register/RegisterEmail";
+import { AuthPageHeader } from "../shared/AuthPageHeader";
+import { AuthPageFooter } from "../shared/AuthPageFooter";
 
 export type AuthView =
   | "login"
@@ -115,8 +117,6 @@ export function AuthModal({
 }: AuthModalProps) {
   const { isAuthenticated } = useAuth();
 
-  const currentYear = new Date().getFullYear();
-
   const enabled = useMemo(() => resolveAuthFeatures(features), [features]);
 
   const [view, setView] = useState<AuthView>(() =>
@@ -198,32 +198,7 @@ export function AuthModal({
         </IconButton>
 
         {view !== "forgot" && !registerSuccess && (
-          <div className="shivanya-auth-modal-heading">
-            <div className="shivanya-auth-modal-icon">
-              <LockIcon />
-            </div>
-
-            <Typography
-              as="h2"
-              variant="h3"
-              weight="bold"
-              align="center"
-              className="shivanya-auth-modal-title"
-            >
-              {title}
-            </Typography>
-
-            <Typography
-              as="p"
-              variant="body"
-              size="sm"
-              color="secondary"
-              align="center"
-              className="shivanya-auth-modal-subtitle"
-            >
-              {subtitle}
-            </Typography>
-          </div>
+          <AuthPageHeader title={title} subtitle={subtitle} />
         )}
 
         <div className="shivanya-auth-modal-body">
@@ -260,18 +235,7 @@ export function AuthModal({
           )}
         </div>
 
-        {view === "login" && (
-          <Typography
-            as="p"
-            variant="caption"
-            color="muted"
-            align="center"
-            size="sm"
-            className="shivanya-auth-modal-footer"
-          >
-            © {currentYear} ShivanyaMS • All rights reserved.
-          </Typography>
-        )}
+        {view === "login" && <AuthPageFooter />}
       </div>
     </Modal>
   );

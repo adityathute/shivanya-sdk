@@ -488,6 +488,65 @@ export const componentIcons: Record<
   WebsiteShell: { icon: "NavbarIcon", color: "#e84d62" },
   ShellProvider: { icon: "SettingsIcon", color: "#06b6d4" },
   ShellHooks: { icon: "BoltIcon", color: "#e8aa4d" },
+  AuthProvider: {
+    icon: "ShieldCheckIcon",
+    color: "#06b6d4",
+  },
+
+  Connections: {
+    icon: "LinkIcon",
+    color: "#4d9fe8",
+  },
+
+  ForgotPassword: {
+    icon: "LockIcon",
+    color: "#e8784d",
+  },
+
+  Login: {
+    icon: "LoginIcon",
+    color: "#22c55e",
+  },
+
+  Profile: {
+    icon: "UserIcon",
+    color: "#8b5cf6",
+  },
+
+  Register: {
+    icon: "UserPlusIcon",
+    color: "#38c99a",
+  },
+
+  RegisterEmail: {
+    icon: "UserPlusIcon",
+    color: "#e84da5",
+  },
+
+  ResetPassword: {
+    icon: "KeyIcon",
+    color: "#e8a54d",
+  },
+
+  Security: {
+    icon: "ShieldCheckIcon",
+    color: "#e83f62",
+  },
+
+  Sessions: {
+    icon: "MonitorIcon",
+    color: "#4d91e8",
+  },
+
+  Settings: {
+    icon: "SettingsIcon",
+    color: "#e8aa4d",
+  },
+
+  VerifyEmail: {
+    icon: "MailIcon",
+    color: "#36c978",
+  },
 };
 
 export const categoryIcons: Record<

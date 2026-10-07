@@ -1,0 +1,39 @@
+.shivanya-auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  padding: var(--shivanya-space-8);
+  background: var(--shivanya-color-background);
+  color: var(--shivanya-color-text-primary);
+}
+
+.shivanya-auth-page-content {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 500px;
+  padding: var(--shivanya-space-6);
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-lg);
+  background: var(--shivanya-color-surface);
+  box-shadow: var(--shivanya-shadow-md);
+}
+
+.shivanya-auth-page-body {
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .shivanya-auth-page {
+    align-items: flex-start;
+    padding: var(--shivanya-space-6) var(--shivanya-space-4);
+  }
+
+  .shivanya-auth-page-content {
+    max-width: 100%;
+  }
+}

@@ -1,4 +1,5 @@
 @import "./AuthModal.css";
+@import "./AuthPage.css";
 @import "./AccountModal.css";
 @import "./Login.css";
 @import "./Register.css";
@@ -11,3 +12,7 @@
 @import "./Connections.css";
 @import "./Security.css";
 @import "./Settings.css";
+@import "./AuthPageHeader.css";
+@import "./AuthPageFooter.css";
+@import "./AuthPageLayout.css";
+@import "./VerifyEmail.css";
