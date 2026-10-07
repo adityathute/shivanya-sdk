@@ -187,6 +187,12 @@ export class AuthClient {
     }
   }
 
+  async clearAuth() {
+  if (this.mode === "token") {
+    await this.tokenStorage.clearTokens();
+  }
+}
+
   async refresh() {
     if (!this.refreshPromise) {
       this.refreshPromise = (async () => {

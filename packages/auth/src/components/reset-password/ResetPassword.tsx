@@ -19,7 +19,7 @@ export interface ResetPasswordProps {
 }
 
 export function ResetPassword({ token, onComplete }: ResetPasswordProps) {
-  const { client, clearAuth } = useAuth();
+  const { client, logout } = useAuth();
 
   const [valid, setValid] = useState<boolean | null>(null);
   const [password, setPassword] = useState("");
@@ -139,7 +139,7 @@ export function ResetPassword({ token, onComplete }: ResetPasswordProps) {
 
     try {
       await run();
-      clearAuth();
+      await logout();
       setCompleted(true);
     } catch {}
   };
