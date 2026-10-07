@@ -130,3 +130,24 @@
   font-weight: 600;
   color: var(--shivanya-color-danger);
 }
+
+.shivanya-security-deletion-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.shivanya-security-deletion-actions button {
+  min-width: 140px;
+}
+
+@media (max-width: 700px) {
+  .shivanya-security-deletion-actions {
+    width: 100%;
+  }
+
+  .shivanya-security-deletion-actions button {
+    width: 100%;
+  }
+}

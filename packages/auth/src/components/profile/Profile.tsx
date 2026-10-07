@@ -542,7 +542,7 @@ export function Profile() {
 
       <div className="shivanya-profile-actions">
         <Button
-          variant="ghost"
+          variant="outline"
           onClick={reset}
           disabled={!hasChanges || loading}
         >

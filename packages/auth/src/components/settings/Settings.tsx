@@ -24,6 +24,8 @@ export function Settings({
     user?.settings?.theme ?? "system",
   );
 
+  const [success, setSuccess] = useState(false);
+
   const updateSettings = useAuthAction(async () =>
     client.updateSettings({
       theme,
@@ -34,15 +36,20 @@ export function Settings({
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     setTheme(event.target.value);
+    setSuccess(false);
   };
 
   const applyAppearance = async () => {
+    setSuccess(false);
+
     try {
       await updateSettings.run();
 
       await refreshUser();
 
       onThemeChange?.(theme);
+
+      setSuccess(true);
     } catch {}
   };
 
@@ -119,6 +126,16 @@ export function Settings({
             </Button>
           </div>
         </div>
+
+        {success && (
+          <Typography
+            as="p"
+            variant="caption"
+            color="success"
+          >
+            Appearance updated successfully.
+          </Typography>
+        )}
 
         {updateSettings.error &&
           !Object.keys(updateSettings.fieldErrors).length && (

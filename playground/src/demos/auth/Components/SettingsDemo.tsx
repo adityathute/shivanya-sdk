@@ -4,13 +4,13 @@ import { useState } from "react";
 import {
   AuthModal,
   AuthProvider,
-  Profile,
+  Settings,
   useAuth,
 } from "shivanya-auth";
 import { Button, Typography } from "shivanya-ui";
 import "../auth-demo.css";
 
-function ProfileTest() {
+function SettingsTest() {
   const { loading, isAuthenticated } = useAuth();
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -49,10 +49,10 @@ function ProfileTest() {
     );
   }
 
-  return <Profile />;
+  return <Settings />;
 }
 
-export default function ProfileDemo() {
+export default function SettingsDemo() {
   return (
     <section className="demo auth-demo">
       <AuthProvider
@@ -61,7 +61,7 @@ export default function ProfileDemo() {
           mode: "cookie",
         }}
       >
-        <ProfileTest />
+        <SettingsTest />
       </AuthProvider>
     </section>
   );

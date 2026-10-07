@@ -14,7 +14,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { useAuthAction } from "../../hooks/useAuthAction";
 
 export function Security() {
-  const { client, logout, user } = useAuth();
+  const { client, logout, user, refreshUser } = useAuth();
 
   const [current, setCurrent] = useState("");
   const [next, setNext] = useState("");
@@ -38,6 +38,15 @@ export function Security() {
   const deletion = useAuthAction(async () =>
     client.deleteAccount(deletionPassword),
   );
+
+  const cancellation = useAuthAction(async () => client.cancelDeleteAccount());
+
+  const cancelDeletion = async () => {
+    try {
+      await cancellation.run();
+      await refreshUser();
+    } catch {}
+  };
 
   const currentPasswordError =
     changePassword.fieldErrors.current_password ||
@@ -79,14 +88,10 @@ export function Security() {
       return "Deletion is being processed.";
     }
 
-    const totalMinutes = Math.floor(
-      difference / (1000 * 60),
-    );
+    const totalMinutes = Math.floor(difference / (1000 * 60));
 
     const days = Math.floor(totalMinutes / (60 * 24));
-    const hours = Math.floor(
-      (totalMinutes % (60 * 24)) / 60,
-    );
+    const hours = Math.floor((totalMinutes % (60 * 24)) / 60);
     const minutes = totalMinutes % 60;
 
     if (days > 0) {
@@ -126,6 +131,8 @@ export function Security() {
 
       setDeleteConfirmOpen(false);
       setDeletionPassword("");
+
+      await logout();
     } catch {}
   };
 
@@ -139,21 +146,11 @@ export function Security() {
             </span>
 
             <div className="shivanya-security-title-content">
-              <Typography
-                as="h3"
-                variant="h3"
-                size="lg"
-                weight="semibold"
-              >
+              <Typography as="h3" variant="h3" size="lg" weight="semibold">
                 Security
               </Typography>
 
-              <Typography
-                as="p"
-                variant="body"
-                size="xs"
-                color="muted"
-              >
+              <Typography as="p" variant="body" size="xs" color="muted">
                 Protect your account and manage sensitive actions.
               </Typography>
             </div>
@@ -162,41 +159,27 @@ export function Security() {
 
         <section className="shivanya-security-card">
           <div className="shivanya-security-card-header">
-            <Typography
-              as="h4"
-              variant="body"
-              weight="semibold"
-            >
+            <Typography as="h4" variant="body" weight="semibold">
               Change password
             </Typography>
 
-            <Typography
-              as="p"
-              variant="caption"
-              color="muted"
-            >
+            <Typography as="p" variant="caption" color="muted">
               Use a new password you do not reuse elsewhere.
             </Typography>
           </div>
 
-          {!hasChangePasswordFieldError &&
-            changePassword.error && (
-              <ErrorMessage
-                size="sm"
-                variant="error"
-              >
-                {changePassword.error}
-              </ErrorMessage>
-            )}
+          {!hasChangePasswordFieldError && changePassword.error && (
+            <ErrorMessage size="sm" variant="error">
+              {changePassword.error}
+            </ErrorMessage>
+          )}
 
           <div className="shivanya-security-fields">
             <div className="shivanya-security-field">
               <PasswordInput
                 label="Current password"
                 value={current}
-                onChange={(event) =>
-                  setCurrent(event.target.value)
-                }
+                onChange={(event) => setCurrent(event.target.value)}
                 fullWidth
                 error={currentPasswordError}
               />
@@ -206,9 +189,7 @@ export function Security() {
               <PasswordInput
                 label="New password"
                 value={next}
-                onChange={(event) =>
-                  setNext(event.target.value)
-                }
+                onChange={(event) => setNext(event.target.value)}
                 helperText="At least 8 characters."
                 fullWidth
                 error={newPasswordError}
@@ -219,23 +200,15 @@ export function Security() {
               <PasswordInput
                 label="Confirm new password"
                 value={confirm}
-                onChange={(event) =>
-                  setConfirm(event.target.value)
-                }
+                onChange={(event) => setConfirm(event.target.value)}
                 fullWidth
-                error={
-                  changePassword.fieldErrors
-                    .confirm_password
-                }
+                error={changePassword.fieldErrors.confirm_password}
               />
             </div>
           </div>
 
           <div className="shivanya-security-actions">
-            <Button
-              loading={changePassword.loading}
-              onClick={submitPassword}
-            >
+            <Button loading={changePassword.loading} onClick={submitPassword}>
               Change password
             </Button>
           </div>
@@ -249,62 +222,55 @@ export function Security() {
           }`}
         >
           <div className="shivanya-security-card-header">
-            <Typography
-              as="h4"
-              variant="body"
-              weight="semibold"
-            >
+            <Typography as="h4" variant="body" weight="semibold">
               Delete account
             </Typography>
 
             {deletionScheduled ? (
-              <Typography
-                as="p"
-                variant="caption"
-                color="muted"
-              >
+              <Typography as="p" variant="caption" color="muted">
                 Your account is scheduled for deletion.
               </Typography>
             ) : (
-              <Typography
-                as="p"
-                variant="caption"
-                color="muted"
-              >
-                Your account can be scheduled for deletion.
-                This action should only be used when you are
-                sure.
+              <Typography as="p" variant="caption" color="muted">
+                Your account can be scheduled for deletion. This action should
+                only be used when you are sure.
               </Typography>
             )}
           </div>
 
           {deletionScheduled ? (
             <div className="shivanya-security-deletion-status">
-              <div className="shivanya-security-deletion-status-icon">
-                !
-              </div>
+              <div className="shivanya-security-deletion-status-icon">!</div>
 
               <div className="shivanya-security-deletion-status-content">
-                <Typography
-                  as="h4"
-                  variant="body"
-                  weight="semibold"
-                >
+                <Typography as="h4" variant="body" weight="semibold">
                   Account deletion scheduled
                 </Typography>
 
-                <Typography
-                  as="p"
-                  variant="caption"
-                  color="muted"
-                >
-                  Your account will be permanently deleted
-                  after the deletion period ends.
+                <Typography as="p" variant="caption" color="muted">
+                  Your account will be permanently deleted after the deletion
+                  period ends.
                 </Typography>
 
                 <div className="shivanya-security-deletion-timer">
                   {getRemainingTime()}
                 </div>
+
+                <div className="shivanya-security-deletion-actions">
+                  <Button
+                    variant="outline"
+                    loading={cancellation.loading}
+                    onClick={cancelDeletion}
+                  >
+                    Cancel deletion
+                  </Button>
+                </div>
+
+                {cancellation.error && (
+                  <ErrorMessage size="sm" variant="error">
+                    {cancellation.error}
+                  </ErrorMessage>
+                )}
               </div>
             </div>
           ) : (
@@ -313,27 +279,15 @@ export function Security() {
                 <PasswordInput
                   label="Current password"
                   value={deletionPassword}
-                  onChange={(event) =>
-                    setDeletionPassword(
-                      event.target.value,
-                    )
-                  }
+                  onChange={(event) => setDeletionPassword(event.target.value)}
                   fullWidth
-                  error={
-                    verifyDeletion.fieldErrors
-                      .current_password
-                  }
+                  error={verifyDeletion.fieldErrors.current_password}
                 />
               </div>
 
-              {Object.keys(
-                verifyDeletion.fieldErrors,
-              ).length === 0 &&
+              {Object.keys(verifyDeletion.fieldErrors).length === 0 &&
                 verifyDeletion.error && (
-                  <ErrorMessage
-                    size="sm"
-                    variant="error"
-                  >
+                  <ErrorMessage size="sm" variant="error">
                     {verifyDeletion.error}
                   </ErrorMessage>
                 )}
