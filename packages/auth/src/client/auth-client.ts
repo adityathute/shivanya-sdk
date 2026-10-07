@@ -137,9 +137,11 @@ export class AuthClient {
       retry &&
       path !== this.tokenRefreshPath &&
       !path.startsWith("auth/login/") &&
-      !path.startsWith("auth/register/")
+      !path.startsWith("auth/register/") &&
+      extractMessage(data, "") !== "Your session has been signed out."
     ) {
       const refreshed = await this.refresh();
+
       if (refreshed) return this.request<T>(path, options, false);
     }
 

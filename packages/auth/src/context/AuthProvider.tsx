@@ -19,6 +19,7 @@ export interface AuthContextValue {
   refreshUser: () => Promise<AuthUser | null>;
   login: (email: string, password: string) => Promise<AuthUser>;
   logout: () => Promise<void>;
+  clearAuth: () => void;
   getAccessToken: () => Promise<string | null>;
 }
 
@@ -47,6 +48,10 @@ export function AuthProvider({
   );
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const clearAuth = useCallback(() => {
+    setUser(null);
+  }, []);
 
   const refreshUser = useCallback(async () => {
     try {
@@ -101,19 +106,29 @@ export function AuthProvider({
 
   const getAccessToken = useCallback(() => client.getAccessToken(), [client]);
 
-  const value = useMemo<AuthContextValue>(
-    () => ({
-      client,
-      user,
-      loading,
-      isAuthenticated: Boolean(user),
-      refreshUser,
-      login,
-      logout,
-      getAccessToken,
-    }),
-    [client, user, loading, refreshUser, login, logout, getAccessToken],
-  );
+const value = useMemo<AuthContextValue>(
+  () => ({
+    client,
+    user,
+    loading,
+    isAuthenticated: Boolean(user),
+    refreshUser,
+    login,
+    logout,
+    clearAuth,
+    getAccessToken,
+  }),
+  [
+    client,
+    user,
+    loading,
+    refreshUser,
+    login,
+    logout,
+    clearAuth,
+    getAccessToken,
+  ],
+);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

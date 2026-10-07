@@ -18,23 +18,15 @@ export interface ResetPasswordProps {
   onComplete?: () => void;
 }
 
-export function ResetPassword({
-  token,
-  onComplete,
-}: ResetPasswordProps) {
-  const { client } = useAuth();
+export function ResetPassword({ token, onComplete }: ResetPasswordProps) {
+  const { client, clearAuth } = useAuth();
 
   const [valid, setValid] = useState<boolean | null>(null);
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [completed, setCompleted] = useState(false);
 
-  const {
-    run,
-    loading,
-    error,
-    fieldErrors,
-  } = useAuthAction(async () =>
+  const { run, loading, error, fieldErrors } = useAuthAction(async () =>
     client.resetPassword({
       token,
       new_password: password,
@@ -42,8 +34,7 @@ export function ResetPassword({
     }),
   );
 
-  const hasFieldErrors =
-    Object.keys(fieldErrors).length > 0;
+  const hasFieldErrors = Object.keys(fieldErrors).length > 0;
 
   useEffect(() => {
     let active = true;
@@ -76,12 +67,7 @@ export function ResetPassword({
           <LockIcon />
         </div>
 
-        <Typography
-          as="h2"
-          variant="h4"
-          weight="bold"
-          align="center"
-        >
+        <Typography as="h2" variant="h4" weight="bold" align="center">
           Checking reset link
         </Typography>
 
@@ -101,16 +87,9 @@ export function ResetPassword({
   if (!valid) {
     return (
       <div className="shivanya-reset-password-state">
-        <div className="shivanya-reset-password-error-icon">
-          !
-        </div>
+        <div className="shivanya-reset-password-error-icon">!</div>
 
-        <Typography
-          as="h2"
-          variant="h4"
-          weight="bold"
-          align="center"
-        >
+        <Typography as="h2" variant="h4" weight="bold" align="center">
           Reset link expired
         </Typography>
 
@@ -134,12 +113,7 @@ export function ResetPassword({
           <CheckIcon />
         </div>
 
-        <Typography
-          as="h2"
-          variant="h4"
-          weight="bold"
-          align="center"
-        >
+        <Typography as="h2" variant="h4" weight="bold" align="center">
           Password updated
         </Typography>
 
@@ -153,11 +127,7 @@ export function ResetPassword({
           Your password has been changed successfully.
         </Typography>
 
-        <Button
-          type="button"
-          fullWidth
-          onClick={onComplete}
-        >
+        <Button type="button" fullWidth onClick={onComplete}>
           Back to sign in
         </Button>
       </div>
@@ -169,6 +139,7 @@ export function ResetPassword({
 
     try {
       await run();
+      clearAuth();
       setCompleted(true);
     } catch {}
   };
@@ -180,12 +151,7 @@ export function ResetPassword({
           <LockIcon />
         </div>
 
-        <Typography
-          as="h2"
-          variant="h3"
-          weight="bold"
-          align="center"
-        >
+        <Typography as="h2" variant="h3" weight="bold" align="center">
           Choose a New Password
         </Typography>
 
@@ -200,22 +166,15 @@ export function ResetPassword({
         </Typography>
       </div>
 
-      {!hasFieldErrors && (
-        <AuthMessage message={error} />
-      )}
+      {!hasFieldErrors && <AuthMessage message={error} />}
 
-      <form
-        className="shivanya-reset-password-form"
-        onSubmit={submit}
-      >
+      <form className="shivanya-reset-password-form" onSubmit={submit}>
         <div>
           <PasswordInput
             label="New password"
             placeholder="Enter your new password"
             value={password}
-            onChange={(event) =>
-              setPassword(event.target.value)
-            }
+            onChange={(event) => setPassword(event.target.value)}
             autoComplete="new-password"
             helperText="Use at least 8 characters."
             required
@@ -229,9 +188,7 @@ export function ResetPassword({
             label="Confirm password"
             placeholder="Confirm your new password"
             value={confirm}
-            onChange={(event) =>
-              setConfirm(event.target.value)
-            }
+            onChange={(event) => setConfirm(event.target.value)}
             autoComplete="new-password"
             required
             fullWidth

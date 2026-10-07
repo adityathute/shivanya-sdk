@@ -14,7 +14,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { useAuthAction } from "../../hooks/useAuthAction";
 
 export function Security() {
-  const { client, logout, user, refreshUser } = useAuth();
+  const { client, logout, clearAuth, user, refreshUser } = useAuth();
 
   const [current, setCurrent] = useState("");
   const [next, setNext] = useState("");
@@ -113,7 +113,7 @@ export function Security() {
       setNext("");
       setConfirm("");
 
-      await logout();
+      clearAuth();
     } catch {}
   };
 
