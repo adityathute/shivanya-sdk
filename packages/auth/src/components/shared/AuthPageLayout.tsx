@@ -1,7 +1,7 @@
 "use client";
 
-import { AuthPageFooter } from "./AuthPageFooter";
-import { AuthPageHeader } from "./AuthPageHeader";
+import { AuthPageFooter } from "./AuthPageFooter.js";
+import { AuthPageHeader } from "./AuthPageHeader.js";
 
 export interface AuthPageLayoutProps {
   title?: string;
