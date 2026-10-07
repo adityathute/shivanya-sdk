@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { AuthError } from "../client/types";
 
 export type AuthFieldErrors = Record<string, string>;
 
@@ -32,10 +31,19 @@ function extractFieldErrors(value: unknown): AuthFieldErrors {
   for (const [field, messages] of Object.entries(
     errors as Record<string, unknown>,
   )) {
+    // These are API response metadata, not field errors.
+    if (
+      field === "success" ||
+      field === "message" ||
+      field === "errors"
+    ) {
+      continue;
+    }
+
     if (Array.isArray(messages)) {
       const message = messages.find(
         (item): item is string =>
-          typeof item === "string",
+          typeof item === "string" && item.length > 0,
       );
 
       if (message) {
@@ -47,6 +55,35 @@ function extractFieldErrors(value: unknown): AuthFieldErrors {
   }
 
   return fieldErrors;
+}
+
+function extractErrorMessage(value: unknown): string {
+  if (value && typeof value === "object") {
+    const error = value as {
+      data?: unknown;
+      message?: unknown;
+    };
+
+    if (error.data && typeof error.data === "object") {
+      const data = error.data as Record<string, unknown>;
+
+      if (
+        typeof data.message === "string" &&
+        data.message
+      ) {
+        return data.message;
+      }
+    }
+
+    if (
+      typeof error.message === "string" &&
+      error.message
+    ) {
+      return error.message;
+    }
+  }
+
+  return "Something went wrong.";
 }
 
 export function useAuthAction<
@@ -70,14 +107,9 @@ export function useAuthAction<
         return await action(...args);
       } catch (value) {
         const fields = extractFieldErrors(value);
+        const message = extractErrorMessage(value);
 
         setFieldErrors(fields);
-
-        const message =
-          value instanceof AuthError || value instanceof Error
-            ? value.message
-            : "Something went wrong.";
-
         setError(message);
 
         throw value;

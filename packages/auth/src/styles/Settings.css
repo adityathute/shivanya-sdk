@@ -1,0 +1,91 @@
+.shivanya-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.shivanya-settings-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.shivanya-settings-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.shivanya-settings-title-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: var(--shivanya-radius-md);
+  background: var(--shivanya-color-primary-soft);
+  color: var(--shivanya-color-primary);
+}
+
+.shivanya-settings-title-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.shivanya-settings-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 18px;
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-lg);
+  background: var(--shivanya-color-modal-background);
+}
+
+.shivanya-settings-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.shivanya-settings-appearance-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.shivanya-settings-field {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shivanya-settings-actions {
+  display: flex;
+  flex-shrink: 0;
+  padding-bottom: 0;
+}
+
+@media (max-width: 700px) {
+  .shivanya-settings-card {
+    padding: 16px;
+  }
+
+  .shivanya-settings-appearance-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .shivanya-settings-actions {
+    width: 100%;
+  }
+
+  .shivanya-settings-actions button {
+    width: 100%;
+  }
+}

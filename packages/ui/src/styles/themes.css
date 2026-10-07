@@ -58,6 +58,9 @@
     --shivanya-color-danger-background: #450a0a;
     --shivanya-color-danger-border: #991b1b;
 
+    --shivanya-color-danger-background-soft: #21171a;
+    --shivanya-color-danger-background-subtle: #191518;
+
     --shivanya-color-info-background: #082f49;
     --shivanya-color-info-border: #0369a1;
 
@@ -128,6 +131,9 @@ html[data-theme="dark"] {
 
   --shivanya-color-danger-background: #450a0a;
   --shivanya-color-danger-border: #991b1b;
+
+  --shivanya-color-danger-background-soft: #21171a;
+  --shivanya-color-danger-background-subtle: #191518;
 
   --shivanya-color-info-background: #082f49;
   --shivanya-color-info-border: #0369a1;

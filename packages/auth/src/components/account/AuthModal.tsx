@@ -159,6 +159,11 @@ export function AuthModal({
     );
   }
 
+  const goToLogin = () => {
+    setRegisterSuccess(false);
+    setView("login");
+  };
+
   const success = () => {
     if (enabled.has("account")) {
       setAccountOpen(true);
@@ -233,36 +238,25 @@ export function AuthModal({
           {view === "register" && (
             <Register
               onRegisterWithEmail={() => setView("register-email")}
-              onLogin={() => setView("login")}
+              onLogin={goToLogin}
             />
           )}
 
           {view === "register-email" && (
             <RegisterEmail
-              onLogin={() => {
-                setRegisterSuccess(false);
-                setView("login");
-              }}
+              onLogin={goToLogin}
               onSuccess={() => setRegisterSuccess(true)}
             />
           )}
 
-          {view === "forgot" && (
-            <ForgotPassword onBack={() => setView("login")} />
-          )}
+          {view === "forgot" && <ForgotPassword onBack={goToLogin} />}
 
           {view === "reset" && resetToken && (
-            <ResetPassword
-              token={resetToken}
-              onComplete={() => setView("login")}
-            />
+            <ResetPassword token={resetToken} onComplete={goToLogin} />
           )}
 
           {view === "verify" && verifyToken && (
-            <VerifyEmail
-              token={verifyToken}
-              onComplete={() => setView("login")}
-            />
+            <VerifyEmail token={verifyToken} onComplete={goToLogin} />
           )}
         </div>
 

@@ -1,0 +1,132 @@
+.shivanya-security {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.shivanya-security-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.shivanya-security-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.shivanya-security-title-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: var(--shivanya-radius-md);
+  background: var(--shivanya-color-primary-soft);
+  color: var(--shivanya-color-primary);
+}
+
+.shivanya-security-title-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.shivanya-security-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid var(--shivanya-color-border);
+  border-radius: var(--shivanya-radius-lg);
+  background: var(--shivanya-color-modal-background);
+}
+
+.shivanya-security-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.shivanya-security-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.shivanya-security-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shivanya-security-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 2px;
+}
+
+.shivanya-security-danger {
+  border-color: var(--shivanya-color-danger);
+}
+
+@media (max-width: 700px) {
+  .shivanya-security-card {
+    padding: 16px;
+  }
+
+  .shivanya-security-actions {
+    width: 100%;
+  }
+
+  .shivanya-security-actions button {
+    width: 100%;
+  }
+}
+
+.shivanya-security-deletion-scheduled {
+  border-color: var(--shivanya-color-danger);
+}
+
+.shivanya-security-deletion-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--shivanya-color-danger);
+  border-radius: var(--shivanya-radius-md);
+  background: var(--shivanya-color-danger-background-subtle);
+}
+
+.shivanya-security-deletion-status-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--shivanya-color-danger);
+  color: #fff;
+  font-weight: 700;
+}
+
+.shivanya-security-deletion-status-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.shivanya-security-deletion-status-content h4,
+.shivanya-security-deletion-status-content p {
+  margin: 0;
+}
+
+.shivanya-security-deletion-timer {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--shivanya-color-danger);
+}
