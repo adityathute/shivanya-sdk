@@ -13,6 +13,8 @@
 .shivanya-auth-page-content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   width: 100%;
   max-width: 500px;
