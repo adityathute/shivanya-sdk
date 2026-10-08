@@ -121,3 +121,10 @@
     width: 100%;
   }
 }
+
+.user-dropdown-demo {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  min-height: 300px;
+}

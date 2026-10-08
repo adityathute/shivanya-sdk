@@ -5,8 +5,9 @@
 .shivanya-profile-header {
   position: relative;
   z-index: 10;
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--shivanya-space-5);
   overflow: visible;
 }
@@ -62,6 +63,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--shivanya-space-4);
+  margin-top: 16px;
 }
 
 /* Account modal */
@@ -100,7 +102,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: var(--shivanya-space-3);
-  padding-top: var(--shivanya-space-1);
+  margin-top: 16px;
 }
 
 @media (max-width: 700px) {

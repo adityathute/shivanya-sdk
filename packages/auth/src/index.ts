@@ -9,6 +9,8 @@ export * from "./hooks/useAuth.js";
 export * from "./hooks/useAuthAction.js";
 export * from "./components/account/AuthModal.js";
 export * from "./components/account/AccountModal.js";
+export * from "./components/account/AccountOverview.js";
+export * from "./components/account/UserDropdown.js";
 export * from "./components/account/AuthPage.js";
 export * from "./components/account/auth-features.js";
 export * from "./components/login/Login.js";

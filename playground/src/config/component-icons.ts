@@ -547,6 +547,11 @@ export const componentIcons: Record<
     icon: "MailIcon",
     color: "#36c978",
   },
+
+  AccountOverview: {
+    icon: "HomeIcon",
+    color: "#a855f7",
+  },
 };
 
 export const categoryIcons: Record<
