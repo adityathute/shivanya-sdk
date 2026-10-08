@@ -1,4 +1,4 @@
-.shivanya-auth-page {
+.shivanya-auth-layout-page {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,7 +10,7 @@
   color: var(--shivanya-color-text-primary);
 }
 
-.shivanya-auth-page-content {
+.shivanya-auth-layout-page-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,12 +30,12 @@
 }
 
 @media (max-width: 640px) {
-  .shivanya-auth-page {
+  .shivanya-auth-layout-page {
     align-items: flex-start;
     padding: var(--shivanya-space-6) var(--shivanya-space-4);
   }
 
-  .shivanya-auth-page-content {
+  .shivanya-auth-layout-page-content {
     max-width: 100%;
   }
 }

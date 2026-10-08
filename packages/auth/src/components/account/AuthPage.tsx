@@ -89,8 +89,8 @@ export function AuthPage({
             : "Verify your email";
 
   return (
-    <main className="shivanya-auth-page">
-      <div className="shivanya-auth-page-content">
+    <main className="shivanya-auth-form-page">
+      <div className="shivanya-auth-form-page-content">
         <AuthShell
           title={title}
           subtitle={

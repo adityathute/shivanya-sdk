@@ -19,8 +19,8 @@ export function AuthPageLayout({
   children,
 }: AuthPageLayoutProps) {
   return (
-    <main className="shivanya-auth-page">
-      <div className="shivanya-auth-page-content">
+    <main className="shivanya-auth-layout-page">
+      <div className="shivanya-auth-layout-page-content">
         {showHeader && title && subtitle && (
           <AuthPageHeader
             title={title}

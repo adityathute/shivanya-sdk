@@ -5,9 +5,8 @@
 .shivanya-profile-header {
   position: relative;
   z-index: 10;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--shivanya-space-5);
   overflow: visible;
 }
