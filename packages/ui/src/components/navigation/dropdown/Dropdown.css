@@ -143,11 +143,6 @@
   border-color: var(--shivanya-color-border-hover);
 }
 
-.dropdownGhost .dropdownTrigger:hover {
-  background: transparent;
-  border-color: transparent;
-}
-
 .dropdownTrigger:focus-visible {
   outline: 2px solid var(--shivanya-color-focus);
   outline-offset: 2px;

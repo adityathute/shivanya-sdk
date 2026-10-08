@@ -46,10 +46,14 @@
 
 .shivanya-connection-list {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: repeat(0, max-content);
   gap: var(--shivanya-space-4);
   width: 100%;
   min-width: 0;
+}
+
+.shivanya-account-content .shivanya-connection-list {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .shivanya-connection-card {
@@ -125,7 +129,8 @@
 }
 
 @media (max-width: 640px) {
-  .shivanya-connection-list {
+  .shivanya-connection-list,
+  .shivanya-account-content .shivanya-connection-list {
     grid-template-columns: 1fr;
   }
 

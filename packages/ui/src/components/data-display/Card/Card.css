@@ -3,7 +3,7 @@
   flex-direction: column;
   box-sizing: border-box;
   min-width: 0;
-  width: 100%;
+  width: fit-content;
   overflow: hidden;
   background: var(--shivanya-color-surface);
   color: var(--shivanya-color-text-primary);

@@ -35,7 +35,7 @@
 }
 
 .shivanya-profile-avatar-trigger {
-  min-width: 0;
+  min-width: 0 !important;
   width: auto;
   height: auto;
   padding: 0;
@@ -43,6 +43,11 @@
   border-radius: var(--shivanya-radius-full);
   background: transparent;
   box-shadow: none;
+}
+
+.shivanya-profile-avatar-trigger:hover {
+  background: transparent;
+  border-color: transparent;
 }
 
 .shivanya-profile-avatar-trigger:focus-visible {
