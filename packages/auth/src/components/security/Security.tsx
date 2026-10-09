@@ -70,8 +70,8 @@ export function Security() {
 
       setPasswordSetupLoading(true);
       void client.verifyGooglePassword(googleCode).then(async (result) => {
-        if (!active) return;
         setHasPassword(false);
+        setPasswordSetupError(null);
         if (googleAction === "delete") {
           await client.verifyDeleteAccount({ verification_token: result.verification_token });
           setDeletionVerificationToken(result.verification_token);
@@ -80,11 +80,12 @@ export function Security() {
           setVerificationToken(result.verification_token);
         }
       }).catch((error) => {
-        if (active) setPasswordSetupError(
+        setPasswordSetupError(
           error instanceof Error ? error.message : "Google verification failed.",
         );
       }).finally(() => {
-        if (active) setPasswordSetupLoading(false);
+        setPasswordSetupLoading(false);
+        setDeleteGoogleLoading(false);
       });
     }
 
