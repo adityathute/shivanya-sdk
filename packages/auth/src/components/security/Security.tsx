@@ -126,8 +126,13 @@ export function Security() {
             error instanceof Error
               ? error.message
               : "Google verification failed.";
-          if (googleAction === "delete") setDeletionGoogleError(message);
-          else setPasswordSetupError(message);
+          if (googleAction === "delete") {
+            setDeletionGoogleError(message);
+          } else if (googleAction === "cancel") {
+            setCancelError(message);
+          } else {
+            setPasswordSetupError(message);
+          }
         })
         .finally(() => {
           setPasswordSetupLoading(false);
