@@ -32,7 +32,6 @@ export function Security() {
   const [cancelPassword, setCancelPassword] = useState("");
   const [cancelError, setCancelError] = useState<string | null>(null);
   const [cancelFormOpen, setCancelFormOpen] = useState(false);
-  const [passwordSetupSuccess, setPasswordSetupSuccess] = useState<string | null>(null);
   const [deletionGoogleError, setDeletionGoogleError] = useState<string | null>(null);
   const [passwordSetupLoading, setPasswordSetupLoading] = useState(false);
   const [deleteGoogleLoading, setDeleteGoogleLoading] = useState(false);
