@@ -298,12 +298,18 @@ export class AuthClient {
     return result;
   }
 
-  async deleteAccount(current_password: string) {
-    return this.request<{ deletion_at: string }>("auth/delete-account/", this.json({ current_password }));
+  async deleteAccount(verification: string | { verification_token: string }) {
+    const body = typeof verification === "string"
+      ? { current_password: verification }
+      : verification;
+    return this.request<{ deletion_at: string }>("auth/delete-account/", this.json(body));
   }
 
-  async verifyDeleteAccount(current_password: string) {
-    return this.request<unknown>("auth/verify-delete-account/", this.json({ current_password }));
+  async verifyDeleteAccount(verification: string | { verification_token: string }) {
+    const body = typeof verification === "string"
+      ? { current_password: verification }
+      : verification;
+    return this.request<unknown>("auth/verify-delete-account/", this.json(body));
   }
 
   async verifyGooglePassword(google_code: string) {
@@ -321,17 +327,17 @@ export class AuthClient {
     return this.request<unknown>("auth/create-password/", this.json(input));
   }
 
-  googlePasswordVerificationStartUrl(next?: string) {
+  googlePasswordVerificationStartUrl(next?: string, purpose: "verify-password" | "verify-delete" = "verify-password") {
     const url = new URL(`${this.baseUrl}${this.apiPrefix}/auth/google/connect/start/`);
-    url.searchParams.set("purpose", "verify-password");
+    url.searchParams.set("purpose", purpose);
     if (next) url.searchParams.set("next", next);
     return url.toString();
   }
 
-  async startGooglePasswordVerificationUrl(next?: string) {
-    if (this.mode === "cookie") return this.googlePasswordVerificationStartUrl(next);
+  async startGooglePasswordVerificationUrl(next?: string, purpose: "verify-password" | "verify-delete" = "verify-password") {
+    if (this.mode === "cookie") return this.googlePasswordVerificationStartUrl(next, purpose);
 
-    const params = new URLSearchParams({ purpose: "verify-password" });
+    const params = new URLSearchParams({ purpose });
     if (next) params.set("next", next);
     const result = await this.request<{ url: string }>(
       `auth/google/connect/start/?${params.toString()}`,
