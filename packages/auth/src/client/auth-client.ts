@@ -63,6 +63,11 @@ function readTokenPair(data: unknown): AuthTokenPair | null {
   return { accessToken, refreshToken };
 }
 
+type GoogleVerificationPurpose =
+  | "verify-password"
+  | "verify-delete"
+  | "verify-cancel";
+
 export class AuthClient {
   private readonly baseUrl: string;
   private readonly apiPrefix: string;
@@ -327,25 +332,43 @@ export class AuthClient {
     return this.request<unknown>("auth/create-password/", this.json(input));
   }
 
-  googlePasswordVerificationStartUrl(next?: string, purpose: "verify-password" | "verify-delete" = "verify-password") {
-    const url = new URL(`${this.baseUrl}${this.apiPrefix}/auth/google/connect/start/`);
+  googlePasswordVerificationStartUrl(
+    next?: string,
+    purpose: GoogleVerificationPurpose = "verify-password",
+  ) {
+    const url = new URL(
+      `${this.baseUrl}${this.apiPrefix}/auth/google/connect/start/`,
+    );
+
     url.searchParams.set("purpose", purpose);
-    if (next) url.searchParams.set("next", next);
+
+    if (next) {
+      url.searchParams.set("next", next);
+    }
+
     return url.toString();
   }
 
-  async startGooglePasswordVerificationUrl(next?: string, purpose: "verify-password" | "verify-delete" = "verify-password") {
-    if (this.mode === "cookie") return this.googlePasswordVerificationStartUrl(next, purpose);
+  async startGooglePasswordVerificationUrl(
+    next?: string,
+    purpose: GoogleVerificationPurpose = "verify-password",
+  ) {
+    if (this.mode === "cookie") {
+      return this.googlePasswordVerificationStartUrl(next, purpose);
+    }
 
     const params = new URLSearchParams({ purpose });
-    if (next) params.set("next", next);
-    const result = await this.request<{ url: string }>(
-      `auth/google/connect/start/?${params.toString()}`,
-    );
-    if (!result.url) {
-      throw new AuthError("Google verification URL was not returned.", 500, result);
+
+    if (next) {
+      params.set("next", next);
     }
-    return result.url;
+
+    const response = await this.request<{ url: string }>(
+      `auth/google/connect/start/?${params.toString()}`,
+      { method: "GET" },
+    );
+
+    return response.url;
   }
 
   async cancelDeleteAccount(verification?: string | { verification_token: string }) {

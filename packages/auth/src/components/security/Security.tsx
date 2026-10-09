@@ -20,19 +20,29 @@ export function Security() {
   const [next, setNext] = useState("");
   const [confirm, setConfirm] = useState("");
   const [deletionPassword, setDeletionPassword] = useState("");
-  const [deletionVerificationToken, setDeletionVerificationToken] = useState("");
+  const [deletionVerificationToken, setDeletionVerificationToken] =
+    useState("");
   const [hasPassword, setHasPassword] = useState(true);
   const [verificationToken, setVerificationToken] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
-  const [newPasswordFieldError, setNewPasswordFieldError] = useState<string | undefined>();
-  const [confirmNewPasswordFieldError, setConfirmNewPasswordFieldError] = useState<string | undefined>();
-  const [passwordSetupError, setPasswordSetupError] = useState<string | null>(null);
-  const [passwordSetupSuccess, setPasswordSetupSuccess] = useState<string | null>(null);
+  const [newPasswordFieldError, setNewPasswordFieldError] = useState<
+    string | undefined
+  >();
+  const [confirmNewPasswordFieldError, setConfirmNewPasswordFieldError] =
+    useState<string | undefined>();
+  const [passwordSetupError, setPasswordSetupError] = useState<string | null>(
+    null,
+  );
+  const [passwordSetupSuccess, setPasswordSetupSuccess] = useState<
+    string | null
+  >(null);
   const [cancelPassword, setCancelPassword] = useState("");
   const [cancelError, setCancelError] = useState<string | null>(null);
   const [cancelFormOpen, setCancelFormOpen] = useState(false);
-  const [deletionGoogleError, setDeletionGoogleError] = useState<string | null>(null);
+  const [deletionGoogleError, setDeletionGoogleError] = useState<string | null>(
+    null,
+  );
   const [passwordSetupLoading, setPasswordSetupLoading] = useState(false);
   const [deleteGoogleLoading, setDeleteGoogleLoading] = useState(false);
 
@@ -54,14 +64,19 @@ export function Security() {
     client.deleteAccount(deletionPassword),
   );
 
-  const cancellation = useAuthAction(async () => client.cancelDeleteAccount(cancelPassword));
+  const cancellation = useAuthAction(async () =>
+    client.cancelDeleteAccount(cancelPassword),
+  );
 
   useEffect(() => {
     let active = true;
 
-    void client.getConnections().then((value) => {
-      if (active) setHasPassword(value.has_password);
-    }).catch(() => {});
+    void client
+      .getConnections()
+      .then((value) => {
+        if (active) setHasPassword(value.has_password);
+      })
+      .catch(() => {});
 
     const params = new URLSearchParams(window.location.search);
     const googleCode = params.get("google_code");
@@ -80,59 +95,89 @@ export function Security() {
       } else {
         setPasswordSetupLoading(true);
       }
-      void client.verifyGooglePassword(googleCode).then(async (result) => {
-        setHasPassword(false);
-        if (googleAction === "delete") {
-          setDeletionGoogleError(null);
-        } else {
-          setPasswordSetupError(null);
-        }
-        if (googleAction === "delete") {
-          await client.verifyDeleteAccount({ verification_token: result.verification_token });
-          setDeletionVerificationToken(result.verification_token);
-          setDeleteConfirmOpen(true);
-        } else if (googleAction === "cancel") {
-          await client.cancelDeleteAccount({ verification_token: result.verification_token });
-          setCancelFormOpen(false);
-          setCancelError(null);
-          await refreshUser();
-        } else {
-          setVerificationToken(result.verification_token);
-        }
-      }).catch((error) => {
-        const message = error instanceof Error ? error.message : "Google verification failed.";
-        if (googleAction === "delete") setDeletionGoogleError(message);
-        else setPasswordSetupError(message);
-      }).finally(() => {
-        setPasswordSetupLoading(false);
-        setDeleteGoogleLoading(false);
-      });
+      void client
+        .verifyGooglePassword(googleCode)
+        .then(async (result) => {
+          setHasPassword(false);
+          if (googleAction === "delete") {
+            setDeletionGoogleError(null);
+          } else {
+            setPasswordSetupError(null);
+          }
+          if (googleAction === "delete") {
+            await client.verifyDeleteAccount({
+              verification_token: result.verification_token,
+            });
+            setDeletionVerificationToken(result.verification_token);
+            setDeleteConfirmOpen(true);
+          } else if (googleAction === "cancel") {
+            await client.cancelDeleteAccount({
+              verification_token: result.verification_token,
+            });
+            setCancelFormOpen(false);
+            setCancelError(null);
+            await refreshUser();
+          } else {
+            setVerificationToken(result.verification_token);
+          }
+        })
+        .catch((error) => {
+          const message =
+            error instanceof Error
+              ? error.message
+              : "Google verification failed.";
+          if (googleAction === "delete") setDeletionGoogleError(message);
+          else setPasswordSetupError(message);
+        })
+        .finally(() => {
+          setPasswordSetupLoading(false);
+          setDeleteGoogleLoading(false);
+        });
     }
 
-    return () => { active = false; };
+    return () => {
+      active = false;
+    };
   }, [client]);
 
   const verifyGoogleForPassword = async () => {
     setPasswordSetupError(null);
     setPasswordSetupLoading(true);
     try {
-      window.location.href = await client.startGooglePasswordVerificationUrl(window.location.href, "verify-password");
+      window.location.href = await client.startGooglePasswordVerificationUrl(
+        window.location.href,
+        "verify-password",
+      );
     } catch (error) {
       setPasswordSetupError(
-        error instanceof Error ? error.message : "Unable to start Google verification.",
+        error instanceof Error
+          ? error.message
+          : "Unable to start Google verification.",
       );
       setPasswordSetupLoading(false);
     }
   };
 
   const verifyGoogleForDeletion = async () => {
-    setDeletionGoogleError(null);
+    setCancelError(null);
     setDeleteGoogleLoading(true);
+
     try {
-      window.location.href = await client.startGooglePasswordVerificationUrl(window.location.href, "verify-delete");
+      const returnUrl = new URL(window.location.href);
+      returnUrl.searchParams.delete("google_code");
+      returnUrl.searchParams.delete("google_action");
+
+      const url = await client.startGooglePasswordVerificationUrl(
+        returnUrl.toString(),
+        "verify-cancel",
+      );
+
+      window.location.assign(url);
     } catch (error) {
-      setDeletionGoogleError(
-        error instanceof Error ? error.message : "Unable to start Google verification.",
+      setCancelError(
+        error instanceof Error
+          ? error.message
+          : "Unable to start Google verification.",
       );
       setDeleteGoogleLoading(false);
     }
@@ -159,7 +204,9 @@ export function Security() {
         confirm_password: confirmNewPassword,
       });
       setHasPassword(true);
-      setPasswordSetupSuccess("Password created successfully. You can now sign in with your email and password.");
+      setPasswordSetupSuccess(
+        "Password created successfully. You can now sign in with your email and password.",
+      );
       setVerificationToken("");
       setNewPassword("");
       setConfirmNewPassword("");
@@ -178,11 +225,16 @@ export function Security() {
   const cancelDeletion = async () => {
     try {
       if (!hasPassword) {
-        window.location.href = await client.startGooglePasswordVerificationUrl(window.location.href, "verify-cancel");
+        window.location.href = await client.startGooglePasswordVerificationUrl(
+          window.location.href,
+          "verify-cancel",
+        );
         return;
       }
       if (!cancelPassword) {
-        setCancelError("Enter your current password to cancel account deletion.");
+        setCancelError(
+          "Enter your current password to cancel account deletion.",
+        );
         return;
       }
       await cancellation.run();
@@ -190,7 +242,11 @@ export function Security() {
       setCancelFormOpen(false);
       await refreshUser();
     } catch (error) {
-      setCancelError(error instanceof Error ? error.message : "Unable to cancel account deletion.");
+      setCancelError(
+        error instanceof Error
+          ? error.message
+          : "Unable to cancel account deletion.",
+      );
     }
   };
 
@@ -279,7 +335,9 @@ export function Security() {
       if (hasPassword) {
         await deletion.run();
       } else {
-        await client.deleteAccount({ verification_token: deletionVerificationToken });
+        await client.deleteAccount({
+          verification_token: deletionVerificationToken,
+        });
       }
 
       setDeleteConfirmOpen(false);
@@ -326,15 +384,22 @@ export function Security() {
           {!hasPassword ? (
             <>
               {passwordSetupSuccess && (
-                <Typography as="p" variant="caption" color="success">{passwordSetupSuccess}</Typography>
+                <Typography as="p" variant="caption" color="success">
+                  {passwordSetupSuccess}
+                </Typography>
               )}
               {passwordSetupError && (
-                <ErrorMessage size="sm" variant="error">{passwordSetupError}</ErrorMessage>
+                <ErrorMessage size="sm" variant="error">
+                  {passwordSetupError}
+                </ErrorMessage>
               )}
 
               {!verificationToken ? (
                 <div className="shivanya-security-actions">
-                  <Button loading={passwordSetupLoading} onClick={verifyGoogleForPassword}>
+                  <Button
+                    loading={passwordSetupLoading}
+                    onClick={verifyGoogleForPassword}
+                  >
                     Verify with Google
                   </Button>
                 </div>
@@ -384,7 +449,9 @@ export function Security() {
           ) : (
             <>
               {!hasChangePasswordFieldError && changePassword.error && (
-                <ErrorMessage size="sm" variant="error">{changePassword.error}</ErrorMessage>
+                <ErrorMessage size="sm" variant="error">
+                  {changePassword.error}
+                </ErrorMessage>
               )}
 
               <div className="shivanya-security-fields">
@@ -419,7 +486,10 @@ export function Security() {
               </div>
 
               <div className="shivanya-security-actions">
-                <Button loading={changePassword.loading} onClick={submitPassword}>
+                <Button
+                  loading={changePassword.loading}
+                  onClick={submitPassword}
+                >
                   Change password
                 </Button>
               </div>
@@ -470,7 +540,13 @@ export function Security() {
                 </div>
 
                 <div className="shivanya-security-deletion-actions">
-                  <Button variant="outline" onClick={() => { setCancelError(null); setCancelFormOpen((open) => !open); }}>
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      setCancelError(null);
+                      setCancelFormOpen((open) => !open);
+                    }}
+                  >
                     Cancel deletion
                   </Button>
                 </div>
@@ -478,14 +554,37 @@ export function Security() {
                   <div className="shivanya-security-cancel-form">
                     {hasPassword ? (
                       <div className="shivanya-security-field">
-                        <PasswordInput label="Current password" value={cancelPassword} onChange={(event) => { setCancelPassword(event.target.value); setCancelError(null); }} fullWidth error={cancelError ?? undefined} />
+                        <PasswordInput
+                          label="Current password"
+                          value={cancelPassword}
+                          onChange={(event) => {
+                            setCancelPassword(event.target.value);
+                            setCancelError(null);
+                          }}
+                          fullWidth
+                          error={cancelError ?? undefined}
+                        />
                       </div>
                     ) : (
-                      <Typography as="p" variant="caption" color="muted">Verify the Google account linked to {user?.email ?? "your account"} to cancel deletion.</Typography>
+                      <Typography as="p" variant="caption" color="muted">
+                        Verify the Google account linked to{" "}
+                        {user?.email ?? "your account"} to cancel deletion.
+                      </Typography>
                     )}
-                    {!hasPassword && cancelError && <ErrorMessage size="sm" variant="error">{cancelError}</ErrorMessage>}
+                    {!hasPassword && cancelError && (
+                      <ErrorMessage size="sm" variant="error">
+                        {cancelError}
+                      </ErrorMessage>
+                    )}
                     <div className="shivanya-security-actions">
-                      <Button loading={cancellation.loading || deleteGoogleLoading} onClick={cancelDeletion}>{hasPassword ? "Confirm cancellation" : "Verify with Google"}</Button>
+                      <Button
+                        loading={cancellation.loading || deleteGoogleLoading}
+                        onClick={cancelDeletion}
+                      >
+                        {hasPassword
+                          ? "Confirm cancellation"
+                          : "Verify with Google"}
+                      </Button>
                     </div>
                   </div>
                 )}
@@ -504,19 +603,24 @@ export function Security() {
                   <PasswordInput
                     label="Current password"
                     value={deletionPassword}
-                    onChange={(event) => setDeletionPassword(event.target.value)}
+                    onChange={(event) =>
+                      setDeletionPassword(event.target.value)
+                    }
                     fullWidth
                     error={verifyDeletion.fieldErrors.current_password}
                   />
                 </div>
               ) : (
                 <Typography as="p" variant="caption" color="muted">
-                  This account has no password. Verify the Google account linked to {user?.email ?? "your account"} to continue.
+                  This account has no password. Verify the Google account linked
+                  to {user?.email ?? "your account"} to continue.
                 </Typography>
               )}
 
               {!hasPassword && deletionGoogleError && (
-                <ErrorMessage size="sm" variant="error">{deletionGoogleError}</ErrorMessage>
+                <ErrorMessage size="sm" variant="error">
+                  {deletionGoogleError}
+                </ErrorMessage>
               )}
 
               {Object.keys(verifyDeletion.fieldErrors).length === 0 &&
@@ -529,10 +633,15 @@ export function Security() {
               <div className="shivanya-security-actions">
                 <Button
                   variant="danger"
-                  loading={verifyDeletion.loading || (hasPassword ? false : deleteGoogleLoading)}
+                  loading={
+                    verifyDeletion.loading ||
+                    (hasPassword ? false : deleteGoogleLoading)
+                  }
                   onClick={verifyDeletionPassword}
                 >
-                  {hasPassword ? "Schedule account deletion" : "Verify with Google"}
+                  {hasPassword
+                    ? "Schedule account deletion"
+                    : "Verify with Google"}
                 </Button>
               </div>
             </>
