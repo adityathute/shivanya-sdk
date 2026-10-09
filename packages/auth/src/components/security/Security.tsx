@@ -28,6 +28,10 @@ export function Security() {
   const [newPasswordFieldError, setNewPasswordFieldError] = useState<string | undefined>();
   const [confirmNewPasswordFieldError, setConfirmNewPasswordFieldError] = useState<string | undefined>();
   const [passwordSetupError, setPasswordSetupError] = useState<string | null>(null);
+  const [passwordSetupSuccess, setPasswordSetupSuccess] = useState<string | null>(null);
+  const [cancelPassword, setCancelPassword] = useState("");
+  const [cancelError, setCancelError] = useState<string | null>(null);
+  const [cancelFormOpen, setCancelFormOpen] = useState(false);
   const [deletionGoogleError, setDeletionGoogleError] = useState<string | null>(null);
   const [passwordSetupLoading, setPasswordSetupLoading] = useState(false);
   const [deleteGoogleLoading, setDeleteGoogleLoading] = useState(false);
@@ -50,7 +54,7 @@ export function Security() {
     client.deleteAccount(deletionPassword),
   );
 
-  const cancellation = useAuthAction(async () => client.cancelDeleteAccount());
+  const cancellation = useAuthAction(async () => client.cancelDeleteAccount(cancelPassword));
 
   useEffect(() => {
     let active = true;
