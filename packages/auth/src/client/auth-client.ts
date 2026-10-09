@@ -391,6 +391,19 @@ export class AuthClient {
     return url.toString();
   }
 
+  async startGoogleConnectUrl(next?: string) {
+    if (this.mode === "cookie") return this.googleConnectStartUrl(next);
+
+    const query = next ? `?next=${encodeURIComponent(next)}` : "";
+    const result = await this.request<{ url: string }>(
+      `auth/google/connect/start/${query}`,
+    );
+    if (!result.url) {
+      throw new AuthError("Google connection URL was not returned.", 500, result);
+    }
+    return result.url;
+  }
+
   async completeGoogleRedirect(code: string) {
     if (this.mode !== "token") {
       throw new AuthError("Google token exchange is only available in token mode.", 400);
