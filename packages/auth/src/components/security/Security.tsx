@@ -76,7 +76,11 @@ export function Security() {
       }
       void client.verifyGooglePassword(googleCode).then(async (result) => {
         setHasPassword(false);
-        setPasswordSetupError(null);
+        if (googleAction === "delete") {
+          setDeletionGoogleError(null);
+        } else {
+          setPasswordSetupError(null);
+        }
         if (googleAction === "delete") {
           await client.verifyDeleteAccount({ verification_token: result.verification_token });
           setDeletionVerificationToken(result.verification_token);
@@ -85,9 +89,9 @@ export function Security() {
           setVerificationToken(result.verification_token);
         }
       }).catch((error) => {
-        setPasswordSetupError(
-          error instanceof Error ? error.message : "Google verification failed.",
-        );
+        const message = error instanceof Error ? error.message : "Google verification failed.";
+        if (googleAction === "delete") setDeletionGoogleError(message);
+        else setPasswordSetupError(message);
       }).finally(() => {
         setPasswordSetupLoading(false);
         setDeleteGoogleLoading(false);
@@ -459,7 +463,7 @@ export function Security() {
               )}
 
               {!hasPassword && deletionGoogleError && (
-                <ErrorMessage size="sm" variant="error">{passwordSetupError}</ErrorMessage>
+                <ErrorMessage size="sm" variant="error">{deletionGoogleError}</ErrorMessage>
               )}
 
               {Object.keys(verifyDeletion.fieldErrors).length === 0 &&
