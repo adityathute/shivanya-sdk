@@ -145,7 +145,7 @@ export function Connections() {
           </Card>
           {connected && !hasPassword && (
             <Typography as="p" variant="caption" color="muted">
-              Create a password before disconnecting Google so you can still sign in with your email and password.
+              Use Forgot Password to create a password before disconnecting Google, so you can still sign in with your email and password.
             </Typography>
           )}
         </div>
