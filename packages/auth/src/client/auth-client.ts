@@ -348,8 +348,11 @@ export class AuthClient {
     return result.url;
   }
 
-  async cancelDeleteAccount() {
-    return this.request<unknown>("auth/cancel-delete-account/", this.json({}));
+  async cancelDeleteAccount(verification?: string | { verification_token: string }) {
+    const body = typeof verification === "string"
+      ? { current_password: verification }
+      : verification ?? {};
+    return this.request<unknown>("auth/cancel-delete-account/", this.json(body));
   }
 
   async getProfile() {
