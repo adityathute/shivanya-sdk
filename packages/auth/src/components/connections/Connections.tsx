@@ -23,7 +23,6 @@ export function Connections() {
       const value = await client.getConnections();
       setConnected(value.google_connected);
       setHasPassword(value.has_password);
-      setHasPassword(value.has_password);
     } catch (error) {
       setError(
         error instanceof Error ? error.message : "Unable to load connections.",
@@ -37,8 +36,18 @@ export function Connections() {
     void load();
   }, [load]);
 
-  const connectGoogle = () => {
-    window.location.href = client.googleConnectStartUrl(window.location.href);
+  const connectGoogle = async () => {
+    setWorking(true);
+    setError(null);
+
+    try {
+      window.location.href = await client.startGoogleConnectUrl(window.location.href);
+    } catch (error) {
+      setError(
+        error instanceof Error ? error.message : "Unable to connect Google.",
+      );
+      setWorking(false);
+    }
   };
 
   const disconnectGoogle = async () => {
