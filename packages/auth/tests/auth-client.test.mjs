@@ -263,6 +263,69 @@ test("token mode uses bearer headers and never bootstraps cookie CSRF", async ()
   assert.equal(calls[1].options.headers.has("X-CSRFToken"), false);
 });
 
+test("starts Google password verification with an authenticated token-mode request", async () => {
+  let request;
+  const tokenStorage = {
+    async getAccessToken() { return "access-value"; },
+    async getRefreshToken() { return "refresh-value"; },
+    async setTokens() {},
+    async clearTokens() {},
+  };
+
+  globalThis.fetch = async (url, options) => {
+    request = { url, options };
+    return jsonResponse({
+      data: { url: "https://accounts.google.com/o/oauth2/v2/auth?state=verify" },
+    });
+  };
+
+  const client = new AuthClient({
+    baseUrl: "https://api.example.com",
+    mode: "token",
+    tokenStorage,
+  });
+  const url = await client.startGooglePasswordVerificationUrl(
+    "https://app.example.com/account/security",
+  );
+
+  assert.equal(url, "https://accounts.google.com/o/oauth2/v2/auth?state=verify");
+  assert.equal(
+    request.url,
+    "https://api.example.com/api/v1/auth/google/connect/start/?purpose=verify-password&next=https%3A%2F%2Fapp.example.com%2Faccount%2Fsecurity",
+  );
+  assert.equal(request.options.headers.get("Authorization"), "Bearer access-value");
+  assert.equal(request.options.headers.get("X-Auth-Token-Mode"), "token");
+});
+
+test("verifies Google and creates a password through the SDK client", async () => {
+  const calls = [];
+  globalThis.fetch = async (url, options) => {
+    calls.push({ url, options });
+    if (url.endsWith("/auth/verify-google-password/")) {
+      return jsonResponse({ data: { verification_token: "verified-token" } });
+    }
+    return jsonResponse({ success: true, message: "Password created successfully." });
+  };
+
+  const client = new AuthClient({ baseUrl: "https://api.example.com" });
+  const verification = await client.verifyGooglePassword("google-code");
+  await client.createPassword({
+    verification_token: verification.verification_token,
+    new_password: "StrongPassword123!",
+    confirm_password: "StrongPassword123!",
+  });
+
+  assert.equal(calls.length, 2);
+  assert.equal(calls[0].url, "https://api.example.com/api/v1/auth/verify-google-password/");
+  assert.deepEqual(JSON.parse(calls[0].options.body), { google_code: "google-code" });
+  assert.equal(calls[1].url, "https://api.example.com/api/v1/auth/create-password/");
+  assert.deepEqual(JSON.parse(calls[1].options.body), {
+    verification_token: "verified-token",
+    new_password: "StrongPassword123!",
+    confirm_password: "StrongPassword123!",
+  });
+});
+
 test("starts Google connection with an authenticated token-mode request", async () => {
   let request;
   const tokenStorage = {
