@@ -26,6 +26,7 @@ export function Security() {
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [passwordSetupError, setPasswordSetupError] = useState<string | null>(null);
+  const [deletionGoogleError, setDeletionGoogleError] = useState<string | null>(null);
   const [passwordSetupLoading, setPasswordSetupLoading] = useState(false);
   const [deleteGoogleLoading, setDeleteGoogleLoading] = useState(false);
 
@@ -110,12 +111,12 @@ export function Security() {
   };
 
   const verifyGoogleForDeletion = async () => {
-    setPasswordSetupError(null);
+    setDeletionGoogleError(null);
     setDeleteGoogleLoading(true);
     try {
       window.location.href = await client.startGooglePasswordVerificationUrl(window.location.href, "verify-delete");
     } catch (error) {
-      setPasswordSetupError(
+      setDeletionGoogleError(
         error instanceof Error ? error.message : "Unable to start Google verification.",
       );
       setDeleteGoogleLoading(false);
@@ -124,6 +125,14 @@ export function Security() {
 
   const submitCreatePassword = async () => {
     setPasswordSetupError(null);
+    if (newPassword.length < 8) {
+      setPasswordSetupError("Password must be at least 8 characters long.");
+      return;
+    }
+    if (newPassword !== confirmNewPassword) {
+      setPasswordSetupError("Passwords do not match.");
+      return;
+    }
     setPasswordSetupLoading(true);
     try {
       await client.createPassword({
@@ -449,7 +458,7 @@ export function Security() {
                 </Typography>
               )}
 
-              {!hasPassword && passwordSetupError && (
+              {!hasPassword && deletionGoogleError && (
                 <ErrorMessage size="sm" variant="error">{passwordSetupError}</ErrorMessage>
               )}
 
