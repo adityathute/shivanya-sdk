@@ -66,22 +66,36 @@ export function AuthProvider({
 
   useEffect(() => {
     let active = true;
-    setLoading(true);
-    client
-      .getCurrentUser()
-      .then((nextUser) => {
+
+    const initialize = async () => {
+      setLoading(true);
+      try {
+        const url = new URL(window.location.href);
+        const exchangeCode = url.searchParams.get("auth_code");
+
+        if (exchangeCode) {
+          url.searchParams.delete("auth_code");
+          window.history.replaceState(window.history.state, "", url.toString());
+          await client.completeGoogleRedirect(exchangeCode);
+        }
+
+        const nextUser = await client.getCurrentUser();
         if (active) setUser(nextUser);
-      })
-      .catch(() => {
-        if (active) setUser(null);
-      })
-      .finally(() => {
+      } catch {
+        if (active) {
+          setUser(null);
+          if (config.mode === "token") await client.clearAuth();
+        }
+      } finally {
         if (active) setLoading(false);
-      });
+      }
+    };
+
+    void initialize();
     return () => {
       active = false;
     };
-  }, [client]);
+  }, [client, config.mode]);
 
   const login = useCallback(
     async (email: string, password: string) => {
