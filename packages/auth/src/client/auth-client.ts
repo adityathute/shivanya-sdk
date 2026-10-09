@@ -13,7 +13,7 @@ import type {
 } from "./types";
 import { AuthError } from "./types";
 import { createAuthRedirectUrl } from "./redirect";
-import { MemoryAuthTokenStorage, type AuthTokenPair, type AuthTokenStorage } from "./token-storage";
+import { SessionAuthTokenStorage, type AuthTokenPair, type AuthTokenStorage } from "./token-storage";
 
 const unsafeMethods = new Set(["POST", "PUT", "PATCH", "DELETE"]);
 
@@ -85,7 +85,7 @@ export class AuthClient {
     this.csrfHeaderName = config.csrfHeaderName ?? "X-CSRFToken";
     this.credentials = config.credentials ?? (this.mode === "cookie" ? "include" : "omit");
     this.tokenRefreshPath = config.tokenRefreshPath ?? "auth/refresh/";
-    this.tokenStorage = config.tokenStorage ?? new MemoryAuthTokenStorage();
+    this.tokenStorage = config.tokenStorage ?? new SessionAuthTokenStorage();
   }
 
   private url(path: string) {
