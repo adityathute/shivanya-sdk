@@ -92,6 +92,9 @@ export function Security() {
 
       if (googleAction === "delete") {
         setDeleteGoogleLoading(true);
+      } else if (googleAction === "cancel") {
+        setCancelFormOpen(true);
+        setDeleteGoogleLoading(true);
       } else {
         setPasswordSetupLoading(true);
       }
