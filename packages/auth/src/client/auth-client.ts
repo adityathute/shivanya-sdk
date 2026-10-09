@@ -391,9 +391,28 @@ export class AuthClient {
     return url.toString();
   }
 
+  async completeGoogleRedirect(code: string) {
+    if (this.mode !== "token") {
+      throw new AuthError("Google token exchange is only available in token mode.", 400);
+    }
+
+    const data = await this.request<AuthTokenResponse>(
+      "auth/google/token-exchange/",
+      this.json({ code }),
+      false,
+    );
+    const tokens = readTokenPair(data);
+    if (!tokens) {
+      throw new AuthError("Google token exchange did not return an access token.", 500, data);
+    }
+    await this.tokenStorage.setTokens(tokens);
+    return data.user ?? null;
+  }
+
   googleStartUrl(next?: string) {
     const url = new URL(`${this.baseUrl}${this.apiPrefix}/auth/google/start/`);
     if (next) url.searchParams.set("next", next);
+    url.searchParams.set("mode", this.mode);
     return url.toString();
   }
 
