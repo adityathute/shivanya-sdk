@@ -210,6 +210,59 @@ test("does not refresh a failed login request", async () => {
   assert.equal(calls[1].options.headers.get("X-CSRFToken"), "csrf-value");
 });
 
+test("token mode uses bearer headers and never bootstraps cookie CSRF", async () => {
+  const calls = [];
+  let tokens = { accessToken: null, refreshToken: null };
+
+  const tokenStorage = {
+    async getAccessToken() { return tokens.accessToken; },
+    async getRefreshToken() { return tokens.refreshToken; },
+    async setTokens(value) { tokens = value; },
+    async clearTokens() { tokens = { accessToken: null, refreshToken: null }; },
+  };
+
+  globalThis.fetch = async (url, options) => {
+    calls.push({ url, options });
+
+    if (url.endsWith("/auth/login/")) {
+      return jsonResponse({
+        data: {
+          user: { id: "u1", email: "user@example.com" },
+          access_token: "access-value",
+          refresh_token: "refresh-value",
+        },
+      });
+    }
+
+    return jsonResponse({
+      data: { id: "u1", email: "user@example.com" },
+    });
+  };
+
+  const client = new AuthClient({
+    baseUrl: "https://api.example.com",
+    mode: "token",
+    tokenStorage,
+  });
+
+  await client.login({ email: "user@example.com", password: "secret" });
+  await client.getCurrentUser();
+
+  assert.equal(calls.length, 2);
+  assert.equal(calls[0].url, "https://api.example.com/api/v1/auth/login/");
+  assert.equal(calls[0].options.credentials, "omit");
+  assert.equal(calls[0].options.headers.get("X-Auth-Token-Mode"), "token");
+  assert.equal(calls[0].options.headers.has("X-CSRFToken"), false);
+  assert.equal(calls[0].options.headers.has("Authorization"), false);
+  assert.deepEqual(tokens, {
+    accessToken: "access-value",
+    refreshToken: "refresh-value",
+  });
+  assert.equal(calls[1].options.headers.get("Authorization"), "Bearer access-value");
+  assert.equal(calls[1].options.headers.get("X-Auth-Token-Mode"), "token");
+  assert.equal(calls[1].options.headers.has("X-CSRFToken"), false);
+});
+
 test("builds the Google start URL with the optional next location", () => {
   const client = new AuthClient({
     baseUrl: "https://api.example.com/",
