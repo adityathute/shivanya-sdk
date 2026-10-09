@@ -39,6 +39,10 @@ test("login sends credentials and loads the authenticated user", async () => {
   globalThis.fetch = async (url, options) => {
     calls.push({ url, options });
 
+    if (url.endsWith("/auth/csrf/")) {
+      return jsonResponse({ data: { csrfToken: "csrf-value" } });
+    }
+
     if (url.endsWith("/auth/login/")) {
       return jsonResponse({
         user: {
@@ -73,12 +77,16 @@ test("login sends credentials and loads the authenticated user", async () => {
     username: "user",
     email_verified: true,
   });
-  assert.equal(calls.length, 1);
-  assert.equal(calls[0].url, "https://api.example.com/api/v1/auth/login/");
-  assert.equal(calls[0].options.method, "POST");
+  assert.equal(calls.length, 2);
+  assert.equal(calls[0].url, "https://api.example.com/api/v1/auth/csrf/");
+  assert.equal(calls[0].options.method, "GET");
   assert.equal(calls[0].options.credentials, "include");
-  assert.equal(calls[0].options.headers.get("Content-Type"), "application/json");
-  assert.deepEqual(JSON.parse(calls[0].options.body), {
+  assert.equal(calls[1].url, "https://api.example.com/api/v1/auth/login/");
+  assert.equal(calls[1].options.method, "POST");
+  assert.equal(calls[1].options.credentials, "include");
+  assert.equal(calls[1].options.headers.get("X-CSRFToken"), "csrf-value");
+  assert.equal(calls[1].options.headers.get("Content-Type"), "application/json");
+  assert.deepEqual(JSON.parse(calls[1].options.body), {
     email: "user@example.com",
     password: "secret",
   });
@@ -141,11 +149,15 @@ test("refreshes once after an authenticated request receives 401", async () => {
   globalThis.fetch = async (url, options) => {
     calls.push({ url, options });
 
-    if (calls.length === 1) {
+    if (url.endsWith("/auth/me/") && calls.filter((call) => call.url.endsWith("/auth/me/")).length === 1) {
       return jsonResponse({ detail: "Expired session." }, 401);
     }
 
-    if (calls.length === 2) {
+    if (url.endsWith("/auth/csrf/")) {
+      return jsonResponse({ data: { csrfToken: "csrf-value" } });
+    }
+
+    if (url.endsWith("/auth/refresh/")) {
       return jsonResponse({ success: true });
     }
 
@@ -162,10 +174,12 @@ test("refreshes once after an authenticated request receives 401", async () => {
     id: "u1",
     email: "user@example.com",
   });
-  assert.equal(calls.length, 3);
+  assert.equal(calls.length, 4);
   assert.equal(calls[0].url, "https://api.example.com/api/v1/auth/me/");
-  assert.equal(calls[1].url, "https://api.example.com/api/v1/auth/refresh/");
-  assert.equal(calls[2].url, "https://api.example.com/api/v1/auth/me/");
+  assert.equal(calls[1].url, "https://api.example.com/api/v1/auth/csrf/");
+  assert.equal(calls[2].url, "https://api.example.com/api/v1/auth/refresh/");
+  assert.equal(calls[3].url, "https://api.example.com/api/v1/auth/me/");
+  assert.equal(calls[2].options.headers.get("X-CSRFToken"), "csrf-value");
 });
 
 test("does not refresh a failed login request", async () => {
@@ -173,6 +187,9 @@ test("does not refresh a failed login request", async () => {
 
   globalThis.fetch = async (url, options) => {
     calls.push({ url, options });
+    if (url.endsWith("/auth/csrf/")) {
+      return jsonResponse({ data: { csrfToken: "csrf-value" } });
+    }
     return jsonResponse({ detail: "Invalid credentials." }, 401);
   };
 
@@ -183,8 +200,10 @@ test("does not refresh a failed login request", async () => {
     password: "wrong",
   }), AuthError);
 
-  assert.equal(calls.length, 1);
-  assert.equal(calls[0].url, "https://api.example.com/api/v1/auth/login/");
+  assert.equal(calls.length, 2);
+  assert.equal(calls[0].url, "https://api.example.com/api/v1/auth/csrf/");
+  assert.equal(calls[1].url, "https://api.example.com/api/v1/auth/login/");
+  assert.equal(calls[1].options.headers.get("X-CSRFToken"), "csrf-value");
 });
 
 test("builds the Google start URL with the optional next location", () => {
