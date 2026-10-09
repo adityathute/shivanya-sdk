@@ -10,6 +10,7 @@ export function Connections() {
   const { client } = useAuth();
 
   const [connected, setConnected] = useState(false);
+  const [hasPassword, setHasPassword] = useState(true);
   const [loading, setLoading] = useState(true);
   const [working, setWorking] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -21,6 +22,8 @@ export function Connections() {
     try {
       const value = await client.getConnections();
       setConnected(value.google_connected);
+      setHasPassword(value.has_password);
+      setHasPassword(value.has_password);
     } catch (error) {
       setError(
         error instanceof Error ? error.message : "Unable to load connections.",
@@ -131,6 +134,11 @@ export function Connections() {
               )}
             </div>
           </Card>
+          {connected && !hasPassword && (
+            <Typography as="p" variant="caption" color="muted">
+              Create a password before disconnecting Google so you can still sign in with your email and password.
+            </Typography>
+          )}
         </div>
       )}
     </div>
