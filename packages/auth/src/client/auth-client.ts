@@ -191,6 +191,7 @@ export class AuthClient {
 
   async login(input: LoginInput): Promise<AuthUser> {
     const data = await this.request<AuthTokenResponse & { user?: AuthUser }>("auth/login/", this.json(input));
+    if (this.mode === "cookie") this.csrfToken = null;
     if (this.mode === "token") {
       const tokens = readTokenPair(data);
       if (!tokens) throw new AuthError("Token authentication response did not contain an access token.", 500, data);
