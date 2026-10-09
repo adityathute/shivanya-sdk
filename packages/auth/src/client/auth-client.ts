@@ -306,6 +306,42 @@ export class AuthClient {
     return this.request<unknown>("auth/verify-delete-account/", this.json({ current_password }));
   }
 
+  async verifyGooglePassword(google_code: string) {
+    return this.request<{ verification_token: string }>(
+      "auth/verify-google-password/",
+      this.json({ google_code }),
+    );
+  }
+
+  async createPassword(input: {
+    verification_token: string;
+    new_password: string;
+    confirm_password: string;
+  }) {
+    return this.request<unknown>("auth/create-password/", this.json(input));
+  }
+
+  googlePasswordVerificationStartUrl(next?: string) {
+    const url = new URL(`${this.baseUrl}${this.apiPrefix}/auth/google/connect/start/`);
+    url.searchParams.set("purpose", "verify-password");
+    if (next) url.searchParams.set("next", next);
+    return url.toString();
+  }
+
+  async startGooglePasswordVerificationUrl(next?: string) {
+    if (this.mode === "cookie") return this.googlePasswordVerificationStartUrl(next);
+
+    const params = new URLSearchParams({ purpose: "verify-password" });
+    if (next) params.set("next", next);
+    const result = await this.request<{ url: string }>(
+      `auth/google/connect/start/?${params.toString()}`,
+    );
+    if (!result.url) {
+      throw new AuthError("Google verification URL was not returned.", 500, result);
+    }
+    return result.url;
+  }
+
   async cancelDeleteAccount() {
     return this.request<unknown>("auth/cancel-delete-account/", this.json({}));
   }
