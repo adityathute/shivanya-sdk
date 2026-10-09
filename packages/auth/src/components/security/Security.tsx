@@ -27,6 +27,7 @@ export function Security() {
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [passwordSetupError, setPasswordSetupError] = useState<string | null>(null);
   const [passwordSetupLoading, setPasswordSetupLoading] = useState(false);
+  const [deleteGoogleLoading, setDeleteGoogleLoading] = useState(false);
 
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
 
@@ -70,6 +71,7 @@ export function Security() {
       setPasswordSetupLoading(true);
       void client.verifyGooglePassword(googleCode).then(async (result) => {
         if (!active) return;
+        setHasPassword(false);
         if (googleAction === "delete") {
           await client.verifyDeleteAccount({ verification_token: result.verification_token });
           setDeletionVerificationToken(result.verification_token);
@@ -104,14 +106,14 @@ export function Security() {
 
   const verifyGoogleForDeletion = async () => {
     setPasswordSetupError(null);
-    setPasswordSetupLoading(true);
+    setDeleteGoogleLoading(true);
     try {
       window.location.href = await client.startGooglePasswordVerificationUrl(window.location.href, "verify-delete");
     } catch (error) {
       setPasswordSetupError(
         error instanceof Error ? error.message : "Unable to start Google verification.",
       );
-      setPasswordSetupLoading(false);
+      setDeleteGoogleLoading(false);
     }
   };
 
@@ -452,7 +454,7 @@ export function Security() {
               <div className="shivanya-security-actions">
                 <Button
                   variant="danger"
-                  loading={verifyDeletion.loading || passwordSetupLoading}
+                  loading={verifyDeletion.loading || (hasPassword ? false : deleteGoogleLoading)}
                   onClick={verifyDeletionPassword}
                 >
                   {hasPassword ? "Schedule account deletion" : "Verify with Google"}
