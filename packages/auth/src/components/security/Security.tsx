@@ -25,6 +25,8 @@ export function Security() {
   const [verificationToken, setVerificationToken] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [newPasswordFieldError, setNewPasswordFieldError] = useState<string | undefined>();
+  const [confirmNewPasswordFieldError, setConfirmNewPasswordFieldError] = useState<string | undefined>();
   const [passwordSetupError, setPasswordSetupError] = useState<string | null>(null);
   const [deletionGoogleError, setDeletionGoogleError] = useState<string | null>(null);
   const [passwordSetupLoading, setPasswordSetupLoading] = useState(false);
@@ -129,12 +131,14 @@ export function Security() {
 
   const submitCreatePassword = async () => {
     setPasswordSetupError(null);
+    setNewPasswordFieldError(undefined);
+    setConfirmNewPasswordFieldError(undefined);
     if (newPassword.length < 8) {
-      setPasswordSetupError("Password must be at least 8 characters long.");
+      setNewPasswordFieldError("Password must be at least 8 characters long.");
       return;
     }
     if (newPassword !== confirmNewPassword) {
-      setPasswordSetupError("Passwords do not match.");
+      setConfirmNewPasswordFieldError("Passwords do not match.");
       return;
     }
     setPasswordSetupLoading(true);
@@ -148,6 +152,8 @@ export function Security() {
       setVerificationToken("");
       setNewPassword("");
       setConfirmNewPassword("");
+      setNewPasswordFieldError(undefined);
+      setConfirmNewPasswordFieldError(undefined);
       await refreshUser();
     } catch (error) {
       setPasswordSetupError(
@@ -313,17 +319,27 @@ export function Security() {
                       <PasswordInput
                         label="New password"
                         value={newPassword}
-                        onChange={(event) => setNewPassword(event.target.value)}
+                        onChange={(event) => {
+                          setNewPassword(event.target.value);
+                          setNewPasswordFieldError(undefined);
+                          setPasswordSetupError(null);
+                        }}
                         helperText="At least 8 characters."
                         fullWidth
+                        error={newPasswordFieldError}
                       />
                     </div>
                     <div className="shivanya-security-field">
                       <PasswordInput
                         label="Confirm new password"
                         value={confirmNewPassword}
-                        onChange={(event) => setConfirmNewPassword(event.target.value)}
+                        onChange={(event) => {
+                          setConfirmNewPassword(event.target.value);
+                          setConfirmNewPasswordFieldError(undefined);
+                          setPasswordSetupError(null);
+                        }}
                         fullWidth
+                        error={confirmNewPasswordFieldError}
                       />
                     </div>
                   </div>
