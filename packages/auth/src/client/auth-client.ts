@@ -73,6 +73,7 @@ export class AuthClient {
   private readonly credentials: RequestCredentials;
   private readonly tokenRefreshPath: string;
   private readonly tokenStorage: AuthTokenStorage;
+  private csrfToken: string | null = null;
   private refreshPromise: Promise<boolean> | null = null;
 
   constructor(config: AuthConfig) {
@@ -89,6 +90,31 @@ export class AuthClient {
 
   private url(path: string) {
     return `${this.baseUrl}${this.apiPrefix}/${path.replace(/^\/+/, "")}`;
+  }
+
+  private async getCsrfToken() {
+    if (this.csrfToken) return this.csrfToken;
+
+    const response = await fetch(this.url("auth/csrf/"), {
+      method: "GET",
+      credentials: this.credentials,
+      headers: { Accept: "application/json" },
+    });
+    const data = await response.json().catch(() => null) as
+      | { data?: { csrfToken?: string; csrf_token?: string }; csrfToken?: string; csrf_token?: string }
+      | null;
+    const token = data?.data?.csrfToken
+      ?? data?.data?.csrf_token
+      ?? data?.csrfToken
+      ?? data?.csrf_token
+      ?? readCookie(this.csrfCookieName);
+
+    if (!response.ok || !token) {
+      throw new AuthError("Unable to initialize CSRF protection.", response.status || 500, data);
+    }
+
+    this.csrfToken = token;
+    return token;
   }
 
   private async request<T>(path: string, options: RequestInit = {}, retry = true): Promise<T> {
@@ -113,7 +139,7 @@ export class AuthClient {
     }
 
     if (this.mode === "cookie" && unsafeMethods.has(method)) {
-      const csrf = readCookie(this.csrfCookieName);
+      const csrf = readCookie(this.csrfCookieName) ?? await this.getCsrfToken();
       if (csrf) headers.set(this.csrfHeaderName, csrf);
     }
 
