@@ -263,6 +263,39 @@ test("token mode uses bearer headers and never bootstraps cookie CSRF", async ()
   assert.equal(calls[1].options.headers.has("X-CSRFToken"), false);
 });
 
+test("starts Google connection with an authenticated token-mode request", async () => {
+  let request;
+  const tokenStorage = {
+    async getAccessToken() { return "access-value"; },
+    async getRefreshToken() { return "refresh-value"; },
+    async setTokens() {},
+    async clearTokens() {},
+  };
+
+  globalThis.fetch = async (url, options) => {
+    request = { url, options };
+    return jsonResponse({
+      data: { url: "https://accounts.google.com/o/oauth2/v2/auth?state=signed" },
+    });
+  };
+
+  const client = new AuthClient({
+    baseUrl: "https://api.example.com",
+    mode: "token",
+    tokenStorage,
+  });
+
+  const url = await client.startGoogleConnectUrl("https://app.example.com/account");
+
+  assert.equal(url, "https://accounts.google.com/o/oauth2/v2/auth?state=signed");
+  assert.equal(
+    request.url,
+    "https://api.example.com/api/v1/auth/google/connect/start/?next=https%3A%2F%2Fapp.example.com%2Faccount",
+  );
+  assert.equal(request.options.headers.get("Authorization"), "Bearer access-value");
+  assert.equal(request.options.headers.get("X-Auth-Token-Mode"), "token");
+});
+
 test("builds the Google start URL with the optional next location", () => {
   const client = new AuthClient({
     baseUrl: "https://api.example.com/",
