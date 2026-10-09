@@ -39,6 +39,7 @@ export function Security() {
   >(null);
   const [cancelPassword, setCancelPassword] = useState("");
   const [cancelError, setCancelError] = useState<string | null>(null);
+  const [cancelSuccess, setCancelSuccess] = useState<string | null>(null);
   const [cancelFormOpen, setCancelFormOpen] = useState(false);
   const [deletionGoogleError, setDeletionGoogleError] = useState<string | null>(
     null,
@@ -104,6 +105,9 @@ export function Security() {
           setHasPassword(false);
           if (googleAction === "delete") {
             setDeletionGoogleError(null);
+          } else if (googleAction === "cancel") {
+            setCancelError(null);
+            setCancelSuccess(null);
           } else {
             setPasswordSetupError(null);
           }
@@ -119,6 +123,7 @@ export function Security() {
             });
             setCancelFormOpen(false);
             setCancelError(null);
+            setCancelSuccess("Account deletion cancelled successfully.");
             await refreshUser();
           } else {
             setVerificationToken(result.verification_token);
@@ -166,8 +171,16 @@ export function Security() {
     }
   };
 
-  const verifyGoogleForDeletion = async () => {
-    setCancelError(null);
+  const startGoogleVerification = async (
+    purpose: "verify-delete" | "verify-cancel",
+  ) => {
+    const isCancel = purpose === "verify-cancel";
+    if (isCancel) {
+      setCancelError(null);
+      setCancelSuccess(null);
+    } else {
+      setDeletionGoogleError(null);
+    }
     setDeleteGoogleLoading(true);
 
     try {
@@ -177,16 +190,17 @@ export function Security() {
 
       const url = await client.startGooglePasswordVerificationUrl(
         returnUrl.toString(),
-        "verify-cancel",
+        purpose,
       );
 
       window.location.assign(url);
     } catch (error) {
-      setCancelError(
+      const message =
         error instanceof Error
           ? error.message
-          : "Unable to start Google verification.",
-      );
+          : "Unable to start Google verification.";
+      if (isCancel) setCancelError(message);
+      else setDeletionGoogleError(message);
       setDeleteGoogleLoading(false);
     }
   };
@@ -233,10 +247,7 @@ export function Security() {
   const cancelDeletion = async () => {
     try {
       if (!hasPassword) {
-        window.location.href = await client.startGooglePasswordVerificationUrl(
-          window.location.href,
-          "verify-cancel",
-        );
+        await startGoogleVerification("verify-cancel");
         return;
       }
       if (!cancelPassword) {
@@ -248,6 +259,8 @@ export function Security() {
       await cancellation.run();
       setCancelPassword("");
       setCancelFormOpen(false);
+      setCancelError(null);
+      setCancelSuccess("Account deletion cancelled successfully.");
       await refreshUser();
     } catch (error) {
       setCancelError(
@@ -329,7 +342,7 @@ export function Security() {
 
   const verifyDeletionPassword = async () => {
     if (!hasPassword) {
-      await verifyGoogleForDeletion();
+      await startGoogleVerification("verify-delete");
       return;
     }
     try {
@@ -389,13 +402,14 @@ export function Security() {
             </Typography>
           </div>
 
+          {passwordSetupSuccess && (
+            <Typography as="p" variant="caption" color="success">
+              {passwordSetupSuccess}
+            </Typography>
+          )}
+
           {!hasPassword ? (
             <>
-              {passwordSetupSuccess && (
-                <Typography as="p" variant="caption" color="success">
-                  {passwordSetupSuccess}
-                </Typography>
-              )}
               {passwordSetupError && (
                 <ErrorMessage size="sm" variant="error">
                   {passwordSetupError}
@@ -558,6 +572,11 @@ export function Security() {
                     Cancel deletion
                   </Button>
                 </div>
+                {cancelSuccess && (
+                  <Typography as="p" variant="caption" color="success">
+                    {cancelSuccess}
+                  </Typography>
+                )}
                 {cancelFormOpen && (
                   <div className="shivanya-security-cancel-form">
                     {hasPassword ? (
