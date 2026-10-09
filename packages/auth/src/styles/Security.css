@@ -1,7 +1,9 @@
+
 .shivanya-security {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  min-width: 0;
 }
 
 .shivanya-security-header {
@@ -37,8 +39,9 @@
 .shivanya-security-card {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 18px;
+  gap: 16px;
+  min-width: 0;
+  padding: 20px;
   border: 1px solid var(--shivanya-color-border);
   border-radius: var(--shivanya-radius-lg);
   background: var(--shivanya-color-modal-background);
@@ -47,48 +50,85 @@
 .shivanya-security-card-header {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
+  min-width: 0;
+}
+
+.shivanya-security-card-header > * {
+  margin: 0;
+}
+
+.shivanya-security-card-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.shivanya-security-card-topline .shivanya-security-card-header {
+  flex: 1;
 }
 
 .shivanya-security-fields {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  width: 100%;
+  max-width: 520px;
 }
 
 .shivanya-security-field {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  width: 100%;
+  max-width: 520px;
 }
 
 .shivanya-security-actions {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   gap: 10px;
-  padding-top: 2px;
+  flex-shrink: 0;
 }
 
-.shivanya-security-danger {
-  border-color: var(--shivanya-color-danger);
+.shivanya-security-actions button {
+  flex-shrink: 0;
 }
 
-@media (max-width: 700px) {
-  .shivanya-security-card {
-    padding: 16px;
-  }
-
-  .shivanya-security-actions {
-    width: 100%;
-  }
-
-  .shivanya-security-actions button {
-    width: 100%;
-  }
+.shivanya-security-password-card .shivanya-security-actions {
+  justify-content: flex-end;
 }
 
+.shivanya-security-danger,
 .shivanya-security-deletion-scheduled {
   border-color: var(--shivanya-color-danger);
+}
+
+.shivanya-security-delete-header {
+  gap: 5px;
+}
+
+.shivanya-security-delete-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-width: 0;
+}
+
+.shivanya-security-delete-description {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.shivanya-security-delete-description > * {
+  margin: 0;
 }
 
 .shivanya-security-deletion-status {
@@ -115,8 +155,11 @@
 
 .shivanya-security-deletion-status-content {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  gap: 5px;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
 }
 
 .shivanya-security-deletion-status-content h4,
@@ -125,7 +168,6 @@
 }
 
 .shivanya-security-deletion-timer {
-  margin-top: 6px;
   font-size: 14px;
   font-weight: 600;
   color: var(--shivanya-color-danger);
@@ -135,19 +177,153 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 8px;
 }
 
 .shivanya-security-deletion-actions button {
   min-width: 140px;
 }
 
+.shivanya-security-cancel-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  max-width: 520px;
+  padding-top: 14px;
+  border-top: 1px solid var(--shivanya-color-border);
+}
+
+.shivanya-security-cancel-form .shivanya-security-field {
+  width: 100%;
+}
+
+.shivanya-security-cancel-form .shivanya-security-actions {
+  justify-content: flex-start;
+}
+
 @media (max-width: 700px) {
+  .shivanya-security {
+    gap: 16px;
+  }
+
+  .shivanya-security-card {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .shivanya-security-card-topline,
+  .shivanya-security-delete-content {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .shivanya-security-actions,
   .shivanya-security-deletion-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .shivanya-security-actions button,
+  .shivanya-security-deletion-actions button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .shivanya-security-fields,
+  .shivanya-security-field,
+  .shivanya-security-cancel-form {
+    max-width: 100%;
+  }
+
+  .shivanya-security-deletion-status {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .shivanya-security-deletion-status-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.shivanya-security-danger {
+  gap: 0;
+  padding: 20px 18px;
+  border-color: var(--shivanya-color-danger);
+}
+
+.shivanya-security-delete-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 22px;
+}
+
+.shivanya-security-delete-header > * {
+  margin: 0;
+}
+
+.shivanya-security-delete-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--shivanya-color-border);
+}
+
+.shivanya-security-delete-description {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.shivanya-security-delete-description > * {
+  margin: 0;
+}
+
+.shivanya-security-delete-content .shivanya-security-actions {
+  flex-shrink: 0;
+  justify-content: flex-end;
+}
+
+@media (max-width: 700px) {
+  .shivanya-security-danger {
+    padding: 16px;
+  }
+
+  .shivanya-security-delete-header {
+    padding-bottom: 16px;
+  }
+
+  .shivanya-security-delete-content {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 16px;
+  }
+
+  .shivanya-security-delete-content .shivanya-security-actions {
     width: 100%;
   }
 
-  .shivanya-security-deletion-actions button {
+  .shivanya-security-delete-content .shivanya-security-actions button {
     width: 100%;
   }
+}
+
+.shivanya-security-delete-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.shivanya-security-delete-title svg {
+  flex-shrink: 0;
+  color: var(--shivanya-color-danger);
 }
