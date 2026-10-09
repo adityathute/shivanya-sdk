@@ -68,7 +68,11 @@ export function Security() {
         `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`,
       );
 
-      setPasswordSetupLoading(true);
+      if (googleAction === "delete") {
+        setDeleteGoogleLoading(true);
+      } else {
+        setPasswordSetupLoading(true);
+      }
       void client.verifyGooglePassword(googleCode).then(async (result) => {
         setHasPassword(false);
         setPasswordSetupError(null);
@@ -443,6 +447,10 @@ export function Security() {
                 <Typography as="p" variant="caption" color="muted">
                   This account has no password. Verify the Google account linked to {user?.email ?? "your account"} to continue.
                 </Typography>
+              )}
+
+              {!hasPassword && passwordSetupError && (
+                <ErrorMessage size="sm" variant="error">{passwordSetupError}</ErrorMessage>
               )}
 
               {Object.keys(verifyDeletion.fieldErrors).length === 0 &&
