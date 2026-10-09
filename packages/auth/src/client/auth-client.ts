@@ -364,7 +364,7 @@ export class AuthClient {
   }
 
   async getConnections() {
-    return this.request<{ google_connected: boolean }>("profile/connections/");
+    return this.request<{ google_connected: boolean; has_password: boolean }>("profile/connections/");
   }
 
   async connectGoogle(code: string) {
