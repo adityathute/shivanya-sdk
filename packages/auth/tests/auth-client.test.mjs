@@ -271,6 +271,6 @@ test("builds the Google start URL with the optional next location", () => {
 
   assert.equal(
     client.googleStartUrl("https://app.example.com/account"),
-    "https://api.example.com/api/v2/auth/google/start/?next=https%3A%2F%2Fapp.example.com%2Faccount",
+    "https://api.example.com/api/v2/auth/google/start/?next=https%3A%2F%2Fapp.example.com%2Faccount&mode=cookie",
   );
 });
