@@ -126,8 +126,12 @@ test("adds the configured CSRF header to unsafe requests", async () => {
 });
 
 test("throws AuthError with backend error details", async () => {
-  globalThis.fetch = async () =>
-    jsonResponse({ detail: "Invalid credentials." }, 401);
+  globalThis.fetch = async (url) => {
+    if (url.endsWith("/auth/csrf/")) {
+      return jsonResponse({ data: { csrfToken: "csrf-value" } });
+    }
+    return jsonResponse({ detail: "Invalid credentials." }, 401);
+  };
 
   const client = new AuthClient({ baseUrl: "https://api.example.com" });
 
