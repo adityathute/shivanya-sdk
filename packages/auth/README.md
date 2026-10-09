@@ -72,7 +72,7 @@ Cookie mode is the default and is intended for browser applications.
 </AuthProvider>
 ```
 
-The SDK uses credentialed browser requests and CSRF protection. The default CSRF cookie name is `csrftoken` and the default CSRF header is `X-CSRFToken`.
+The SDK uses credentialed browser requests and CSRF protection. Before its first unsafe cookie-mode request, it automatically fetches `auth/csrf/` if it cannot read the configured CSRF cookie. The default CSRF cookie name is `csrftoken` and the default CSRF header is `X-CSRFToken`. Keep the auth API and browser origin in the same site where possible; for cross-site deployments, configure cookies with `AUTH_COOKIE_SAMESITE=None` and HTTPS (`Secure`) and keep CSRF trusted origins restricted to the actual app origins.
 
 ### Token mode
 
