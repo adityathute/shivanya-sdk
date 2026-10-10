@@ -13,7 +13,7 @@
     "test": "pnpm build && node --test tests/*.test.mjs"
   },
   "dependencies": {
-    "shivanya-core": "^1.1.0"
+    "shivanya-core": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^7.0.2"
