@@ -1,6 +1,6 @@
 {
   "name": "shivanya-sdk",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Shivanya SDK monorepo",
   "scripts": {
     "build": "pnpm -r build",
