@@ -1,6 +1,6 @@
 {
   "name": "shivanya-auth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Reusable authentication and account UI for Shivanya applications",
   "main": "dist/index.js",

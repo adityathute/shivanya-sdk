@@ -117,6 +117,8 @@ html[data-theme="dark"] {
 
   --shivanya-color-border: #475569;
   --shivanya-color-border-hover: #64748b;
+  --shivanya-color-border-dark: #172236;
+  --shivanya-color-border-dark-hover: #334155;
   --shivanya-color-border-focus: #60a5fa;
   --shivanya-color-divider: #334155;
 

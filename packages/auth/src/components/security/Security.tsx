@@ -625,12 +625,12 @@ export function Security() {
                     {hasPassword ? (
                       <div className="shivanya-security-field">
                         <PasswordInput
-                          label="Current password"
                           value={cancelPassword}
                           onChange={(event) => {
                             setCancelPassword(event.target.value);
                             setCancelError(null);
                           }}
+                          placeholder="Current password"
                           fullWidth
                           error={cancelError ?? undefined}
                         />
@@ -674,11 +674,11 @@ export function Security() {
                 {hasPassword ? (
                   <div className="shivanya-security-field">
                     <PasswordInput
-                      label="Current password"
                       value={deletionPassword}
                       onChange={(event) =>
                         setDeletionPassword(event.target.value)
                       }
+                      placeholder="Current password"
                       fullWidth
                       error={verifyDeletion.fieldErrors.current_password}
                     />

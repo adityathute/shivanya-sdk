@@ -112,7 +112,7 @@
 
 .shivanya-security-delete-content {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
   min-width: 0;
@@ -326,4 +326,15 @@
 .shivanya-security-delete-title svg {
   flex-shrink: 0;
   color: var(--shivanya-color-danger);
+}
+
+.shivanya-security-password-card > .shivanya-security-actions {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+@media (max-width: 700px) {
+  .shivanya-security-delete-content .shivanya-security-actions button {
+    width: auto;
+  }
 }
