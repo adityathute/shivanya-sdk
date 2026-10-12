@@ -8,8 +8,8 @@
   padding: var(--shivanya-space-6);
   box-sizing: border-box;
   background: var(--shivanya-color-overlay);
-  backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   overflow: auto;
 }
 

@@ -1,3 +1,4 @@
+
 import {
   CloseIcon,
   IconButton,
@@ -9,14 +10,23 @@ import { ShellBrand } from "./ShellBrand.js";
 export interface DrawerHeaderProps {
   branding?: ShellBranding;
   onClose?: () => void;
+  className?: string;
 }
 
 export function DrawerHeader({
   branding,
   onClose,
+  className = "",
 }: DrawerHeaderProps) {
   return (
-    <header className="shivanya-shell-drawer-header">
+    <header
+      className={[
+        "shivanya-shell-drawer-header",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       {branding && (
         <ShellBrand
           branding={{

@@ -1,10 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type {
-  AnimationEvent,
-  CSSProperties,
-} from "react";
+import type { AnimationEvent, CSSProperties } from "react";
 
 import type { ShellMobileNavProps } from "../types/shell.js";
 
@@ -17,15 +14,18 @@ export function ShellMobileNav({
   onClose: controlledOnClose,
   size = 280,
   className = "",
+  layerClassName = "",
+  panelClassName = "",
+  backdropClassName = "",
+  headerClassName = "",
+  sidebarClassName = "",
   ...props
 }: ShellMobileNavProps) {
   const shell = useOptionalShell();
 
-  const open =
-    controlledOpen ?? shell?.mobileOpen ?? false;
+  const open = controlledOpen ?? shell?.mobileOpen ?? false;
 
-  const close =
-    controlledOnClose ?? shell?.closeMobile ?? (() => {});
+  const close = controlledOnClose ?? shell?.closeMobile ?? (() => {});
 
   const [mounted, setMounted] = useState(open);
 
@@ -40,11 +40,8 @@ export function ShellMobileNav({
       return;
     }
 
-    const previousOverflow =
-      document.body.style.overflow;
-
-    const previousTouchAction =
-      document.body.style.touchAction;
+    const previousOverflow = document.body.style.overflow;
+    const previousTouchAction = document.body.style.touchAction;
 
     document.body.style.overflow = "hidden";
     document.body.style.touchAction = "none";
@@ -55,22 +52,13 @@ export function ShellMobileNav({
       }
     };
 
-    document.addEventListener(
-      "keydown",
-      handleKeyDown,
-    );
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.body.style.overflow =
-        previousOverflow;
+      document.body.style.overflow = previousOverflow;
+      document.body.style.touchAction = previousTouchAction;
 
-      document.body.style.touchAction =
-        previousTouchAction;
-
-      document.removeEventListener(
-        "keydown",
-        handleKeyDown,
-      );
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [mounted, close]);
 
@@ -80,18 +68,13 @@ export function ShellMobileNav({
 
   const panelStyle = {
     "--shivanya-shell-mobile-width":
-      typeof size === "number"
-        ? `${size}px`
-        : size,
+      typeof size === "number" ? `${size}px` : size,
   } as CSSProperties;
 
-  const handleAnimationEnd = (
-    event: AnimationEvent<HTMLElement>,
-  ) => {
+  const handleAnimationEnd = (event: AnimationEvent<HTMLElement>) => {
     if (
       event.target !== event.currentTarget ||
-      event.animationName !==
-        "shivanya-mobile-drawer-close"
+      event.animationName !== "shivanya-mobile-drawer-close"
     ) {
       return;
     }
@@ -108,6 +91,8 @@ export function ShellMobileNav({
         open
           ? "shivanya-shell-mobile-layer-open"
           : "shivanya-shell-mobile-layer-closing",
+        layerClassName,
+        className,
       ]
         .filter(Boolean)
         .join(" ")}
@@ -117,19 +102,24 @@ export function ShellMobileNav({
     >
       <button
         type="button"
-        className="shivanya-shell-mobile-backdrop"
+        className={["shivanya-shell-mobile-backdrop", backdropClassName]
+          .filter(Boolean)
+          .join(" ")}
         onClick={close}
         aria-label="Close navigation"
       />
 
       <aside
-        className="shivanya-shell-mobile-panel"
+        className={["shivanya-shell-mobile-panel", panelClassName]
+          .filter(Boolean)
+          .join(" ")}
         style={panelStyle}
         onAnimationEnd={handleAnimationEnd}
       >
         <DrawerHeader
           branding={props.branding}
           onClose={close}
+          className={headerClassName}
         />
 
         <ShellSidebar
@@ -140,10 +130,13 @@ export function ShellMobileNav({
           className={[
             "shivanya-shell-mobile-sidebar",
             className,
+            sidebarClassName,
           ]
             .filter(Boolean)
             .join(" ")}
-        />
+        >
+          {props.children}
+        </ShellSidebar>
       </aside>
     </div>
   );

@@ -125,6 +125,7 @@ export { PanelRightIcon } from "./PanelRightIcon";
 export { PanelTopIcon } from "./PanelTopIcon";
 export { PartnerIcon } from "./PartnerIcon";
 export { PendingUpdatesIcon } from "./PendingUpdatesIcon";
+export { PlayIcon } from "./PlayIcon";
 export { PlusIcon } from "./PlusIcon";
 export { PopoverIcon } from "./PopoverIcon";
 export { ProcessesIcon } from "./ProcessesIcon";

@@ -29,7 +29,7 @@ export function Security() {
   const [deletionPassword, setDeletionPassword] = useState("");
   const [deletionVerificationToken, setDeletionVerificationToken] =
     useState("");
-  const [hasPassword, setHasPassword] = useState(true);
+  const [hasPassword, setHasPassword] = useState<boolean | null>(null);
   const [verificationToken, setVerificationToken] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
@@ -83,7 +83,9 @@ export function Security() {
       .then((value) => {
         if (active) setHasPassword(value.has_password);
       })
-      .catch(() => {});
+      .catch(() => {
+        if (active) setHasPassword(true);
+      });
 
     const params = new URLSearchParams(window.location.search);
     const googleCode = params.get("google_code");
@@ -424,143 +426,145 @@ export function Security() {
           />
         )}
 
-        <section className="shivanya-security-card shivanya-security-password-card">
-          <div className="shivanya-security-card-topline">
-            <div className="shivanya-security-card-header">
-              <Typography as="h4" variant="body" weight="semibold">
-                {hasPassword ? "Change password" : "Create password"}
-              </Typography>
+        {hasPassword !== null && (
+          <section className="shivanya-security-card shivanya-security-password-card">
+            <div className="shivanya-security-card-topline">
+              <div className="shivanya-security-card-header">
+                <Typography as="h4" variant="body" weight="semibold">
+                  {hasPassword ? "Change password" : "Create password"}
+                </Typography>
 
-              <Typography as="p" variant="caption" color="muted">
-                {hasPassword
-                  ? "Use a new password you do not reuse elsewhere."
-                  : "Verify your Google account first, then create a password for email sign-in."}
-              </Typography>
+                <Typography as="p" variant="caption" color="muted">
+                  {hasPassword
+                    ? "Use a new password you do not reuse elsewhere."
+                    : "Verify your Google account first, then create a password for email sign-in."}
+                </Typography>
+              </div>
+
+              {!hasPassword && !verificationToken && (
+                <div className="shivanya-security-actions">
+                  <Button
+                    loading={passwordSetupLoading}
+                    onClick={verifyGoogleForPassword}
+                  >
+                    Verify with Google
+                  </Button>
+                </div>
+              )}
             </div>
 
-            {!hasPassword && !verificationToken && (
-              <div className="shivanya-security-actions">
-                <Button
-                  loading={passwordSetupLoading}
-                  onClick={verifyGoogleForPassword}
-                >
-                  Verify with Google
-                </Button>
-              </div>
+            {passwordSetupSuccess && (
+              <Typography as="p" variant="caption" color="success">
+                {passwordSetupSuccess}
+              </Typography>
             )}
-          </div>
 
-          {passwordSetupSuccess && (
-            <Typography as="p" variant="caption" color="success">
-              {passwordSetupSuccess}
-            </Typography>
-          )}
+            {!hasPassword ? (
+              <>
+                {passwordSetupError && !authMessage && (
+                  <ErrorMessage size="sm" variant="error">
+                    {passwordSetupError}
+                  </ErrorMessage>
+                )}
 
-          {!hasPassword ? (
-            <>
-              {passwordSetupError && !authMessage && (
-                <ErrorMessage size="sm" variant="error">
-                  {passwordSetupError}
-                </ErrorMessage>
-              )}
+                {verificationToken && (
+                  <>
+                    <div className="shivanya-security-fields">
+                      <div className="shivanya-security-field">
+                        <PasswordInput
+                          label="New password"
+                          value={newPassword}
+                          onChange={(event) => {
+                            setNewPassword(event.target.value);
+                            setNewPasswordFieldError(undefined);
+                            setPasswordSetupError(null);
+                          }}
+                          helperText="At least 8 characters."
+                          fullWidth
+                          error={newPasswordFieldError}
+                        />
+                      </div>
 
-              {verificationToken && (
-                <>
-                  <div className="shivanya-security-fields">
-                    <div className="shivanya-security-field">
-                      <PasswordInput
-                        label="New password"
-                        value={newPassword}
-                        onChange={(event) => {
-                          setNewPassword(event.target.value);
-                          setNewPasswordFieldError(undefined);
-                          setPasswordSetupError(null);
-                        }}
-                        helperText="At least 8 characters."
-                        fullWidth
-                        error={newPasswordFieldError}
-                      />
+                      <div className="shivanya-security-field">
+                        <PasswordInput
+                          label="Confirm new password"
+                          value={confirmNewPassword}
+                          onChange={(event) => {
+                            setConfirmNewPassword(event.target.value);
+                            setConfirmNewPasswordFieldError(undefined);
+                            setPasswordSetupError(null);
+                          }}
+                          fullWidth
+                          error={confirmNewPasswordFieldError}
+                        />
+                      </div>
                     </div>
 
-                    <div className="shivanya-security-field">
-                      <PasswordInput
-                        label="Confirm new password"
-                        value={confirmNewPassword}
-                        onChange={(event) => {
-                          setConfirmNewPassword(event.target.value);
-                          setConfirmNewPasswordFieldError(undefined);
-                          setPasswordSetupError(null);
-                        }}
-                        fullWidth
-                        error={confirmNewPasswordFieldError}
-                      />
+                    <div className="shivanya-security-actions">
+                      <Button
+                        loading={passwordSetupLoading}
+                        disabled={!newPassword || !confirmNewPassword}
+                        onClick={submitCreatePassword}
+                      >
+                        Create password
+                      </Button>
                     </div>
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                {!hasChangePasswordFieldError && changePassword.error && (
+                  <ErrorMessage size="sm" variant="error">
+                    {changePassword.error}
+                  </ErrorMessage>
+                )}
+
+                <div className="shivanya-security-fields">
+                  <div className="shivanya-security-field">
+                    <PasswordInput
+                      label="Current password"
+                      value={current}
+                      onChange={(event) => setCurrent(event.target.value)}
+                      fullWidth
+                      error={currentPasswordError}
+                    />
                   </div>
 
-                  <div className="shivanya-security-actions">
-                    <Button
-                      loading={passwordSetupLoading}
-                      disabled={!newPassword || !confirmNewPassword}
-                      onClick={submitCreatePassword}
-                    >
-                      Create password
-                    </Button>
+                  <div className="shivanya-security-field">
+                    <PasswordInput
+                      label="New password"
+                      value={next}
+                      onChange={(event) => setNext(event.target.value)}
+                      helperText="At least 8 characters."
+                      fullWidth
+                      error={newPasswordError}
+                    />
                   </div>
-                </>
-              )}
-            </>
-          ) : (
-            <>
-              {!hasChangePasswordFieldError && changePassword.error && (
-                <ErrorMessage size="sm" variant="error">
-                  {changePassword.error}
-                </ErrorMessage>
-              )}
 
-              <div className="shivanya-security-fields">
-                <div className="shivanya-security-field">
-                  <PasswordInput
-                    label="Current password"
-                    value={current}
-                    onChange={(event) => setCurrent(event.target.value)}
-                    fullWidth
-                    error={currentPasswordError}
-                  />
+                  <div className="shivanya-security-field">
+                    <PasswordInput
+                      label="Confirm new password"
+                      value={confirm}
+                      onChange={(event) => setConfirm(event.target.value)}
+                      fullWidth
+                      error={changePassword.fieldErrors.confirm_password}
+                    />
+                  </div>
                 </div>
 
-                <div className="shivanya-security-field">
-                  <PasswordInput
-                    label="New password"
-                    value={next}
-                    onChange={(event) => setNext(event.target.value)}
-                    helperText="At least 8 characters."
-                    fullWidth
-                    error={newPasswordError}
-                  />
+                <div className="shivanya-security-actions">
+                  <Button
+                    loading={changePassword.loading}
+                    onClick={submitPassword}
+                  >
+                    Change password
+                  </Button>
                 </div>
-
-                <div className="shivanya-security-field">
-                  <PasswordInput
-                    label="Confirm new password"
-                    value={confirm}
-                    onChange={(event) => setConfirm(event.target.value)}
-                    fullWidth
-                    error={changePassword.fieldErrors.confirm_password}
-                  />
-                </div>
-              </div>
-
-              <div className="shivanya-security-actions">
-                <Button
-                  loading={changePassword.loading}
-                  onClick={submitPassword}
-                >
-                  Change password
-                </Button>
-              </div>
-            </>
-          )}
-        </section>
+              </>
+            )}
+          </section>
+        )}
 
         <section
           className={`shivanya-security-card ${

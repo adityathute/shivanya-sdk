@@ -49,7 +49,7 @@
 .shivanya-shell-sidebar-brand {
   flex: 0 0 auto;
   padding: 18px 16px;
-  border-bottom: 1px solid var(--shivanya-color-border);
+  border-bottom: 1px solid var(--shivanya-color-border-dark);
 }
 
 .shivanya-shell-nav {
@@ -68,7 +68,7 @@
   flex: 0 0 auto;
   margin-top: auto;
   padding: 14px;
-  border-top: 1px solid var(--shivanya-color-border);
+  border-top: 1px solid var(--shivanya-color-border-dark);
 }
 
 .shivanya-shell-sidebar-footer-content {
@@ -143,4 +143,58 @@
     height: auto;
     min-height: 0;
   }
+}
+
+.site-mobile-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--shivanya-color-background, #fff);
+}
+
+.site-mobile-sidebar .shivanya-shell-nav {
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.site-mobile-auth-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+}
+
+.site-mobile-divider {
+  height: 1px;
+  background: var(--shivanya-color-border-dark, #e9eaf1);
+}
+
+.site-mobile-auth-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.site-mobile-login,
+.site-mobile-register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 42px;
+  border-radius: 8px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.site-mobile-login {
+  border: 1px solid var(--shivanya-color-border);
+  background: transparent;
+}
+
+.site-mobile-register {
+  border: 1px solid #007bff;
+  background: #007bff;
+  color: #fff;
 }

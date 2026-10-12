@@ -1,20 +1,11 @@
 "use client";
 
 import type { CSSProperties, ElementType } from "react";
-import type {
-  ShellNavItem,
-  ShellSidebarProps,
-} from "../types/shell.js";
+import type { ShellNavItem, ShellSidebarProps } from "../types/shell.js";
 
-import {
-  Sidebar,
-  SidebarItem,
-} from "shivanya-ui";
+import { Sidebar, SidebarItem } from "shivanya-ui";
 
-import {
-  getShellItemKey,
-  isShellItemActive,
-} from "../utils/navigation.js";
+import { getShellItemKey, isShellItemActive } from "../utils/navigation.js";
 
 import { ShellBrand } from "./ShellBrand.js";
 
@@ -39,9 +30,7 @@ export function ShellSidebar({
         "shivanya-shell-sidebar",
         `shivanya-shell-sidebar-${position}`,
         `shivanya-shell-sidebar-${variant}`,
-        collapsed
-          ? "shivanya-shell-sidebar-collapsed"
-          : "",
+        collapsed ? "shivanya-shell-sidebar-collapsed" : "",
         className,
       ]
         .filter(Boolean)
@@ -49,47 +38,38 @@ export function ShellSidebar({
       style={
         {
           "--shivanya-shell-sidebar-width":
-            typeof width === "number"
-              ? `${width}px`
-              : width,
+            typeof width === "number" ? `${width}px` : width,
         } as CSSProperties
       }
     >
       {branding && (
         <div className="shivanya-shell-sidebar-brand">
-          <ShellBrand
-            branding={branding}
-            compact={collapsed}
+          <ShellBrand branding={branding} compact={collapsed} />
+        </div>
+      )}
+
+      <Sidebar
+        className="shivanya-shell-nav"
+        variant="ghost"
+        size="md"
+        radius="md"
+        itemPosition="start"
+      >
+        {navigation.map((item, index) => (
+          <ShellNavItemView
+            key={getShellItemKey(item, index)}
+            item={item}
+            active={isActive(item, pathname)}
+            Link={Link}
+            collapsed={collapsed}
+            onNavigate={onNavigate}
           />
-        </div>
-      )}
+        ))}
+      </Sidebar>
 
-      {children || (
-        <Sidebar
-          className="shivanya-shell-nav"
-          variant="ghost"
-          size="md"
-          radius="md"
-          itemPosition="start"
-        >
-          {navigation.map((item, index) => (
-            <ShellNavItemView
-              key={getShellItemKey(item, index)}
-              item={item}
-              active={isActive(item, pathname)}
-              Link={Link}
-              collapsed={collapsed}
-              onNavigate={onNavigate}
-            />
-          ))}
-        </Sidebar>
-      )}
+      {children}
 
-      {footer && (
-        <div className="shivanya-shell-sidebar-footer">
-          {footer}
-        </div>
-      )}
+      {footer && <div className="shivanya-shell-sidebar-footer">{footer}</div>}
     </aside>
   );
 }
@@ -108,12 +88,7 @@ function ShellNavItemView({
   onNavigate?: (item: ShellNavItem) => void;
 }) {
   if (item.divider) {
-    return (
-      <div
-        className="shivanya-shell-nav-divider"
-        role="separator"
-      />
-    );
+    return <div className="shivanya-shell-nav-divider" role="separator" />;
   }
 
   const handleClick = () => {
@@ -128,15 +103,11 @@ function ShellNavItemView({
   const rightSection = (
     <>
       {!collapsed && item.badge ? (
-        <span className="shivanya-shell-nav-badge">
-          {item.badge}
-        </span>
+        <span className="shivanya-shell-nav-badge">{item.badge}</span>
       ) : null}
 
       {!collapsed && item.endIcon ? (
-        <span className="shivanya-shell-nav-end">
-          {item.endIcon}
-        </span>
+        <span className="shivanya-shell-nav-end">{item.endIcon}</span>
       ) : null}
     </>
   );
@@ -144,11 +115,7 @@ function ShellNavItemView({
   return (
     <SidebarItem
       component={Link && item.href && !item.disabled ? Link : "button"}
-      href={
-        Link && item.href && !item.disabled
-          ? item.href
-          : undefined
-      }
+      href={Link && item.href && !item.disabled ? item.href : undefined}
       icon={item.icon}
       rightSection={rightSection}
       active={active}
@@ -161,11 +128,7 @@ function ShellNavItemView({
       ]
         .filter(Boolean)
         .join(" ")}
-      title={
-        collapsed
-          ? String(item.label ?? "")
-          : undefined
-      }
+      title={collapsed ? String(item.label ?? "") : undefined}
     >
       {item.label}
     </SidebarItem>
