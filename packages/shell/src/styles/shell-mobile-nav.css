@@ -46,7 +46,7 @@
   overscroll-behavior: none;
   touch-action: none;
   flex: 0 0 auto;
-  background: var(--shivanya-color-surface);
+  background: var(--shivanya-color-background);
   box-shadow: var(--shivanya-shadow-lg);
   will-change: transform;
   animation: shivanya-mobile-drawer-close 260ms ease forwards;

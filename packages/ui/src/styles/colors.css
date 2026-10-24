@@ -30,7 +30,8 @@
   --shivanya-color-primary-hover: #1d4ed8;
   --shivanya-color-primary-active: #1e40af;
   --shivanya-color-primary-disabled: #93c5fd;
-
+  --shivanya-color-border-dark: #e2e8f0;
+  --shivanya-color-border-dark-hover: #cbd5e1;
   --shivanya-color-primary-soft: rgb(37 99 235 / 10%);
   --shivanya-color-primary-soft-hover: rgb(37 99 235 / 16%);
   --shivanya-color-primary-soft-active: rgb(37 99 235 / 22%);
