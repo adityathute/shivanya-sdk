@@ -127,16 +127,14 @@ export function ShellMobileNav({
           collapsed={false}
           variant="static"
           branding={undefined}
-          className={[
-            "shivanya-shell-mobile-sidebar",
-            className,
-            sidebarClassName,
-          ]
+          onNavigate={(item) => {
+            props.onNavigate?.(item);
+            close();
+          }}
+          className={["shivanya-shell-mobile-sidebar", className]
             .filter(Boolean)
             .join(" ")}
-        >
-          {props.children}
-        </ShellSidebar>
+        />
       </aside>
     </div>
   );
