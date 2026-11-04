@@ -89,7 +89,7 @@ export interface ProfileInput {
   last_name?: string;
   phone?: string;
   bio?: string;
-  date_of_birth?: string;
+  date_of_birth?: string | null;
   location?: string;
   website?: string;
   avatar?: File | null;

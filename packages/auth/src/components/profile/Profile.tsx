@@ -69,7 +69,7 @@ export function Profile() {
         first_name: firstName,
         last_name: lastName,
         phone,
-        date_of_birth: dateOfBirth,
+        date_of_birth: dateOfBirth || null,
         location,
         website: normalizeUrl(website),
         bio,
@@ -557,7 +557,9 @@ export function Profile() {
             checkingUsername ||
             (username !== (user?.username ?? "") && usernameAvailable !== true)
           }
-          onClick={() => run()}
+          onClick={() => {
+            void run().catch(() => {});
+          }}
         >
           Save changes
         </Button>
