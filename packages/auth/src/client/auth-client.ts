@@ -5,6 +5,7 @@ import type {
   AuthTokenResponse,
   AuthUser,
   ChangePasswordInput,
+  Language,
   LoginInput,
   ProfileInput,
   RegisterInput,
@@ -462,8 +463,11 @@ export class AuthClient {
     return this.request<{ google_connected: boolean }>("profile/connections/google/", { method: "DELETE" });
   }
 
-  async updateSettings(input: { theme: string }) {
-    return this.request<{ theme: string }>("profile/settings/", {
+  async updateSettings(input: UpdateSettingsInput) {
+    return this.request<{
+      theme: string;
+      language: Language;
+    }>("profile/settings/", {
       method: "PATCH",
       body: JSON.stringify(input),
     });

@@ -6,7 +6,11 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    devDependencies:
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
 
   packages/ai:
     dependencies:
@@ -23,6 +27,9 @@ importers:
       shivanya-core:
         specifier: workspace:*
         version: link:../core
+      shivanya-i18n:
+        specifier: workspace:*
+        version: link:../i18n
       shivanya-ui:
         specifier: workspace:*
         version: link:../ui
@@ -48,6 +55,8 @@ importers:
       typescript:
         specifier: ^7.0.2
         version: 7.0.2
+
+  packages/i18n: {}
 
   packages/shell:
     dependencies:

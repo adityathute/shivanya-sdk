@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "shivanya-core": "workspace:*",
+    "shivanya-i18n": "workspace:*",
     "shivanya-ui": "workspace:*"
   },
   "devDependencies": {

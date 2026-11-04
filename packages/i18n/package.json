@@ -1,0 +1,23 @@
+{
+  "name": "shivanya-i18n",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Shared language utilities for Shivanya applications",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityathute/shivanya-sdk.git"
+  },
+  "author": "Aditya Thute",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
+}

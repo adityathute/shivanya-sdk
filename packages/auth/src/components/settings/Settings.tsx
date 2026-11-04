@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, SettingsIcon, Select, Typography } from "shivanya-ui";
 
+import type { Language } from "shivanya-i18n";
 import { useAuth } from "../../hooks/useAuth";
 import { useAuthAction } from "../../hooks/useAuthAction";
 
@@ -11,28 +12,49 @@ export interface SettingsProps {
 }
 
 export function Settings({ onThemeChange }: SettingsProps) {
-  const { user, client, refreshUser } = useAuth();
+  const { user, updateSettings, refreshUser } = useAuth();
 
   const [theme, setTheme] = useState(user?.settings?.theme ?? "light");
+  const [language, setLanguage] = useState<Language>(
+    user?.settings?.language ?? "en",
+  );
 
-  const [success, setSuccess] = useState(false);
+  const [themeSuccess, setThemeSuccess] = useState(false);
+  const [languageSuccess, setLanguageSuccess] = useState(false);
 
-  const updateSettings = useAuthAction(async () =>
-    client.updateSettings({
-      theme,
-    }),
+  useEffect(() => {
+    if (user?.settings?.theme) {
+      setTheme(user.settings.theme);
+    }
+
+    if (user?.settings?.language) {
+      setLanguage(user.settings.language);
+    }
+  }, [user?.settings?.theme, user?.settings?.language]);
+
+  const updateAppearance = useAuthAction(async () => updateSettings({ theme }));
+
+  const updateLanguage = useAuthAction(async () =>
+    updateSettings({ language }),
   );
 
   const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setTheme(event.target.value);
-    setSuccess(false);
+    setThemeSuccess(false);
+  };
+
+  const handleLanguageChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    setLanguage(event.target.value as Language);
+    setLanguageSuccess(false);
   };
 
   const applyAppearance = async () => {
-    setSuccess(false);
+    setThemeSuccess(false);
 
     try {
-      await updateSettings.run();
+      await updateAppearance.run();
       await refreshUser();
 
       const appliedTheme =
@@ -46,7 +68,21 @@ export function Settings({ onThemeChange }: SettingsProps) {
       localStorage.setItem("shivanya-theme", appliedTheme);
 
       onThemeChange?.(theme);
-      setSuccess(true);
+      setThemeSuccess(true);
+    } catch {}
+  };
+
+  const applyLanguage = async () => {
+    setLanguageSuccess(false);
+
+    try {
+      await updateLanguage.run();
+
+      localStorage.setItem("shivanya-language", language);
+      document.cookie = `shivanya-language=${language}; Path=/; Max-Age=31536000; SameSite=Lax`;
+
+      await refreshUser();
+      setLanguageSuccess(true);
     } catch {}
   };
 
@@ -98,7 +134,7 @@ export function Settings({ onThemeChange }: SettingsProps) {
           <div className="shivanya-settings-actions">
             <Button
               variant="outline"
-              loading={updateSettings.loading}
+              loading={updateAppearance.loading}
               onClick={applyAppearance}
             >
               Apply appearance
@@ -106,16 +142,66 @@ export function Settings({ onThemeChange }: SettingsProps) {
           </div>
         </div>
 
-        {success && (
+        {themeSuccess && (
           <Typography as="p" variant="caption" color="success">
             Appearance updated successfully.
           </Typography>
         )}
 
-        {updateSettings.error &&
-          !Object.keys(updateSettings.fieldErrors).length && (
+        {updateAppearance.error &&
+          !Object.keys(updateAppearance.fieldErrors).length && (
             <Typography as="p" variant="caption" color="danger">
-              {updateSettings.error}
+              {updateAppearance.error}
+            </Typography>
+          )}
+      </section>
+
+      <section className="shivanya-settings-card">
+        <div className="shivanya-settings-card-header">
+          <Typography as="h4" variant="body" weight="semibold">
+            Language
+          </Typography>
+
+          <Typography as="p" variant="caption" color="muted">
+            Choose the language for the ShivanyaMS interface.
+          </Typography>
+        </div>
+
+        <div className="shivanya-settings-appearance-row">
+          <div className="shivanya-settings-field">
+            <Select
+              label="Language"
+              value={language}
+              onChange={handleLanguageChange}
+              fullWidth
+            >
+              <option value="en">English</option>
+              <option value="mr">मराठी (Marathi)</option>
+              <option value="hi">हिन्दी (Hindi)</option>
+            </Select>
+          </div>
+
+          <div className="shivanya-settings-actions">
+            <Button
+              variant="outline"
+              loading={updateLanguage.loading}
+              onClick={applyLanguage}
+            >
+              Apply language
+            </Button>
+          </div>
+        </div>
+
+        {languageSuccess && (
+          <Typography as="p" variant="caption" color="success">
+            Language updated successfully.
+          </Typography>
+        )}
+
+        {updateLanguage.error &&
+          !Object.keys(updateLanguage.fieldErrors).length && (
+            <Typography as="p" variant="caption" color="danger">
+              {updateLanguage.error}
             </Typography>
           )}
       </section>
