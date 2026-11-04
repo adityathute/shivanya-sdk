@@ -29,6 +29,18 @@ import { AuthMessage } from "../shared/AuthMessage";
 
 type AvatarAction = "unchanged" | "upload" | "remove";
 
+const normalizeDateOfBirth = (value: string): string | null => {
+  if (!value.trim()) return null;
+
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    return value;
+  }
+
+  const match = value.match(/^(\d{4}-\d{2}-\d{2})/);
+
+  return match?.[1] ?? null;
+};
+
 export function Profile() {
   const { client, user, refreshUser } = useAuth();
 
@@ -69,7 +81,7 @@ export function Profile() {
         first_name: firstName,
         last_name: lastName,
         phone,
-        date_of_birth: dateOfBirth || null,
+        date_of_birth: normalizeDateOfBirth(dateOfBirth),
         location,
         website: normalizeUrl(website),
         bio,
