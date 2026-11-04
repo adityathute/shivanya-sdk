@@ -13,7 +13,7 @@ export interface SettingsProps {
 export function Settings({ onThemeChange }: SettingsProps) {
   const { user, client, refreshUser } = useAuth();
 
-  const [theme, setTheme] = useState(user?.settings?.theme ?? "system");
+  const [theme, setTheme] = useState(user?.settings?.theme ?? "light");
 
   const [success, setSuccess] = useState(false);
 
