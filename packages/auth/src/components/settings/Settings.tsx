@@ -65,7 +65,11 @@ export function Settings({ onThemeChange }: SettingsProps) {
           : theme;
 
       document.documentElement.dataset.theme = appliedTheme;
+      document.documentElement.style.colorScheme = appliedTheme;
+
       localStorage.setItem("shivanya-theme", appliedTheme);
+
+      document.cookie = `shivanya-theme=${appliedTheme}; Path=/; Max-Age=31536000; SameSite=Lax`;
 
       onThemeChange?.(theme);
       setThemeSuccess(true);
