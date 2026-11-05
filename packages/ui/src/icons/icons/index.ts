@@ -61,6 +61,7 @@ export { EditIcon } from "./EditIcon";
 export { EmptyStateIcon } from "./EmptyStateIcon";
 export { ERPIcon } from "./ERPIcon";
 export { ErrorIcon } from "./ErrorIcon";
+export { ExaminationIcon } from "./ExaminationIcon";
 export { ExpandIcon } from "./ExpandIcon";
 export { ExpensesIcon } from "./ExpensesIcon";
 export { EyeIcon } from "./EyeIcon";
