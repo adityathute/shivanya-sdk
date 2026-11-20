@@ -86,6 +86,12 @@ export interface ShellMobileNavProps extends ShellSidebarProps {
   open?: boolean;
   size?: number | string;
   onClose?: () => void;
+  className?: string;
+  layerClassName?: string;
+  panelClassName?: string;
+  backdropClassName?: string;
+  headerClassName?: string;
+  sidebarClassName?: string;
 }
 
 export interface ShellMainProps {

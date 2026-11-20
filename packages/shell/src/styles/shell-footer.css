@@ -6,8 +6,8 @@
   width: 100%;
   padding: 20px 24px;
   box-sizing: border-box;
-  border-top: 1px solid var(--shivanya-color-border);
-  background: var(--shivanya-color-surface);
+  border-top: 1px solid var(--shivanya-color-border-dark);
+  background: var(--shivanya-color-background);
   color: var(--shivanya-color-text-muted);
 }
 

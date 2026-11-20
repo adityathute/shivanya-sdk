@@ -260,9 +260,9 @@
   color: var(--shivanya-color-danger);
 }
 
-.shivanya-user-dropdown-logout:hover {
+/* .shivanya-user-dropdown-logout:hover {
   background: var(--shivanya-color-danger-background);
-}
+} */
 
 @media (max-width: 600px) {
   .shivanya-user-dropdown-menu {

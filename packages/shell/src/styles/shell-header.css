@@ -2,8 +2,8 @@
   z-index: 100;
   width: 100%;
   min-height: 64px;
-  background: var(--shivanya-color-surface);
-  border-bottom: 1px solid var(--shivanya-color-border);
+  background: var(--shivanya-color-background);
+  border-bottom: 1px solid var(--shivanya-color-border-dark);
 }
 
 .shivanya-shell-header-sticky {

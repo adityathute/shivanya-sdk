@@ -6,13 +6,17 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    devDependencies:
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
 
   packages/ai:
     dependencies:
       shivanya-core:
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: workspace:*
+        version: link:../core
     devDependencies:
       typescript:
         specifier: ^7.0.2
@@ -23,6 +27,9 @@ importers:
       shivanya-core:
         specifier: workspace:*
         version: link:../core
+      shivanya-i18n:
+        specifier: workspace:*
+        version: link:../i18n
       shivanya-ui:
         specifier: workspace:*
         version: link:../ui
@@ -48,6 +55,8 @@ importers:
       typescript:
         specifier: ^7.0.2
         version: 7.0.2
+
+  packages/i18n: {}
 
   packages/shell:
     dependencies:
@@ -686,9 +695,6 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  shivanya-core@1.0.0:
-    resolution: {integrity: sha512-IRbL+L2L8Kft9QrQhgCMiokmer/50U0vbRKS+fhWrvGguyW8DBegZGaJ6sSWvokBFJHjMTevQ+IIsC8nA29tkQ==}
-
   shx@0.4.0:
     resolution: {integrity: sha512-Z0KixSIlGPpijKgcH6oCMCbltPImvaKy0sGH8AkLRXw1KyzpKtaCTizP2xen+hNDqVF4xxgvA0KXSb9o4Q6hnA==}
     engines: {node: '>=18'}
@@ -1171,8 +1177,6 @@ snapshots:
       fast-glob: 3.3.3
       interpret: 1.4.0
       rechoir: 0.6.2
-
-  shivanya-core@1.0.0: {}
 
   shx@0.4.0:
     dependencies:

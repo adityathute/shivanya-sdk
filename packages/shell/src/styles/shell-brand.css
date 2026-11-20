@@ -40,3 +40,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@media (max-width: 760px) {
+  .shivanya-shell-brand-image {
+    width: 24px;
+    height: 24px;
+  }
+}

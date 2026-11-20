@@ -1,3 +1,9 @@
+export type Language = "en" | "mr" | "hi";
+
+export interface UserSettings {
+  theme?: string;
+  language?: Language;
+}
 export interface AuthUser {
   id: string;
   email: string;
@@ -14,7 +20,7 @@ export interface AuthUser {
   phone_verified?: boolean;
   date_joined?: string;
   roles?: string[];
-  settings?: { theme?: string } | null;
+  settings?: UserSettings | null;
   is_deletion_scheduled?: boolean;
   deletion_scheduled_at?: string | null;
 }
@@ -89,7 +95,7 @@ export interface ProfileInput {
   last_name?: string;
   phone?: string;
   bio?: string;
-  date_of_birth?: string;
+  date_of_birth?: string | null;
   location?: string;
   website?: string;
   avatar?: File | null;
@@ -122,4 +128,5 @@ export interface UsernameAvailability {
 
 export interface UpdateSettingsInput {
   theme?: string;
+  language?: Language;
 }

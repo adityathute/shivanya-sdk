@@ -27,12 +27,26 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(function Modal(
   useEffect(() => {
     if (!open) return;
 
-    const previousOverflow = document.body.style.overflow;
+    const body = document.body;
+    const html = document.documentElement;
 
-    document.body.style.overflow = "hidden";
+    const previousBodyOverflow = body.style.overflow;
+    const previousHtmlOverflow = html.style.overflow;
+    const previousBodyPaddingRight = body.style.paddingRight;
+
+    const scrollbarWidth = window.innerWidth - html.clientWidth;
+
+    if (scrollbarWidth > 0) {
+      body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    body.style.overflow = "hidden";
+    html.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      body.style.overflow = previousBodyOverflow;
+      html.style.overflow = previousHtmlOverflow;
+      body.style.paddingRight = previousBodyPaddingRight;
     };
   }, [open]);
 
@@ -102,9 +116,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(function Modal(
 
         <div className="shivanya-modal-body">{children}</div>
 
-        {footer && (
-          <div className="shivanya-modal-footer">{footer}</div>
-        )}
+        {footer && <div className="shivanya-modal-footer">{footer}</div>}
       </div>
     </div>
   );

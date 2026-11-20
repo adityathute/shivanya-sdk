@@ -5,6 +5,7 @@ import type {
   AuthTokenResponse,
   AuthUser,
   ChangePasswordInput,
+  Language,
   LoginInput,
   ProfileInput,
   RegisterInput,
@@ -383,21 +384,37 @@ export class AuthClient {
   }
 
   async updateProfile(input: ProfileInput) {
-    const hasFile = input.avatar instanceof File;
+    const normalizedInput = {
+      ...input,
+      date_of_birth:
+        input.date_of_birth === ""
+          ? null
+          : input.date_of_birth,
+    };
+
+    const hasFile = normalizedInput.avatar instanceof File;
+
     if (!hasFile) {
       return this.request<AuthUser>("profile/", {
         method: "PATCH",
-        body: JSON.stringify(input),
+        body: JSON.stringify(normalizedInput),
       });
     }
 
     const form = new FormData();
-    for (const [key, value] of Object.entries(input)) {
-      if (value instanceof File) form.append(key, value);
-      else if (value !== undefined && value !== null) form.append(key, String(value));
+
+    for (const [key, value] of Object.entries(normalizedInput)) {
+      if (value instanceof File) {
+        form.append(key, value);
+      } else if (value !== undefined && value !== null) {
+        form.append(key, String(value));
+      }
     }
 
-    return this.request<AuthUser>("profile/", { method: "PATCH", body: form });
+    return this.request<AuthUser>("profile/", {
+      method: "PATCH",
+      body: form,
+    });
   }
 
   async removeAvatar() {
@@ -446,8 +463,11 @@ export class AuthClient {
     return this.request<{ google_connected: boolean }>("profile/connections/google/", { method: "DELETE" });
   }
 
-  async updateSettings(input: { theme: string }) {
-    return this.request<{ theme: string }>("profile/settings/", {
+  async updateSettings(input: UpdateSettingsInput) {
+    return this.request<{
+      theme: string;
+      language: Language;
+    }>("profile/settings/", {
       method: "PATCH",
       body: JSON.stringify(input),
     });

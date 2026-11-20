@@ -7,6 +7,7 @@ import {
   UserCheckIcon,
   LogoutIcon,
   LoginIcon,
+  UserIcon,
   UserPlusIcon,
   Avatar,
 } from "shivanya-ui";
@@ -115,7 +116,7 @@ export function UserDropdown({
           />
         ) : (
           <span className="shivanya-user-dropdown-trigger-guest">
-            <UserCheckIcon size="sm" />
+            <UserIcon size="sm" />
           </span>
         )}
       </button>
