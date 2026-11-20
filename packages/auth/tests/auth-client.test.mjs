@@ -307,7 +307,16 @@ test("verifies Google and creates a password through the SDK client", async () =
     return jsonResponse({ success: true, message: "Password created successfully." });
   };
 
-  const client = new AuthClient({ baseUrl: "https://api.example.com" });
+  const client = new AuthClient({
+  baseUrl: "https://api.example.com",
+  mode: "token",
+  tokenStorage: {
+    async getAccessToken() { return "access-value"; },
+    async getRefreshToken() { return "refresh-value"; },
+    async setTokens() {},
+    async clearTokens() {},
+  },
+});
   const verification = await client.verifyGooglePassword("google-code");
   await client.createPassword({
     verification_token: verification.verification_token,
