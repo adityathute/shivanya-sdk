@@ -27,11 +27,11 @@ Clone the repository and enter it:
 ```bash
 git clone https://github.com/adityathute/shivanya-sdk.git
 cd shivanya-sdk
-git checkout auth-v2
+git checkout sdk-v3
 pnpm install
 ```
 
-The `auth-v2` branch contains the current V2 authentication work. Do not use this branch as a production release until the V2 tests and integration checks have passed.
+Use `sdk-v3` for the current development line. The `sdk-v2` branch is retained as a reference and should not receive new development changes.
 
 ## Build
 
