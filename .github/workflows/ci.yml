@@ -2,7 +2,7 @@ name: SDK CI
 
 on:
   push:
-    branches: ["Master", "test/**"]
+    branches: ["Master", "sdk-v3", "test/**"]
   pull_request:
 
 jobs:
