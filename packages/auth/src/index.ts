@@ -1,6 +1,7 @@
 import "./styles/index.css";
 
 export * from "./client/types.js";
+export * from "./client/permissions.js";
 export * from "./client/auth-client.js";
 export * from "./client/token-storage.js";
 export * from "./client/redirect.js";
