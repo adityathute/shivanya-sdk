@@ -26,6 +26,7 @@ export interface AuthContextValue {
   clearAuth: () => void;
   getAccessToken: () => Promise<string | null>;
   updateSettings: (input: UpdateSettingsInput) => Promise<void>;
+  hasPermission: (code: string) => boolean;
 }
 
 export const AuthContext = createContext<AuthContextValue | null>(null);
@@ -125,6 +126,11 @@ export function AuthProvider({
 
   const getAccessToken = useCallback(() => client.getAccessToken(), [client]);
 
+  const hasPermission = useCallback(
+    (code: string) => Boolean(user?.permissions?.includes(code)),
+    [user],
+  );
+
   const updateSettings = useCallback(
     async (input: UpdateSettingsInput) => {
       const updatedSettings = await client.updateSettings(input);
@@ -156,6 +162,7 @@ export function AuthProvider({
       clearAuth,
       getAccessToken,
       updateSettings,
+      hasPermission,
     }),
     [
       client,
@@ -167,6 +174,7 @@ export function AuthProvider({
       clearAuth,
       getAccessToken,
       updateSettings,
+      hasPermission,
     ],
   );
 
