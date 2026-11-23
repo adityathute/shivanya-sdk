@@ -20,6 +20,7 @@ export interface AuthUser {
   phone_verified?: boolean;
   date_joined?: string;
   roles?: string[];
+  permissions?: string[];
   settings?: UserSettings | null;
   is_deletion_scheduled?: boolean;
   deletion_scheduled_at?: string | null;
